@@ -1,0 +1,46 @@
+<import src="../templates/login.wxml"></import>
+<view class="">
+    <view class="nav bg-white" style="height:{{navH}}px">
+        <view class="nav-title">
+            <view class="back">
+                <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+                <view class="back-line"></view>
+                <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+            </view>
+        </view>
+    </view>
+    <view class="bg-gray overflow" style="margin-top:{{navH}}px;">
+        <view class="hidden">
+            <view class="par-bg" style="height:calc(100vh - {{navH}}px);background-image:url({{imgPath}}share1.jpg);">
+                <view class="par-top">
+                    <view class="par-tv">
+                        <text>邀请好友</text>成为下级</view>
+                    <view class="par-tv">躺着就能<text>轻松赚钱</text>
+                    </view>
+                </view>
+                <view class="par-content">
+                    <view class="par-tit">规则介绍:</view>
+                    <view class="par-coin">
+                        <text wx:if="{{task_text}}">
+                 {{task_text}}
+              </text>
+                        <text wx:if="{{!task_text}}">
+                  1.分享邀请新用户，自动绑定成为你的下级
+                  2.你的下级用户购买、推广商品，你都可以获得佣金分成
+                  3.下级用户越多，获得的分成越多，佣金分成没有上限
+              </text>
+                    </view>
+                </view>
+                <view class="par-btn">
+                    <button bindtap="sharetoFq" class="btn-l" wx:if="{{!isLogin}}">分享给好友或群</button>
+                    <button class="btn-l" openType="share" wx:else>分享给好友或群</button>
+                    <button bindtap="saveUserPoster" class="btn-r">
+                        <text class="iconfont icon-xiazai"></text>
+                        <view>保存分享图</view>
+                    </button>
+                </view>
+            </view>
+        </view>
+    </view>
+    <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+</view>

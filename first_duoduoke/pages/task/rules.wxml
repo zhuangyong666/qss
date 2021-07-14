@@ -1,0 +1,18 @@
+<view class="">
+    <view class="nav bg-white" style="height:{{navH}}px">
+        <view class="nav-title">
+      任务奖励 活动说明
+      <text bindtap="navBack" class="back iconfont icon-jiantou-copy"></text>
+        </view>
+    </view>
+    <view class="bg-gray overflow" style="margin-top:{{navH}}px;">
+        <view class="hidden">
+            <view class="rules-all" style="height:calc({{pmH}}px - {{navH}}px);">
+                <view class="ra">邀请新用户得现金红包活动规则：</view>
+                <view class="ra">用户参加本次活动前，请务必仔细阅读以下活动规则，凡参与本次活动，即视为用户已阅读、理解并同意本活动规则及注意事项全部内容，如用户对活动规则内容有任何疑问、意见或建议，可关注 <text class="r-red">「微信公众号：省钱小队长」</text>与我们联系。</view>
+                <view class="ra">活动规则：</view>
+                <view class="rb">用户登录省钱快报APP，即可参加该活动，该活动旨在培养用户邀请好友一起领券购物省钱的习惯，用户对该活动进行分享或邀请新用户首次下载最新版的省钱快报APP或邀请新用户进行购物体验，均可获得一定额度的现金红包奖励。</view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,89 @@
+<view class="nav bg-white nav-color" style="height:{{navH}}px">
+    <view class="nav-title">
+      饿了么
+      <view class="back">
+            <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+            <view class="back-line"></view>
+            <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+        </view>
+    </view>
+</view>
+<view class="container-plea" style="margin-top: {{navH}}px;">
+    <image class="main-img" mode="aspectFill" src="{{imgPath}}eleme-main-st.png" wx:if="{{show==0}}"></image>
+    <image class="main-img" mode="aspectFit" src="{{imgPath}}eleme-main-st2.png" wx:if="{{show==1}}"></image>
+    <view class="page-main">
+        <view class="page-tag">
+        领券下单拿收益
+      </view>
+        <view class="steps">
+            <view class="steps-item">
+                <view class="steps-item-1">
+                    <view class="steps-item-2">
+                        <text class="iconfont icon-lingquanzhongxin"></text>
+                    </view>
+                </view>
+          先领券
+        </view>
+            <view class="steps-line">
+                <view></view>
+            </view>
+            <view class="steps-item">
+                <view class="steps-item-1">
+                    <view class="steps-item-2">
+                        <text class="iconfont icon-yduiwodedingdan"></text>
+                    </view>
+                </view>
+          再下单
+        </view>
+            <view class="steps-line">
+                <view></view>
+            </view>
+            <view class="steps-item">
+                <view class="steps-item-1">
+                    <view class="steps-item-2">
+                        <text class="iconfont icon-huanqi"></text>
+                    </view>
+                </view>
+          同步订单
+        </view>
+        </view>
+        <view catchtap="toElewm" class="big-btn" wx:if="{{show==0}}">
+        领券点外卖
+      </view>
+        <view catchtap="toElesc" class="big-btn" wx:if="{{show==1}}">
+        领券点外卖
+      </view>
+        <view class="btn-box">
+            <button catchtap="copyTpwd" class="big-share-btn">复制饿了么红包口令</button>
+            <view class="btn-box-bottom">
+                <button catchtap="saveElePoster" class="mini-share-btn">获取推广海报</button>
+                <button class="mini-share-btn" openType="share">分享小程序领券</button>
+            </view>
+        </view>
+        <view class="tips">
+            <view class="tips-top">返佣说明:</view>
+            <view class="tips-main">
+          1.用户在饿了么手机淘宝领券并下单成功均有返佣，以实际支付金额为准，最高4.8%;
+        </view>
+            <view class="tips-main">
+          2.由于淘宝（饿了么）订单暂无法自动返佣，请在下单成功后最晚10分钟内，请自行复制“饿了么”订单号至“我的”-》“佣金订单”-》“淘宝订单”页面，找回订单;
+        </view>
+            <view class="tips-main">
+          3.领券后7天内，打开饿了么小程序 或 APP在任意品质联盟商户店铺用券下单，同样享受返佣;
+        </view>
+            <view class="tips-main">
+          4.饿了么订单查询与淘宝订单一致，请在“我的”-》“佣金订单”-》“淘宝”页面片查询即可;
+        </view>
+        </view>
+    </view>
+</view>
+<view class="bottom-fuc">
+    <view catchtap="switchShow" class="fuc-left" data-show="0">
+      外卖红包
+    </view>
+    <view catchtap="switchShow" class="fuc-right" data-show="1">
+        <view>果蔬红包</view>
+    </view>
+</view>
+<import src="../templates/login.wxml"></import>
+<template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>

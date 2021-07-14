@@ -1,0 +1,165 @@
+<import src="../templates/info.wxml"></import>
+<view class="">
+    <view class="index-top" style="height:calc({{navH}}px + {{plusH}}px + {{plusH2}}px);">
+        <view class="nav" style="height:{{navH}}px">
+            <view class="nav-title">
+                <text>我的订单</text>
+                <view class="back">
+                    <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+                    <view class="back-line"></view>
+                    <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+                </view>
+            </view>
+        </view>
+        <view class="topNavBar" style="height: {{plusH}}px; " wx:if="{{source_open}}">
+            <scroll-view class="topNavScroll" scrollLeft="{{scrollLeft}}" scrollWithAnimation="true" scrollX="true">
+                <view class="top_nav">
+                    <view catchtap="switchSource" class="nav_opt {{source==1?'active':''}}" data-idx="1" data-source="1">拼多多</view>
+                    <view catchtap="switchSource" class="nav_opt {{source==6?'active':''}}" data-idx="2" data-source="6" wx:if="{{tb_open==1}}">淘宝</view>
+                    <view catchtap="switchSource" class="nav_opt {{source==2?'active':''}}" data-idx="3" data-source="2" wx:if="{{jd_open==1}}">京东</view>
+                    <view catchtap="switchSource" class="nav_opt {{source==9?'active':''}}" data-idx="4" data-source="9" wx:if="{{sp_open==1}}">小商店</view>
+                    <view catchtap="switchSource" class="nav_opt {{source==4?'active':''}}" data-idx="5" data-source="4" wx:if="{{vip_open==1}}">唯品会</view>
+                    <view catchtap="switchSource" class="nav_opt {{source==5?'active':''}}" data-idx="6" data-source="5" wx:if="{{sn_open==1}}">苏宁</view>
+                    <view catchtap="switchSource" class="nav_opt {{source==7?'active':''}}" data-idx="7" data-source="7" wx:if="{{kl_open==1}}">考拉海购</view>
+                    <view catchtap="switchSource" class="nav_opt {{source==3?'active':''}}" data-idx="8" data-source="3" wx:if="{{mg_open==1}}">蘑菇街</view>
+                    <view catchtap="switchSource" class="nav_opt {{source==8?'active':''}}" data-idx="9" data-source="8" wx:if="{{mt_open==1}}">美团</view>
+                </view>
+            </scroll-view>
+        </view>
+        <view style="height:{{plusH2}}px;" wx:if="{{balance!=1}}">
+            <view class="team-top">
+                <view bindtap="goChangeTeam" class="team-title {{itemChioce==1?'team-c':''}}" data-reply-type="1" data-status="0">全部</view>
+                <view bindtap="goChangeTeam" class="team-title {{itemChioce==2?'team-c':''}}" data-reply-type="2" data-status="1">已付款</view>
+                <view bindtap="goChangeTeam" class="team-title {{itemChioce==3?'team-c':''}}" data-reply-type="3" data-status="2">审核中</view>
+                <view bindtap="goChangeTeam" class="team-title {{itemChioce==4?'team-c':''}}" data-reply-type="4" data-status="3">已结算</view>
+                <view bindtap="goChangeTeam" class="team-title {{itemChioce==5?'team-c':''}}" data-reply-type="5" data-status="4">已失效</view>
+                <view class="weui-navbar__slider" style="width:15vw;left: {{sliderLeft}}vw; transform: translateX({{sliderOffset}}vw); -webkit-transform: translateX({{sliderOffset}}vw);"></view>
+            </view>
+            <view class="seamlessscrolling">
+                <view class="seamlessscrolling-coin">温馨提示：{{source==8?'美团订单同步时间较长，建议下单日延后一天查看':'订单付款成功后1～10分钟才会同步显示哦！'}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="bg-gray overflow" style="margin-top:calc({{navH}}px + {{plusH}}px + {{plusH2}}px);">
+        <view class="hidden">
+            <view class="ord-input" wx:if="{{balance!=1&&source==6}}">
+                <input bindblur="setTbOrdersn" bindconfirm="lookupTbOrder" bindinput="setTbOrdersn" confirmType="search" placeholder="在此粘贴淘宝/饿了么订单号" placeholderClass="ind-input" type="number" value="{{tb_order_sn}}"></input>
+                <view class="cancelbtn" wx:if="{{tb_order_sn}}">
+                    <icon catchtap="emptyTbOrdersn" color="#fff" size="26" type="cancel"></icon>
+                </view>
+                <button catchtap="lookupTbOrder" class="mini-btn" size="mini" type="warn">找回</button>
+            </view>
+            <view class="team-info">
+                <view class="ord" wx:if="{{list&&balance!=1}}" wx:for="{{list}}" wx:for-index="ldx" wx:key="wlist">
+                    <view class="ord-user">
+                        <view class="ord-uinfo">
+                            <image src="{{item.avatar}}"></image>
+                            <text>{{item.nickname}}</text>
+                        </view>
+                        <view class="ord-stat">
+                            <text class="stat green" wx:if="{{item.status_code==1}}">已付款</text>
+                            <text class="stat yellow" wx:if="{{item.status_code==2}}">审核中</text>
+                            <text class="stat red" wx:if="{{item.status_code==3}}">已结算</text>
+                            <text class="stat" wx:if="{{item.status_code==4}}">已失效</text>
+                            <text catchtap="showTip" class="tip" data-idx="{{ldx}}" wx:if="{{item.status_code==4}}">?</text>
+                        </view>
+                    </view>
+                    <view class="ord-goods">
+                        <image catchtap="toGoodsPage" class="ord-img" data-goods_id="{{item.goods_id}}" data-source="{{item.source}}" mode="aspectFill" src="{{item.goods_thumbnail_url}}"></image>
+                        <view class="ord-l">
+                            <view catchtap="toGoodsPage" class="ord-lt" data-goods_id="{{item.goods_id}}" data-source="{{item.source}}">
+                                <view class="ord-ltl">
+                                    <text class="iconfont icon-pinduoduo red-color" wx:if="{{item.source==1}}"></text>
+                                    <text class="iconfont icon-jingdong1 red-color" wx:if="{{item.source==2}}"></text>
+                                    <text class="iconfont icon-mogujieicon MGJ-color" wx:if="{{item.source==3}}"></text>
+                                    <text class="iconfont icon-weipinhui WPH-color" wx:if="{{item.source==4}}"></text>
+                                    <text class="iconfont icon-suning SN-color" wx:if="{{item.source==5}}"></text>
+                                    <text class="iconfont {{item['shop_type']==1?'icon-tianmao':'icon-taobao TB-color'}}" wx:if="{{item.source==6}}"></text>
+                                    <text class="iconfont icon-kaola KL-color" wx:if="{{item.source==7}}"></text>
+                                    <text class="iconfont icon-meituan Mt-color" wx:if="{{item.source==8}}"></text>
+                                    <text class="iconfont icon-SP SP-color" wx:if="{{item.source==9}}"></text>
+                  {{item.goods_name}}
+                </view>
+                            </view>
+                            <view class="ord-sn">
+                                <view class="ord-sn-l">{{item.order_sn}}</view>
+                                <view bindtap="copySn" class="ord-sn-r" data-idx="{{ldx}}">
+                                    <text class="iconfont icon-copy"></text>复制</view>
+                            </view>
+                            <view class="ord-bottom">
+                                <view class="ord-pa" wx:if="{{item.user_percent}}">自己{{item.user_percent}}%</view>
+                                <view wx:else></view>
+                                <view class="ord-lb">{{item.order_modify_at}}</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="ord-bouns">
+                        <view class="ord-price ord-p-line">
+                            <text class="ord-p-t">￥{{item.order_amount/100}}</text>
+                            <text class="ord-p-b">付款金额</text>
+                        </view>
+                        <view class="ord-price">
+                            <text class="ord-p-t">￥{{item.bouns}}</text>
+                            <text class="ord-p-b">属于自己</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="ord-box-d" wx:if="{{list&&balance==1}}">
+                    <radio-group bindchange="radioChange" class="box-d-ro">
+                        <radio checked="{{checked}}" value="{{item.goods_id}},{{item.id}},{{item.source}},{{item.order_amount}}" wx:for="{{list}}" wx:for-index="ldx" wx:key="index">
+                            <view class="ord ord-d">
+                                <view class="ord-user">
+                                    <view class="ord-uinfo">
+                                        <image src="{{item.avatar}}"></image>
+                                        <text>{{item.nickname}}</text>
+                                    </view>
+                                    <view class="ord-stat">
+                                        <text class="stat red">已结算</text>
+                                    </view>
+                                </view>
+                                <view class="ord-goods">
+                                    <image class="ord-img" mode="aspectFill" src="{{item.goods_thumbnail_url}}"></image>
+                                    <view class="ord-l">
+                                        <view class="ord-lt">
+                                            <view class="ord-ltl">
+                                                <text class="iconfont icon-pinduoduo red-color" wx:if="{{item.source==1}}"></text>
+                                                <text class="iconfont icon-jingdong1 red-color" wx:if="{{item.source==2}}"></text>
+                                                <text class="iconfont icon-mogujieicon MGJ-color" wx:if="{{item.source==3}}"></text>
+                                                <text class="iconfont icon-weipinhui WPH-color" wx:if="{{item.source==4}}"></text>
+                                                <text class="iconfont icon-suning SN-color" wx:if="{{item.source==5}}"></text>
+                        {{item.goods_name}}
+                      </view>
+                                        </view>
+                                        <view class="ord-sn">
+                                            <view class="ord-sn-l">{{item.order_sn}}</view>
+                                        </view>
+                                        <view class="ord-bottom">
+                                            <view class="ord-pa" wx:if="{{item.user_percent}}">自己{{item.user_percent}}%</view>
+                                            <view wx:else></view>
+                                            <view class="ord-lb">{{item.order_modify_at}}</view>
+                                        </view>
+                                    </view>
+                                </view>
+                                <view class="ord-bouns">
+                                    <view class="ord-price ord-p-line">
+                                        <text class="ord-p-t">￥{{item.order_amount/100}}</text>
+                                        <text class="ord-p-b">付款金额</text>
+                                    </view>
+                                    <view class="ord-price">
+                                        <text class="ord-p-t">￥{{item.bouns}}</text>
+                                        <text class="ord-p-b">属于自己</text>
+                                    </view>
+                                </view>
+                            </view>
+                        </radio>
+                    </radio-group>
+                </view>
+                <view class="no-order">没有更多数据了</view>
+            </view>
+            <view bindtap="backDryPage" class="dd-bottom" data-goods_id="{{goods_id}}" data-order_id="{{order_id}}" data-price="{{price}}" data-source_d="{{source_d}}" wx:if="{{balance==1&&goods_id!==''}}">
+          确定晒单分享这件商品
+        </view>
+        </view>
+    </view>
+    <template is="infoModal" data="{{info:info}}"></template>
+</view>

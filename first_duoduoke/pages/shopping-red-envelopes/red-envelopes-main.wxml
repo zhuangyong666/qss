@@ -1,0 +1,78 @@
+<view class="nav bg-white" style="height:{{navH}}px">
+    <view class="nav-title">
+        <text bindtap="navBack" class="back iconfont icon-jiantou-copy"></text> 购物红包
+  </view>
+</view>
+<import src="../templates/login.wxml"></import>
+<view class="container-page">
+    <view class="pure-bottom">
+        <image class="save-money-img" src="../../public/images/shengqian2.png" style="top:{{navH}}px;"></image>
+        <view class="page-bottom-card">
+            <view class="main-title">红包可提现</view>
+            <view class="main-msg">{{list.money}} <text>元</text>
+            </view>
+            <progress activeColor="#F43F1C" backgroundColor="#E9E9E9" borderRadius="20" class="main-progress" percent="{{list.progress}}" strokeWidth="20">
+                <text>已拆{{list.people_money}}元</text>
+            </progress>
+        </view>
+    </view>
+    <view class="enve-list-box">
+        <view bindtap="goExcreteShopRed" class="btn-box-1 btn-excrete" wx:if="{{!list.lq_result&&list.countdown>0&&shopred_id>0&&showExcrete&&list.money>list.people_money}}">拆红包</view>
+        <view bindtap="goIndex" class="btn-box-1 btn-excrete" wx:if="{{list.lq_result>0&&shopred_id>0&&!showExcrete}}">已拆{{excrete_money}}元,去购物</view>
+        <view class="btn-box" wx:if="{{list.countdown>0&&shopred_id==0}}">
+            <button class="btn-box-1" openType="share">
+        邀请好友帮拆
+      </button>
+            <view bindtap="saveQrcodeToPhotosAlbum" class="btn-box-2">
+        保存红包海报发圈
+      </view>
+            <view class="btn-box-time">
+        {{qgdjs_jo.hour}}:{{qgdjs_jo.min}}:{{qgdjs_jo.sec}}后过期
+      </view>
+        </view>
+        <view class="btn-box" wx:if="{{list.countdown<=0}}">
+            <view bindtap="goIndex" class="btn-box-1">
+        已过期 去购物领取新红包
+      </view>
+            <view class="btn-box-time">
+        红包已失效，快去重新购物领红包吧
+      </view>
+        </view>
+        <view class="title">
+            <view class="left-line-box">
+                <view class="left-line"></view>
+                <view class="circular"></view>
+            </view>
+      红包手气榜
+      <view class="right-line-box">
+                <view class="circular"></view>
+                <view class="right-line"></view>
+            </view>
+        </view>
+        <view class="no-enve-list" wx:if="{{list.lq_info==''}}">
+            <text class="iconfont icon-6-01"></text>
+            <view>还没有购物红包呢</view>
+            <view>赶快邀请好友帮拆</view>
+        </view>
+        <view class="enve-list" wx:if="{{list.lq_info!=''}}">
+            <view class="enve-list-top">
+                <view class="enve-item-l">帮拆</view>
+                <view class="list-top-r">
+                    <view class="enve-item-m">Ta得红包</view>
+                    <view class="enve-item-r">你得红包</view>
+                </view>
+            </view>
+            <view class="enve-list-item" wx:for="{{list.lq_info}}" wx:key="id">
+                <view class="enve-item-l">
+                    <image class="enve-item-img" src="{{item.avatar}}"></image>
+                    <view>{{item.nickname}}</view>
+                </view>
+                <view class="list-top-r">
+                    <view class="enve-item-m">+ {{item.amount}}元</view>
+                    <view class="enve-item-r">+ {{item.amount}}元</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+</view>

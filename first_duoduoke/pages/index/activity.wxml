@@ -1,0 +1,103 @@
+<import src="../templates/login.wxml"></import>
+<view class="">
+    <view class="nav bg-white" style="height:{{navH}}px;background:{{top_bg_color?top_bg_color:'linear-gradient(to right,#8d68d9,#fc4849,#fb7840)'}};">
+        <view class="nav-title">
+      {{title?title:'活动页面'}}
+      <view class="back">
+                <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+                <view class="back-line"></view>
+                <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+            </view>
+        </view>
+    </view>
+    <view class="bg-gray overflow" style="margin-top:{{navH}}px;">
+        <view class="hidden">
+            <view class="top" wx:if="{{top_img}}">
+                <image bindload="getMenuTop" class="top-img" mode="widthFix" src="{{top_img}}"></image>
+                <view catchtap="toAct" class="mini-btn" size="mini" type="warn" wx:if="{{link}}">去会场Go</view>
+            </view>
+            <view class="screen {{menuFixed?'fixed':''}}" id="affix" style="top:{{menuFixed?navH:''}}px;">
+                <form bindsubmit="sortGoods" class="act-fotm" data-type="1" reportSubmit="true">
+                    <button class="screen-act" formType="submit">
+                        <view class="screen-text scr-act {{type==1?'active':''}}">默认</view>
+                    </button>
+                </form>
+                <form bindsubmit="sortGoods" class="act-fotm" data-type="2" reportSubmit="true">
+                    <button class="screen-act" formType="submit">
+                        <view class="screen-text {{type==2?'active':''}}">销量</view>
+                        <view class="screen-ud">
+                            <text class="iconfont icon-jiantou_shang {{type==2&&sort==0?'curr':''}}"></text>
+                            <text class="iconfont icon-jiantou_xia {{type==2&&sort==1?'curr':''}}"></text>
+                        </view>
+                    </button>
+                </form>
+                <form bindsubmit="sortGoods" class="act-fotm" data-type="3" reportSubmit="true">
+                    <button class="screen-act" formType="submit">
+                        <view class="screen-text {{type==3?'active':''}}">价格</view>
+                        <view class="screen-ud">
+                            <text class="iconfont icon-jiantou_shang {{type==3&&sort==0?'curr':''}}"></text>
+                            <text class="iconfont icon-jiantou_xia {{type==3&&sort==1?'curr':''}}"></text>
+                        </view>
+                    </button>
+                </form>
+                <form bindsubmit="sortGoods" class="act-fotm" data-type="4" reportSubmit="true">
+                    <button class="screen-act" formType="submit">
+                        <view class="screen-text {{type==4?'active':''}}">佣金</view>
+                        <view class="screen-ud">
+                            <text class="iconfont icon-jiantou_shang {{type==4&&sort==0?'curr':''}}"></text>
+                            <text class="iconfont icon-jiantou_xia {{type==4&&sort==1?'curr':''}}"></text>
+                        </view>
+                    </button>
+                </form>
+            </view>
+            <view class="article">
+                <view class="{{menuFixed?'blank':''}}"></view>
+                <navigator url="../goods/goods?goods_id={{goods['goods_id']}}" wx:for="{{goodsList}}" wx:for-item="goods" wx:key="gl">
+                    <button bindtap="toGoodsDetail" class="reg-act" data-goods_id="{{goods['goods_id']}}" data-goods_sign="{{goods['goods_sign']}}">
+                        <image class="reg-act-l" mode="aspectFill" src="{{goods['goods_thumbnail_url']}}"></image>
+                        <view class="reg-act-r">
+                            <view class="reg-act-name">{{goods['goods_name']}}</view>
+                            <view class="priceAndSale">
+                                <view class="old-price">
+                                    <view>原价</view>
+                                    <view class="old-price-mon">￥{{goods['min_group_price']/100}}</view>
+                                </view>
+                                <view class="sale-info-r">销量{{goods['sales_tip']}}</view>
+                            </view>
+                            <view class="sale-info">
+                                <view class="sale-info-l">
+                                    <view>券</view>
+                                    <view>￥{{goods['coupon_discount']/100}}</view>
+                                </view>
+                                <view class="sale-text">
+                                    <text wx:if="{{goods['bounss']!=''}}">升级<block wx:if="{{appletKeyword}}">{{appletKeyword}}</block>
+                                        <block wx:else>赚</block>￥{{goods['bounss']}}</text>
+                                </view>
+                            </view>
+                            <view class="sell-money">
+                                <view class="semo-l">
+                                    <view>券后</view>
+                                    <view class="semo-l-mon">￥<text>{{( goods['min_group_price']-goods['coupon_discount'] )/100}}</text>
+                                    </view>
+                                </view>
+                                <view class="semo-r"></view>
+                                <view class="semo-pos">
+                                    <view>{{appletKeyword}}</view>
+                                    <view class="semo-pos-mon">￥<text>{{goods['bouns']}}</text>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </button>
+                </navigator>
+            </view>
+        </view>
+    </view>
+    <view class="share-box">
+        <button class="share-btn" openType="share" style="background:{{top_bg_color?top_bg_color:'#FF9A1E'}};">
+            <text class="iconfont icon-fen_xiang"></text>分享给好友
+    </button>
+    </view>
+    <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+</view>
+<view bindtap="goTop" class="iconfont icon-fanhuidingbu goTop"></view>

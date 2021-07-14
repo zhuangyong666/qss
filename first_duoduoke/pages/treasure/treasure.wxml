@@ -1,0 +1,125 @@
+<view class="nav bg-white" style="height:{{navH}}px">
+    <view class="nav-title">
+      商城
+      <view class="back">
+            <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+            <view class="back-line"></view>
+            <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+        </view>
+    </view>
+</view>
+<import src="../templates/login.wxml"></import>
+<import src="../templates/info.wxml"></import>
+<view class="container" style="padding-top:{{navH}}px;">
+    <view class="piece-one">
+        <image class="one-img" src="../../public/images/duobao.png"></image>
+    </view>
+    <view class="piece-two"></view>
+    <view class="piece-three">
+        <view class="goods-card-box">
+            <view class="card-box clearfix">
+                <view catchtap="toGoodsPage" class="goods-card" data-goods_id="{{item.goods_id}}" data-goods_sign="{{item.goods_sign}}" data-source="{{item.source}}" wx:for="{{goodsList}}" wx:key="id">
+                    <image class="goods-card-img" src="{{item.img}}"></image>
+            {{item.info[0]}}''{{item.info[1]}}
+          </view>
+            </view>
+            <view class="time-add" wx:if="{{showTimeBox}}">
+        正在计时
+        <view>{{second}}''{{millisecond}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="piece-four"></view>
+    <view class="piece-five">
+    按住与商品价格相同的时间即可获得该奖品
+  </view>
+    <view class="piece-six">
+        <view class="main-btn">
+            <view bindtouchend="onTestForEnd" bindtouchstart="openSnatchShade" class="arc-btn">
+                <view class="arc-btn-1"></view>
+                <view class="{{showTimeBox?'arc-btn-2-act':'arc-btn-2'}}"></view>
+                <view class="{{showTimeBox?'arc-btn-3-act':'arc-btn-3'}}">{{endK?'松开':'长按夺宝'}}</view>
+            </view>
+        </view>
+        <view class="small-btn-l">
+            <view bindtap="showInfo" class="arc-btn-l">
+                <view class="btn-small-1"></view>
+                <view class="btn-small-2"></view>
+                <view class="btn-small-3">规则</view>
+            </view>
+        </view>
+        <view class="small-btn-r">
+            <view bindtap="toShareTreasure" class="arc-btn-l">
+                <view class="btn-small-1"></view>
+                <view class="btn-small-2"></view>
+                <view class="btn-small-3">分享</view>
+            </view>
+        </view>
+        <view class="piece-six-msg">剩余 {{total}} 次机会</view>
+    </view>
+    <view class="piece-seven">
+        <view class="recommend">
+            <view class="rec_begin">
+                <text>每日爆款</text>
+                <span catchtap="toHotMore">更多 ></span>
+            </view>
+            <scroll-view bindscrolltolower="getHotGoods" scrollX="true">
+                <view class="rec_allGoods">
+                    <view catchtap="toOtherGoods" class="rec_goods" data-goods_id="{{goods['goods_id']}}" data-goods_sign="{{goods['goods_sign']}}" wx:for="{{hotGoodsList}}" wx:for-index="hgdx" wx:for-item="goods" wx:key="hgl">
+                        <image mode="aspectFit" src="{{goods['goods_thumbnail_url']}}"></image>
+                        <text class="goods_name">{{goods['goods_name']}}</text>
+                        <text class="goods_price">¥ {{( goods['min_group_price']-goods['coupon_discount'] )/100}}</text>
+                        <text class="goods_oldPrice">¥ {{goods['min_group_price']/100}}</text>
+                        <text class="goods_sales" wx:if="{{goods['sales_tip']>0}}">销量:{{goods['sales_tip']}}</text>
+                    </view>
+                </view>
+            </scroll-view>
+            <view class="graySquare down"></view>
+        </view>
+    </view>
+    <view bindtap="toWinningPage" class="rule" style="top: {{navH}}px;">获奖记录 <text class="iconfont icon-youyou- rule-icon"></text>
+    </view>
+    <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+    <template is="infoModal" data="{{info:info}}"></template>
+</view>
+<view class="shade" wx:if="{{showSnatchShade}}"></view>
+<view class="shade-box" wx:if="{{showSnatchShade}}">
+    <view class="hint-box">
+    机会用光了
+    <view bindtap="toShareTreasure" class="hint-share-btn">
+      分享再得10次机会
+    </view>
+        <view bindtap="chooseSnatchShade" class="choose-hint-box">
+            <text class="iconfont icon-chahao"></text>
+        </view>
+    </view>
+</view>
+<view class="shade" wx:if="{{showFailureShade}}"></view>
+<view class="shade-box" wx:if="{{showFailureShade}}">
+    <view class="hint-box">
+        <view class="box-msg">
+            <view>很遗憾 夺宝失败</view>
+            <text>未能与任何商品“时间”成功匹配</text>
+        </view>
+        <view bindtap="chooseFailureShade" class="hint-share-btn">
+      再来一次
+    </view>
+        <view bindtap="chooseFailureShade" class="choose-hint-box">
+            <text class="iconfont icon-chahao"></text>
+        </view>
+    </view>
+</view>
+<view class="shade" wx:if="{{showWinureShade}}"></view>
+<view class="shade-box" wx:if="{{showWinureShade}}">
+    <view class="hint-box">
+        <view class="box-msg">
+            <view>恭喜您 夺宝成功</view>
+        </view>
+        <view bindtap="onGetaddress" class="hint-share-btn">
+      添加收获地址
+    </view>
+        <view bindtap="chooseWinureShade" class="choose-hint-box">
+            <text class="iconfont icon-chahao"></text>
+        </view>
+    </view>
+</view>

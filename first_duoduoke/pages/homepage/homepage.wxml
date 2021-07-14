@@ -1,0 +1,56 @@
+<view class="nav bg-white" style="height:{{navH}}px">
+    <view class="nav-title">
+        <text bindtap="navBack" class="back iconfont icon-jiantou-copy"></text>
+    </view>
+</view>
+<view class="container" wx:if="{{goodsList}}">
+    <view class="page-top" style="margin-top:calc({{navH}}px + 0px);">
+        <block wx:if="{{mallInfo}}">
+            <image src="{{mallInfo.img_url}}"></image>
+            <view class="shop-name">{{mallInfo.mall_name}}<text>赚{{mallInfo.mall_rate/10}}%</text>
+            </view>
+            <view class="sales">{{mallInfo.sales_tip}}</view>
+            <view class="score">
+                <view class="evaluate">描述相符: {{mallInfo.desc_txt}}</view>
+                <view class="evaluate">物流相符: {{mallInfo.lgst_txt}}</view>
+                <view class="evaluate">服务态度: {{mallInfo.serv_txt}}</view>
+            </view>
+        </block>
+        <block wx:else>
+            <image src="{{goodsList[0].goods_thumbnail_url}}"></image>
+            <view class="shop-name">{{goodsList[0].mall_name}}<text>赚{{goodsList[0].mall_rate/10}}%</text>
+            </view>
+            <view class="sales">销量: {{goodsList[0].sales_tip}}</view>
+            <view class="score">
+                <view class="evaluate">描述相符: {{goodsList[0].desc_txt}}</view>
+                <view class="evaluate">物流相符: {{goodsList[0].lgst_txt}}</view>
+                <view class="evaluate">服务态度: {{goodsList[0].serv_txt}}</view>
+            </view>
+        </block>
+        <view class="discount">
+            <view>{{goodsList[0].mall_coupon_discount_pct/10}}<text>折</text>
+            </view>
+            <view>
+        最高减{{goodsList[0].mall_coupon_max_discount_amount/100}}元
+        <text>{{goodsList[0].mall_coupon_start_time}} - {{goodsList[0].mall_coupon_end_time}}</text>
+            </view>
+            <view>正在使用</view>
+            <view class="left"></view>
+            <view class="right"></view>
+        </view>
+    </view>
+    <view class="page-main">
+        <view class="main-title">
+            <icon class="iconfont icon-liwu"></icon>
+      全部推广产品
+    </view>
+        <view class="main-img">
+            <image bindtap="toGoodsPage" data-goods_id="{{item.goods_id}}" src="{{item.goods_thumbnail_url}}" wx:for="{{goodsList}}" wx:key="sgl"></image>
+        </view>
+    </view>
+    <view class="page-bottom">
+        <view bindtap="backIndex" class="backIndex">
+            <image src="/first_duoduoke/public/icon/index.png"></image>首页</view>
+        <button class="share" openType="share">分享赚钱</button>
+    </view>
+</view>

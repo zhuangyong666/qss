@@ -1,0 +1,137 @@
+<template name="searchModal">
+    <block wx:if="{{smartSou.show}}">
+        <view class="re-bg"></view>
+        <view class="v-layer show-swal2">
+            <view class="v-all-d">
+                <view bindtap="hideSmart" class="choseBtn iconfont icon-chahao"></view>
+                <view class="smart">
+                    <view class="smart-top">智能搜索优惠券</view>
+                    <view class="smart-tips">是否搜索以下商品</view>
+                    <image class="smart-img" mode="aspectFill" src="../../public/images/smart.png"></image>
+                </view>
+                <scroll-view class="v-all-scroll" scrollY="true">
+                    <view class="shade-main">
+            {{smartSou.key}}
+          </view>
+                </scroll-view>
+                <view class="commitBtn">
+                    <view class="commitBtn-top">
+                        <view class="commitBtn-top-line"></view>
+            搜索平台
+            <view class="commitBtn-top-line"></view>
+                    </view>
+                    <view class="commitBtn-bottom">
+                        <view class="commitBtn-b-linebox">
+                            <view catchtap="confirmSmart" class="commitBtn-item" data-source="1">
+                                <view class="commitBtn-item-top PDD-color-d">
+                                    <text class="iconfont icon-pinduoduo1"></text>
+                                </view>
+                拼多多
+              </view>
+                            <view catchtap="confirmSmart" class="commitBtn-item" data-source="6" wx:if="{{smartSou.tb_open==1}}">
+                                <view class="commitBtn-item-top TB-color-d">
+                                    <text class="iconfont icon-iconfonttaobao"></text>
+                                </view>
+                淘宝
+              </view>
+                            <view catchtap="confirmSmart" class="commitBtn-item" data-source="2" wx:if="{{smartSou.jd_open==1}}">
+                                <view class="commitBtn-item-top JD-color-d">
+                                    <text class="iconfont icon-jingdong2"></text>
+                                </view>
+                京东
+              </view>
+                            <view catchtap="confirmSmart" class="commitBtn-item" data-source="4" wx:if="{{smartSou.vip_open==1}}">
+                                <view class="commitBtn-item-top WPH-color-d">
+                                    <text class="iconfont icon-weipinhui1"></text>
+                                </view>
+                唯品会
+              </view>
+                            <view catchtap="confirmSmart" class="commitBtn-item" data-source="5" wx:if="{{smartSou.sn_open==1}}">
+                                <view class="commitBtn-item-top SN-color-d">
+                                    <text class="iconfont icon-suning"></text>
+                                </view>
+                苏宁
+              </view>
+                            <view catchtap="confirmSmart" class="commitBtn-item" data-source="7" wx:if="{{smartSou.kl_open==1}}">
+                                <view class="commitBtn-item-top KL-color-d">
+                                    <text class="iconfont icon-wangyikaola"></text>
+                                </view>
+                考拉海购
+              </view>
+                            <view catchtap="confirmSmart" class="commitBtn-item" data-source="3" wx:if="{{smartSou.mg_open==1}}">
+                                <view class="commitBtn-item-top MGJ-color-d">
+                                    <text class="iconfont icon-mogujie"></text>
+                                </view>
+                蘑菇街
+              </view>
+                            <view catchtap="oneKeyZL" class="commitBtn-item" data-content="{{smartSou.key}}">
+                                <view class="commitBtn-item-top ZL-color-d">
+                                    <text class="iconfont icon-huanqi"></text>
+                                </view>
+                    一键转链
+              </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+    <block wx:if="{{smartSou.showg}}">
+        <view class="re-bg"></view>
+        <view class="v-layer-d show-swal2">
+            <view class="v-all-amzing">
+                <view bindtap="hideSmart" class="choseBtn iconfont icon-chahao"></view>
+                <view class="layer-card">
+                    <image class="layer-card-img" mode="aspectFill" src="{{smartSou.goods.goods_image_url}}"></image>
+                    <view class="layer-card-bottom">
+                        <view class="layer-card-title">
+                            <text class="iconfont icon-pinduoduo red-color" wx:if="{{smartSou.goods.source==1}}"></text>
+                            <text class="iconfont icon-jingdong1 red-color" wx:if="{{smartSou.goods.source==2}}"></text>
+                            <text class="iconfont icon-mogujieicon MGJ-color" wx:if="{{smartSou.goods.source==3}}"></text>
+                            <text class="iconfont icon-weipinhui WPH-color" wx:if="{{smartSou.goods.source==4}}"></text>
+                            <text class="iconfont icon-suning SN-color" wx:if="{{smartSou.goods.source==5}}"></text>
+                            <text class="iconfont {{smartSou.goods['shop_type']==1?'icon-tianmao':'icon-taobao TB-color'}}" wx:if="{{smartSou.goods.source==6}}"></text>
+                            <text class="iconfont icon-kaola KL-color" wx:if="{{smartSou.goods.source==7}}"></text>
+                            <view class="c-t-main">{{smartSou.goods.goods_name}}</view>
+                        </view>
+                        <view class="layer-card-shop">
+                            <view class="c-s-left">{{smartSou.goods.storeInfo.mall_name?smartSou.goods.storeInfo.mall_name:''}}</view>
+                            <view class="c-s-right">升级{{smartSou.appletKeyword?smartSou.appletKeyword:'赚'}} ￥{{smartSou.goods.bounss}}</view>
+                        </view>
+                        <view class="layer-card-coupon">
+                            <view class="sale-info-l">
+                                <view class="quanl">券</view>
+                                <view class="quanr">￥{{smartSou.goods.coupon_discount/100}}</view>
+                            </view>
+                            <view class="c-c-right">
+                {{smartSou.appletKeyword?smartSou.appletKeyword:'赚'}} ￥ {{smartSou.goods.bouns}}
+              </view>
+                        </view>
+                        <view class="layer-card-price">
+                            <view class="c-p-left">
+                                <view class="c-p-now-price">
+                  ￥
+                  <view>{{( smartSou.goods['min_group_price']-smartSou.goods['coupon_discount'] )/100}}</view>
+                                </view>
+                                <view class="c-p-old-price">
+                  ￥{{smartSou.goods.min_group_price/100}}
+                </view>
+                            </view>
+                            <view class="c-p-right">
+                {{smartSou.goods.sales_tip?'已售'+smartSou.goods.sales_tip:''}}
+              </view>
+                        </view>
+                        <view class="layer-card-btn">
+                            <view catchtap="oneKeyZL" class="c-b-left" data-content="{{smartSou.content}}">
+                一键转链
+              </view>
+                            <view catchtap="toGoodsPage" class="c-b-right" data-goods_id="{{smartSou.goods['goods_id']}}" data-goods_sign="{{smartSou.goods['goods_sign']}}" data-goods_url="{{smartSou.goods['goods_url']}}" data-source="{{smartSou.goods['source']}}">
+                查看详情
+              </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+</template>

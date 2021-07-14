@@ -1,0 +1,132 @@
+<view class="nav bg-white nav-color-d" style="height:{{navH}}px;background:{{show==1?'#7ACA4F':''}};">
+    <view class="nav-title">
+      美团外卖红包
+      <view class="back">
+            <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+            <view class="back-line"></view>
+            <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+        </view>
+    </view>
+</view>
+<view class="container-plea-d" style="margin-top: {{navH}}px;background:{{show==1?'#7ACA4F':''}}">
+    <image class="main-img-d" mode="aspectFit" src="{{imgPath}}mtwm-main-st.png" wx:if="{{show==0}}"></image>
+    <image class="main-img-d" mode="aspectFit" src="{{imgPath}}mtwm-main-st2.png" wx:if="{{show==1}}"></image>
+    <view class="steps-d" wx:if="{{show==0}}">
+        <view class="steps-item-d">
+            <view class="steps-item-2-d">
+                <text class="iconfont icon-lingquanzhongxin"></text>
+            </view>
+        先领券
+      </view>
+        <view class="steps-line-d">
+            <view></view>
+        </view>
+        <view class="steps-item-d">
+            <view class="steps-item-2-d">
+                <text class="iconfont icon-yduiwodedingdan"></text>
+            </view>
+        再点餐
+      </view>
+        <view class="steps-line-d">
+            <view></view>
+        </view>
+        <view class="steps-item-d">
+            <view class="steps-item-2-d">
+                <text class="iconfont icon-shouyi"></text>
+            </view>
+        拿收益
+      </view>
+    </view>
+    <view catchtap="toMtwm" class="big-btn-d" wx:if="{{show==0}}">
+      点击参与活动
+    </view>
+    <view catchtap="toMtsg" class="big-btn-d" wx:if="{{show==1}}">
+      点击参与活动
+    </view>
+    <view class="MT-main">
+        <view class="btn-box">
+            <button catchtap="copyArt" class="big-share-btn-d">分享活动文案</button>
+            <button catchtap="saveMtPoster" class="big-shere-pic">获取活动海报</button>
+        </view>
+        <view class="MT-tips">
+            <view class="mt-tips-top">活动规则</view>
+            <block wx:if="{{show==0}}">
+                <view class="mt-tips-item">
+            1.本次活动中红包领取时间截止至2021年12月31日24点；
+          </view>
+                <view class="mt-tips-item">
+            2.订单同步为次日，例如12日下单，在13日24点前可同步到返佣订单，可在“我的”-》“佣金订单”-》“美团订单”中查看；
+          </view>
+                <view class="mt-tips-item">
+            3.红包可在美团APP、美团外卖APP、美团外卖小程序下单且选择在线支付时使用；
+          </view>
+                <view class="mt-tips-item">
+            4.红包仅限非到店自取外卖订单，下午茶、夜宵、美食、蛋糕、甜点饮品频道使用；
+          </view>
+                <view class="mt-tips-item">
+            5.外卖新人首单红包限新用户（设备、手机号、美团账号均未在美团外卖下过单）首次下单使用，且不与其他优惠（首减、满减、满赠、套餐增、折扣菜）同享；
+          </view>
+                <view class="mt-tips-item">
+            6.使用红包时下单手机号码必须与收餐人手机号码、领取红包时输入的手机号码一致；
+          </view>
+                <view class="mt-tips-item">
+            7.此活动为部分区域有效，具体红包使用有效期及红包金额以实际收到为准；
+          </view>
+                <view class="mt-tips-item">
+            8.其余问题详见美团外卖客户端“我的—红包—美团红包、商家代金券使用说明"；
+          </view>
+                <view class="mt-tips-item">
+            9.活动过程中，任何活动参与方存在虚假交易、恶意套利、作弊等不诚信行为，美团外卖有权取消活动参与方的活动资格，并保留依法追究法律责任的权利；
+          </view>
+                <view class="mt-tips-item">
+            10.活动期间，如出现不可抗力或情势变更的情况，美团外卖可依相关法律法规的规定主张免责；
+          </view>
+                <view class="mt-tips-item">
+            11.如有其它疑问请咨询美团外卖客服10109777。
+          </view>
+            </block>
+            <block wx:if="{{show==1}}">
+                <view class="mt-tips-item">
+          1.本次活动中红包领取时间截止至2020年12月31日24点；
+        </view>
+                <view class="mt-tips-item">
+          2.订单同步为次日，例如12日下单，在13日24点前可同步到返佣订单，可在“我的”-》“佣金订单”-》“美团订单”中查看；
+        </view>
+                <view class="mt-tips-item">
+          3.红包可在美团或美团外卖最新版客户端、美团外卖小程序下单且选择在线支付时使用；
+        </view>
+                <view class="mt-tips-item">
+          4.红包仅限非到店自取商超生鲜订单，超市便利、蔬菜水果、送药上门频道使用;
+        </view>
+                <view class="mt-tips-item">
+          5.使用红包时下单手机号码必须与收餐人手机号码、领取红包时输入的手机号码一致；        
+        </view>
+                <view class="mt-tips-item">
+          6.此活动为部分区域有效，具体红包使用有效期及红包金额以实际收到为准；
+        </view>
+                <view class="mt-tips-item">
+          7.其余问题详见美团外卖客户端：我的—红包—美团红包、商家代金券使用说明；
+        </view>
+                <view class="mt-tips-item">
+          8.活动过程中，任何活动参与方存在虚假交易、恶意套利、作弊等不诚信行为，美团外卖有权取消活动参与方的活动资格，并保留依法追究法律责任的权利；
+        </view>
+                <view class="mt-tips-item">
+          9.活动期间，如出现不可抗力或情势变更的情况，美团外卖可依相关法律法规的规定主张免责；
+        </view>
+                <view class="mt-tips-item">
+          10.如有其它疑问请咨询美团外卖客服10109777。
+        </view>
+            </block>
+        </view>
+    </view>
+</view>
+<view class="bottom-fuc">
+    <view catchtap="switchShow" class="fuc-left-d" data-show="0">
+      美团外卖红包
+    </view>
+    <view catchtap="switchShow" class="fuc-right-d" data-show="1">
+        <view>商超生鲜红包</view>
+    </view>
+</view>
+<import src="../templates/login.wxml"></import>
+<template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>

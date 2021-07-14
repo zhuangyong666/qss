@@ -1,0 +1,70 @@
+<view class="">
+    <view class="nav bg-white" style="height:{{navH}}px">
+        <view class="nav-title">
+            <view class="back">
+                <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+                <view class="back-line"></view>
+                <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+            </view>
+        </view>
+    </view>
+    <view class="bg-gray overflow" style="margin-top:{{navH}}px;">
+        <view class="hidden">
+            <view class="ind-top"></view>
+            <view class="gue">
+                <view class="gue-top">
+                    <view class="top-t">免费升级<text>VIP</text>
+                    </view>
+                    <view class="top-b">赚钱，省钱大大滴 ~</view>
+                </view>
+                <view class="gue-reveal">
+                    <view class="reveal-l">
+                        <view class="reveal-tit">当前级别</view>
+                        <view class="reveal-l-cont">
+                            <text>{{vipSet[uInfo.level].show_name?vipSet[uInfo.level].show_name:vipSet[uInfo.level].name}}</text>
+                            <view>佣金收益比 {{vipSet[uInfo.level].direct_commission}}%</view>
+                        </view>
+                    </view>
+                    <view class="reveal-r">
+                        <view class="reveal-tit" wx:if="{{uInfo.level<3}}">下一级别</view>
+                        <view class="reveal-r-cont">
+                            <view class="reveal-r-t" wx:if="{{uInfo.level<3}}">
+                                <text>{{vipSet[uInfo.level+1].show_name?vipSet[uInfo.level+1].show_name:vipSet[uInfo.level+1].name}}</text> 佣金收益比 {{vipSet[uInfo.level+1].direct_commission}}%</view>
+                            <view class="reveal-r-b">
+                                <view class="reveal-r-act">
+                                    <view class="rla-tit">邀请下级</view>
+                                    <view class="rla-sum">{{uInfo.inviters}}<text>
+                                            <block wx:if="{{uInfo.level<3}}">/{{vipSet[uInfo.level+1].inviters}}</block>
+                                        </text>
+                                    </view>
+                                    <button bindtap="goPartakeOf" class="rla-tit-btn">去邀请</button>
+                                </view>
+                                <view class="reveal-r-act">
+                                    <view class="rla-tit">购买/推广</view>
+                                    <view class="rla-sum">{{uInfo.promotes}}<text>
+                                            <block wx:if="{{uInfo.level<3}}">/{{vipSet[uInfo.level+1].promotes}}</block>
+                                        </text>
+                                    </view>
+                                    <button bindtap="toIndex" class="rla-tit-btn">去购/推</button>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="gue-tit">会员权益介绍</view>
+                <view class="gue-explain-d">
+                    <view class="gue-explain-item">
+                        <view class="explain-item-l">会员级别</view>
+                        <view class="explain-item-line"></view>
+                        <view class="explain-item-r">享受级别</view>
+                    </view>
+                    <view class="gue-explain-item" wx:for="{{vipSet}}" wx:key="vset">
+                        <view class="explain-item-l">{{item.show_name?item.show_name:item.name}}</view>
+                        <view class="explain-item-line"></view>
+                        <view class="explain-item-r">{{item.info}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

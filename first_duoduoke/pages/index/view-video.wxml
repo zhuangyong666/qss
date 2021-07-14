@@ -1,0 +1,10 @@
+<nav-bar navbarData="{{nvabarData}}"></nav-bar>
+<view class="contains" style="margin-top:{{navH}}px;">
+    <video controls autoplay="true" binderror="videoErrorCallback" muted="{{muted}}" src="{{videoSrc}}" wx:if="{{videoSrc}}"></video>
+    <view class="fit">
+        <view bindtap="toggleMuted" class="left">
+            <image class="iconfont {{muted==false?'icon-sound-':'icon-sound-1'}}" style="font-size:50rpx;line-height:50rpx;"></image>
+        </view>
+        <view class="right"></view>
+    </view>
+</view>

@@ -1,0 +1,40 @@
+<view class="nav bg-white" style="height:{{navH}}px">
+    <view class="nav-title">
+    素材保存
+    <text bindtap="navBack" class="back iconfont icon-jiantou-copy"></text>
+    </view>
+</view>
+<import src="../templates/login.wxml"></import>
+<view class="container-page" style="margin-top: {{navH}}px;">
+    <view class="copywriter-title">
+    文案
+    <view bindtap="copyShare" class="copy-copywriter">
+            <text class="iconfont icon-copy"></text>复制</view>
+    </view>
+    <view class="copywriter">
+        <text>{{speedlooting_text}}</text>
+    </view>
+    <view class="line"></view>
+    <view class="copywriter-title">选择图片</view>
+    <image class="share-img" src="{{share_img}}">
+        <view class="img-tag">
+            <text class="iconfont icon-duihao"></text>
+        </view>
+    </image>
+    <view class="insertion">分享得夺宝次数,赶快行动吧!</view>
+    <view class="bottom">
+        <view class="bottom-item">
+            <button class="item-top" openType="share">
+                <text class="iconfont icon-weixin"></text>
+            </button>
+      好友或群
+    </view>
+        <view class="bottom-item">
+            <view class="item-top">
+                <text bindtap="saveQrcodeToPhotosAlbum" class="iconfont icon-zhaopian"></text>
+            </view>
+      保存分享图
+    </view>
+    </view>
+    <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+</view>

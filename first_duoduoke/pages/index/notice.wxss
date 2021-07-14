@@ -1,0 +1,87 @@
+page {
+    background: #f2f2f2;
+}
+
+.nav {
+    background: #f95120;
+}
+
+.back,.nav-title {
+    color: #fff;
+}
+
+.page-container {
+    flex-direction: column;
+    padding: 30rpx 40rpx;
+}
+
+.card,.page-container {
+    display: flex;
+}
+
+.card {
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 20rpx;
+}
+
+.card-img {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 100%;
+    background: #aaa;
+    margin-right: 40rpx;
+}
+
+.card-main {
+    flex: 1;
+    padding: 0 30rpx;
+    background: #fff;
+    flex-direction: column;
+    border-radius: 7px;
+    line-height: 28rpx;
+    position: relative;
+}
+
+.card-main,.card-main-top {
+    display: flex;
+}
+
+.card-main-top {
+    flex-direction: row;
+    align-items: center;
+    padding: 20rpx 0;
+    border-bottom: 1px solid #eee;
+    justify-content: space-between;
+}
+
+.card-main-title {
+    font-size: 28rpx;
+}
+
+.card-main-date {
+    font-size: 24rpx;
+    color: #585858;
+}
+
+.card-main-message {
+    font-size: 26rpx;
+    color: #585858;
+    padding: 20rpx 0;
+    line-height: 40rpx;
+}
+
+.card-tags {
+    position: absolute;
+    border: 5px solid transparent;
+    border-right-color: #fff;
+    left: -20rpx;
+    top: 40rpx;
+}
+
+.no-notice {
+    text-align: center;
+    margin-top: 300rpx;
+    color: #999;
+}

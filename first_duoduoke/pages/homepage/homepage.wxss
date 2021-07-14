@@ -1,0 +1,216 @@
+page {
+    background-color: #eee;
+}
+
+.container {
+    width: 100%;
+}
+
+.container,.page-top {
+    display: flex;
+    flex-direction: column;
+}
+
+.page-top {
+    width: 91%;
+    padding: 0 34rpx;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+}
+
+.page-top>image {
+    width: 120rpx;
+    height: 120rpx;
+    margin: .5rem auto 0;
+}
+
+.shop-name {
+    font-size: 26rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    line-height: 30rpx;
+    margin: .6rem;
+}
+
+.shop-name>text {
+    margin-left: .5rem;
+    font-size: 20rpx;
+    color: #fff;
+    background: linear-gradient(90deg,#f44169,#ef5d4e);
+    padding: 0 8rpx;
+    border-radius: 5rpx;
+}
+
+.sales {
+    font-size: 22rpx;
+    margin: 0 auto;
+}
+
+.score {
+    justify-content: space-between;
+    font-size: 22rpx;
+    color: #aaa;
+    margin: 1rem 0;
+}
+
+.evaluate,.score {
+    display: flex;
+    flex-direction: row;
+}
+
+.evaluate {
+    justify-content: space-around;
+    width: 33.33333333%;
+    border-right: 1px solid #ddd;
+}
+
+.discount {
+    width: 100%;
+    border-radius: 5px;
+    height: 4rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    color: #fff;
+    background: linear-gradient(90deg,#f44169,#ef5d4e);
+    font-size: 22rpx;
+    position: relative;
+}
+
+.discount>.left {
+    left: -18rpx;
+}
+
+.discount>.left,.discount>.right {
+    position: absolute;
+    width: 36rpx;
+    height: 36rpx;
+    border-radius: 50px;
+    margin: auto 0;
+    background-color: #fff;
+    z-index: 1;
+}
+
+.discount>.right {
+    right: -18rpx;
+}
+
+.discount>view:nth-child(1) {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    font-size: 60rpx;
+}
+
+.discount>view:nth-child(1)>text {
+    font-size: 30rpx;
+    margin-top: .6rem;
+}
+
+.discount>view:nth-child(2) {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.discount>view:nth-child(2)>text {
+    font-size: 18rpx;
+    padding-top: 8rpx;
+}
+
+.page-main {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 91%;
+    padding: 0 34rpx;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+}
+
+.main-title {
+    margin: 1rem auto;
+    flex-direction: row;
+    width: 210rpx;
+    justify-content: space-between;
+    font-size: 26rpx;
+    color: #f24863;
+}
+
+.main-title,.main-title>icon {
+    display: flex;
+    align-items: center;
+}
+
+.main-title>icon {
+    height: 40rpx;
+    width: 40rpx;
+    border-radius: 50px;
+    background: #f24863;
+    color: #fff;
+    justify-content: center;
+    align-content: center;
+}
+
+.main-img {
+    margin: 0.1rpx -25rpx 3rem;
+}
+
+.main-img>image {
+    width: 210rpx;
+    height: 210rpx;
+    margin-left: 27rpx;
+    margin-bottom: 16rpx;
+}
+
+.page-bottom {
+    width: 100%;
+    background: #fff;
+    height: 3rem;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    flex-direction: row;
+    box-shadow: 0 1px 5px #aaa;
+    justify-content: flex-start;
+}
+
+.backIndex,.page-bottom {
+    display: flex;
+}
+
+.backIndex {
+    width: 20%;
+    font-size: 22rpx;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.backIndex>image {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.share {
+    width: 78%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    font-size: 30rpx;
+    margin: 8rpx auto;
+    border-radius: 40px;
+    background: linear-gradient(90deg,#f44169,#ef5d4e);
+    color: #fff;
+}

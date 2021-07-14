@@ -1,0 +1,46 @@
+page {
+    background: #f2f2f2;
+}
+
+.nav,.nav-title {
+    z-index: 9999999999;
+}
+
+.back {
+    color: #fff;
+}
+
+.container-page {
+    padding: 30rpx;
+}
+
+.card {
+    padding: 50rpx 30rpx;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30rpx;
+}
+
+.card-title {
+    height: 100rpx;
+    font-size: 34rpx;
+    font-weight: 700;
+    padding-bottom: 30rpx;
+    border-bottom: 1px solid #eee;
+}
+
+.card-main {
+    font-size: 28rpx;
+    color: #585858;
+    margin-top: 30rpx;
+}
+
+.card-main>view,.video-box {
+    margin-top: 20rpx;
+}
+
+.video-box {
+    width: 100%;
+    height: 400rpx;
+}

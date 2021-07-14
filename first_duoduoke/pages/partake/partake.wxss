@@ -1,0 +1,97 @@
+.bg-white {
+    background: #fff;
+    color: #000;
+}
+
+.back {
+    border: 1px solid #000;
+}
+
+.back-line {
+    background: #000;
+}
+
+.back>text {
+    color: #000;
+}
+
+.par-bg {
+    width: 100%;
+    background-size: 100% 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.par-top {
+    font-size: 50rpx;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 2rpx;
+    font-style: italic;
+}
+
+.par-tv text {
+    font-size: 66rpx;
+    text-decoration: underline;
+}
+
+.par-content {
+    padding: 100rpx 15vw;
+    color: #fff;
+    font-size: 26rpx;
+    letter-spacing: 4rpx;
+    width: 70%;
+}
+
+.par-coin {
+    flex-flow: column;
+    margin-top: 20rpx;
+}
+
+.par-btn,.par-coin {
+    display: flex;
+}
+
+.par-btn {
+    width: 70vw;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.par-btn button::after {
+    border: 0;
+}
+
+.btn-l,.btn-r {
+    width: 33vw;
+    height: 86rpx;
+    line-height: 86rpx;
+    margin: 0;
+    padding: 0;
+    border-radius: 86rpx;
+    border: 1px solid #fff;
+    font-size: 24rpx;
+}
+
+.btn-l {
+    background-color: transparent;
+    box-shadow: 0 0 3px #000;
+    color: #fff;
+}
+
+.btn-r {
+    background-color: #fff;
+    box-shadow: 0 0 3px #fff;
+    color: #f44763;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-r text {
+    font-size: 36rpx;
+    line-height: 36rpx;
+    margin-right: 10rpx;
+}

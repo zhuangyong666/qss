@@ -1,0 +1,217 @@
+page {
+    background: #f8f8f8;
+}
+
+.nav {
+    background: transparent;
+    z-index: 9999999999;
+}
+
+.nav-color {
+    background: linear-gradient(90deg,#8d68d9,#fc4849,#fb7840);
+    transition: 1s;
+}
+
+.nav-title {
+    z-index: 9999999999;
+    font-weight: 700;
+}
+
+.back {
+    color: #fff;
+    font-weight: 400;
+}
+
+.eva-tag {
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    background: #fff;
+    padding-top: 20rpx;
+    padding-left: 20rpx;
+}
+
+.eva-tag,.eva-tag>view {
+    display: flex;
+    margin-bottom: 10rpx;
+}
+
+.eva-tag>view {
+    margin-right: 20rpx;
+    padding: 12rpx 30rpx;
+    border-radius: 30px;
+    font-size: 22rpx;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    background: #fdebeb;
+}
+
+.main,.show-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.show-card {
+    margin-top: 30rpx;
+    width: auto;
+    background: #fff;
+    padding: 30rpx;
+}
+
+.card-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.card-title-image {
+    height: 100rpx;
+    width: 100rpx;
+    background: #eee;
+    border-radius: 100px;
+}
+
+.card-title-nameAndTime1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 390rpx;
+    margin-left: -3rem;
+    justify-content: space-around;
+}
+
+.user-name {
+    font-size: 30rpx;
+}
+
+.time {
+    font-size: 24rpx;
+    color: #aaa;
+    width: 132%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.share-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    font-size: 32rpx;
+    color: #9f9f9f;
+}
+
+.share-btn::after {
+    border: 0;
+}
+
+.share-btn>text {
+    font-size: 28rpx;
+    margin-right: 10rpx;
+}
+
+.card-discuss {
+    margin: 20rpx 0;
+    font-size: 24rpx;
+    line-height: 36rpx;
+    display: -webkit-box;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.card-discuss>text {
+    margin-left: 10rpx;
+    font-size: 26rpx;
+    color: #f44169;
+}
+
+.card-image {
+    margin-left: -28rpx;
+}
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.card-image>image {
+    height: 164rpx;
+    width: 164rpx;
+    float: left;
+    margin: 0 0 14rpx 14rpx;
+    border-radius: 5px;
+}
+
+.video-img {
+    border-radius: 20rpx;
+    position: relative;
+}
+
+.video-img-shade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.2);
+}
+
+.on-button {
+    position: absolute;
+    top: 52rpx;
+    left: 52rpx;
+    width: 45rpx;
+    height: 45rpx;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    background: rgba(1,1,1,.5);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.on-bbutton-item {
+    border: 15rpx solid transparent;
+    border-left: 20rpx solid #fff;
+    margin-left: 20rpx;
+}
+
+.video-shade {
+    top: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    z-index: 1;
+}
+
+#myVideo,.video-shade {
+    position: fixed;
+    left: 0;
+    right: 0;
+}
+
+#myVideo {
+    top: 400rpx;
+    width: 100%;
+    height: 800rpx;
+    z-index: 10;
+}
+
+.append {
+    margin-top: 30rpx;
+}
+
+.append-date {
+    font-size: 26rpx;
+    color: #f40;
+}

@@ -1,0 +1,79 @@
+<view class="nav bg-white" style="height:{{navH}}px">
+    <view class="nav-title">
+      商城
+      <text bindtap="navBack" class="back iconfont icon-jiantou-copy"></text>
+    </view>
+</view>
+<import src="../templates/login.wxml"></import>
+<view class="container-page">
+    <view class="page-top" style="padding-top:{{navH}}px;">
+        <image class="page-top-img" mode="widthFix" src="{{imgPath}}answer.png"></image>
+        <view class="top-title">新手问答赢现金</view>
+        <view class="top-title-btn">天天答题拿现金，最高可获得{{max_question_money}}元</view>
+    </view>
+    <view class="page-main">
+        <view class="question-box">
+            <view class="box-top">
+                <view class="question-pagination">
+                    <text>{{currentIndex}}</text>/{{subjectList.length}}
+        </view>
+                <view class="question-num" wx:if="{{currentIndex==1}}">第一题</view>
+                <view class="question-num" wx:if="{{currentIndex==2}}">第二题</view>
+                <view class="question-num" wx:if="{{currentIndex==3}}">第三题</view>
+                <view class="question-num" wx:if="{{currentIndex==4}}">第四题</view>
+                <view class="question-num" wx:if="{{currentIndex==5}}">第五题</view>
+                <view class="question-num" wx:if="{{currentIndex==6}}">第六题</view>
+                <view class="question-num" wx:if="{{currentIndex==7}}">第七题</view>
+                <view class="question-num" wx:if="{{currentIndex==8}}">第八题</view>
+                <view class="question-num" wx:if="{{currentIndex==9}}">第九题</view>
+            </view>
+            <view class="box-main">
+                <view>{{subject.subject}}</view>
+                <image catchtap="showImg" class="box-main-img" data-img="{{subject.subject_img}}" mode="aspectFill" src="{{subject.subject_img}}" wx:if="{{subject.subject_img}}"></image>
+            </view>
+            <image class="huan-1-img" src="../../public/images/huan.png"></image>
+            <image class="huan-2-img" src="../../public/images/huan.png"></image>
+        </view>
+        <button bindtap="confirmAnswer" class="btn-ans" data-index="{{adx}}" wx:for="{{subject.answers}}" wx:for-index="adx" wx:key="answers">
+            <text wx:if="{{adx==0}}">A</text>
+            <text wx:if="{{adx==1}}">B</text>
+            <text wx:if="{{adx==2}}">C</text>
+            <text wx:if="{{adx==3}}">D</text> {{item.answer}}</button>
+    </view>
+    <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+</view>
+<image class="bottom-img" src="../../public/images/bolang.png"></image>
+<view class="shade" wx:if="{{showReplyShade}}"></view>
+<view class="shade-page" wx:if="{{showReplyShade}}">
+    <view class="shade-box">
+        <view class="shade-box-title">
+            <text class="iconfont icon-zan"></text>
+      答对了！你真棒！
+    </view>
+        <view bindtap="chooseReplyShade" class="shade-box-btn">进入下一题<text class="iconfont icon-jiantou"></text>
+        </view>
+    </view>
+</view>
+<view class="shade" wx:if="{{showMistakeShade}}"></view>
+<view class="shade-page" wx:if="{{showMistakeShade}}">
+    <view class="shade-box">
+        <view class="shade-box-title">
+            <text class="iconfont icon-yihan"></text>
+      很遗憾 答错了
+    </view>
+        <view bindtap="chooseMistakeShade" class="shade-box-btn">再试一次<text class="iconfont icon-jiantou"></text>
+        </view>
+    </view>
+</view>
+<view class="shade" wx:if="{{showReplyShadeWin}}"></view>
+<view bindtap="showWinIn" class="shade-page" wx:if="{{showReplyShadeWin}}">
+    <view class="shade-box">
+        <view class="shade-box-title">
+            <text class="iconfont icon-zan"></text>
+      恭喜你成功通关!
+    </view>
+        <view catchtap="goReceiveRewards" class="win-draw">现在马上去领取奖金</view>
+        <view catchtap="goReceiveRewards" class="shade-box-btn">领取奖励<text class="iconfont icon-jiantou"></text>
+        </view>
+    </view>
+</view>

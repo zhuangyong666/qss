@@ -1,0 +1,211 @@
+button::after {
+    border: 0;
+}
+
+.back {
+    background-color: #fff;
+    border: 1px solid #eee;
+}
+
+.back-line {
+    background: #eee;
+}
+
+.back>text,.bg-white {
+    color: #000;
+}
+
+.bg-white {
+    background: #fff;
+}
+
+.wel {
+    background-size: 100% 100%;
+}
+
+.wel,.wel-top {
+    display: flex;
+    flex-flow: column;
+}
+
+.wel-top {
+    align-items: center;
+    padding: 70rpx 0 0;
+}
+
+.xrfl,.zcs {
+    font-weight: 600;
+    color: #fef7da;
+    font-style: italic;
+    text-shadow: 3px 2px 2px #fc5d61;
+}
+
+.xrfl {
+    font-size: 90rpx;
+}
+
+.zcs {
+    font-size: 50rpx;
+}
+
+.zcs text {
+    font-size: 60rpx;
+    font-weight: 600;
+    margin: 0 4rpx;
+}
+
+.wel-lq {
+    padding: 8rpx;
+    border-radius: 100rpx;
+    background-color: #ef354d;
+    display: inline-flex;
+    margin: 70rpx auto 40rpx;
+}
+
+.wel-lq-ani {
+    animation: mymoves .7s linear infinite;
+}
+
+@keyframes mymoves {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@-webkit-keyframes mymoves {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.wel-lq button,.wel-lq text {
+    font-weight: 600;
+    font-size: 38rpx;
+    width: 230rpx;
+    height: 70rpx;
+    display: block;
+    line-height: 70rpx;
+    text-align: center;
+    border-radius: 70rpx;
+}
+
+.wel-lq button {
+    padding: 0;
+}
+
+.lq-no {
+    background: linear-gradient(180deg,#ef354d,#ffdf06);
+    color: #fff;
+}
+
+.lq-ok {
+    font-weight: 600;
+    font-size: 38rpx;
+    width: 230rpx;
+    height: 70rpx;
+    display: block;
+    line-height: 70rpx;
+    text-align: center;
+    border-radius: 70rpx;
+    background: #c0273c;
+    color: #901527;
+}
+
+.wel-cash {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    width: 120rpx;
+    margin: 0 auto 40rpx;
+    padding: 0;
+    background-color: inherit;
+    border-radius: 0;
+}
+
+.wel-cash,.wel-cash text {
+    font-size: 24rpx;
+    line-height: 24rpx;
+}
+
+.wel-content {
+    padding: 40rpx 14vw;
+}
+
+.wel-act {
+    color: #fff;
+    font-size: 24rpx;
+}
+
+.wel-act-t {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 20rpx;
+}
+
+.act-welfare {
+    font-weight: 600;
+    font-size: 40rpx;
+    font-style: italic;
+    transform: rotate(-15deg);
+}
+
+.act-welfare text {
+    font-size: 70rpx;
+    margin: 0 10rpx;
+}
+
+.wel-act-b {
+    line-height: 50rpx;
+}
+
+.wel-btn {
+    display: flex;
+    align-items: center;
+    padding: 0 14vw 50rpx;
+    justify-content: space-between;
+}
+
+.look-pri {
+    color: #ee4a65;
+    background-color: #fff;
+    box-shadow: 0 0 10rpx #ccc;
+}
+
+.go-invite,.look-pri {
+    font-size: 26rpx;
+    height: 84rpx;
+    line-height: 84rpx;
+    width: 220rpx;
+    text-align: center;
+    border-radius: 80rpx;
+    margin: 0;
+    padding: 0;
+}
+
+.go-invite {
+    color: #fff;
+    background: linear-gradient(90deg,#e678ff,#94ccfb);
+    box-shadow: 0 0 10rpx #d7d3e1;
+}
+
+.go-invite::after {
+    border: 0;
+}

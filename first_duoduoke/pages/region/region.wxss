@@ -1,0 +1,217 @@
+button::after {
+    border: 0;
+}
+
+.reg-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 3vw;
+    font-size: 30rpx;
+    color: #fff;
+    background: linear-gradient(90deg,#8d68d9,#fc4849,#fb7840);
+    height: 40px;
+    width: 94vw;
+    position: fixed;
+    z-index: 999;
+}
+
+.reg-area {
+    height: 40px;
+    line-height: 40px;
+    width: 17.5vw;
+    text-align: center;
+    border-bottom: 2px solid transparent;
+    box-sizing: border-box;
+    background-color: inherit;
+    padding: 0;
+    margin: 0;
+    color: inherit;
+    border-radius: 0;
+    font-size: inherit;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+
+.reg-ite {
+    overflow-y: scroll;
+}
+
+.reg-act {
+    display: flex;
+    align-items: center;
+    margin: 20rpx 3vw;
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 0;
+    background-color: inherit;
+    line-height: inherit;
+    text-align: inherit;
+}
+
+.reg-act-l {
+    width: 37vw;
+    height: 37vw;
+}
+
+.reg-act-r {
+    flex: 1;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    height: 37vw;
+    font-size: 24rpx;
+    background-color: #fff;
+}
+
+.reg-act-name {
+    margin: 4rpx 16rpx;
+    letter-spacing: 2rpx;
+    font-size: 28rpx;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    word-break: break-all;
+    width: 367rpx;
+}
+
+.old-price {
+    margin: 16rpx;
+    font-size: 24rpx;
+    color: #a0a0a0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.old-price-mon {
+    margin-left: 6rpx;
+    text-decoration: line-through;
+}
+
+.sale-info {
+    margin: 16rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sale-text {
+    font-size: 22rpx;
+    color: #f43f6c;
+}
+
+.sale-info-l {
+    font-size: 22rpx;
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+.sale-info-l view:nth-child(1) {
+    padding: 6rpx 8rpx;
+    background-color: #f44169;
+    border-radius: 0 3px 3px 0;
+    border-right: 1px dashed #fff;
+}
+
+.sale-info-l view:nth-child(2) {
+    padding: 6rpx 10rpx;
+    background: linear-gradient(90deg,#f44169,#ef5d4e);
+    border-radius: 3px 0 0 3px;
+}
+
+.sale-info-r {
+    margin: 16rpx;
+    font-size: 24rpx;
+    color: #bbb;
+    float: right;
+}
+
+.priceAndSale {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.clearfix {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.sell-money {
+    color: #f24863;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 0 16rpx;
+    position: relative;
+}
+
+.sell-money,.semo-l {
+    display: flex;
+}
+
+.semo-l {
+    align-items: flex-end;
+}
+
+.semo-l-mon {
+    font-size: 30rpx;
+    line-height: 30rpx;
+}
+
+.semo-r {
+    background: linear-gradient(90deg,#f44169,#ef5d4e);
+    height: 50rpx;
+    transform-origin: bottom right;
+    transform: perspective(.5em) rotateX(1deg) scale(1.3);
+    border-radius: 5px 0 0 0;
+    width: 120rpx;
+}
+
+.semo-pos {
+    position: absolute;
+    top: 0;
+    right: 10rpx;
+    color: #fff;
+}
+
+.semo-pos,.semo-pos-mon {
+    display: flex;
+    align-items: center;
+}
+
+.semo-pos-mon {
+    font-size: 26rpx;
+    margin-left: 2rpx;
+}
+
+.semo-pos-mon text {
+    font-size: 30rpx;
+    font-weight: 700;
+}
+
+.semo-l-mon text {
+    font-weight: 700;
+}
+
+.weui-navbar__slider {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    content: " ";
+    left: 0;
+    bottom: 0;
+    width: 6em;
+    height: 2px!important;
+    transition: transform .3s;
+    transition: transform .3s,-webkit-transform .3s;
+}

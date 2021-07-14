@@ -1,0 +1,87 @@
+<view class="nav bg-white" style="height:{{navH}}px">
+    <view class="nav-title">
+        <text bindtap="navBack" class="back iconfont icon-jiantou-copy" wx:if="{{backkey==2}}"></text>
+        <text bindtap="navIndex" class="back iconfont icon--" wx:if="{{backkey==1}}"></text> 一元抢购
+  </view>
+</view>
+<view class="container-page" style="margin-top: {{navH}}px;">
+    <view class="page-message" wx:if="{{info.status==0&&info.i_uid==0}}">
+        <view class="yes">
+            <text class="iconfont icon-duihao"></text>
+        </view>
+    下单成功，邀请1位新用户下单后发货
+  </view>
+    <view class="order-card">
+        <view class="goods-card">
+            <image class="goods-img" mode="aspectFill" src="{{goods.img}}"></image>
+            <view class="goods-card-right">
+                <view class="goods-title">{{goods.title}}</view>
+                <view class="goods-price">
+                    <view class="now-price">¥ 1.00</view>
+                </view>
+            </view>
+        </view>
+        <view class="order-card-time" wx:if="{{info.status==0&&info.i_uid==0}}">
+            <view class="time-top">
+                <text class="iconfont icon-naozhong"></text> 剩余时间
+      </view>
+            <view class="limit-time">
+                <view>{{qgdjs_jo.hour}}</view>
+                <text class="iconfont icon-maohao"></text>
+                <view>{{qgdjs_jo.min}}</view>
+                <text class="iconfont icon-maohao"></text>
+                <view>{{qgdjs_jo.sec}}</view>
+            </view>
+            <button class="friend-btn" openType="share">邀请好友</button>
+            <view bindtap="onShowShareShade" class="save-poster">保存邀请海报 ></view>
+        </view>
+        <view class="order-success" wx:if="{{info.status==2&&info.i_uid!=0}}">
+            <view class="order-success-top">
+        以下好友下单成功支付
+        <image class="order-success-img" mode="aspectFill" src="{{avatar['avatar']}}"></image>
+            </view>
+            <view class="order-success-message">
+                <view class="order-success-yes">
+                    <text class="iconfont icon-duihao order-duihao"></text>
+                </view>
+                <block wx:if="{{goods.status==4}}">
+        订单发货成功
+        </block>
+                <block wx:else>
+        订单已成功 即将为您发货
+        </block>
+            </view>
+            <button bindtap="goRushBuyHome" class="more-rush-buy">更多一元抢购</button>
+        </view>
+        <view class="order-card-time" wx:if="{{info.status==1&&info.i_uid==0}}">
+            <view>该订单已失效</view>
+        </view>
+        <view class="address">
+            <view class="address-left">
+                <view class="icon">
+                    <text class="iconfont icon-fahuo"></text>
+                </view>
+                <view class="address-left-message">
+                    <view class="address-left-message-l">已选收货地址：</view>
+                </view>
+            </view>
+            <view bindtap="onGetaddress" class="address-right" wx:if="{{goods.status!=4}}">
+        修改 >
+      </view>
+        </view>
+        <view class="address-detail-message">{{address.name}}{{address.tel}}{{address.province}}{{address.city}}{{address.county}}{{address.detail}}</view>
+    </view>
+</view>
+<view catchtouchmove="nomove" class="shade" wx:if="{{showShareShade}}"></view>
+<view bindtap="onShowShareShade" catchtouchmove="nomove" class="share-shade" wx:if="{{showShareShade}}">
+    <image class="share-shade-img" mode="widthFix" src="{{share_img}}"></image>
+    <view class="share-shade-msg">赶快去分享,拿1元超值好礼</view>
+    <view class="share-shade-btn-box">
+        <view bindtap="saveQrcodeToPhotosAlbum" class="share-shade-btn shade-btn-l">
+            <text class="iconfont icon-zhaopian"></text> 保存分享图
+    </view>
+        <button class="share-shade-btn shade-btn-r" openType="share">
+            <text class="iconfont icon-weixin"></text> 分享给好友或群
+    </button>
+    </view>
+</view>

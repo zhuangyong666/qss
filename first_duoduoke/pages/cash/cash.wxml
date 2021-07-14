@@ -1,0 +1,40 @@
+<import src="../templates/login.wxml"></import>
+<import src="../templates/info.wxml"></import>
+<view class="">
+    <view class="nav bg-white" style="height:{{navH}}px">
+        <view class="nav-title">
+            <text bindtap="navBack" class="back iconfont icon-jiantou-copy"></text>
+        </view>
+    </view>
+    <view class="bg-gray overflow" style="margin-top:{{navH}}px;">
+        <view class="hidden" style="height:calc(100vh - {{navH}}px)">
+            <view class="cash">
+                <view class="cash-tit">提现金额<text catchtap="showInfo">（提现规则）</text>
+                </view>
+                <view class="cash-con">
+                    <text>￥</text>
+                    <input bindconfirm="setMoney" bindinput="setMoney" class="cash-input" focus="{{focus}}" placeholder="0" placeholderClass="cash-pla" style="number" type="digit" value="{{money}}"></input>
+                </view>
+                <view class="cash-bot">
+                    <view class="cb-l">可提现 ￥{{uInfo?uInfo.money:0}}{{withdrawal_apply_switch==1?',费率'+withdrawal_apply_rate+'%':''}}</view>
+                    <button bindtap="wholeMoney" class="cb-r">全部提现</button>
+                </view>
+                <block wx:if="{{withdrawal_method==1}}">
+                    <view class="tx-ewm-top">
+                        <text bindtap="choosePic" class="iconfont icon-untitled44" wx:if="{{!withdrawal_qrcode}}"></text>
+                        <image bindtap="choosePic" src="{{withdrawal_qrcode}}" wx:if="{{withdrawal_qrcode}}"></image>
+                    </view>
+                    <view class="tx-ewm-bot">
+                        <text class="iconfont icon-erweima2"></text>
+                        <view>收款二维码</view>
+                    </view>
+                </block>
+                <form bindsubmit="toWithDrawal" class="sub-f" reportSubmit="true">
+                    <button class="cash-btn" disabled="{{btnDis}}" formType="submit">确认提现</button>
+                </form>
+            </view>
+        </view>
+    </view>
+    <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+    <template is="infoModal" data="{{info:info}}"></template>
+</view>

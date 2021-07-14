@@ -1,0 +1,188 @@
+<import src="../templates/login.wxml"></import>
+<view class="">
+    <view class="telescopic">
+        <view class="tele-content">
+            <view class="tele-coin">
+                <view bindtap="toSaveMoney" class="tele-title">
+                    <text>省钱</text>
+                    <text>攻略</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+    <view class="new-top" style="height:calc({{navH}}px + {{topHeight}}px);">
+        <view class="nav" style="height:{{navH}}px;">
+            <view class="nav-title" style="color:#fff;">
+        搜索
+        <view class="back">
+                    <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+                    <view class="back-line"></view>
+                    <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+                </view>
+            </view>
+        </view>
+        <view class="sea-top">
+            <view class="search-box">
+                <view class="ind-search">
+                    <icon color="#be94bc" size="20" type="search"></icon>
+                    <input bindconfirm="confirmSearchKey" bindinput="setSearchKey" confirmType="search" maxlength="-1" placeholder="请输入商品名称" placeholderClass="ind-input" type="text" value="{{keyword}}"></input>
+                    <scroll-view class="sug-scroll" scrollY="true" style="" wx:if="{{suggests}}">
+                        <view catchtap="sugSearch" class="itemview" data-key="{{item[0]}}" wx:for="{{suggests}}" wx:key="suggests">{{item[0]}}</view>
+                    </scroll-view>
+                    <text bindtap="delKey" class="sea-del iconfont icon-chahao" wx:if="{{showDel}}"></text>
+                    <text bindtap="onShowVoiceBtn" class="sea-mk iconfont icon-maikefeng" wx:if="{{!showDel&&audio_search_open==1}}"></text>
+                </view>
+                <view bindtap="confirmSearchKey" class="top-button">
+          搜索
+        </view>
+            </view>
+        </view>
+        <view class="source-selection" id="source" wx:if="{{source_open}}">
+            <view bindtap="onChoose" class="source-item {{cur_id==1?'source-act':''}}" data-cur_id="1">拼多多</view>
+            <view bindtap="onChoose" class="source-item {{cur_id==6?'source-act':''}}" data-cur_id="6" wx:if="{{tb_open==1}}">淘宝</view>
+            <view bindtap="onChoose" class="source-item {{cur_id==2?'source-act':''}}" data-cur_id="2" wx:if="{{jd_open==1}}">京东</view>
+            <view bindtap="onChoose" class="source-item {{cur_id==9?'source-act':''}}" data-cur_id="9" wx:if="{{sp_open==1}}">小商店</view>
+            <view bindtap="onChoose" class="source-item {{cur_id==4?'source-act':''}}" data-cur_id="4" wx:if="{{vip_open==1}}">唯品会</view>
+            <view bindtap="onChoose" class="source-item {{cur_id==5?'source-act':''}}" data-cur_id="5" wx:if="{{sn_open==1}}">苏宁</view>
+            <view bindtap="onChoose" class="source-item {{cur_id==7?'source-act':''}}" data-cur_id="7" wx:if="{{kl_open==1}}">考拉海购</view>
+            <view bindtap="onChoose" class="source-item {{cur_id==3?'source-act':''}}" data-cur_id="3" wx:if="{{mg_open==1}}">蘑菇街</view>
+        </view>
+        <view class="screen" wx:if="{{goodsList}}">
+            <button bindtap="sortGoods" class="screen-act" data-type="1">
+                <view class="screen-text scr-act {{type==1?'active':''}}">默认</view>
+            </button>
+            <button bindtap="sortGoods" class="screen-act" data-type="2" wx:if="{{cur_id!=9}}">
+                <view class="screen-text {{type==2?'active':''}}">销量</view>
+                <view class="screen-ud" wx:if="{{cur_id!=3&&cur_id!=5&&cur_id!=6&&cur_id!=7}}">
+                    <text class="iconfont icon-jiantou_shang {{type==2&&sort==0?'curr':''}}"></text>
+                    <text class="iconfont icon-jiantou_xia {{type==2&&sort==1?'curr':''}}"></text>
+                </view>
+            </button>
+            <button bindtap="sortGoods" class="screen-act" data-type="3">
+                <view class="screen-text {{type==3?'active':''}}">价格</view>
+                <view class="screen-ud" wx:if="{{cur_id!=9}}">
+                    <text class="iconfont icon-jiantou_shang {{type==3&&sort==0?'curr':''}}"></text>
+                    <text class="iconfont icon-jiantou_xia {{type==3&&sort==1?'curr':''}}"></text>
+                </view>
+            </button>
+            <button bindtap="sortGoods" class="screen-act" data-type="4">
+                <view class="screen-text {{type==4?'active':''}}">{{cur_id==4?'折扣':'佣金'}}</view>
+                <view class="screen-ud" wx:if="{{cur_id!=5&&cur_id!=6&&cur_id!=7}}">
+                    <text class="iconfont icon-jiantou_shang {{type==4&&sort==0?'curr':''}}"></text>
+                    <text class="iconfont icon-jiantou_xia {{type==4&&sort==1?'curr':''}}"></text>
+                </view>
+            </button>
+        </view>
+    </view>
+    <view class="overflow" style="padding-top:calc({{navH}}px + {{topHeight}}px);">
+        <block wx:if="{{!goodsList}}">
+            <view class="coupon-step">
+                <view class="coupon-step-top">三步轻松获得优惠券</view>
+                <view class="coupon-step-bot">
+                    <view class="coupon-step-item">
+                        <view class="step-item-left">
+                            <text class="iconfont icon-gouwudai"></text>
+                        </view>
+            1.进入对应平台
+          </view>
+                    <view class="coupon-step-item">
+                        <view class="step-item-left">
+                            <text class="iconfont icon-fuzhilanse"></text>
+                        </view>
+            2.复制商品标题
+          </view>
+                    <view class="coupon-step-item">
+                        <view class="step-item-left">
+                            <text class="iconfont icon-youhuiquan"></text>
+                        </view>
+            3.点击搜索查询
+          </view>
+                </view>
+            </view>
+            <view class="middle">
+                <view class="hiddle">
+                    <text class="history">历史搜索</text>
+                    <text bindtap="clearHistory" class="nullhis">
+                        <text class="iconfont icon-shanchu"></text>清空历史记录</text>
+                </view>
+                <view class="hotsou">
+                    <text bindtap="tapKeyword" class="add" data-key="{{item}}" wx:for="{{his_skey}}" wx:key="hkey">{{item}}</text>
+                </view>
+            </view>
+            <view class="hot">
+                <view class="hotsize">大家都在搜</view>
+                <view class="hotsou">
+                    <text catchtap="toAiSearch" class="hot-nav">
+                        <text class="iconfont icon-jiqiren_o"></text>智能导航</text>
+                    <text bindtap="tapKeyword" class="goods" data-key="{{item}}" wx:for="{{hot_skey}}" wx:key="skey">{{item}}</text>
+                </view>
+            </view>
+        </block>
+        <view class="reg-ite" wx:if="{{goodsList}}">
+            <view catchtap="toGoodsPage" class="reg-act" data-goods_id="{{goods['goods_id']}}" data-goods_sign="{{goods['goods_sign']}}" data-goods_url="{{goods['goods_url']}}" wx:for="{{goodsList}}" wx:for-item="goods" wx:key="gl">
+                <image class="reg-act-l" mode="aspectFill" src="{{goods['goods_thumbnail_url']}}"></image>
+                <view class="reg-act-r">
+                    <view class="reg-act-name">
+                        <text class="iconfont icon-pinduoduo red-color" wx:if="{{cur_id==1}}"></text>
+                        <text class="iconfont icon-jingdong1 red-color" wx:if="{{cur_id==2}}"></text>
+                        <text class="iconfont icon-mogujieicon MGJ-color" wx:if="{{cur_id==3}}"></text>
+                        <text class="iconfont icon-SP SP-color" wx:if="{{cur_id==9}}"></text>
+                        <text class="iconfont icon-weipinhui WPH-color" wx:if="{{cur_id==4}}"></text>
+                        <text class="iconfont icon-suning SN-color" wx:if="{{cur_id==5}}"></text>
+                        <text class="iconfont {{goods['shop_type']==1?'icon-tianmao':'icon-taobao TB-color'}}" wx:if="{{cur_id==6}}"></text>
+                        <text class="iconfont icon-kaola KL-color" wx:if="{{cur_id==7}}"></text>
+                {{goods['goods_name']}}
+              </view>
+                    <view class="priceAndSale">
+                        <view class="old-price">
+                            <view>原价</view>
+                            <view class="old-price-mon">￥{{cur_id==7?goods['yuan_price']:goods['min_group_price']/100}}</view>
+                        </view>
+                        <view class="sale-info-r" wx:if="{{cur_id==1&&goods['sales_tip']!=''||cur_id==6||goods['sales_tip']>0}}">销量{{goods['sales_tip']}}</view>
+                    </view>
+                    <view class="sale-info">
+                        <view class="sale-info-l">
+                            <block wx:if="{{cur_id==7}}">
+                                <view class="bcardl">黑卡价</view>
+                                <view class="bcardr">￥{{goods['bcard_price']}}</view>
+                            </block>
+                            <block wx:else>
+                                <view class="quanl">券</view>
+                                <view class="quanr">￥{{goods['coupon_discount']/100}}</view>
+                            </block>
+                        </view>
+                        <view class="sale-text" wx:if="{{goods['bounss']!=''}}">
+                            <text>升级<block wx:if="{{appletKeyword}}">{{appletKeyword}}</block>
+                                <block wx:else>赚</block>￥{{goods['bounss']}}</text>
+                        </view>
+                    </view>
+                    <view class="sell-money">
+                        <view class="semo-l">
+                            <view wx:if="{{cur_id!=7}}">券后</view>
+                            <view class="semo-l-mon">￥
+                    <text>{{( goods['min_group_price']-goods['coupon_discount'] )/100}}</text>
+                            </view>
+                        </view>
+                        <view class="semo-r"></view>
+                        <view class="semo-pos">
+                            <view>{{appletKeyword}}</view>
+                            <view class="semo-pos-mon">￥
+                    <text>{{goods['bouns']}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="voice-shade" wx:if="{{showVoiceBtn}}"></view>
+    <view class="voice-btn-box" wx:if="{{showVoiceBtn}}">
+        <view bindlongpress="onShade" bindtouchend="onVoiceEnd" class="voice-btn" hoverClass="loading">
+            <text class="iconfont icon-maikefeng"></text>
+        </view>
+        <view catchtap="chooseVoiceBtn" class="choose-voice-btn">
+            <text class="iconfont icon-chahao"></text>
+        </view>
+    </view>
+</view>

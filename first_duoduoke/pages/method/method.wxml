@@ -1,0 +1,26 @@
+<view class="">
+    <view class="nav bg-white" style="height:{{navH}}px">
+        <view class="nav-title">
+      新手攻略
+      <view class="back">
+                <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+                <view class="back-line"></view>
+                <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+            </view>
+        </view>
+    </view>
+    <view class="bg-gray overflow" style="margin-top:{{navH}}px;height:calc(100vh - {{navH}}px);">
+        <view class="hidden">
+            <view class="met-act" wx:for="{{list}}" wx:for-index="ldx" wx:key="list">
+                <button bindtap="showcontent" class="met-question" data-reply-Type="{{ldx}}">
+                    <view class="met-tit">{{ldx+1}}.{{item.title}}</view>
+                    <text class="iconfont icon-jiantou" wx:if="{{item.show==1}}"></text>
+                    <text class="iconfont icon-jiantouarrow483" wx:if="{{item.show==2}}"></text>
+                </button>
+                <view class="met-answer" wx:if="{{item.show==2}}">
+                    <text>{{item.content}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

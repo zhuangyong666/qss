@@ -1,0 +1,46 @@
+<import src="../templates/login.wxml"></import>
+<view class="">
+    <view class="nav bg-white" style="height:{{navH}}px">
+        <view class="nav-title">
+      新人福利
+      <view class="back">
+                <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+                <view class="back-line"></view>
+                <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+            </view>
+        </view>
+    </view>
+    <view class="bg-gray overflow" style="margin-top:{{navH}}px;">
+        <view class="hidden">
+            <view class="wel" style="height:calc(100vh - {{navH}}px);background-image:url({{imgPath}}wel.jpg);">
+                <view class="wel-top">
+                    <view class="xrfl">新人福利</view>
+                    <view class="zcs">授权登录即送<text>随机</text>现金红包</view>
+                </view>
+                <view class="wel-lq {{isReceive?'':'wel-lq-ani'}}">
+                    <button bindtap="receive" class="lq-no" wx:if="{{!isReceive}}">领取</button>
+                    <text class="lq-ok" wx:if="{{isReceive}}">已领取</text>
+                </view>
+                <button bindtap="goCash" class="wel-cash" wx:if="{{withdraw_open==1}}">
+                    <view>去提现</view>
+                    <text class="iconfont icon-jiantou"></text>
+                </button>
+                <view class="wel-content">
+                    <view class="wel-act">
+                        <view class="wel-act-t">
+                            <view>现金红包</view>
+                            <view class="act-welfare">福利<text>1</text>
+                            </view>
+                        </view>
+                        <view class="wel-act-b">新用户授权登录即送随机现金红包，领取后直接进入可提现余额中</view>
+                    </view>
+                </view>
+                <view class="wel-btn">
+                    <button bindtap="goVip" class="look-pri">查看VIP特权</button>
+                    <button bindtap="goPartakeOf" class="go-invite">去邀请</button>
+                </view>
+            </view>
+        </view>
+    </view>
+    <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+</view>

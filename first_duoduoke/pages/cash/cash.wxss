@@ -1,0 +1,132 @@
+.bg-white {
+    background: #fff;
+    color: #a0a0a0;
+}
+
+.bg-gray {
+    background-color: #fff;
+}
+
+.hidden {
+    align-items: center;
+}
+
+.cash,.hidden {
+    display: flex;
+    justify-content: center;
+}
+
+.cash {
+    font-size: 26rpx;
+    align-items: flex-start;
+    flex-flow: column;
+    width: 60vw;
+    padding: 0 20vw;
+    margin-top: -220rpx;
+}
+
+.cash-tit text {
+    color: #a0a0a0;
+    margin-left: 10rpx;
+}
+
+.cash-con {
+    margin: 20rpx 0;
+    font-size: 50rpx;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.cash-input {
+    height: 90rpx;
+    line-height: 90rpx;
+    padding-left: 30rpx;
+    font-weight: 600;
+    font-size: 60rpx;
+}
+
+.cash-bot {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cb-l {
+    color: #999;
+}
+
+.cb-r {
+    color: #f14962;
+    height: inherit;
+    line-height: inherit;
+    background-color: inherit;
+    border-radius: 0;
+    text-align: right;
+    font-size: inherit;
+    padding: 0;
+    margin: 0;
+}
+
+.cash-btn::after,.cb-r::after {
+    border: 0;
+}
+
+.cash-btn {
+    background: linear-gradient(90deg,#ee5c4d,#f43f6c);
+    box-shadow: 0 0 11px #e8dcdc;
+    width: 100%;
+    padding: 0;
+    margin: 30rpx 0 0;
+    color: #fff;
+    font-size: 26rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    letter-spacing: 2rpx;
+    border-radius: 90rpx;
+}
+
+.sub-f {
+    width: inherit;
+}
+
+.tx-ewm-top {
+    margin: 30rpx auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20rpx;
+}
+
+.tx-ewm-top .iconfont {
+    border: 1px solid #cecece;
+    font-size: 80rpx;
+    color: #cecece;
+}
+
+.tx-ewm-top .iconfont,.tx-ewm-top image {
+    width: 200rpx;
+    height: 200rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tx-ewm-top image {
+    border: 1px solid #ccc;
+}
+
+.tx-ewm-bot {
+    color: #949393;
+    padding-bottom: 30rpx;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tx-ewm-bot text {
+    margin-right: 10rpx;
+    font-size: 30rpx;
+}

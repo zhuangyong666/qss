@@ -1,0 +1,92 @@
+<view class="nav  bg-white" style="height:{{navH}}px">
+    <view class="nav-title">
+        <view class="back">
+            <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+            <view class="back-line"></view>
+            <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+        </view>
+    </view>
+</view>
+<view class="container-page">
+    <view class="page-title">
+        <view bindtap="showInfo" class="rule">规则 <text class="iconfont icon-youyou- rule-icon"></text>
+        </view>
+        <image class="page-title-img" src="../../public/images/rush-buy.png" style="margin-top:{{navH}}px;"></image>
+    首次访问小程序的用户才算新用户哦~
+  </view>
+    <view class="page-flow">
+        <view class="page-flow-top">
+            <text class="iconfont icon-gouwudai icon"></text>
+            <text class="iconfont icon-youyou-"></text>
+            <text class="iconfont icon-wink icon"></text>
+            <text class="iconfont icon-youyou-"></text>
+            <text class="iconfont icon-fahuo icon"></text>
+        </view>
+        <view class="page-flow-bottom">
+            <view class="flow-item">
+                <text class="iconfont icon-11"></text>
+        选择商品
+      </view>
+            <view class="flow-item d-item">
+                <text class="iconfont icon-icon-test"></text>
+        邀请新用户下单
+      </view>
+            <view class="flow-item">
+                <text class="iconfont icon-three"></text>
+        订单发货
+      </view>
+        </view>
+        <swiper bindchange="swiperChange" circular="true" class="main-swiper" duration="1000" nextMargin="60px" previousMargin="70px">
+            <swiper-item wx:for="{{goodsList}}" wx:key="index">
+                <view bindtap="toGoodsdetails" class="goods-card {{nowIdx==index?'le-active':''}}" data-goods_id="{{item.goods_id}}" data-id="{{item.id}}" data-source="{{item.source}}">
+                    <image class="swiper-img " mode="aspectFill" src="{{item.info['img']}}"></image>
+                    <view class="card-bot">
+                        <view class="goods-title">
+              {{item.info['title']}}
+            </view>
+                        <view class="old-price">
+              原价：{{item.info['discount']}}
+            </view>
+                        <view class="rush-buy">
+              1元抢购
+            </view>
+                    </view>
+                </view>
+            </swiper-item>
+        </swiper>
+        <view class="page-btn">
+            <view bindtap="toRushorder" class="page-btn-left">我的订单</view>
+            <button bindtap="toShareRushbuy" class="page-btn-right">告诉好友</button>
+        </view>
+    </view>
+</view>
+<import src="../templates/info.wxml"></import>
+<template is="infoModal" data="{{info:info}}"></template>
+<import src="../templates/login.wxml"></import>
+<template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+<view class="shade" wx:if="{{show_shareHelp}}"></view>
+<view class="time-limit" wx:if="{{show_shareHelp}}">
+    <view class="time-limit-box">
+        <view class="limit-box-top">
+            <view class="user-box">
+                <image class="user-avatar" mode="aspectFill" src="{{share_userinfo.avatar}}"></image>
+                <view class="user-box-right">
+                    <view class="user-name">{{share_userinfo.nickname}}</view>
+                    <view class="user-message">我在小程序用1元购买到了下面商品,赶紧下手!</view>
+                </view>
+            </view>
+            <view class="goods-box">
+                <image class="goods-box-img" mode="aspectFill" src="{{share_goodsinfo.img}}"></image>
+                <view class="godds-box-title">{{share_goodsinfo.title}}</view>
+            </view>
+        </view>
+        <view class="limit-box-bottom">
+            <view>你也可以直接用1元购买哦</view>
+            <view>限时两小时，抓紧哦！</view>
+            <view class="limit-time">
+        {{qgdjs_jo.hour}}:{{qgdjs_jo.min}}:{{qgdjs_jo.sec}}
+      </view>
+        </view>
+    </view>
+    <button bindtap="toGoodsdetails" class="limit-btn" data-come_share_id="{{rushbuylog_id}}" data-goods_id="{{share_goodsinfo.goods_id}}" data-id="{{share_rushbuylog.r_id}}" data-source="{{share_goodsinfo.source}}">1元抢购</button>
+</view>

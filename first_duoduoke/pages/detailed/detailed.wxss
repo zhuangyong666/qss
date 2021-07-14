@@ -1,0 +1,125 @@
+.bg-white {
+    background: #fff;
+    color: #000;
+}
+
+.bg-gray {
+    background-color: #fff;
+}
+
+.back {
+    border: 1px solid #ddd;
+    background-color: #eee;
+}
+
+.back-line {
+    background: #ddd;
+}
+
+.back>text {
+    color: #000;
+}
+
+.index-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    background-color: #fff;
+}
+
+.det-top {
+    font-size: 28rpx;
+    color: #a0a0a0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.genre::after {
+    border: 0;
+}
+
+.genre {
+    line-height: 40px;
+    padding: 0 10rpx;
+    border-bottom: 2px solid #fff;
+    box-sizing: border-box;
+    font-size: inherit;
+    margin: 0;
+    background-color: inherit;
+    border-radius: 0;
+}
+
+.det-top .active {
+    color: #f05853;
+    border-color: #f05853;
+}
+
+.blank {
+    height: 10px;
+    width: 100vw;
+    background-color: #f7f7f7;
+}
+
+.det-coin {
+    padding: 0 3vw;
+}
+
+.det-explain {
+    font-size: 26rpx;
+    color: #a1a1a1;
+    padding: 0 20rpx;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.det-explain view {
+    flex: 1;
+    text-align: center;
+    line-height: 36px;
+    letter-spacing: 2rpx;
+}
+
+.det-explain view:nth-child(1) {
+    flex: 2;
+    text-align: left;
+}
+
+.dex-scroll {
+    padding: 0 20rpx;
+}
+
+.det-act {
+    margin: 40rpx 0;
+    display: flex;
+    align-items: center;
+}
+
+.det-act view {
+    flex: 1;
+    text-align: center;
+    color: #322f38;
+    font-size: 26rpx;
+}
+
+.det-act view:nth-child(1) {
+    flex: 2;
+    text-align: left;
+}
+
+.det-act view:nth-last-child(1) {
+    font-size: 26rpx;
+    color: #f24863;
+    font-weight: 600;
+}
+
+.no-more {
+    width: 100%;
+    font-size: 24rpx;
+    color: #999;
+    margin: 50rpx 0 10rpx;
+    text-align: center;
+}

@@ -1,0 +1,56 @@
+<view class="nav bg-white nav-color" style="height:{{navH}}px">
+    <view class="nav-title">
+        <view class="video-title">{{video_title}}</view>
+        <text bindtap="navBack" class="back iconfont icon-jiantou-copy"></text>
+    </view>
+</view>
+<import src="../templates/login.wxml"></import>
+<view class="container-v">
+    <swiper bindanimationfinish="onChange" current="{{current}}" duration="{{duration}}" style="height:100%;" vertical="true">
+        <swiper-item wx:for="{{vListAll}}" wx:for-index="vdx" wx:key="index">
+            <view class="default-img" wx:if="{{current+1<index||current-1>index}}">
+        loading（只渲染当前卡片及其前后各一张卡片的内容）
+      </view>
+            <view class="video-main" wx:else>
+                <video autoplay="{{current==0&&item.goods_id==id}}" controls="{{false}}" customCache="{{false}}" enablePlayGesture="{{true}}" id="pvd{{item.goods_id}}" loop="{{true}}" poster="{{item.videoCoverImg}}" src="{{item.videoUrl}}"></video>
+                <view class="goods-card">
+                    <image class="goods-img" mode="aspectFill" src="{{item.mainpic}}"></image>
+                    <view class="goods-main">
+                        <view class="goods-title">
+                {{item.title}}
+              </view>
+                        <view class="goods-price">
+                            <view class="now-price">￥{{item.actualPrice}}</view>
+                            <view class="coupon"> 券 ￥{{item.couponPrice}} </view>
+                            <view class="coupon" wx:if="{{item.bouns}}">买立{{appletKeyword?appletKeyword:'赚'}} ￥{{item.bouns}} </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="fuc-box">
+                    <view catchtap="dianZan" class="fuc-item" data-vdx="{{vdx}}">
+                        <view>
+                            <text class="iconfont icon-dianzan1 {{item.zan?'iszan':''}}"></text>
+                        </view>
+              {{item.videoLikeCount}}
+            </view>
+                    <view catchtap="copyGuideArt" class="fuc-item" data-art="{{item.guide_article}}">
+                        <view>
+                            <text class="iconfont icon-tubiao"></text>
+                        </view>
+              文案
+            </view>
+                    <button class="fuc-btn" data-vdx="{{vdx}}" openType="share">
+                        <view>
+                            <text class="iconfont icon-fenxiang1"></text>
+                        </view>
+              分享
+            </button>
+                </view>
+                <image catchtap="toGoodsPage" class="buy-img" data-goods_id="{{item.goods_id}}" mode="aspectFill" src="../../public/images/buy-goods.png">
+                    <view class="buy-msg">购买</view>
+                </image>
+            </view>
+        </swiper-item>
+    </swiper>
+    <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+</view>

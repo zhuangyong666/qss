@@ -1,0 +1,93 @@
+<view class="nav bg-white {{showNavcolor?'nav-color':''}}" style="height:{{navH}}px">
+    <view class="nav-title">
+        <view class="back">
+            <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+            <view class="back-line"></view>
+            <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+        </view> 购物红包
+  </view>
+</view>
+<view class="container-page">
+    <view class="pure-bottom">
+        <image class="save-money-img" src="../../public/images/shengqian.png" style="top:{{navH}}px;"></image>
+        <view class="page-bottom-card">
+            <view class="main-title">玩法规则</view>
+            <view class="main-msg">1.下单后，购买者可以获得一个购物红包</view>
+            <view class="main-msg">2.红包分享给好友可以帮拆，各自得红包</view>
+        </view>
+    </view>
+    <view class="enve-list-box">
+        <view class="title">
+            <view class="left-line-box">
+                <view class="left-line"></view>
+                <view class="circular"></view>
+            </view>
+      红包列表
+      <view class="right-line-box">
+                <view class="circular"></view>
+                <view class="right-line"></view>
+            </view>
+        </view>
+        <view class="no-enve-list" wx:if="{{list==false}}">
+            <text class="iconfont icon-hong_bao"></text>
+            <view>还没有购物红包呢</view>
+            <view bindtap="goIndex" class="no-enve-list-btn">
+        立即去下单 领红包
+      </view>
+        </view>
+        <view class="enve-list" wx:if="{{list}}" wx:for="{{list}}" wx:key="id">
+            <view bindtap="toEnvelopemain" class="enve-item-box" data-shopred_id="{{item.id}}">
+                <view class="enve-item">
+                    <view class="enve-item-left">
+                        <image class="enve-img" src="../../public/images/env.png"></image>
+                        <view class="enve-item-main">
+                            <view class="enve-item-price">{{item.money}} <text>元红包</text>
+                            </view>
+              {{item.people_num}}人已拆
+              <progress activeColor="#F43F1C" backgroundColor="#E9E9E9" borderRadius="20" class="main-progress" percent="{{item.progress}}" strokeWidth="20">
+                                <text>已拆{{item.people_money}}元</text>
+                            </progress>
+                        </view>
+                    </view>
+                    <view class="enve-item-right" wx:if="{{item.difftime!=''}}">
+                        <view>求帮拆</view>
+            {{item.difftime}}
+          </view>
+                    <view class="enve-item-right" wx:if="{{item.difftime==''}}">
+                        <text class="iconfont icon-yiguoqi"></text>
+                    </view>
+                    <view class="enve-item-shade" wx:if="{{item.difftime==''}}"></view>
+                </view>
+                <view class="enve-form">
+          来自 <view>{{item.title}}</view> 的订单
+        </view>
+            </view>
+        </view>
+    </view>
+    <view class="rec-goods-list">
+        <view class="title">
+            <view class="left-line-box">
+                <view class="left-line"></view>
+                <view class="circular"></view>
+            </view>
+      下单领取更多红包
+      <view class="right-line-box">
+                <view class="circular"></view>
+                <view class="right-line"></view>
+            </view>
+        </view>
+        <view class="rec-box">
+            <view catchtap="toOtherGoods" class="rec-card" data-goods_id="{{goods['goods_id']}}" data-goods_sign="{{goods['goods_sign']}}" wx:for="{{hotGoodsList}}" wx:for-index="hgdx" wx:for-item="goods" wx:key="hgl">
+                <image class="rec-card-img" mode="aspectFill" src="{{goods['goods_thumbnail_url']}}"></image>
+                <view class="rec-card-main">
+                    <view class="rec-card-title">{{goods['goods_name']}}</view>
+                    <view class="rec-card-enve">
+                        <text class="iconfont icon-hongbao"></text>
+                        <view class="price">{{goods['goods_redpack']}}</view>
+            元红包
+          </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

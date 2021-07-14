@@ -1,0 +1,12 @@
+<template name="infoModal">
+    <view class="re-bg" wx:if="{{info.show}}"></view>
+    <view class="re-fix" wx:if="{{info.show}}">
+        <view class="ref-t">
+            <image class="ref-img" mode="widthFix" src="/first_duoduoke/public/images/info.png"></image>
+        </view>
+        <view class="ref-c">
+            <text decode="{{true}}" space="nbsp">{{info.cnt}}</text>
+        </view>
+        <view bindtap="hideInfo" class="ref-b">我知道了</view>
+    </view>
+</template>

@@ -1,0 +1,89 @@
+<view class="">
+    <view class="nav bg-white" style="height:{{navH}}px">
+        <view class="nav-title">
+      {{opt_name}}
+      <view class="back">
+                <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+                <view class="back-line"></view>
+                <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+            </view>
+        </view>
+    </view>
+    <view class="bg-gray overflow" style="margin-top:{{navH}}px;">
+        <view class="hidden">
+            <view class="screen {{menuFixed?'fixed':''}}" id="affix" style="top:{{menuFixed?navH:''}}px;">
+                <form bindsubmit="sortGoods" class="act-fotm" data-type="1" reportSubmit="true">
+                    <button class="screen-act" formType="submit">
+                        <view class="screen-text scr-act {{type==1?'active':''}}">默认</view>
+                    </button>
+                </form>
+                <form bindsubmit="sortGoods" class="act-fotm" data-type="2" reportSubmit="true">
+                    <button class="screen-act" formType="submit">
+                        <view class="screen-text {{type==2?'active':''}}">销量</view>
+                        <view class="screen-ud">
+                            <text class="iconfont icon-jiantou_shang {{type==2&&sort==0?'curr':''}}"></text>
+                            <text class="iconfont icon-jiantou_xia {{type==2&&sort==1?'curr':''}}"></text>
+                        </view>
+                    </button>
+                </form>
+                <form bindsubmit="sortGoods" class="act-fotm" data-type="3" reportSubmit="true">
+                    <button class="screen-act" formType="submit">
+                        <view class="screen-text {{type==3?'active':''}}">价格</view>
+                        <view class="screen-ud">
+                            <text class="iconfont icon-jiantou_shang {{type==3&&sort==0?'curr':''}}"></text>
+                            <text class="iconfont icon-jiantou_xia {{type==3&&sort==1?'curr':''}}"></text>
+                        </view>
+                    </button>
+                </form>
+                <form bindsubmit="sortGoods" class="act-fotm" data-type="4" reportSubmit="true">
+                    <button class="screen-act" formType="submit">
+                        <view class="screen-text {{type==4?'active':''}}">佣金</view>
+                        <view class="screen-ud">
+                            <text class="iconfont icon-jiantou_shang {{type==4&&sort==0?'curr':''}}"></text>
+                            <text class="iconfont icon-jiantou_xia {{type==4&&sort==1?'curr':''}}"></text>
+                        </view>
+                    </button>
+                </form>
+            </view>
+            <view class="article">
+                <view class="{{menuFixed?'blank':''}}"></view>
+                <view bindtap="toGoodsDetail" class="article-act" data-goods_id="{{goods['goods_id']}}" data-goods_sign="{{goods['goods_sign']}}" wx:for="{{goodsList}}" wx:for-item="goods" wx:key="gl">
+                    <image lazyLoad class="article-img" mode="aspectFill" src="{{goods['goods_thumbnail_url']}}"></image>
+                    <view class="article-name">{{goods['goods_name']}}</view>
+                    <view class="article-info">
+                        <view class="ai-l">
+                            <view>券</view>
+                            <view>￥{{goods['coupon_discount']/100}}</view>
+                        </view>
+                        <view class="ai-cr-box">
+                            <view class="ai-c">券后</view>
+                            <view class="ai-r">￥<text>{{( goods['min_group_price']-goods['coupon_discount'] )/100}}</text>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="article-sell">
+                        <view class="as-l">销量{{goods['sales_tip']}}</view>
+                        <view class="as-r">
+                            <view>原价</view>
+                            <view class="as-r-sum">￥{{goods['min_group_price']/100}}</view>
+                        </view>
+                    </view>
+                    <view class="article-make">
+                        <view class="am-l" wx:if="{{goods['bounss']!=''}}">
+                            <view class="arrows-box">
+                                <text class="arrows iconfont icon-jiantouarrow499"></text>
+                            </view>
+                            <view>升级<block wx:if="{{appletKeyword}}">{{appletKeyword}}</block>
+                                <block wx:else>赚</block>{{goods['bounss']}}</view>
+                        </view>
+                        <view class="am-r">
+                            <view class="am-kz">{{appletKeyword}}</view>
+                            <view class="am-sum">￥<text>{{goods['bouns']}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,82 @@
+<view class="nav bg-white {{showNavcolor?'nav-color':''}}" style="height:{{navH}}px">
+    <view class="nav-title">
+        <view class="back">
+            <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+            <view class="back-line"></view>
+            <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+        </view>
+        <view>免单红包</view>
+    </view>
+</view>
+<import src="../templates/info.wxml"></import>
+<import src="../templates/login.wxml"></import>
+<view class="container" style="background-image: url({{imgPath}}share1.jpg);">
+    <scroll-view bindscroll="bindscroll" scrollY="true">
+        <view class="page-top" style="margin-top:{{navH}}px;">
+            <view bindtap="showInfo" class="rule">规则 <text class="iconfont icon-youyou- rule-icon"></text>
+            </view>
+            <image class="page-image" src="{{imgPath}}miandan.png"></image>
+        </view>
+        <view class="card-main">
+            <view class="card-box" wx:for="{{list}}" wx:key="id">
+                <view class="time">{{item.grant_time}}</view>
+                <view class="card">
+                    <view catchtap="toOtherGoods" class="card-top" data-goods_id="{{item.maxinfo.goods_id}}" wx:if="{{item.is_win==1}}">
+                        <view class="card-t-t">
+                            <view class="card-t-t-left">
+                                <image class="avater" mode="aspectFill" src="{{item.maxinfo.avatar}}"></image>
+                {{item.maxinfo.nickname}}
+              </view>
+                            <view class="card-t-t-right">
+                手气最佳
+                <text>抢到{{item.maxinfo.maxmoney}}元</text>
+                            </view>
+                        </view>
+                        <view class="card-t-main">
+                            <image class="goods-img" mode="aspectFill" src="{{item.maxinfo.img}}"></image>
+                            <view class="card-t-main-right">
+                                <view class="goods-title">{{item.maxinfo.title}}</view>
+                                <view class="goods-price">
+                                    <view>¥ {{item.maxinfo.price}}</view>
+                                    <view>获得免单资格</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view bindtap="onshowBighb" class="card-top-d {{item.info==''?'card-top-dxz':''}}" data-freered_id="{{item.id}}" wx:if="{{item.is_win==0}}">
+                        <image class="top-d-img" mode="aspectFill" src="{{imgPath}}hongbao.png"></image>
+                        <view class="top-d-right">
+              {{item.grant_time}} 免单红包
+              <text>手气最佳 立享免单</text>
+                        </view>
+                    </view>
+                    <view class="card-bottom" wx:if="{{item.info!=''}}">
+                        <view class="message" wx:for="{{item.info}}" wx:for-item="info" wx:key="idx">{{info.nickname}}抢到 <text>{{info.money}}元；</text>
+                        </view>
+                    </view>
+                    <image class="card-tips-img" src="{{imgPath}}hongbao2.png" wx:if="{{item.is_win==1}}">
+                        <view class="card-tips-img-m">免单成功</view>
+                    </image>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+    <template is="infoModal" data="{{info:info}}"></template>
+    <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+</view>
+<view bindtap="toShare" class="share">
+    <text class="iconfont icon-fenxiang1"></text>
+  分享
+</view>
+<view bindtap="onhideBighb" class="shade" wx:if="{{showBighb}}"></view>
+<view class="placeAnorder" wx:if="{{showBighb}}">
+    <image class="shade-img" mode="aspectFill" src="{{imgPath}}big-hb.png">
+        <view catchtap="toHotgoodsrec" class="placeAnorder-btn"></view>
+    </image>
+</view>
+<view bindtap="onhideBighb" class="shade" wx:if="{{showWinMoney}}"></view>
+<view class="placeAnorder" wx:if="{{showWinMoney}}">
+    <image class="shade-img" mode="aspectFill" src="{{imgPath}}big-hb1.png">
+        <view catchtap="toHotgoodsrec" class="placeAnorder-btn get-money-btn">获得{{get_money}}元奖励</view>
+    </image>
+</view>

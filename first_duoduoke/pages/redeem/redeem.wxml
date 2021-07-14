@@ -1,0 +1,33 @@
+<view class="">
+    <view class="nav bg-white" style="height:{{navH}}px">
+        <view class="nav-title">
+      金币明细
+      <view class="back">
+                <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+                <view class="back-line"></view>
+                <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+            </view>
+        </view>
+    </view>
+    <view class="bg-gray overflow" style="margin-top:{{navH}}px;">
+        <view class="hidden">
+            <view class="red-top">
+                <view class="rt-tit">我的金币</view>
+                <view class="rt-num">{{uInfo?uInfo.coin:'0'}}</view>
+                <view class="rt-info">共兑换<text>{{cal?cal.num:'0'}}</text>次，赚了<text>{{cal?cal.total_money:'0'}}</text>元</view>
+            </view>
+            <view class="rc-b">
+                <view class="rcb-bot">金币明细</view>
+                <view class="rcb-all">
+                    <view class="rcb-act" wx:for="{{coinList}}" wx:for-index="cdx" wx:key="coinList">
+                        <view class="rcba-l">
+                            <view class="rcba-word">{{item.change_desc}}</view>
+                            <view class="rcba-time">{{item.create_time}}</view>
+                        </view>
+                        <view class="rcba-l">{{item.type==1?'+':'-'}}{{item.coin}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

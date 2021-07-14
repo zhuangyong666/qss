@@ -1,0 +1,110 @@
+.tra-act {
+    background-color: #fff;
+    margin: 20rpx 0;
+    padding: 30rpx;
+    display: flex;
+    align-items: center;
+}
+
+.tra-img {
+    width: 30vw;
+    height: 30vw;
+    border-radius: 5px;
+    margin-right: 30rpx;
+}
+
+.tra-r {
+    height: 30vw;
+    flex: 1;
+    display: flex;
+    flex-flow: column;
+}
+
+.trar-name {
+    color: #333;
+    font-size: 32rpx;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    word-break: break-all;
+}
+
+.trar-b {
+    flex: 1;
+    flex-flow: column;
+    margin-top: 10rpx;
+}
+
+.trar-b,.trar-bt {
+    display: flex;
+    justify-content: space-between;
+}
+
+.trar-bt {
+    color: #999;
+    align-items: center;
+}
+
+.trar-btl {
+    font-size: 26rpx;
+}
+
+.trar-btr {
+    font-size: 50rpx;
+}
+
+.trar-bb {
+    font-size: 26rpx;
+    color: #eb1713;
+    line-height: 50rpx;
+}
+
+.trar-bb text {
+    font-size: 36rpx;
+    font-weight: bolder;
+}
+
+.share-btn {
+    float: right;
+    width: 60rpx;
+    background: #eb1713;
+    color: #fff;
+    padding: 0 10rpx 0 45rpx;
+    border-radius: 50rpx 0 0 50rpx;
+    font-size: 22rpx;
+    box-sizing: inherit;
+    text-align: left;
+}
+
+.red-color {
+    color: #f53415;
+}
+
+.MGJ-color {
+    color: #f07;
+}
+
+.WPH-color {
+    color: #ff00b1;
+}
+
+.SN-color {
+    color: #f90;
+}
+
+.TB-color {
+    color: #ff5000;
+}
+
+.icon-tianmao {
+    color: #d81e06;
+}
+
+.KL-color {
+    color: #fb2236;
+}
+
+.SP-color {
+    color: #ff6146;
+}

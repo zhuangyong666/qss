@@ -1,0 +1,88 @@
+<view class="container">
+    <view class="index-top" style="height:{{navH}}px">
+        <view class="nav" style="height:{{navH}}px">
+            <view class="nav-title">
+        智能导购
+        <view class="back">
+                    <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+                    <view class="back-line"></view>
+                    <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+                </view>
+            </view>
+        </view>
+        <view class="topBar">
+            <view class="top-tips">将“智能导购”分享给好友，依然可以获得销售佣金</view>
+            <view class="top-icon iconfont icon-fenxiang"></view>
+        </view>
+    </view>
+    <scroll-view scrollTop="{{scrollTopVal}}" scrollY="true" style="height:{{pageHeight}}px;width: 100%;display: flex;flex-direction: column;margin-top:{{navH+plusH}}px;">
+        <view class="talkingBox">
+            <block wx:for="{{chatList}}" wx:for-index="cdx" wx:for-item="chat" wx:key="chlist">
+                <view class="robots" wx:if="{{chat.from=='official'}}">
+                    <view class="headIcon">
+                        <image src="{{chat.avatar}}"></image>
+                    </view>
+                    <view class="RBT-chatBox  clearfix">
+                        <view class="robotsName">{{chat.name}}</view>
+                        <view class="RBT-content" wx:if="{{chat.type=='text'}}">
+                            <view space="emsp">{{chat.content}}</view>
+                        </view>
+                        <view class="RBT-content" wx:if="{{chat.type=='goods'}}">
+                            <view bindtap="toGoodsPage" class="goods-card" data-goods_id="{{chat.goods.id}}">
+                                <view class="goods-card-icon">
+                                    <image src="{{chat.goods.store_logo}}"></image>
+                                    <text>{{chat.goods.store_name}}</text>
+                                </view>
+                                <view class="goods-card-title">
+                                    <text>{{chat.goods.title}}</text>
+                                </view>
+                                <view class="goods-card-main">
+                                    <image mode="aspectFill" src="{{chat.goods.img}}"></image>
+                                    <view class="goods-card-m-details">
+                                        <text class="details-title">{{chat.goods.title}}</text>
+                                        <view class="details-price">
+                                            <view class="details-price-tag"></view>
+                                            <view class="details-curPrice">¥<text>{{chat.goods.price}}</text>
+                                            </view>
+                                            <view class="details-oldPrice">¥{{chat.goods.org_price}}</view>
+                                        </view>
+                                    </view>
+                                </view>
+                                <view class="goods-card-button">
+                                    <text class="coupon">{{chat.goods.coupon}}元</text>
+                    优惠券
+                  </view>
+                            </view>
+                        </view>
+                        <view class="RBT-time">{{chat.time_str}}</view>
+                    </view>
+                </view>
+                <view class="user" wx:if="{{chat.from=='user'}}">
+                    <view class="headIcon">
+                        <image src="{{chat.avatar}}"></image>
+                    </view>
+                    <view class="user-chatBox clearfix">
+                        <view class="user-content">
+                            <view>{{chat.content}}</view>
+                        </view>
+                        <view class="user-time">{{chat.time_str}}</view>
+                    </view>
+                </view>
+            </block>
+        </view>
+        <view class="bottom-box">
+            <view class="bottom-label" wx:if="{{hot_skey}}">
+                <text>我想</text>
+                <scroll-view scrollX="true">
+                    <view class="key-box">
+                        <view bindtap="aiSearch" class="hot-key" data-key="{{item}}" wx:for="{{hot_skey}}">{{item}}</view>
+                    </view>
+                </scroll-view>
+            </view>
+            <view class="inputRoom">
+                <input bindblur="setSearchKey" bindconfirm="aiSearch" bindinput="setSearchKey" confirmType="发送" placeholder="你想买什么？" placeholderStyle="color:#aaa;" type="text" value="{{keyword}}"></input>
+                <view bindtap="aiSearch" class="button">发送</view>
+            </view>
+        </view>
+    </scroll-view>
+</view>

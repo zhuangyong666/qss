@@ -1,0 +1,281 @@
+.nav {
+    z-index: 999;
+    position: fixed;
+    left: 0;
+    right: 0;
+}
+
+.nav-color {
+    transition: 1s;
+}
+
+.nav-title {
+    z-index: 999;
+    color: #fff;
+    font-size: 32rpx;
+}
+
+.container-s {
+    flex-direction: column;
+    background: #f5f5f5;
+}
+
+.container-s,.page-top {
+    display: flex;
+}
+
+.page-top {
+    padding: 30rpx;
+    flex-direction: row;
+    background: #fff;
+}
+
+.card-img {
+    width: 240rpx;
+    height: 240rpx;
+    border-radius: 6px;
+    background: #eee;
+    margin-right: 20rpx;
+}
+
+.card-main {
+    display: flex;
+    flex: 1;
+    height: 240rpx;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-title {
+    font-size: 30rpx;
+    font-weight: 700;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.card-data {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.card-d-t {
+    flex-direction: row;
+}
+
+.card-d-t,.sale-info-l {
+    display: flex;
+    align-items: center;
+}
+
+.sale-info-l {
+    font-size: 22rpx;
+    color: #fff;
+    top: .5rem;
+    right: 20rpx;
+}
+
+.sale-info-l .bcardl {
+    padding: 6rpx 8rpx;
+    background: #2b2e36;
+    color: #f5dfc2;
+    border-right: 1px dashed #fff;
+    border-radius: 0 3px 3px 0;
+}
+
+.sale-info-l .bcardr {
+    background: linear-gradient(90deg,#fae6c5,#f9ddb7);
+    color: #3d3036;
+    padding: 6rpx 10rpx;
+    border-radius: 3px 0 0 3px;
+}
+
+.sale-info-l .quanl {
+    padding: 6rpx 8rpx;
+    background-color: #f44169;
+    border-radius: 0 3px 3px 0;
+    border-right: 1px dashed #fff;
+}
+
+.sale-info-l .quanr {
+    padding: 6rpx 10rpx;
+    background: linear-gradient(90deg,#f44169,#ef5d4e);
+    border-radius: 3px 0 0 3px;
+}
+
+.tag-d-one {
+    border: 2px solid #fe3821;
+    border-radius: 4px;
+    background: #fdf3f2;
+    font-size: 24rpx;
+    font-weight: 700;
+    color: #fe3821;
+    padding: 0 6rpx;
+    margin-left: 10rpx;
+}
+
+.card-d-m {
+    margin: 6rpx 0;
+}
+
+.card-d-m,.now-price {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.now-price {
+    text-align: end;
+    font-size: 24rpx;
+    font-weight: 700;
+    color: #fe3821;
+}
+
+.now-price>text {
+    font-size: 34rpx;
+}
+
+.old-price {
+    font-size: 24rpx;
+    color: #8b9397;
+    margin-left: 10rpx;
+}
+
+.old-price>text {
+    text-decoration: line-through;
+}
+
+.card-d-b {
+    font-size: 24rpx;
+    color: #7e7e7e;
+}
+
+.card-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 130rpx;
+    line-height: 2;
+    margin: 0;
+    padding: 0;
+    border-radius: 30px;
+    color: #fff;
+    background: #fe3821;
+    box-shadow: 0 0 6px #f06758;
+    font-size: 28rpx;
+}
+
+.page-main {
+    margin: 30rpx 0;
+    flex-direction: column;
+    padding: 30rpx;
+    background: #fff;
+}
+
+.page-main,.page-main-top {
+    display: flex;
+}
+
+.page-main-top {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20rpx;
+}
+
+.page-main-top>view {
+    font-size: 30rpx;
+    margin-right: 30rpx;
+}
+
+.act {
+    font-weight: 700;
+    color: #fe3821;
+    border-bottom: 4px solid #fe3821;
+}
+
+.page-main-m {
+    height: 500rpx;
+    background: #f5f5f5;
+}
+
+.page-bottom {
+    display: flex;
+    flex-direction: column;
+    padding: 30rpx;
+    background: #fff;
+}
+
+.p-tag {
+    font-size: 38rpx;
+    font-weight: 700;
+    color: #000;
+    margin: 10rpx 0 20rpx;
+}
+
+.card {
+    padding-top: 40rpx;
+    border-top: 1px solid #f1f1f1;
+    margin-bottom: 40rpx;
+    display: flex;
+    flex-direction: row;
+}
+
+.red-color {
+    color: #f53415;
+}
+
+.MGJ-color {
+    color: #f07;
+}
+
+.WPH-color {
+    color: #ff00b1;
+}
+
+.SN-color {
+    color: #f90;
+}
+
+.TB-color {
+    color: #ff5000;
+}
+
+.icon-tianmao {
+    color: #d81e06;
+}
+
+.KL-color {
+    color: #fb2236;
+}
+
+.hisp {
+    width: 100%;
+    position: relative;
+}
+
+.hisp .hisp-t {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 30rpx;
+    position: absolute;
+    right: 0;
+    top: 20px;
+}
+
+.hisp-t .hisp-l {
+    font-weight: 700;
+    font-size: 30rpx;
+}
+
+.hisp-t .hisp-r {
+    color: #a9a9a9;
+    font-size: 24rpx;
+}
+
+.hisp-r .hisp-lowest {
+    color: #ff6729;
+    font-weight: 700;
+}

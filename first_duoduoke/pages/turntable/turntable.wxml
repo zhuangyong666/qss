@@ -1,0 +1,136 @@
+<view class="nav bg-white" style="height:{{navH}}px">
+    <view class="nav-title">
+    转盘抽现金
+    <view class="back">
+            <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+            <view class="back-line"></view>
+            <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+        </view>
+    </view>
+</view>
+<view class="stick-nav" style="top:{{navH}}px;">
+    <swiper autoplay="true" circular="true" interval="3000" vertical="true">
+        <swiper-item class="hk-swi" wx:for="{{rotarydraw}}" wx:key="msg">
+            <image class="stick-nav-img" src="{{item.avatar}}"></image>
+            <view class="stick-nav-name">{{item.nickname}}</view>
+            <view class="stick-nav-winning" wx:if="{{item.r_id!=4}}">抽中{{item.station}}</view>
+            <view class="stick-nav-winning" wx:if="{{item.r_id==4}}">+1次抽奖机会</view>
+        </swiper-item>
+    </swiper>
+</view>
+<import src="../templates/login.wxml"></import>
+<view class="container-page" style="width:{{width}};">
+    <view class="page-title" style="margin-top:calc({{navH}}px + 35px);">转盘抽现金</view>
+    <view class="canvas-container">
+        <image class="canvas-img" src="../../public/images/lunpan.gif"></image>
+        <view animation="{{animationData}}" class="canvas-content">
+            <image class="canvas-content-img" src="{{imgPath}}zhuanpan.png"></image>
+            <canvas canvasId="lotteryCanvas" class="canvas-element" type="2d" wx:if="{{hidden_canvas}}"></canvas>
+            <view class="canvas-list">
+                <view class="canvas-item" wx:for="{{awardsList}}" wx:key="awardsList">
+                    <view class="canvas-item-text " style="-webkit-transform: rotate({{item.turn}});transform: rotate({{item.turn}});color: {{item.color}};">
+                        <text class="canvas-item-text-inner" style="">{{item.award}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view bindtap="{{turning?'':'getLottery'}}" class="{{scale===1.4?'btnfont':'normal'}} canvas-btn {{turning?disabled:able}} {{chanceRemain==0?disabled:able}}">GO</view>
+    </view>
+    <view class="box">
+        <view class="skew-l">
+            <view class="skew-main-l"></view>
+        </view>
+        <view class="skew-r">
+            <view class="skew-main-r"></view>
+        </view>
+    </view>
+    <view class="page-msg">
+        <view class="residue-msg">当前剩余 <text>{{count}}</text> 次</view>
+        <view class="everyday-msg">每日均可免费获得{{share_Rotary_coin}}次抽奖机会<block wx:if="{{video_ad_code}}">，也可观看视频增加抽奖次数</block>
+        </view>
+        <view class="altogether-msg">共 <text>{{in_users}}</text> 人参与，共发放 <text>{{rotarydraw_sum}}</text> 元</view>
+    </view>
+    <view class="record-list-box">
+        <view class="box-title">中奖记录</view>
+        <view class="record-list">
+            <view class="record-list-item {{idx%2==0?'color-1':'color-2'}}" wx:for="{{rotarydraw}}" wx:for-index="idx" wx:key="rotary">
+                <view class="item-time">{{item.create_time}}</view>
+                <view class="item-awardMsg" wx:if="{{item.r_id!=4}}">抽中{{item.station}}</view>
+                <view class="item-awardMsg" wx:if="{{item.r_id==4}}">+1次抽奖机会</view>
+                <view class="item-user-name">{{item.nickname}}</view>
+            </view>
+        </view>
+    </view>
+    <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+</view>
+<image bindtap="onShowShareShade" class="share-btn-img" src="{{imgPath}}xiaozhuanpan.png">
+    <view class="share-btn">告诉好友</view>
+</image>
+<view catchtouchmove="nomove" class="shade" wx:if="{{showShareShade}}"></view>
+<view bindtap="chooseShareShade" catchtouchmove="nomove" class="share-shade" wx:if="{{showShareShade}}">
+    <image class="share-shade-img" mode="widthFix" src="{{poster}}"></image>
+    <view class="share-shade-btn-box">
+        <view bindtap="saveQrcodeToPhotosAlbum" class="share-shade-btn shade-btn-l">
+            <text class="iconfont icon-zhaopian"></text>
+      保存分享图
+    </view>
+        <button class="share-shade-btn shade-btn-r" openType="share">
+            <text class="iconfont icon-weixin"></text>
+      分享给好友或群
+    </button>
+    </view>
+</view>
+<view catchtouchmove="nomove" class="shade" wx:if="{{showNowinshade}}"></view>
+<view catchtouchmove="nomove" class="no-win" wx:if="{{showNowinshade}}">
+    <view class="no-win-top">
+    {{win_message}}
+  </view>
+    <view class="no-win-bot">
+        <view class="no-win-b-t">
+      今日爆品
+    </view>
+        <view catchtap="toGoodsPage" class="no-win-card" data-goods_id="{{goods.goods_id}}" data-goods_sign="{{goods.goods_sign}}" data-source="{{goods.source}}">
+            <image class="no-win-card-img" src="{{goods.img}}"></image>
+            <view class="no-win-card-right">
+                <view class="no-win-card-title">{{goods.title}}</view>
+                <view class="no-win-card-price">
+                    <view class="now-price">¥ <text>{{goods.now_price}}</text>
+                    </view>
+                    <view class="old-price">¥{{goods.price}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="chooseWinshade" class="no-win-choose">
+        <text class="iconfont icon-chahao"></text>
+    </view>
+</view>
+<view catchtouchmove="nomove" class="shade" wx:if="{{showWinshade}}"></view>
+<view catchtouchmove="nomove" class="win" wx:if="{{showWinshade}}">
+    <view class="win-top">
+        <image class="win-top-img" src="{{imgPath}}zhongjiang.png"></image>
+        <view class="win-top-t">
+      {{win_message}}
+    </view>
+        <view class="win-top-b">该现金红包可提现至微信钱包</view>
+    </view>
+    <view class="no-win-bot">
+        <view class="no-win-b-t">
+      今日爆品
+    </view>
+        <view catchtap="toGoodsPage" class="no-win-card" data-goods_id="{{goods.goods_id}}" data-goods_sign="{{goods.goods_sign}}" data-source="{{goods.source}}">
+            <image class="no-win-card-img" src="{{goods.img}}"></image>
+            <view class="no-win-card-right">
+                <view class="no-win-card-title">{{goods.title}}</view>
+                <view class="no-win-card-price">
+                    <view class="now-price">¥ <text>{{goods.now_price}}</text>
+                    </view>
+                    <view class="old-price">¥{{goods.price}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="chooseWinshade" class="win-choose">
+        <text class="iconfont icon-chahao"></text>
+    </view>
+</view>

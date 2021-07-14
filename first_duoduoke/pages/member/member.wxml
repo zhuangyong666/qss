@@ -1,0 +1,48 @@
+<view class="">
+    <view class="nav bg-white" style="height:{{navH}}px">
+        <view class="nav-title">
+      {{substitute_word?substitute_word:'我的下级'}}
+      <view class="back">
+                <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+                <view class="back-line"></view>
+                <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+            </view>
+        </view>
+    </view>
+    <view class="bg-gray overflow" style="margin-top:{{navH}}px;">
+        <view class="hidden">
+            <view class="ind-top">
+                <view class="upper">
+                    <view class="upper-act upper-l">
+                        <view class="upper-tit">邀请累计</view>
+                        <view class="upper-census">
+                            <text>{{userInfo.inviters}}</text>人</view>
+                    </view>
+                    <view class="upper-act">
+                        <view class="upper-tit">累计躺赚</view>
+                        <view class="upper-census">
+                            <text>{{userInfo.childBouns}}</text>元</view>
+                    </view>
+                </view>
+                <button bindtap="goPartakeOf" class="lower">
+                    <view>继续邀请</view>
+                    <text class="iconfont icon-jiantou"></text>
+                </button>
+            </view>
+            <view class="mem-info">
+                <view class="mem-top">
+                    <view>用户名称</view>
+                    <view>贡献收入/元</view>
+                </view>
+                <view class="mem-act" wx:for="{{childList}}" wx:key="cl">
+                    <view class="mem-l">
+                        <image class="mem-img" mode="widthFix" src="{{item.avatar}}"></image>
+                        <view>{{item.nickname}}</view>
+                    </view>
+                    <view class="mem-r">+{{item.childBouns}}</view>
+                </view>
+                <view class="no-more">抱歉，没有更多数据了</view>
+            </view>
+        </view>
+    </view>
+</view>

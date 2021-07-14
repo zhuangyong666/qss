@@ -1,0 +1,55 @@
+<view class="">
+    <view class="index-top" style="height:calc({{navH}}px + {{plusH}}px);">
+        <view class="nav" style="height:{{navH}}px">
+            <view class="nav-title">
+        明细
+        <view class="back">
+                    <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+                    <view class="back-line"></view>
+                    <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+                </view>
+            </view>
+        </view>
+        <view class="topNavBar" style="height: {{plusH}}px;">
+            <view class="det-top">
+                <button bindtap="toChangeShow" class="genre {{detAct==1?'active':''}}" data-act="1">直接收入</button>
+                <button bindtap="toChangeShow" class="genre {{detAct==2?'active':''}}" data-act="2">间接收入</button>
+                <button bindtap="toChangeShow" class="genre {{detAct==3?'active':''}}" data-act="3">提现记录</button>
+            </view>
+            <view class="blank"></view>
+            <view class="det-coin">
+                <view class="det-explain">
+                    <view>时间</view>
+                    <view wx:if="{{detAct!=3}}">来源</view>
+                    <view>状态</view>
+                    <view>金额</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="bg-gray overflow" style="margin-top:calc({{navH}}px + {{plusH}}px);">
+        <view class="hidden">
+            <view class="dex-content" wx:if="{{detAct<3}}">
+                <view class="dex-scroll">
+                    <view class="det-act" wx:for="{{bounsList}}" wx:key="bl">
+                        <view>{{item.create_time}}</view>
+                        <view>{{item.source}}</view>
+                        <view>{{item.status==0?'审核中':item.status==1?'已结算':'已取消'}}</view>
+                        <view class="det-money">{{item.bouns}}</view>
+                    </view>
+                    <view class="no-more">抱歉，没有更多数据了</view>
+                </view>
+            </view>
+            <view class="dex-content" wx:if="{{detAct==3}}">
+                <view class="dex-scroll" style="height:calc(100vh - {{navH}}px - 89px);">
+                    <view class="det-act" wx:for="{{withdrawalList}}" wx:key="wl">
+                        <view>{{item.create_time}}</view>
+                        <view>{{item.status}}</view>
+                        <view class="det-money">{{item.money}}</view>
+                    </view>
+                    <view class="no-more">抱歉，没有更多数据了</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

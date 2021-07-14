@@ -1,0 +1,345 @@
+button::after {
+    border: 0;
+}
+
+.ind-top {
+    width: 100%;
+    height: 400rpx;
+    background: linear-gradient(90deg,#8d68d9,#fc4849,#fb7840);
+}
+
+.bg-gray {
+    background-color: #fff;
+}
+
+.my-top {
+    display: flex;
+    align-items: center;
+    margin-top: -320rpx;
+    padding: 0 4vw;
+}
+
+.my-top-l {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    margin-right: 20rpx;
+}
+
+.my-top-r {
+    color: #fff;
+    font-size: 28rpx;
+    font-weight: 700;
+}
+
+.my-top-nickname {
+    width: 220rpx;
+}
+
+.my-top-lev {
+    background: linear-gradient(90deg,#f8a559,#f8d057);
+    padding: 4rpx 20rpx;
+    font-size: 26rpx;
+    border-radius: 40rpx;
+    margin-top: 20rpx;
+    display: inline-flex;
+    font-weight: 700;
+}
+
+.my-user-all {
+    margin: 4vw;
+    background-color: #fff;
+    border-radius: 7px;
+    padding: 4vw;
+    font-size: 24rpx;
+    color: #a0a0a0;
+    box-shadow: 0 0 15px #ccc;
+}
+
+.mu-t {
+    justify-content: space-between;
+}
+
+.mu-t,.mu-why {
+    display: flex;
+    align-items: center;
+}
+
+.mu-why button {
+    font-size: 26rpx;
+    line-height: 26rpx;
+    margin-left: 8rpx;
+    margin-top: 5rpx;
+    padding: 0;
+    background-color: transparent;
+    color: inherit;
+}
+
+.money-larer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.money-larer text {
+    color: #fff;
+    font-size: 26rpx;
+    background-color: rgba(0,0,0,.7);
+    height: 90rpx;
+    line-height: 90rpx;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    padding: 0 50rpx;
+}
+
+.mu-t-tail {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    font-size: inherit;
+    color: #f24862;
+    background-color: inherit;
+    border-radius: 0;
+    line-height: inherit;
+}
+
+.mu-t-tail text {
+    font-size: 24rpx;
+    line-height: 24rpx;
+    font-weight: 600;
+}
+
+.mu-info {
+    display: flex;
+    padding: 30rpx 0 10rpx;
+}
+
+.mu-info-l {
+    flex: 1;
+    text-align: center;
+    border-right: 1px solid #e0e0e0;
+}
+
+.mu-info-r {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: column;
+}
+
+.mu-info-this {
+    justify-content: center;
+}
+
+.mu-info-q {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.mu-info-num {
+    color: #000;
+    margin: 16rpx 0;
+}
+
+.mu-info-num text {
+    font-size: 60rpx;
+    font-weight: bolder;
+    padding-right: 10rpx;
+}
+
+.mu-l-tit {
+    padding: 10rpx 0;
+}
+
+.mu-l-bot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10%;
+    margin-top: 16rpx;
+}
+
+.mu-l-bot view text {
+    margin-left: 10rpx;
+    color: #f24862;
+    font-weight: 700;
+}
+
+.mu-r-cashfor {
+    width: 70%;
+}
+
+.mu-r-cash {
+    height: 70rpx;
+    width: 100%;
+    border-radius: 70rpx;
+    line-height: 70rpx;
+    text-align: center;
+    background: linear-gradient(90deg,#ee5c4d,#f43f6c);
+    color: #fff;
+    letter-spacing: 2rpx;
+    padding: 0;
+    margin: 0;
+    font-size: inherit;
+}
+
+.my-user-chart {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 50rpx 4vw;
+}
+
+.m-u-f {
+    width: 49%;
+}
+
+.my-user-chbtn {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    height: inherit;
+    background-color: inherit;
+    border-radius: 0;
+    line-height: inherit;
+    display: flex;
+}
+
+.my-user-chbtn image {
+    width: 100%;
+    border-radius: 7px;
+}
+
+.my-user-coin {
+    padding: 0 4vw;
+}
+
+.my-user-act {
+    padding: 26rpx 0;
+    line-height: inherit;
+    display: flex;
+    align-items: center;
+    background-color: inherit;
+}
+
+button.my-user-act::after {
+    border: 0;
+    border-radius: 0;
+}
+
+.my-user-l {
+    font-size: 50rpx;
+    line-height: 50rpx;
+    color: #f0505a;
+    margin-right: 20rpx;
+}
+
+.my-user-r {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.my-user-r view {
+    font-size: 30rpx;
+}
+
+.my-user-r text {
+    font-size: 26rpx;
+    line-height: 26rpx;
+}
+
+.default-img {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    margin-right: 20rpx;
+    font-size: 70rpx;
+    line-height: 70rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e0e0e0;
+    color: #7c7a7a;
+}
+
+.hidden {
+    position: relative;
+}
+
+.infx-r {
+    position: absolute;
+    color: #fff;
+    text-align: center;
+}
+
+.infx-r text {
+    font-size: 30rpx;
+}
+
+.infx-r view {
+    font-size: 24rpx;
+    margin-top: 4rpx;
+    letter-spacing: 2rpx;
+}
+
+.g-views {
+    top: 90rpx;
+    right: 20vw;
+}
+
+.g-collects {
+    top: 90rpx;
+    right: 6vw;
+}
+
+.g-sub {
+    top: 90rpx;
+    right: 36vw;
+}
+
+.task-titles {
+    font-size: 24rpx;
+    color: #f24862;
+    position: absolute;
+    top: 20rpx;
+    right: -1vw;
+    width: 180rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 30rpx;
+    justify-content: space-between;
+    height: 50rpx;
+    background-color: #fff;
+    line-height: 2rpx;
+    border-radius: 50rpx 0 0 50rpx;
+    font-weight: 550;
+    padding-right: 0;
+    box-sizing: content-box;
+}
+
+.task-titles>text {
+    font-size: 26rpx;
+    margin-right: 20rpx;
+    font-weight: 550;
+}
+
+.icon-wenhao2 {
+    position: absolute;
+    top: 24rpx;
+    right: 8rpx;
+    z-index: 9999;
+}

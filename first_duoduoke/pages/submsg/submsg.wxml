@@ -1,0 +1,33 @@
+<view class="">
+    <view class="nav bg-white" style="height:{{navH}}px">
+        <view class="nav-title">
+      消息订阅
+      <view class="back">
+                <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+                <view class="back-line"></view>
+                <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+            </view>
+        </view>
+    </view>
+    <view class="bg-gray overflow" style="margin-top:{{navH}}px;">
+        <view class="hidden">
+            <view class="seamlessscrolling" wx:if="{{showTip}}">
+                <view class="seamlessscrolling-coin">强烈建议您在订阅授权窗口中下方点选“总是允许”选框，以便正常收到消息提醒，“订阅”按钮右上角的数字表示可发送服务消息的次数</view>
+            </view>
+            <view class="main" wx:for="{{subList}}" wx:for-index="sldx" wx:for-item="sub" wx:key="sl">
+                <view class="hot">
+                    <view>
+        {{sub.title}}
+      </view>
+                    <text>
+        {{sub.tip}}
+      </text>
+                </view>
+                <view bindtap="submsg" class="button" data-key="{{sub.key}}">
+                    <text style="background:{{themeColor}};">订阅</text>
+                    <view class="T-L-T-sum" wx:if="{{sub.count>0}}">{{sub.count}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

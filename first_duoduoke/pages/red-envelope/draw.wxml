@@ -1,0 +1,79 @@
+<view class="nav bg-white" style="height:{{navH}}px">
+    <view class="nav-title">
+        <text bindtap="navBack" class="back iconfont icon-jiantou-copy"></text>
+    </view>
+</view>
+<view class="draw-shade" wx:if="{{showDrawShade}}"></view>
+<view class="draw-main" wx:if="{{showDrawShade}}">
+    <image class="draw-img" src="{{imgPath}}draw.png">
+        <view bindtap="chooseDrawShade" class="skip"></view>
+        <view class="draw-img-msg">
+            <view class="avatarAndName" wx:if="{{user[0].nickname}}">
+                <image class="avatarAndName-avatar" src="{{user[0].avatar}}"></image>
+      {{user[0].nickname}}</view>
+            <text>送你一个红包</text>
+        </view>
+    </image>
+</view>
+<import src="../templates/login.wxml"></import>
+<view class="container">
+    <view class="pure-top">
+        <view class="pure-bottom">
+            <view class="page-bottom-card" wx:if="{{isReceive===true}}">
+                <view class="main-tips">恭喜获得
+          <image class="avatarAndName-avatar min-avatar" src="{{user[0].avatar}}"></image>
+          {{user[0].nickname}}发给你的
+        </view>
+                <view class="main-title min-sty">
+                    <font>{{user[0].money}}</font>元红包</view>
+                <view class="main-msg main-msgs">进入"我的-余额"中查看</view>
+            </view>
+            <view class="page-bottom-card" wx:if="{{isReceive===false}}">
+                <view class="main-title">你已经领过啦~</view>
+                <view class="main-msg">该现金红包每人限领一个，不要贪心哦~</view>
+            </view>
+        </view>
+    </view>
+    <view class="page-main">
+        <view bindtap="toRedEnvelope" class="main-skip">
+            <view class="main-skip-l">
+        我也要发100个红包
+        <text>100个红包已包好了</text>
+            </view>
+            <view class="main-skip-r">
+        去发红包
+      </view>
+        </view>
+        <view class="main-line">
+      随便看看
+      <view class="main-line-bot">
+                <view class="goods-card-box">
+                    <scroll-view bindscrolltolower="getHotGoods" class="scroll-box" scrollLeft="{{hotLeft}}" scrollX="true">
+                        <view catchtap="toGoodsPage" class="line-box" data-goods_id="{{goods['goods_id']}}" data-source="1" wx:for="{{hotGoodsList}}" wx:for-index="hgdx" wx:for-item="goods" wx:key="hgl">
+                            <view class="goods-card">
+                                <image class="card-img" src="{{goods['goods_thumbnail_url']}}"></image>
+                                <view class="card-title">{{goods['goods_name']}}</view>
+                                <view class="price-box">
+                                    <view class="sale">{{goods['sales_tip']}}单</view>
+                                    <view class="price">券后  ¥<text>{{( goods['min_group_price']-goods['coupon_discount'] )/100}}</text>
+                                    </view>
+                                </view>
+                                <button class="goods-btn">去看看</button>
+                            </view>
+                        </view>
+                    </scroll-view>
+                </view>
+            </view>
+        </view>
+        <view bindtap="toIndex" class="main-skip">
+            <view class="main-skip-l">
+        立即进入商城
+        <text>不怕没好货，就怕你不来</text>
+            </view>
+            <view class="main-skip-r">
+          回商城首页
+      </view>
+        </view>
+    </view>
+    <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+</view>

@@ -1,0 +1,150 @@
+<import src="../templates/login.wxml"></import>
+<import src="../templates/info.wxml"></import>
+<import src="../templates/search.wxml"></import>
+<view class="">
+    <view class="nav bg-white" style="height:{{navH}}px">
+        <view class="nav-title">
+      赚钱
+    </view>
+    </view>
+    <view class="bg-gray overflow" style="margin-top:{{navH}}px;">
+        <view class="hidden">
+            <view class="task-top">
+                <view bindtap="showInfo" class="task-title">规则说明</view>
+                <view bindtap="goRedeem" class="task-titles">金币明细</view>
+                <view class="task-act">
+                    <view class="tat-all">
+                        <view class="tat-tit">现金余额</view>
+                        <view class="tat-con">￥<text>{{uInfo?uInfo.money:'0.00'}}</text>
+                        </view>
+                        <view bindtap="toCash" class="tat-btn" wx:if="{{withdraw_open==1}}">提现</view>
+                    </view>
+                    <view class="tat-all">
+                        <view class="tat-tit">任务金币</view>
+                        <view class="tat-con">
+                            <image class="dalt-jb" mode="widthFix" src="/first_duoduoke/public/images/jb.png"></image>
+                            <text>{{uInfo?uInfo.coin:0}}</text>
+                        </view>
+                        <view bindtap="coinExCash" class="tat-btn">兑换 </view>
+                    </view>
+                </view>
+                <view class="task-share">
+                    <view class="task-info">
+                        <view class="ti-l">
+                            <view class="tilr-t">
+                                <text></text>
+                            </view>
+                            <view class="tilr-b">分享一次</view>
+                        </view>
+                        <view class="ti-c">
+                            <view class="tilr-t">
+                                <text></text>
+                            </view>
+                            <view class="tilr-b">分享微信群</view>
+                        </view>
+                        <view class="ti-r">
+                            <image mode="widthFix" src="/first_duoduoke/public/images/hb.png" style="width:70rpx;margin-top:-22rpx;position:relative;">
+                                <view style="position:absolute;bottom:4rpx;left:0;font-size:20rpx;color:#ffffff;width: 100%;text-align: center;"></view>
+                            </image>
+                            <view class="tilr-b" style="margin-top: 14rpx;">邀请一位好友</view>
+                        </view>
+                    </view>
+                    <view class="click-share">
+                        <button class="click-share-btn" openType="share" wx:if="{{isLogin}}">点击分享</button>
+                        <button bindtap="sharetoFq" class="click-share-btn" wx:else>点击分享</button>
+                    </view>
+                </view>
+            </view>
+            <view class="duties">
+                <view class="duties-tit">
+                    <view class="dt-l"></view>
+                    <view class="dt-c">日常任务</view>
+                    <view class="dt-r">{{taskLen}}</view>
+                </view>
+                <view class="duties-act" wx:for="{{taskList}}" wx:for-item="task" wx:key="taskList">
+                    <view class="da-l">
+                        <view class="da-lt">
+                            <view class="dalt-tit">{{task.title}}</view>
+                            <block wx:if="{{task.type==0}}">
+                                <image class="dalt-hb" mode="widthFix" src="/first_duoduoke/public/images/hb.png"></image>
+                                <view class="dalt-add">+{{task.money}}元</view>
+                            </block>
+                            <block wx:else>
+                                <image class="dalt-jb" mode="widthFix" src="/first_duoduoke/public/images/jb.png"></image>
+                                <view class="dalt-add-coin">+{{task.coin}}</view>
+                            </block>
+                        </view>
+                        <view class="da-lb">{{task.tip}}</view>
+                    </view>
+                    <view class="da-r" wx:if="{{isLogin}}">
+                        <button bindtap="toPartake" class="{{task.type==1?'da-rc':'da-top'}}" wx:if="{{task.label==7}}">{{task.type==1?'领金币':'去领钱'}}</button>
+                        <button bindtap="toCoupon" class="{{task.type==1?'da-rc':'da-top'}}" wx:if="{{task.label==1}}">{{task.type==1?'领金币':'去领钱'}}</button>
+                        <button bindtap="signIn" class="{{task.type==1?'da-rc':'da-top'}}{{task.dis?' dis':''}}" wx:if="{{task.label==2}}">{{task.type==1?'领金币':'去领钱'}}</button>
+                        <button bindtap="toInvite" class="{{task.type==1?'da-rc':'da-top'}}" wx:if="{{task.label==3}}">{{task.type==1?'领金币':'去领钱'}}</button>
+                        <button bindtap="goIndex" class="{{task.type==1?'da-rc':'da-top'}}{{task.dis?' dis':''}}" wx:if="{{task.label==4}}">{{task.type==1?'领金币':'去领钱'}}</button>
+                        <button bindtap="viewVideoAd" class="{{task.type==1?'da-rc':'da-top'}}{{task.dis?' dis':''}}" wx:if="{{task.label==5}}">{{task.type==1?'领金币':'去领钱'}}</button>
+                        <button bindtap="getRunStep" class="{{task.type==1?'da-rc':'da-top'}}{{task.dis?' dis':''}}" wx:if="{{task.label==6}}">{{task.type==1?'领金币':'去领钱'}}</button>
+                    </view>
+                    <view class="da-r" wx:else>
+                        <button bindtap="sharetoFq" class="da-top" wx:if="{{task.label==7}}">去邀请</button>
+                        <button bindtap="sharetoFq" class="da-rc" wx:else>去领钱</button>
+                    </view>
+                </view>
+            </view>
+            <view class="commend">
+                <view class="commend-tit">
+                    <view class="ct-spot">-------</view>
+                    <view class="ct-con">精选推荐</view>
+                    <view class="ct-spot">-------</view>
+                </view>
+                <view class="article">
+                    <view bindtap="toGoodsPage" class="article-act" data-goods_id="{{goods['goods_id']}}" data-goods_sign="{{goods['goods_sign']}}" wx:for="{{goodsList}}" wx:for-item="goods" wx:key="gl">
+                        <image class="article-img" mode="aspectFill" src="{{goods['goods_thumbnail_url']}}"></image>
+                        <view class="article-name">{{goods['goods_name']}}</view>
+                        <view class="article-info">
+                            <view class="ai-l" wx:if="{{goods['has_coupon']}}">
+                                <view>券</view>
+                                <view>￥{{goods['coupon_discount']/100}}</view>
+                            </view>
+                            <view class="ai-cr-box">
+                                <view class="ai-c">券后</view>
+                                <view class="ai-r">￥<text>{{( goods['min_group_price']-goods['coupon_discount'] )/100}}</text>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="article-sell">
+                            <view class="as-l">销量{{goods['sales_tip']}}</view>
+                            <view class="as-r">
+                                <view>原价</view>
+                                <view class="as-r-sum">￥{{goods['min_group_price']/100}}</view>
+                            </view>
+                        </view>
+                        <view class="article-make">
+                            <view class="am-l" wx:if="{{goods['bounss']!=''}}">
+                                <view class="arrows-box">
+                                    <text class="arrows iconfont icon-jiantouarrow499"></text>
+                                </view>
+                                <view>升级<block wx:if="{{appletKeyword}}">{{appletKeyword}}</block>
+                                    <block wx:else>赚</block>{{goods['bounss']}}</view>
+                            </view>
+                            <view class="am-r">
+                                <view class="am-kz">{{appletKeyword}}</view>
+                                <view class="am-sum">￥<text>{{goods['bouns']}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view bindtap="backTop" class="chest {{showtipOr?'box-box-a':'box-box-b'}}">
+                <image class="chest-img" mode="widthFix" src="/first_duoduoke/public/images/chest.png"></image>
+                <view class="chest-vi">领钱</view>
+            </view>
+        </view>
+    </view>
+    <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+    <template is="infoModal" data="{{info:info}}"></template>
+    <template is="searchModal" data="{{smartSou:smartSou}}"></template>
+</view>
+<import src="../templates/tab-bar.wxml"></import>
+<template is="footerWx" data="{{...tabBar}}"></template>

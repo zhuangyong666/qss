@@ -1,0 +1,77 @@
+<import src="../templates/login.wxml"></import>
+<view class="container">
+    <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+    <view class="nav bg-white" style="height:{{navH}}px">
+        <view class="nav-title">
+            <view class="back">
+                <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+                <view class="back-line"></view>
+                <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+            </view>
+        </view>
+    </view>
+    <view class="seamlessscrolling" style="margin-top:calc({{navH}}px);">
+        <view class="seamlessscrolling-coin" wx:if="{{showTip}}">提示:1.晒单奖励金额为:{{order_show_bouns}}元;2.用户通过晒单购买的商品将返佣给晒单用户.</view>
+    </view>
+    <view class="opt_goods" style="margin-top:10px;">
+        <text>1.选择商品</text>
+        <view bindtap="toOrders" class="opt_goods-1" data-balance="1" wx:if="{{goods_id==''}}">
+      +  选择晒单商品
+    </view>
+        <view class="opt_goods-2" wx:if="{{showGoods&&goodsList==''}}"></view>
+        <view class="opt_goods-2" wx:if="{{goods_id!=''&&goodsList!=''}}">
+            <image class="goods_img" src="{{goodsList.goods_image_url}}"></image>
+            <view class="goods_main">
+                <view class="goods_title">{{goodsList.goods_name}}</view>
+                <view class="goods_sales">{{goodsList.sales_tip}}人购买</view>
+                <view class="goods_price">¥{{yuan_price}}</view>
+            </view>
+        </view>
+        <text bindtap="closeGoodsId" class="aging" wx:if="{{goodsList!=''}}">重新选择</text>
+    </view>
+    <view class="opt_goods">
+        <text>2.写出真实感觉</text>
+        <view class="textarea-wrp">
+            <textarea bindinput="limit" maxlength="{{noteMaxLen}}" placeholder="宝贝满意你的期待吗？说说你的使用心得，分享给想买的他们吧！" placeholderStyle="color:#D6D6D6;" value="{{text}}"></textarea>
+        </view>
+        <text class="aging">已输入：{{current}}/{{noteMaxLen}}</text>
+    </view>
+    <view class="photoAndVideos">
+        <text>3.上传照片或视频（图片不少于3张，视频不低于10秒不高于60秒）</text>
+        <view class="opt_img clearfix" wx:if="{{path==[]}}">
+            <view class="close-icon" wx:for="{{pics}}" wx:key="index">
+                <image mode="aspectFill" src="{{item}}"></image>
+                <icon bindtap="closeImg" class="iconfont icon-chahao" data-index="{{index}}"></icon>
+            </view>
+            <view bindtap="onShade" class="add-img" wx:if="{{pics.length<=8}}">+</view>
+        </view>
+        <video controls id="myVideo" src="{{path}}" wx:if="{{path!==''}}"></video>
+        <text bindtap="closePicsAndPath" class="aging" wx:if="{{path||pics.length>=8}}">重新选择</text>
+    </view>
+</view>
+<form bindsubmit="saveOrderShow" reportSubmit="true">
+    <button class="btn-commit" disabled="{{postBtnDisabled}}" formType="submit">
+    提交审核
+    <text>(可获得现金奖励，多晒多得)</text>
+    </button>
+</form>
+<view class="shade {{showShade?'':'dontLook'}} ">
+    <view bindtap="onClose" class="shade-top"></view>
+    <view class="shade-bottom">
+        <view class="pbtnAndVbtn">
+            <view bindtap="uploadPostPic">
+                <icon class="iconfont icon-picture"></icon>
+                <text>照片</text>
+            </view>
+            <view bindtap="chooseCardVideo">
+                <icon class="iconfont icon-shipin"></icon>
+                <text>视频</text>
+            </view>
+        </view>
+        <view bindtap="onClose" class="remove">
+      取消
+    </view>
+    </view>
+</view>
+<import src="../templates/search.wxml"></import>
+<template is="searchModal" data="{{smartSou:smartSou}}"></template>

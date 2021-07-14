@@ -1,0 +1,25 @@
+<view class="nav bg-white" style="height:{{navH}}px">
+    <view class="nav-title">
+        <view class="back">
+            <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+            <view class="back-line"></view>
+            <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+        </view> 系统通知
+  </view>
+</view>
+<import src="../templates/login.wxml"></import>
+<view class="page-container" style="margin-top: {{navH}}px;">
+    <view class="card" wx:for="{{list}}" wx:key="index">
+        <image class="card-img" src="{{official}}"></image>
+        <view class="card-main">
+            <view class="card-main-top">
+                <view class="card-main-title">系统消息</view>
+                <view class="card-main-date">{{item.create_time}}</view>
+            </view>
+            <view class="card-main-message">{{item.content}}</view>
+            <view class="card-tags"></view>
+        </view>
+    </view>
+    <view class="no-notice" wx:if="{{list==''}}">目前无系统消息</view>
+    <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+</view>

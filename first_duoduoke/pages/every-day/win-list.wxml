@@ -1,0 +1,37 @@
+<view class="nav bg-white" style="height:{{navH}}px">
+    <view class="nav-title">
+        <text bindtap="navBack" class="back iconfont icon-jiantou-copy"></text>
+      中奖记录
+    </view>
+</view>
+<import src="../templates/login.wxml"></import>
+<view class="container-page" style="margin-top: {{navH}}px;">
+    <view class="noOrder-box" wx:if="{{list==''}}">
+        <view class="tips">
+            <text class="iconfont icon-logooo_huabanfuben"></text>
+      暂时还没有奖品，快去参加抽奖吧!
+      <view bindtap="navBack" class="tips-btn">每日开奖</view>
+        </view>
+    </view>
+    <view class="order-card" wx:if="{{list!=''}}" wx:for="{{list}}" wx:key="id">
+        <view class="order-time">
+            <view>{{item.create_time}}</view>
+            <view class="b-left status-no" wx:if="{{item.logistics_no==''&&item.logistics_name==''}}">未发货</view>
+            <view class="b-left status-yes" wx:if="{{item.logistics_no!=''&&item.logistics_name!=''}}">已发货</view>
+        </view>
+        <view class="order-card-main">
+            <image class="order-card-img" mode="aspectFill" src="{{item.img}}"></image>
+            <view class="order-card-right">
+                <view class="order-title">
+                    <view>{{item.title}}</view>
+                </view>
+                <view class="order-main-bottom">
+                    <view bindtap="onGetaddress" class="look-result" data-id="{{item.id}}" wx:if="{{item.name==''}}">添加收货地址</view>
+                    <view bindtap="lookLogisitics" class="look-result" data-logistics_name="{{item.logistics_name}}" data-logistics_no="{{item.logistics_no}}" wx:if="{{item.logistics_no!=''&&item.logistics_name!=''}}">查看物流</view>
+                    <view bindtap="goWineidt" class="firend" data-id="{{item.list_id}}" wx:if="{{(item.content==''||item.pics=='')&&item.logistics_no!=''&&item.logistics_name!=''}}">赶快晒一晒</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+</view>

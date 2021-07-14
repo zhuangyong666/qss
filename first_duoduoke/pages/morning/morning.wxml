@@ -1,0 +1,174 @@
+<view class="nav bg-white {{showNavcolor?'nav-color':''}}" style="height:{{navH}}px">
+    <view class="nav-title">
+    早起打卡挑战赛
+    <view class="back">
+            <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+            <view class="back-line"></view>
+            <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+        </view>
+    </view>
+</view>
+<view class="container-page">
+    <view class="top-title" style="margin-top:{{navH}}px;">
+    早起打卡 稳赚不赔
+  </view>
+    <view class="bulletin-board">
+        <view class="top-box">
+            <view>今日报名，明日06：00-10：00打卡</view>
+      本钱拿回，还能赚钱
+    </view>
+        <view class="bot-box">
+            <view class="bot-box-top">
+        本期可瓜分金币（个）
+        <view>{{people_glob}}</view>
+            </view>
+            <view class="bot-box-bot">
+        当前有{{people_num}}人报名参与
+        <view bindtap="showBox" wx:if="{{is_cy==0}}">
+          {{morning_enroll_cost}}金币报名赚更多
+          <image class="sz-item" src="../../public/images/sz.png"></image>
+                </view>
+                <view wx:if="{{is_cy==1}}">已报名，明日6 ~ 10点来打卡</view>
+                <view wx:if="{{is_cy==5}}">已报名，今日6 ~ 10点来打卡</view>
+                <view wx:if="{{is_cy==2}}">等待瓜分金币...</view>
+                <view bindtap="beginDkThis" wx:if="{{is_cy==3}}">打卡</view>
+            </view>
+            <view class="bot-tag"></view>
+            <view class="bot-tag-r"></view>
+        </view>
+    </view>
+    <view class="census" wx:if="{{people_num>0}}">
+        <view class="census-left">
+            <view>共
+        <text>{{people_num}}</text> 人</view>
+      参与报名
+    </view>
+        <view class="census-right">
+            <image class="census-img" src="{{item.avatar}}" wx:for="{{people_dkimgs}}" wx:key="id"></image>
+            <view class="census-item" wx:if="{{people_num>7}}">
+                <text class="iconfont icon-gengduo"></text>
+            </view>
+        </view>
+    </view>
+    <view class="step">
+        <view class="step-top">三步玩转早起打卡</view>
+        <view class="step-main">
+            <view class="step-item-left">
+                <view class="step-item-tag" style="{{phone_type==''?'right:-60rpx;':'right:-58rpx;'}}"></view>
+                <view class="step-item-content">
+                    <image class="item-c-img" src="../../public/images/db.png"></image>
+                    <view>报名挑战</view>
+          消耗{{morning_enroll_cost}}金币
+        </view>
+            </view>
+            <view class="step-item-main">
+                <view class="step-item-tag" style="{{phone_type==''?'right:-60rpx;':'right:-58rpx;'}}"></view>
+                <view class="step-item-tag1"></view>
+                <view class="step-item-content">
+                    <image class="item-c-img" src="../../public/images/nz.png"></image>
+                    <view>早起打卡</view>
+          次日6点~10点
+        </view>
+            </view>
+            <view class="step-item-right">
+                <view class="step-item-tag1"></view>
+                <view class="step-item-content">
+                    <image class="item-c-img" src="../../public/images/jb2.png"></image>
+                    <view>瓜分金币</view>
+          12点开奖
+        </view>
+            </view>
+        </view>
+    </view>
+    <view class="yestoday">
+        <view class="yestoday-top">
+      {{tod}}打卡战况
+    </view>
+        <view class="yestoday-bot" wx:if="{{yesterday_info}}">
+            <view class="yestoday-item line">
+                <view class="yestoday-item-box">
+                    <image class="item-box-img" src="{{yesterday_info.avatar}}"></image>
+                    <view class="item-box-tag">手气之星</view>
+                    <view class="iconfont icon-huangguan1 tag2"></view>
+                </view>
+        {{yesterday_info.nickname}}
+        <view>瓜分得
+          <text>{{yesterday_info.glob}}</text>金币</view>
+            </view>
+            <view class="yestoday-item">
+                <view class="yestoday-item-box">
+                    <image class="item-box-img" src="{{yesterday_fast.avatar}}"></image>
+                    <view class="item-box-tag">早起之星</view>
+                    <view class="iconfont icon-huangguan1 tag2"></view>
+                </view>
+        {{yesterday_fast.nickname}}
+        <view>
+                    <text>{{yesterday_fast.arrive_time}}</text>打卡</view>
+            </view>
+        </view>
+        <view class="yestoday-bot" wx:if="{{!yesterday_info}}">
+            <view class="no-info">暂无打卡信息</view>
+        </view>
+    </view>
+</view>
+<view bindtap="showInfo" class="rule" style="top:calc({{navH}}px + 150rpx)">规则</view>
+<view class="shade" wx:if="{{showBox}}"></view>
+<view class="showBox" wx:if="{{showBox}}">
+    <view class="showBox-top">
+    早起打卡 稳赚不赔
+  </view>
+    <view class="showBox-box">
+        <view class="showBox-main">
+      报名成功！
+      <text>记得6:00-10:00来打卡领钱！</text>
+        </view>
+        <view class="showBox-bottom">
+            <view bindtap="onChangepitch" class="showBox-tips">
+                <text class="iconfont icon-gouxuanxuan" wx:if="{{pitch}}"></text>
+                <text class="iconfont icon-kuang" wx:else></text>
+        明日提醒我来打卡
+      </view>
+            <view bindtap="hideBox" class="showBox-btn">
+        一定记得来
+      </view>
+        </view>
+        <view bindtap="hideBox" class="off-showBox">
+            <text class="iconfont icon-chahao"></text>
+        </view>
+    </view>
+</view>
+<view class="shade" wx:if="{{showTip}}"></view>
+<view class="showBox" wx:if="{{showTip}}">
+    <view class="showBox-top">
+    早起打卡 稳赚不赔
+  </view>
+    <view class="showBox-box">
+        <view class="showBox-main" wx:if="{{is_tod.status==2}}">
+      恭喜您！
+      <text>您今日打卡瓜分金币{{is_tod.glob}}个</text>
+        </view>
+        <view class="showBox-main" wx:if="{{is_tod.status==3}}">
+      很遗憾！
+      <text>您昨日报名没有获得金币
+        下次记得早点来打卡哦~</text>
+        </view>
+        <view class="showBox-bottom">
+            <view bindtap="hideTip" class="showBox-btn">
+        知道了
+      </view>
+        </view>
+        <view bindtap="hideTip" class="off-showBox">
+            <text class="iconfont icon-chahao"></text>
+        </view>
+    </view>
+</view>
+<view class="earn" style="top:calc({{navH}}px + 30rpx)">
+    <image class="earn-avatar" src="{{uInfo.avatar}}"></image>
+    <view class="earn-gold">
+        <text>{{uInfo.coin}}</text>金币 </view>
+    <view bindtap="goTask" class="earn-btn">赚金币</view>
+</view>
+<import src="../templates/info.wxml"></import>
+<template is="infoModal" data="{{info:info}}"></template>
+<import src="../templates/login.wxml"></import>
+<template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>

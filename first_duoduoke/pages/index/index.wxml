@@ -1,0 +1,803 @@
+<block wx:if="{{initDone}}">
+    <view class="index-top" style="height:calc({{navH}}px + {{plusH}}px);background:{{top_bg_color?top_bg_color:'linear-gradient(to right,#8d68d9,#fc4849,#fb7840)'}};">
+        <view class="nav" style="height:{{navH}}px;">
+            <view bindtap="toNotice" class="notice-icon">
+                <text class="iconfont icon-tongzhi-copy"></text>
+                <view class="notice-tag" wx:if="{{sysNum>0}}"></view>
+            </view>
+            <view class="ind-search" wx:if="{{search_portal_switch==1}}">
+                <icon color="#be94bc" size="16" type="search"></icon>
+                <input disabled bindconfirm="confirmSearchKey" bindinput="setSearchKey" bindtap="goSearch" placeholder="搜啥都有优惠券" placeholderClass="ind-input" value="{{keyword}}"></input>
+            </view>
+        </view>
+        <view class="topNavBar">
+            <scroll-view scrollLeft="{{scrollLeft}}" scrollWithAnimation="true" scrollX="true">
+                <view class="top_nav">
+                    <view catchtap="switchCates" class="top_nav_child {{item.opt_id==opt_id?'active':''}}" data-current="{{cdx}}" data-opt_id="{{item.opt_id}}" data-opt_idx="{{cdx}}" wx:if="{{skip_id==1}}" wx:for="{{cates}}" wx:for-index="cdx" wx:key="gcate">
+            {{item.show_name?item.show_name:item.opt_name}}</view>
+                    <view catchtap="switchTbCates" class="top_nav_child {{item.tb_cid==tb_cid?'active':''}}" data-current="{{cdx}}" data-tb_cid="{{item.tb_cid}}" data-tb_idx="{{cdx}}" wx:if="{{skip_id==6}}" wx:for="{{tb_cates}}" wx:for-index="cdx" wx:key="tbcate">{{item.name}}</view>
+                    <view catchtap="switchJdCates" class="top_nav_child {{item.jd_cid==jd_cid?'active':''}}" data-current="{{cdx}}" data-jd_cid="{{item.jd_cid}}" data-jd_idx="{{cdx}}" wx:if="{{skip_id==2}}" wx:for="{{jd_cates}}" wx:for-index="cdx" wx:key="jgcate">{{item.name}}</view>
+                    <view catchtap="switchSpCates" class="top_nav_child {{item.sp_cid==sp_cid?'active':''}}" data-current="{{cdx}}" data-sp_cid="{{item.sp_cid}}" data-sp_idx="{{cdx}}" wx:if="{{skip_id==9}}" wx:for="{{sp_cates}}" wx:for-index="cdx" wx:key="spcate">{{item.name}}</view>
+                    <view catchtap="switchMgCates" class="top_nav_child {{item.mg_cid==mg_cid?'active':''}}" data-current="{{cdx}}" data-mg_cid="{{item.mg_cid}}" data-mg_idx="{{cdx}}" wx:if="{{skip_id==3}}" wx:for="{{mg_cates}}" wx:for-index="cdx" wx:key="mgcate">{{item.name}}</view>
+                    <view catchtap="switchVipCates" class="top_nav_child {{item.vip_cid==vip_cid?'active':''}}" data-current="{{cdx}}" data-vip_cid="{{item.vip_cid}}" data-vip_idx="{{cdx}}" wx:if="{{skip_id==4}}" wx:for="{{vip_cates}}" wx:for-index="cdx" wx:key="vipcate">{{item.name}}
+          </view>
+                    <view catchtap="switchSnCates" class="top_nav_child {{item.sn_cid==sn_cid?'active':''}}" data-current="{{cdx}}" data-sn_cid="{{item.sn_cid}}" data-sn_idx="{{cdx}}" wx:if="{{skip_id==5}}" wx:for="{{sn_cates}}" wx:for-index="cdx" wx:key="sncate">{{item.name}}</view>
+                    <view catchtap="switchKlCates" class="top_nav_child {{item.kl_cid==kl_cid?'active':''}}" data-current="{{cdx}}" data-kl_cid="{{item.kl_cid}}" data-kl_idx="{{cdx}}" wx:if="{{skip_id==7}}" wx:for="{{kl_cates}}" wx:for-index="cdx" wx:key="klcate">{{item.name}}</view>
+                </view>
+            </scroll-view>
+            <view bindtap="toAllClassify" class="all-Button">
+                <text>全部 </text>
+                <text class="iconfont icon-shangpinfenlei"></text>
+            </view>
+        </view>
+    </view>
+    <add-tips duration="6" text="添加到我的小程序，随时随地赚钱省钱"></add-tips>
+    <import src="../templates/login.wxml"></import>
+    <import src="../templates/search.wxml"></import>
+    <view class="bg-gray overflow" style="margin-top:calc({{navH}}px + {{plusH}}px);">
+        <view class="hidden">
+            <view class="ind-top" style="background:{{top_bg_color?top_bg_color:'linear-gradient(to right,#8d68d9,#fc4849,#fb7840)'}};" wx:if="{{showIndSwi}}"></view>
+            <view class="ind-swi" wx:if="{{showIndSwi}}">
+                <swiper circular autoplay="{{swiper_auto_play}}" bindchange="switchStyle" class="swi-pad" current="{{currentStyle}}" indicatorDots="true" interval="5000" nextMargin="74rpx" previousMargin="74rpx">
+                    <swiper-item wx:for="{{items}}" wx:for-index="sdx" wx:for-item="link" wx:key="unique">
+                        <button catchtap="makeLinkWork" class="ind-sw-vi si-info {{sdx==currentStyle?' active':''}}" data-appid="{{link.appid}}" data-bgcolor="{{link.bgcolor}}" data-info="{{link.info}}" data-pic="{{link.pic}}" data-title="{{link.title}}" data-type="{{link.type}}" data-value="{{link.value}}">
+                            <image mode="aspectFill" src="{{link.pic}}"></image>
+                        </button>
+                    </swiper-item>
+                </swiper>
+            </view>
+            <view bindtap="toNoticepage" class="scroll-news" wx:if="{{notice_show_switch==1}}">
+                <view class="scroll-news-left">
+                    <view class="new-title-left">
+                        <view>官方</view>
+                    </view>
+          公告
+        </view>
+                <swiper autoplay="true" circular="true" class="scroll-news-swiper" interval="5000" vertical="true">
+                    <swiper-item wx:for="{{offnotice}}" wx:for-index="ofdx" wx:for-item="notice" wx:key="offnotice">
+                        <view class="scroll-news-main">{{notice.title}}</view>
+                    </swiper-item>
+                </swiper>
+                <text class="iconfont icon-jiantou"></text>
+            </view>
+            <official-account></official-account>
+            <view class="ind-nav">
+                <form bindsubmit="toFreeRed" class="act-fotm-ind" reportSubmit="true" wx:if="{{freered_switch==1}}">
+                    <button class="ind-nav-act" formType="submit">
+                        <view class="nav-img icon-2">
+                            <text class="iconfont icon-mian1"></text>
+                        </view>
+                        <view class="nav-terms">抢免单</view>
+                    </button>
+                </form>
+                <form bindsubmit="toBargain" class="act-fotm-ind" reportSubmit="true" wx:if="{{bargain_switch==1}}">
+                    <button class="ind-nav-act" formType="submit">
+                        <view class="nav-img icon-a1">
+                            <text class="iconfont icon-kanjia"></text>
+                        </view>
+                        <view class="nav-terms">砍价免费拿</view>
+                    </button>
+                </form>
+                <form bindsubmit="toSaveMoney" class="act-fotm-ind" reportSubmit="true" wx:if="{{morning_switch==1}}">
+                    <button class="ind-nav-act" formType="submit">
+                        <view class="nav-img icon-5">
+                            <text class="iconfont icon-naozhong1 d-animation"></text>
+                        </view>
+                        <view class="nav-terms">早起打卡</view>
+                    </button>
+                </form>
+                <form bindsubmit="toEveryDay" class="act-fotm-ind" reportSubmit="true" wx:if="{{everyday_switch==1}}">
+                    <button class="ind-nav-act" formType="submit">
+                        <view class="nav-img icon-4">
+                            <text class="iconfont icon-lihe"></text>
+                        </view>
+                        <view class="nav-terms">每日开奖</view>
+                    </button>
+                </form>
+                <form bindsubmit="toShopRed" class="act-fotm-ind" reportSubmit="true" wx:if="{{shopred_switch==1}}">
+                    <view class="nav-act-tips" wx:if="{{shop_red_sum>0}}">{{shop_red_sum}}</view>
+                    <button class="ind-nav-act" formType="submit">
+                        <view class="nav-img icon-3">
+                            <text class="iconfont icon-gouwu"></text>
+                        </view>
+                        <view class="nav-terms">购物红包</view>
+                    </button>
+                </form>
+                <form bindsubmit="toRotaryDraw" class="act-fotm-ind" reportSubmit="true" wx:if="{{rotary_switch==1}}">
+                    <button class="ind-nav-act" formType="submit">
+                        <view class="nav-img icon-7">
+                            <text class="iconfont icon-lottery a-animation"></text>
+                        </view>
+                        <view class="nav-terms ">转盘抽奖</view>
+                    </button>
+                </form>
+                <form bindsubmit="toRedEnvelope" class="act-fotm-ind" reportSubmit="true" wx:if="{{redPw_switch==1}}">
+                    <view class="nav-act-tips" wx:if="{{rpw_num>0}}">{{rpw_num}}</view>
+                    <button class="ind-nav-act" formType="submit">
+                        <view class="nav-img icon-6">
+                            <text class="iconfont icon-hongbao"></text>
+                        </view>
+                        <view class="nav-terms">红包墙</view>
+                    </button>
+                </form>
+                <form bindsubmit="toRushBuy" class="act-fotm-ind" reportSubmit="true" wx:if="{{rushBuy_switch==1}}">
+                    <button class="ind-nav-act" formType="submit">
+                        <view class="nav-img icon-10">
+                            <text class="iconfont icon-icon-test1 b-animation"></text>
+                        </view>
+                        <view class="nav-terms">一元抢购</view>
+                    </button>
+                </form>
+                <form bindsubmit="toAnswerWinning" class="act-fotm-ind" reportSubmit="true" wx:if="{{question_switch==1}}">
+                    <button class="ind-nav-act" formType="submit">
+                        <view class="nav-img icon-8">
+                            <text class="iconfont icon-wenhao"></text>
+                        </view>
+                        <view class="nav-terms">答题得奖</view>
+                    </button>
+                </form>
+                <form bindsubmit="toSpeedLooting" class="act-fotm-ind" reportSubmit="true" wx:if="{{speedLooting_switch==1}}">
+                    <button class="ind-nav-act" formType="submit">
+                        <view class="nav-img icon-9">
+                            <text class="iconfont icon-anniu c-animation"></text>
+                        </view>
+                        <view class="nav-terms">手速夺宝</view>
+                    </button>
+                </form>
+                <form bindsubmit="getRankingList" class="act-fotm-ind" reportSubmit="true" wx:if="{{ranking_list_switch==1}}">
+                    <button class="ind-nav-act" formType="submit">
+                        <view class="nav-img icon-10">
+                            <text class="iconfont icon-paihangbang"></text>
+                        </view>
+                        <view class="nav-terms">排行榜</view>
+                    </button>
+                </form>
+                <form bindtap="makeIconWork" class="act-fotm-ind" data-appid="{{link.appid}}" data-type="{{link.type}}" data-value="{{link.value}}" wx:if="{{icon_jump}}" wx:for="{{icon_jump}}" wx:for-index="sdx" wx:for-item="link" wx:key="unique">
+                    <button class="ind-nav-act" formType="submit">
+                        <view class="nav-img">
+                            <image class="nav-img-icon" src="{{link.pic}}"></image>
+                        </view>
+                        <view class="nav-terms">{{link.title}}</view>
+                    </button>
+                </form>
+            </view>
+            <view class="Explosive">
+                <view class="Exp_top">
+                    <view catchtap="toJdGift" class="Exp_top_text">
+                        <text>爆品推荐</text>
+                        <span>每日更新</span>
+                    </view>
+                    <view catchtap="toHotMore" class="Exp_more">
+            更多 >
+          </view>
+                </view>
+                <view class="Exp_main">
+                    <scroll-view bindscrolltolower="getHotGoods" scrollLeft="{{hotLeft}}" scrollX="true">
+                        <view class="Exp_main_item">
+                            <view catchtap="toGoodsPage" class="Exp_main_goods" data-goods_id="{{goods['goods_id']}}" data-goods_sign="{{goods['goods_sign']}}" data-source="1" wx:for="{{hotGoodsList}}" wx:for-index="hgdx" wx:for-item="goods" wx:key="hgl">
+                                <image lazyLoad="true" src="{{goods['goods_thumbnail_url']}}">
+                                    <view class="Exp_sale-info-l">
+                                        <view>券</view>
+                                        <view>￥{{goods['coupon_discount']/100}}</view>
+                                    </view>
+                                </image>
+                                <text class="goods_title">{{goods['goods_name']}}</text>
+                                <view class="priceAndCoupon">
+                                    <view class="goods_price">
+                                        <span>券后 </span>
+                                        <text>¥ {{( goods['min_group_price']-goods['coupon_discount'] )/100}}</text>
+                                    </view>
+                                </view>
+                                <view class="goods_bottom">
+                                    <view class="saleAndCoupon">
+                                        <text>{{goods['sales_tip']}}单</text>
+                                        <span wx:if="{{goods['bounss']!=''}}">升级<block wx:if="{{appletKeyword}}">{{appletKeyword}}
+                      </block>
+                                            <block wx:else>赚</block> ￥{{goods['bounss']}}
+                    </span>
+                                    </view>
+                                </view>
+                                <button>
+                                    <text>买立{{appletKeyword}}￥{{goods['bouns']}}</text>
+                                </button>
+                            </view>
+                        </view>
+                    </scroll-view>
+                </view>
+            </view>
+            <view class="skip" id="source">
+                <scroll-view class="skip-scroll" scrollLeft="{{scrollLeft_d}}" scrollX="true" wx:if="{{source_open}}">
+                    <view class="skip-scroll-item">
+                        <view bindtap="onSkipChange" class="skip-card skip-PDD {{skip_id==1?'skip-PDD-act':''}}" data-idx="1" data-skip_id="1">
+                拼多多
+                <text>超值好货</text>
+                        </view>
+                    </view>
+                    <view class="skip-scroll-item" wx:if="{{tb_open==1}}">
+                        <view bindtap="onSkipChange" class="skip-card skip-TB {{skip_id==6?'skip-TB-act':''}}" data-idx="2" data-skip_id="6">
+                淘宝
+                <text>应有尽有</text>
+                        </view>
+                    </view>
+                    <view class="skip-scroll-item" wx:if="{{jd_open==1}}">
+                        <view bindtap="onSkipChange" class="skip-card skip-JD {{skip_id==2?'skip-JD-act':''}}" data-idx="3" data-skip_id="2">
+                京东
+                <text>大牌正品</text>
+                        </view>
+                    </view>
+                    <view class="skip-scroll-item" wx:if="{{sp_open==1}}">
+                        <view bindtap="onSkipChange" class="skip-card skip-SP {{skip_id==9?'skip-SP-act':''}}" data-idx="4" data-skip_id="9">
+                小商店
+                <text>微信官方</text>
+                        </view>
+                    </view>
+                    <view class="skip-scroll-item" wx:if="{{vip_open==1}}">
+                        <view bindtap="onSkipChange" class="skip-card skip-VIP {{skip_id==4?'skip-VIP-act':''}}" data-idx="5" data-skip_id="4">
+                唯品会
+                <text>品牌特卖</text>
+                        </view>
+                    </view>
+                    <view class="skip-scroll-item" wx:if="{{sn_open==1}}">
+                        <view bindtap="onSkipChange" class="skip-card skip-SN {{skip_id==5?'skip-SN-act':''}}" data-idx="6" data-skip_id="5">
+                苏宁
+                <text>国货精品</text>
+                        </view>
+                    </view>
+                    <view class="skip-scroll-item" wx:if="{{kl_open==1}}">
+                        <view bindtap="onSkipChange" class="skip-card skip-KL {{skip_id==7?'skip-KL-act':''}}" data-idx="7" data-skip_id="7">
+                考拉海购
+                <text>正品尖货</text>
+                        </view>
+                    </view>
+                    <view class="skip-scroll-item" wx:if="{{mg_open==1}}">
+                        <view bindtap="onSkipChange" class="skip-card skip-MGJ {{skip_id==3?'skip-MGJ-act':''}}" data-idx="8" data-skip_id="3">
+                蘑菇街
+                <text>美丽女装</text>
+                        </view>
+                    </view>
+                </scroll-view>
+            </view>
+            <view class="detail-scroll" id="childCates">
+                <view class="detail-scroll-main" wx:if="{{children}}">
+                    <scroll-view class="main-swiper" scrollLeft="{{childSL}}" scrollX="true" style="height:100%;width:100%;">
+                        <view class="main-sort-box" wx:for="{{children}}" wx:for-item="childarr" wx:key="cchild">
+                            <view class="shade-margin">
+                                <view catchtap="toCatePage" class="main-sort-detail" data-opt_id="{{childer.opt_id}}" data-opt_name="{{childer.show_name?childer.show_name:childer.opt_name}}" wx:for="{{childarr}}" wx:for-item="childer" wx:key="cchilder">
+                                    <image src="{{childer.icon}}">
+                                        <view class="sort-detail-name">{{childer.show_name?childer.show_name:childer.opt_name}}
+                      </view>
+                                    </image>
+                                </view>
+                            </view>
+                        </view>
+                    </scroll-view>
+                </view>
+            </view>
+            <view class="screen {{menuFixed?'fixed':''}}" id="affix" style="top:{{menuFixed?navH+plusH:''}}px;" wx:if="{{skip_id!=5&&skip_id!=4}}">
+                <form bindsubmit="sortGoods" class="act-fotm" data-type="1" reportSubmit="true">
+                    <button class="screen-act" formType="submit">
+                        <view class="screen-text scr-act {{type==1?'active':''}}">默认</view>
+                    </button>
+                </form>
+                <form bindsubmit="sortGoods" class="act-fotm" data-type="2" reportSubmit="true" wx:if="{{skip_id!=9}}">
+                    <button class="screen-act" formType="submit">
+                        <view class="screen-text {{type==2?'active':''}}">销量</view>
+                        <view class="screen-ud" wx:if="{{skip_id!=3&&skip_id!=6&&skip_id!=7}}">
+                            <text class="iconfont icon-jiantou_shang {{type==2&&sort==0?'curr':''}}"></text>
+                            <text class="iconfont icon-jiantou_xia {{type==2&&sort==1?'curr':''}}"></text>
+                        </view>
+                    </button>
+                </form>
+                <form bindsubmit="sortGoods" class="act-fotm" data-type="3" reportSubmit="true">
+                    <button class="screen-act" formType="submit">
+                        <view class="screen-text {{type==3?'active':''}}">价格</view>
+                        <view class="screen-ud" wx:if="{{skip_id!=9}}">
+                            <text class="iconfont icon-jiantou_shang {{type==3&&sort==0?'curr':''}}"></text>
+                            <text class="iconfont icon-jiantou_xia {{type==3&&sort==1?'curr':''}}"></text>
+                        </view>
+                    </button>
+                </form>
+                <form bindsubmit="sortGoods" class="act-fotm" data-type="4" reportSubmit="true">
+                    <button class="screen-act" formType="submit">
+                        <view class="screen-text {{type==4?'active':''}}">佣金</view>
+                        <view class="screen-ud" wx:if="{{skip_id!=6&&skip_id!=7}}">
+                            <text class="iconfont icon-jiantou_shang {{type==4&&sort==0?'curr':''}}"></text>
+                            <text class="iconfont icon-jiantou_xia {{type==4&&sort==1?'curr':''}}"></text>
+                        </view>
+                    </button>
+                </form>
+            </view>
+            <view class="article">
+                <view class="{{menuFixed?'blank':''}}"></view>
+                <block wx:for="{{goodsList}}" wx:for-item="goods" wx:key="gl">
+                    <view catchtap="toGoodsPage" class="reg-act" data-goods_id="{{goods['goods_id']}}" data-goods_sign="{{goods['goods_sign']}}" data-goods_url="{{goods['goods_url']}}" wx:if="{{index_list_layout==0}}">
+                        <image class="reg-act-l" lazyLoad="true" mode="aspectFill" src="{{goods['goods_thumbnail_url']}}"></image>
+                        <view class="reg-act-r">
+                            <view class="reg-act-name">
+                                <text class="iconfont icon-pinduoduo red-color" wx:if="{{skip_id==1}}"></text>
+                                <text class="iconfont icon-jingdong1 red-color" wx:if="{{skip_id==2}}"></text>
+                                <text class="iconfont icon-mogujieicon MGJ-color" wx:if="{{skip_id==3}}"></text>
+                                <text class="iconfont icon-weipinhui WPH-color" wx:if="{{skip_id==4}}"></text>
+                                <text class="iconfont icon-suning SN-color" wx:if="{{skip_id==5}}"></text>
+                                <text class="iconfont {{goods['shop_type']==1?'icon-tianmao':'icon-taobao TB-color'}}" wx:if="{{skip_id==6}}"></text>
+                                <text class="iconfont icon-kaola KL-color" wx:if="{{skip_id==7}}"></text>
+                                <text class="iconfont icon-SP SP-color" wx:if="{{skip_id==9}}"></text>
+                {{goods['goods_name']}}
+              </view>
+                            <view class="priceAndSale">
+                                <view class="old-price">
+                                    <view>原价</view>
+                                    <view class="old-price-mon">
+                    ￥{{skip_id==7?goods['yuan_price']:goods['min_group_price']/100}}</view>
+                                </view>
+                                <view class="sale-info-r" wx:if="{{skip_id==1&&goods['sales_tip']!=''||skip_id==6||goods['sales_tip']>0}}">
+                  销量{{goods['sales_tip']}}</view>
+                            </view>
+                            <view class="sale-info">
+                                <view class="sale-info-l">
+                                    <block wx:if="{{skip_id==7}}">
+                                        <view class="bcardl">黑卡价</view>
+                                        <view class="bcardr">￥{{goods['bcard_price']}}</view>
+                                    </block>
+                                    <block wx:else>
+                                        <view class="quanl">券</view>
+                                        <view class="quanr">￥{{goods['coupon_discount']/100}}</view>
+                                    </block>
+                                </view>
+                                <view class="sale-text" wx:if="{{goods['bounss']!=''}}">
+                                    <text>升级<block wx:if="{{appletKeyword}}">{{appletKeyword}}</block>
+                                        <block wx:else>赚</block>￥{{goods['bounss']}}
+                  </text>
+                                </view>
+                            </view>
+                            <view class="sell-money">
+                                <view class="semo-l">
+                                    <view wx:if="{{skip_id!=7}}">券后</view>
+                                    <view class="semo-l-mon">￥
+                    <text>{{( goods['min_group_price']-goods['coupon_discount'] )/100}}</text>
+                                    </view>
+                                </view>
+                                <view class="semo-r"></view>
+                                <view class="semo-pos">
+                                    <view>{{appletKeyword}}</view>
+                                    <view class="semo-pos-mon">￥
+                    <text>{{goods['bouns']}}</text>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view bindtap="toGoodsPage" class="article-act" data-goods_id="{{goods['goods_id']}}" data-goods_sign="{{goods['goods_sign']}}" data-goods_url="{{goods['goods_url']}}" reportSubmit="true" wx:if="{{index_list_layout==1}}">
+                        <image class="article-img" lazyLoad="true" mode="aspectFill" src="{{goods['goods_thumbnail_url']}}"></image>
+                        <view class="article-name">
+                            <text class="iconfont icon-pinduoduo red-color" wx:if="{{skip_id==1}}"></text>
+                            <text class="iconfont icon-jingdong1 red-color" wx:if="{{skip_id==2}}"></text>
+                            <text class="iconfont icon-mogujieicon MGJ-color" wx:if="{{skip_id==3}}"></text>
+                            <text class="iconfont icon-weipinhui WPH-color" wx:if="{{skip_id==4}}"></text>
+                            <text class="iconfont icon-suning SN-color" wx:if="{{skip_id==5}}"></text>
+                            <text class="iconfont {{goods['shop_type']==1?'icon-tianmao':'icon-taobao TB-color'}}" wx:if="{{skip_id==6}}"></text>
+                            <text class="iconfont icon-kaola KL-color" wx:if="{{skip_id==7}}"></text>
+                            <text class="iconfont icon-SP SP-color" wx:if="{{skip_id==9}}"></text>
+              {{goods['goods_name']}}
+            </view>
+                        <view class="article-info">
+                            <view class="ai-l">
+                                <block wx:if="{{skip_id==7}}">
+                                    <view class="bcardl">黑卡价</view>
+                                    <view class="bcardr">￥{{goods['bcard_price']}}</view>
+                                </block>
+                                <block wx:else>
+                                    <view class="quanl">券</view>
+                                    <view class="quanr">￥{{goods['coupon_discount']/100}}</view>
+                                </block>
+                            </view>
+                            <view class="ai-cr-box">
+                                <view class="ai-c" wx:if="{{skip_id!=7}}">券后</view>
+                                <view class="ai-r">￥
+                  <text>{{( goods['min_group_price']-goods['coupon_discount'] )/100}}</text>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="article-sell">
+                            <view class="as-l" wx:if="{{skip_id==1&&goods['sales_tip']!=''||skip_id==6||goods['sales_tip']>0}}">
+                销量{{goods['sales_tip']}}</view>
+                            <view class="as-r">
+                                <view>原价</view>
+                                <view class="as-r-sum">￥{{skip_id==7?goods['yuan_price']:goods['min_group_price']/100}}
+                </view>
+                            </view>
+                        </view>
+                        <view class="article-make">
+                            <view class="am-l">
+                                <view class="arrows-box">
+                                    <text class="arrows iconfont icon-jiantouarrow499"></text>
+                                </view>
+                                <view wx:if="{{goods['bounss']!=''}}">升级<block wx:if="{{appletKeyword}}">{{appletKeyword}}</block>
+                                    <block wx:else>赚</block>{{goods['bounss']}}
+                </view>
+                            </view>
+                            <view class="am-r">
+                                <view class="am-kz">{{appletKeyword}}</view>
+                                <view class="am-sum">￥
+                  <text>{{goods['bouns']}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </view>
+            <view class="left-adv" wx:if="{{leftAdv}}">
+                <image catchtap="makeLinkWork" data-appid="{{leftAdv.appid}}" data-bgcolor="{{leftAdv.bgcolor}}" data-info="{{leftAdv.info}}" data-pic="{{leftAdv.pic}}" data-title="{{leftAdv.title}}" data-type="{{leftAdv.type}}" data-value="{{leftAdv.value}}" mode="aspectFit" src="{{leftAdv.pic}}"></image>
+                <text catchtap="hideLeftAdv" class="iconfont icon-qingchu del"></text>
+            </view>
+            <view class="box-box {{showtipOr?'box-box-a':'box-box-b'}}">
+                <block wx:if="{{source_open}}">
+                    <view class="telescopic" wx:if="{{showSwitchSource}}">
+                        <view class="tele-content {{teleUpDown==2?'tele-down':''}}{{teleUpDown==3?'tele-up':''}}">
+                            <view class="tele-coin">
+                                <view bindtap="showTelescopic" class="tele-title" style="color:{{themeColor}};" wx:if="{{!showTelescopic}}">
+                                    <text>切换</text>
+                                    <text>平台</text>
+                                </view>
+                                <view class="tele-all" style="color:{{themeColor}};" wx:if="{{showTelescopic}}">
+                                    <view bindtap="onSkipChange" class="tele-act" data-idx="1" data-skip_id="1">
+                                        <text class="iconfont icon-pinduoduo {{skip_id==1?'Selection-act':'p-color'}}"></text>
+                                        <view class="{{skip_id==1?'Selection-act':''}}">拼多多</view>
+                                    </view>
+                                    <view bindtap="onSkipChange" class="tele-act" data-idx="2" data-skip_id="6" wx:if="{{tb_open==1}}">
+                                        <text class="iconfont icon-taobao {{skip_id==6?'Selection-act':'TB-color'}}"></text>
+                                        <view class="{{skip_id==6?'Selection-act':''}}">淘宝</view>
+                                    </view>
+                                    <view bindtap="onSkipChange" class="tele-act" data-idx="3" data-skip_id="2" wx:if="{{jd_open==1}}">
+                                        <text class="iconfont icon-jingdong1 {{skip_id==2?'Selection-act':'j-color'}}"></text>
+                                        <view class="{{skip_id==2?'Selection-act':''}}">京东</view>
+                                    </view>
+                                    <view bindtap="onSkipChange" class="tele-act" data-idx="4" data-skip_id="9" wx:if="{{sp_open==1}}">
+                                        <text class="iconfont icon-SP {{skip_id==9?'Selection-act':'SP-color'}}"></text>
+                                        <view class="{{skip_id==9?'Selection-act':''}}">小商店</view>
+                                    </view>
+                                    <view bindtap="onSkipChange" class="tele-act" data-idx="5" data-skip_id="4" wx:if="{{vip_open==1}}">
+                                        <text class="iconfont icon-weipinhui {{skip_id==4?'Selection-act':'w-color'}}"></text>
+                                        <view class="{{skip_id==4?'Selection-act':''}}">唯品会</view>
+                                    </view>
+                                    <view bindtap="onSkipChange" class="tele-act" data-idx="6" data-skip_id="5" wx:if="{{sn_open==1}}">
+                                        <text class="iconfont icon-suning {{skip_id==5?'Selection-act':'s-color'}}"></text>
+                                        <view class="{{skip_id==5?'Selection-act':''}}">苏宁</view>
+                                    </view>
+                                    <view bindtap="onSkipChange" class="tele-act" data-idx="7" data-skip_id="7" wx:if="{{kl_open==1}}">
+                                        <text class="iconfont icon-kaola {{skip_id==7?'Selection-act':'KL-color'}}"></text>
+                                        <view class="{{skip_id==7?'Selection-act':''}}">考拉</view>
+                                    </view>
+                                    <view bindtap="onSkipChange" class="tele-act" data-idx="8" data-skip_id="3" wx:if="{{mg_open==1}}">
+                                        <text class="iconfont icon-mogujieicon {{skip_id==3?'Selection-act':'m-color'}}"></text>
+                                        <view class="{{skip_id==3?'Selection-act':''}}">蘑菇街</view>
+                                    </view>
+                                </view>
+                                <text bindtap="showTelescopic" class="tele-hide iconfont icon-jiantouarrow483" style="color:{{themeColor}};" wx:if="{{showTelescopic}}"></text>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+                <form bindtap="{{rpFun?'showEnve':'lookRpReward'}}" reportSubmit="true">
+                    <button class="ind-rb {{beginAnimation?'ind-ani':''}}" formType="submit" wx:if="{{show_enve==1}}">
+                        <image class="rb-img" mode="widthFix" src="/first_duoduoke/public/images/hb.png"></image>
+                        <view>2</view>
+                    </button>
+                </form>
+            </view>
+            <view class="rp-bg" wx:if="{{rpReward}}"></view>
+            <view class="rp" wx:if="{{rpReward}}">
+                <view class="rp-tit">红包奖励</view>
+                <view class="rp-all">
+                    <view class="rp-act">
+                        <view class="rp-t">
+                            <view class="rp-bgt"></view>
+                            <view class="rp-bot">
+                                <view class="rp-fx">返现红包</view>
+                                <view class="rp-sum">￥{{taskRedpkt.task1_money}}</view>
+                            </view>
+                        </view>
+                        <view class="rp-receive">
+                            <form bindtap="goLookCoupon" reportSubmit="true">
+                                <button formType="submit">去领取</button>
+                            </form>
+                        </view>
+                    </view>
+                    <view class="rp-act">
+                        <view class="rp-t">
+                            <view class="rp-bgt"></view>
+                            <view class="rp-bot">
+                                <view class="rp-fx">新人红包</view>
+                                <view class="rp-sum">￥{{new_guy_bouns}}</view>
+                            </view>
+                        </view>
+                        <view class="rp-receive">
+                            <form bindtap="{{withdraw_open==1?'goLookCash':'goLookInvite'}}" reportSubmit="true">
+                                <button formType="submit">{{withdraw_open==1?'去提现':'去邀请'}}</button>
+                            </form>
+                        </view>
+                    </view>
+                    <view class="rp-act">
+                        <view class="rp-t">
+                            <view class="rp-bgt"></view>
+                            <view class="rp-bot">
+                                <view class="rp-fx">邀请奖励</view>
+                                <view class="rp-sum">￥{{taskRedpkt.task3_money}}</view>
+                            </view>
+                        </view>
+                        <view class="rp-receive">
+                            <form bindtap="goLookInvite" reportSubmit="true">
+                                <button formType="submit">去邀请</button>
+                            </form>
+                        </view>
+                    </view>
+                    <view class="rp-act">
+                        <view class="rp-t">
+                            <view class="rp-bgt"></view>
+                            <view class="rp-bot">
+                                <view class="rp-fx">领取VIP</view>
+                                <view class="rp-sum">VIP{{uVip==3?uVip:uVip+1}}</view>
+                            </view>
+                        </view>
+                        <view class="rp-receive">
+                            <form bindtap="goLookGuest" reportSubmit="true">
+                                <button formType="submit">查看权益</button>
+                            </form>
+                        </view>
+                    </view>
+                </view>
+                <form bindtap="hideRpReward" reportSubmit="true">
+                    <button class="rp-del iconfont icon-chahao" formType="submit"></button>
+                </form>
+            </view>
+            <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+            <view class="rp-bg v-layer" wx:if="{{showVip}}">
+                <view bindtap="hideShare" class="share-bg"></view>
+                <view class="v-all">
+                    <view class="v-top">
+                        <view class="v-mf">免费领取
+              <text>VIP</text>
+                        </view>
+                        <view class="v-sy">所有收益提升2倍</view>
+                    </view>
+                    <view class="v-tit">邀请好友即可成为VIP</view>
+                    <button bindtap="showShare" class="v-invite">去邀请</button>
+                    <button bindtap="goVip" class="v-bot">查看详情
+            <text class="iconfont icon-jiantou"></text>
+                    </button>
+                    <button bindtap="hideVip" class="rp-del iconfont icon-chahao"></button>
+                </view>
+            </view>
+            <view animation="{{animationData}}" class="share-coin" wx:if="{{showVip&&showShareStatus}}">
+                <view class="share-tit"></view>
+                <view class="share-flex">
+                    <button class="share-lr" openType="share">
+                        <image mode="aspectFill" src="/first_duoduoke/public/images/wx.png"></image>
+                        <view>分享给朋友/群</view>
+                    </button>
+                    <button bindtap="saveUserPoster" class="share-lr">
+                        <image mode="aspectFill" src="/first_duoduoke/public/images/pyq.png"></image>
+                        <view>分享到朋友圈</view>
+                    </button>
+                </view>
+            </view>
+            <view bindtap="hideShareImg" class="share-rbg" wx:if="{{showShareImg}}"></view>
+            <view class="share-r" wx:if="{{showShareImg}}">
+                <image class="sr-img" mode="widthFix" src="{{poster}}"></image>
+                <view class="sr-tit">海报已经保存了，快去分享吧</view>
+                <view bindtap="hideShareImg" class="sr-btn">确定</view>
+            </view>
+            <view class="enve-bg" wx:if="{{enve}}"></view>
+            <view animation="{{animationDataT}}" class="enve" wx:if="{{enve}}">
+                <view class="enve-icon">
+                    <view class="enve-all">
+                        <view class="enve-t">
+                            <image class="enve-img" mode="widthFix" src="{{avatar}}" wx:if="{{avatar}}"></image>
+                            <text class="enve-text iconfont icon-zhifubaozhanneidaeshoufukuan" wx:if="{{!avatar}}"></text>
+                            <view class="enve-td">恭喜发财，大吉大利</view>
+                            <view class="enve-tb">
+                                <view class="enve-tb-je">￥***</view>
+                                <view class="enve-tb-jz">新人奖励</view>
+                            </view>
+                        </view>
+                        <view bindtap="toWelfare" class="enve-c">
+                            <button>開</button>
+                        </view>
+                        <view class="enve-b"></view>
+                    </view>
+                    <button bindtap="hidenEnve" class="enve-del iconfont icon-chahao"></button>
+                    <view class="enve-d" wx:if="{{show_ad_t}}">
+            需要观看激励视频才能领取哦~
+          </view>
+                </view>
+            </view>
+            <template is="searchModal" data="{{smartSou:smartSou}}"></template>
+            <block wx:if="{{showTbCopy}}">
+                <view catchtap="hideTbCopy" class="re-bg"></view>
+                <view class="tb-copy-layer show-swal3">
+                    <image class="tb-copy-img" mode="aspectFill" src="{{items[currentStyle].pic}}"></image>
+                    <view class="tb-layer-top">
+                        <view class="tb-layer-icon">
+                            <text class="iconfont icon-copy1"></text>
+                            <text class="tb-text-tip">复制口令</text>
+                        </view>
+                        <text class="tb-check-step">---></text>
+                        <view class="tb-layer-icon">
+                            <text class="iconfont icon-iconfonttaobao"></text>
+                            <text class="tb-text-tip">打开淘宝</text>
+                        </view>
+                        <text class="tb-check-step">---></text>
+                        <view class="tb-layer-icon">
+                            <text class="iconfont icon-lihe"></text>
+                            <text class="tb-text-tip">领取优惠 </text>
+                        </view>
+                    </view>
+                    <view class="tb-layer-middle">
+                        <text class="tb-kouling">{{showTbCopy}}</text>
+                    </view>
+                    <view class="tb-layer-bottom">
+                        <view catchtap="copyTbKouling" class="tb-copy-btn {{isTbCopy?'isCopyed':''}}">
+                            <text class="iconfont icon-duihao" wx:if="{{isTbCopy}}"></text>
+              {{isTbCopy?'已复制口令':'一键复制口令'}}
+            </view>
+                    </view>
+                    <view catchtap="hideTbCopy" class="choseBtn iconfont icon-chahao"></view>
+                </view>
+            </block>
+        </view>
+    </view>
+</block>
+<block wx:if="{{!initDone}}">
+    <view class="index-top gray" style="height:calc({{navH}}px + {{plusH}}px);background:linear-gradient(to right,#8d68d9,#fc4849,#fb7840)">
+        <view class="nav" style="height:{{navH}}px;">
+            <view class="notice-icon gray"></view>
+            <view class="ind-search gray">
+                <icon color="#be94bc" size="16" type="search"></icon>
+            </view>
+        </view>
+        <view class="topNavBar">
+            <scroll-view scrollLeft="{{scrollLeft}}" scrollWithAnimation="true" scrollX="true">
+                <view class="top_nav">
+                    <view class="top_nav_child gray add-h"></view>
+                    <view class="top_nav_child gray add-h"></view>
+                    <view class="top_nav_child gray add-h"></view>
+                    <view class="top_nav_child gray add-h"></view>
+                    <view class="top_nav_child gray add-h"></view>
+                </view>
+            </scroll-view>
+            <view bindtap="toAllClassify" class="all-Button">
+                <text>全部 </text>
+                <text class="iconfont icon-shangpinfenlei"></text>
+            </view>
+        </view>
+    </view>
+    <view class="bg-gray overflow" style="margin-top:calc({{navH}}px + {{plusH}}px);">
+        <view class="ind-top" style="background:linear-gradient(to right,#8d68d9,#fc4849,#fb7840)"></view>
+        <view class="ind-swi">
+            <swiper circular class="swi-pad" nextMargin="74rpx" previousMargin="74rpx">
+                <swiper-item>
+                    <button class="ind-sw-vi si-info active gray">
+                        <image mode="aspectFill"></image>
+                    </button>
+                </swiper-item>
+                <swiper-item>
+                    <button class="ind-sw-vi si-info gray">
+                        <image mode="aspectFill"></image>
+                    </button>
+                </swiper-item>
+                <swiper-item>
+                    <button class="ind-sw-vi si-info gray">
+                        <image mode="aspectFill"></image>
+                    </button>
+                </swiper-item>
+            </swiper>
+        </view>
+        <view class="scroll-news">
+            <view class="scroll-news-left gray add-w"></view>
+            <swiper class="scroll-news-swiper">
+                <swiper-item class="gray">
+                    <view class="scroll-news-main "></view>
+                </swiper-item>
+            </swiper>
+            <text class="iconfont icon-jiantou"></text>
+        </view>
+        <view class="ind-nav">
+            <form class="act-fotm-ind">
+                <button class="ind-nav-act" formType="submit">
+                    <view class="nav-img icon-2 gray"></view>
+                    <view class="nav-terms gray add-h"></view>
+                </button>
+            </form>
+            <form class="act-fotm-ind">
+                <button class="ind-nav-act" formType="submit">
+                    <view class="nav-img icon-2 gray"></view>
+                    <view class="nav-terms gray add-h"></view>
+                </button>
+            </form>
+            <form class="act-fotm-ind">
+                <button class="ind-nav-act" formType="submit">
+                    <view class="nav-img icon-2 gray"></view>
+                    <view class="nav-terms gray add-h"></view>
+                </button>
+            </form>
+            <form class="act-fotm-ind">
+                <button class="ind-nav-act" formType="submit">
+                    <view class="nav-img icon-2 gray"></view>
+                    <view class="nav-terms gray add-h"></view>
+                </button>
+            </form>
+            <form class="act-fotm-ind">
+                <button class="ind-nav-act" formType="submit">
+                    <view class="nav-img icon-2 gray"></view>
+                    <view class="nav-terms gray add-h"></view>
+                </button>
+            </form>
+            <form class="act-fotm-ind">
+                <button class="ind-nav-act" formType="submit">
+                    <view class="nav-img icon-2 gray"></view>
+                    <view class="nav-terms gray add-h"></view>
+                </button>
+            </form>
+            <form class="act-fotm-ind">
+                <button class="ind-nav-act" formType="submit">
+                    <view class="nav-img icon-2 gray"></view>
+                    <view class="nav-terms gray add-h"></view>
+                </button>
+            </form>
+            <form class="act-fotm-ind">
+                <button class="ind-nav-act" formType="submit">
+                    <view class="nav-img icon-2 gray"></view>
+                    <view class="nav-terms gray add-h"></view>
+                </button>
+            </form>
+            <form class="act-fotm-ind">
+                <button class="ind-nav-act" formType="submit">
+                    <view class="nav-img icon-2 gray"></view>
+                    <view class="nav-terms gray add-h"></view>
+                </button>
+            </form>
+            <form class="act-fotm-ind">
+                <button class="ind-nav-act" formType="submit">
+                    <view class="nav-img icon-2 gray"></view>
+                    <view class="nav-terms gray add-h"></view>
+                </button>
+            </form>
+        </view>
+        <view class="article white">
+            <view class="reg-act act-d">
+                <image class="reg-act-l gray"></image>
+                <view class="reg-act-r">
+                    <view class="reg-act-name gray name-a-d"></view>
+                    <view class="priceAndSale name-b-d gray"></view>
+                    <view class="sell-money name-d-d gray"></view>
+                </view>
+            </view>
+            <view class="reg-act act-d">
+                <image class="reg-act-l gray"></image>
+                <view class="reg-act-r">
+                    <view class="reg-act-name gray name-a-d"></view>
+                    <view class="priceAndSale name-b-d gray"></view>
+                    <view class="sell-money name-d-d gray"></view>
+                </view>
+            </view>
+        </view>
+    </view>
+</block>
+<view class="{{showtipOr?'bomb-layer-d':'bomb-layer'}}" wx:if="{{tipOr}}">
+    <image class="bomb-layer-img" mode="aspectFill" src="{{tipOr.goods_thumbnail_url}}"></image>
+    <view class="bomb-layer-msg">{{tipOr.nickname}}刚省了<text>{{tipOr.promotion_amount/100}}</text>元 </view>
+    <view catchtap="toGoodsPage" class="bomb-layer-btn" data-goods_id="{{tipOr.goods_id}}" data-goods_sign="{{tipOr.goods_sign}}" data-source="{{tipOr.source}}" wx:if="{{tipOr.goods_id>0}}">去看看 ></view>
+</view>
+<view catchtap="hideOpenAdv" class="shade" wx:if="{{show_open_adv}}"></view>
+<view class="layer-notice show-swal2" wx:if="{{show_open_adv}}">
+    <view class="layer-notice-main">
+        <view catchtap="hideOpenAdv" class="choseBtn iconfont icon-chahao"></view>
+        <swiper class="m-swiper" indicatorActiveColor="#ffffff" indicatorColor="rgba(255,255,255,.3)" indicatorDots="true">
+            <swiper-item wx:for="{{open_adv}}" wx:for-index="opadx" wx:for-item="link" wx:key="oav">
+                <image catchtap="makeLinkWork" class="m-s-item" data-appid="{{link.appid}}" data-bgcolor="{{link.bgcolor}}" data-info="{{link.info}}" data-pic="{{link.pic}}" data-title="{{link.title}}" data-type="{{link.type}}" data-value="{{link.value}}" mode="aspectFill" src="{{link.pic}}"></image>
+            </swiper-item>
+        </swiper>
+    </view>
+</view>
+<import src="../templates/tab-bar.wxml"></import>
+<template is="footerWx" data="{{...tabBar}}"></template>

@@ -1,0 +1,99 @@
+<view class="index-top" style="height:calc({{navH}}px + {{plusH}}px);">
+    <view class="nav" style="height:{{navH}}px">
+        <view class="nav-title">
+            <text>京享礼金</text>
+            <text bindtap="navBack" class="back iconfont icon-jiantou-copy"></text>
+        </view>
+    </view>
+    <view style="height: {{plusH}}px; ">
+        <view class="top-tips" wx:if="{{jd_gift_tip}}">
+      {{jd_gift_tip}}
+    </view>
+        <view class="scroll-box">
+            <scroll-view class="scroll" scrollLeft="{{scrollLeft}}" scrollWithAnimation="true" scrollX="true">
+                <view bindtap="onChangecont" class="scroll-item" data-cont_id="{{cdx}}" data-key="{{item.key}}" wx:for="{{cates}}" wx:for-index="cdx" wx:key="cates">
+                    <view class="item-cont {{cont_id==cdx?'item-act':''}}">
+                {{item.name}}
+              </view>
+                </view>
+            </scroll-view>
+        </view>
+        <view class="scroll-box2" wx:if="{{show_gift_cates==1}}">
+            <scroll-view class="scroll" scrollLeft="{{scrollLefts}}" scrollWithAnimation="true" scrollX="true">
+                <view class="scroll-item" wx:for="{{catess}}" wx:for-index="csdx" wx:key="catess">
+                    <view bindtap="onChangeregion" class="scroll-item-main {{cids==item.cids?'main-act':''}}" data-cids="{{item.cids}}" data-reg="{{csdx}}">
+          {{item.name}}
+          <view wx:if="{{cids==item.cids}}"></view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</view>
+<view class="container-gift" style="margin-top:calc({{navH}}px + {{plusH}}px);">
+    <view class="page-main">
+        <view class="goods-card" wx:for="{{goodsList}}" wx:for-index="gdx" wx:for-item="goods" wx:key="gl">
+            <view class="goods-card-top">
+                <view class="img-box">
+                    <image class="card-img" mode="aspectFill" src="{{goods.picurl}}"></image>
+                    <view class="img-tips">
+              {{goods.tlj_amount}}元礼金
+            </view>
+                </view>
+                <view class="goods-main">
+                    <view class="goods-title">
+                        <text class="iconfont icon-jingdong1 red-color"></text>
+              【京东】{{goods.goods_name}}
+            </view>
+                    <view class="old-price-box">
+                        <view class="old-price">
+                原价￥{{goods.price}}
+              </view>
+                        <view class="sale" wx:if="{{goods.sales}}">
+                已售{{goods.sales}}单
+              </view>
+                    </view>
+                    <view class="goods-fuc">
+                        <view class="end-price">
+                最终价：<text class="p-text">{{goods.price_subsidy}}</text>元
+              </view>
+                        <button catchtap="toJdGift" class="goods-btn" data-gdx="{{gdx}}">
+                立即抢购
+              </button>
+                    </view>
+                </view>
+            </view>
+            <view class="goods-card-bottom">
+                <button catchtap="getGiftPoster" class="goods-b-btn" data-gdx="{{gdx}}">
+            保存海报
+          </button>
+                <button catchtap="copyGiftLink" class="goods-b-btn" data-gdx="{{gdx}}">
+            复制链接
+          </button>
+                <button class="goods-b-btn" data-gdx="{{gdx}}" openType="share">
+            分享卡片
+          </button>
+            </view>
+        </view>
+    </view>
+    <view class="nogoods">我也是有底线的~~~</view>
+</view>
+<import src="../templates/login.wxml"></import>
+<template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+<view class="share-box">
+    <button class="share-btn" openType="share" wx:if="{{share_id==0}}">
+      分享给好友
+    </button>
+    <view class="share-type-two" wx:else>
+        <button class="type-item">
+        批量H5链接
+      </button>
+        <button class="type-item">
+        小程序卡片
+      </button>
+        <button class="type-item">
+        小程序海报
+      </button>
+    </view>
+</view>
+<view bindtap="goTop" class="iconfont icon-fanhuidingbu goTop"></view>

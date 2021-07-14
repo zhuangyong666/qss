@@ -1,0 +1,95 @@
+page {
+    background: #f0f1f5;
+}
+
+.nav {
+    background: transparent;
+    z-index: 999;
+}
+
+.nav-color {
+    background: linear-gradient(90deg,#0fa0ff,#7ddf30,#fddf39);
+    transition: 1s;
+}
+
+.nav-title {
+    z-index: 999;
+}
+
+.back {
+    color: #fff;
+}
+
+.container-plea {
+    padding: 30rpx;
+}
+
+.card,.container-plea {
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    padding: 20rpx;
+    border-radius: 10px;
+    background: #fff;
+    margin-bottom: 30rpx;
+}
+
+.card-top {
+    justify-content: space-between;
+    margin: 20rpx 0;
+}
+
+.card-top,.card-top-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.card-top-left {
+    font-size: 26rpx;
+    line-height: 32rpx;
+    font-weight: 700;
+}
+
+.card-icon {
+    width: 60rpx;
+    height: 60rpx;
+    margin-right: 20rpx;
+}
+
+.card-top-left>view {
+    font-size: 24rpx;
+    color: #b83b39;
+    background: #fbecea;
+    border-radius: 30px;
+    padding: 2rpx 16rpx;
+    margin: 5rpx 0 0 10rpx;
+    font-weight: 700;
+}
+
+.card-top-right {
+    padding: 5rpx 30rpx;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #fff;
+    background: linear-gradient(90deg,#f5425c,#ff2625);
+    font-size: 28rpx;
+    line-height: 50rpx;
+    box-shadow: 1px 1px 5px #888;
+}
+
+.card-top-right>text {
+    font-size: 28rpx;
+    line-height: 30rpx;
+    margin-top: 4rpx;
+}
+
+.card-main-img {
+    width: 100%;
+    height: 300rpx;
+    border-radius: 10px;
+}

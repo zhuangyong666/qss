@@ -1,0 +1,97 @@
+<view class="nav bg-white" style="height:{{navH}}px">
+    <view class="nav-title">
+        <text bindtap="navBack" class="back iconfont icon-jiantou-copy"></text>
+        <view>排行榜</view>
+    </view>
+</view>
+<view class="container-page" style="margin-top:{{navH}}px;height:calc(100vh - {{navH}}px);">
+    <view class="top-box">
+        <view class="cont-tag">
+            <view>排行榜进行实时更新前100名上榜</view>
+        </view>
+        <view class="tab-box">
+            <view bindtap="onChangetype" class="tab-item" data-type_id="0">订单排行
+        <view wx:if="{{current==0}}"></view>
+            </view>
+            <view bindtap="onChangetype" class="tab-item" data-type_id="1">拉新排行
+        <view wx:if="{{current==1}}"></view>
+            </view>
+            <view bindtap="onChangetype" class="tab-item" data-type_id="2">提现排行
+        <view wx:if="{{current==2}}"></view>
+            </view>
+        </view>
+    </view>
+    <view class="page-main">
+        <swiper bindanimationfinish="onChangeswiper" class="page-swiper" current="{{current}}" duration="200">
+            <swiper-item>
+                <scroll-view class="ranking-box" scrollTop="{{sch}}" scrollY="true">
+                    <view class="ranking-list">
+                        <view class="scroll-item" wx:for="{{dd_list}}" wx:for-index="ldx" wx:key="hgl">
+                            <view class="scroll-item-left">
+                                <view class="rank">
+                                    <image class="rank-img" src="/first_duoduoke/public/images/jp.png" wx:if="{{ldx+1==1}}"></image>
+                                    <image class="rank-img" src="/first_duoduoke/public/images/yp.png" wx:if="{{ldx+1==2}}"></image>
+                                    <image class="rank-img" src="/first_duoduoke/public/images/tp.png" wx:if="{{ldx+1==3}}"></image>
+                                    <text wx:if="{{ldx+1>3}}">{{ldx+1}}</text>
+                                </view>
+                                <image class="rank-avatar" src="{{item.avatar}}"></image>
+                                <view class="rank-msg">
+                                    <view class="user-name" wx:if="{{item.nickname!==''}}">{{item.nickname}}</view>
+                                    <view class="no-name" wx:if="{{item.nickname==''}}"></view>
+                                    <text>获得佣金:{{item.totalAmount}}元</text>
+                                </view>
+                            </view>
+                            <view class="scroll-item-right">{{item.num}}单</view>
+                        </view>
+                    </view>
+                </scroll-view>
+            </swiper-item>
+            <swiper-item>
+                <scroll-view class="ranking-box" scrollTop="{{sch}}" scrollY="true">
+                    <view class="ranking-list">
+                        <view class="scroll-item" wx:for="{{lx_list}}" wx:for-index="ldx" wx:key="hgl">
+                            <view class="scroll-item-left">
+                                <view class="rank">
+                                    <image class="rank-img" src="/first_duoduoke/public/images/jp.png" wx:if="{{ldx+1==1}}"></image>
+                                    <image class="rank-img" src="/first_duoduoke/public/images/yp.png" wx:if="{{ldx+1==2}}"></image>
+                                    <image class="rank-img" src="/first_duoduoke/public/images/tp.png" wx:if="{{ldx+1==3}}"></image>
+                                    <text wx:if="{{ldx+1>3}}">{{ldx+1}}</text>
+                                </view>
+                                <image class="rank-avatar" src="{{item.avatar}}"></image>
+                                <view class="rank-msg">
+                                    <view class="user-name">{{item.nickname}}</view>
+                                    <view class="no-name" wx:if="{{item.nickname==''}}"></view>
+                                    <text>获得返佣次数:{{item.num}}次</text>
+                                </view>
+                            </view>
+                            <view class="scroll-item-right">拉新{{item.inviters}}人</view>
+                        </view>
+                    </view>
+                </scroll-view>
+            </swiper-item>
+            <swiper-item>
+                <scroll-view class="ranking-box" scrollTop="{{sch}}" scrollY="true">
+                    <view class="ranking-list">
+                        <view class="scroll-item" wx:for="{{tx_list}}" wx:for-index="ldx" wx:key="hgl">
+                            <view class="scroll-item-left">
+                                <view class="rank">
+                                    <image class="rank-img" src="/first_duoduoke/public/images/jp.png" wx:if="{{ldx+1==1}}"></image>
+                                    <image class="rank-img" src="/first_duoduoke/public/images/yp.png" wx:if="{{ldx+1==2}}"></image>
+                                    <image class="rank-img" src="/first_duoduoke/public/images/tp.png" wx:if="{{ldx+1==3}}"></image>
+                                    <text wx:if="{{ldx+1>3}}">{{ldx+1}}</text>
+                                </view>
+                                <image class="rank-avatar" src="{{item.avatar}}"></image>
+                                <view class="rank-msg">
+                                    <view class="user-name">{{item.nickname}}</view>
+                                    <view class="no-name" wx:if="{{item.nickname==''}}"></view>
+                                    <text>提现次数:{{item.num}}次</text>
+                                </view>
+                            </view>
+                            <view class="scroll-item-right">共计{{item.totalMoney}}元</view>
+                        </view>
+                    </view>
+                </scroll-view>
+            </swiper-item>
+        </swiper>
+    </view>
+</view>

@@ -1,0 +1,160 @@
+.nav {
+    background: transparent;
+    z-index: 9999999999;
+    position: fixed;
+    left: 0;
+    right: 0;
+}
+
+.nav-color {
+    background: #fff;
+    transition: 1s;
+}
+
+.nav-title {
+    z-index: 9999999999;
+    color: #585858;
+    font-size: 32rpx;
+}
+
+.back {
+    color: #000;
+}
+
+.container-s {
+    background: #fff;
+    position: relative;
+}
+
+.container-s,.top {
+    display: flex;
+    flex-direction: column;
+}
+
+.top {
+    padding: 30rpx;
+    height: 11.5vh;
+}
+
+.top-t {
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100rpx;
+}
+
+.search,.top-t {
+    display: flex;
+    align-items: center;
+}
+
+.search {
+    flex: 1;
+    flex-direction: row;
+    background: #f6f6f6;
+    border-radius: 5px;
+    height: 100%;
+    padding: 0 30rpx;
+}
+
+.search>input {
+    margin-left: 20rpx;
+}
+
+.search-btn {
+    font-size: 36rpx;
+    height: 100%;
+    width: 150rpx;
+    border-radius: 5px;
+    justify-content: center;
+    align-content: center;
+    color: #fff;
+    background: #fd622a;
+    margin-left: 20rpx;
+}
+
+.search-btn,.top-b {
+    display: flex;
+    align-items: center;
+}
+
+.top-b {
+    margin-top: 30rpx;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.top-item {
+    padding: 6rpx 40rpx;
+    border-radius: 5px;
+    background: #f6f6f6;
+    color: #535457;
+    font-size: 30rpx;
+}
+
+.act {
+    background: #fd622a;
+    color: #fff;
+}
+
+.main {
+    padding: 0rpx 30rpx;
+    display: flex;
+    height: 73.5vh;
+    flex-direction: column;
+}
+
+.main-scroll {
+    max-height: 73.5vh;
+    z-index: 10;
+}
+
+.card {
+    padding: 30rpx 20rpx;
+    border-radius: 5px;
+    background: #f6f6f6;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20rpx;
+}
+
+.card-img {
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 100px;
+    margin-right: 20rpx;
+    background: #ccc;
+}
+
+.card-main {
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 86rpx;
+}
+
+.card-main,.card-main-top {
+    display: flex;
+}
+
+.card-main-top {
+    flex-direction: row;
+    align-items: center;
+    font-size: 30rpx;
+}
+
+.top-d {
+    color: #898b91;
+    margin-left: 20rpx;
+}
+
+.card-main-bottom {
+    font-size: 24rpx;
+    color: #898b91;
+}
+
+.card-tag {
+    font-size: 28rpx;
+    color: #898b91;
+    margin-right: 20rpx;
+}

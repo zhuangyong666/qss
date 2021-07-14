@@ -1,0 +1,86 @@
+<view class="nav bg-white {{showNavcolor?'nav-color':''}}" style="height:{{navH}}px">
+    <view class="nav-title">
+        <view class="back">
+            <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+            <view class="back-line"></view>
+            <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+        </view>
+        <view wx:if="{{showNavcolor}}">每日开奖</view>
+    </view>
+</view>
+<view class="container">
+    <image class="page-img" src="../../public/images/every-day.png" style="margin-top:{{navH}}px;"></image>
+    <view class="page-message">
+        <view class="m-t">抽奖结果会在结束时间后公布中奖名单</view>
+        <view class="m-b">中奖后记得留下收货地址，我们将会把奖品邮寄给你哦</view>
+    </view>
+    <view class="swiper-box">
+        <view class="swiper-box-b" wx:if="{{win_list!=''}}">
+            <swiper autoplay="true" circular="true" duration="400" interval="4000">
+                <swiper-item wx:if="{{item.info.pics!=''&&item.info.content!=''}}" wx:for="{{win_list}}" wx:for-index="idx" wx:key="index">
+                    <view class="suntan">
+                        <view class="suntan-icon">
+                            <text class="iconfont icon-zhongjiang"></text>
+                        </view>
+                        <view class="suntan-top">
+                            <image class="suntan-top-img" mode="aspectFill" src="{{item.avatar}}"></image>
+                            <view class="user-name">{{item.nickname}}</view>
+                        </view>
+                        <view class="suntan-main">{{item.info.content}}</view>
+                        <view class="suntan-imgBox">
+                            <image bindtap="showGoodsPicc" class="suntan-img" data-idx="{{idx}}" data-index="{{index}}" mode="aspectFill" src="{{this}}" wx:for="{{item.info.pics}}" wx:for-item="this" wx:key="index"></image>
+                        </view>
+                    </view>
+                </swiper-item>
+            </swiper>
+            <view class="swiper-tips">
+                <text class="iconfont icon-jiantou"></text>
+            </view>
+        </view>
+    </view>
+    <view class="goods-card-box">
+        <view bindtap="toEverydayGD" class="goods-card" data-id="{{item.id}}" wx:if="{{goods_info}}" wx:for="{{goods_info}}" wx:key="id">
+            <image class="goods-card-img" mode="aspectFill" src="{{item.img}}"></image>
+            <view class="goods-title">
+          奖品：{{item.title}}
+        </view>
+            <view class="goods-card-bottom">
+                <view class="goods-card-b-l">
+                    <view class="goods-card-price">
+                        <view>¥<text>{{item.price}}</text>
+                        </view>
+                        <view>{{item.everyday_people}}人参与抽奖</view>
+                    </view>
+                    <view class="goods-card-time">
+              活动时间：{{item.begin_time}}~{{item.end_time}}
+            </view>
+                </view>
+                <view class="goods-card-b-r">
+                    <view>{{item.is_end==0&&item.win_uid==0?'去抽奖':'查看中奖结果'}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="toWinlist" class="win-list">中奖记录</view>
+</view>
+<view bindtap="onShowShareShade" class="share">
+    <text class="iconfont icon-fenxiang1"></text>
+  分享
+</view>
+<view catchtouchmove="nomove" class="shade" wx:if="{{showShareShade}}"></view>
+<view bindtap="onShowShareShade" catchtouchmove="nomove" class="share-shade" wx:if="{{showShareShade}}">
+    <image class="share-shade-img" src="{{share_img}}"></image>
+    <view class="share-shade-msg">赶快分享给好友,免费抽奖品 ></view>
+    <view class="share-shade-btn-box">
+        <view bindtap="saveQrcodeToPhotosAlbum" class="share-shade-btn shade-btn-l">
+            <text class="iconfont icon-zhaopian"></text>
+      保存分享图
+    </view>
+        <button class="share-shade-btn shade-btn-r" openType="share">
+            <text class="iconfont icon-weixin"></text>
+      分享给好友或群
+    </button>
+    </view>
+</view>
+<import src="../templates/login.wxml"></import>
+<template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>

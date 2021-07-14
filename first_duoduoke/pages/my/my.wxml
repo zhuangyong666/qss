@@ -1,0 +1,152 @@
+<import src="../templates/login.wxml"></import>
+<import src="../templates/search.wxml"></import>
+<import src="../templates/info.wxml"></import>
+<view class="">
+    <view class="nav bg-white" style="height:{{navH}}px">
+        <view class="nav-title">
+      我的
+    </view>
+    </view>
+    <view class="bg-gray overflow" style="margin-top:{{navH}}px;">
+        <view class="hidden">
+            <button bindgetphonenumber="onBindphone" class="task-titles" openType="getPhoneNumber" wx:if="{{!phone}}">
+        绑定手机
+        <text catchtap="showInfo" class="iconfont icon-wenhao2"></text>
+            </button>
+            <view bindtap="goGoodsTrack" class="infx-r g-views">
+                <text class="iconfont icon-zuji"></text>
+                <view>足迹</view>
+            </view>
+            <view bindtap="goGoodsCollects" class="infx-r g-collects">
+                <text class="iconfont icon-shoucang"></text>
+                <view>收藏</view>
+            </view>
+            <view bindtap="goUserSub" class="infx-r g-sub">
+                <text class="iconfont icon-xiaoxi"></text>
+                <view>订阅</view>
+            </view>
+            <view class="ind-top"></view>
+            <view class="my-top" wx:if="{{uInfo}}">
+                <image class="my-top-l" mode="widthFix" src="{{uInfo.avatar}}"></image>
+                <view class="my-top-r">
+                    <view class="my-top-nickname">{{uInfo.nickName}}</view>
+                    <view bindtap="goVip" class="my-top-lev">{{vipSet[uInfo.level].show_name?vipSet[uInfo.level].show_name:vipSet[uInfo.level].name}}</view>
+                </view>
+            </view>
+            <view class="my-top" wx:if="{{!uInfo}}">
+                <text class="default-img iconfont icon-wode"></text>
+                <view class="my-top-r">
+                    <view>用户未授权</view>
+                    <view class="my-top-lev">VIP</view>
+                </view>
+            </view>
+            <view class="my-user-all">
+                <view class="mu-t">
+                    <view class="mu-why">
+                        <view>我的钱包</view>
+                        <button bindtap="showMonLayer" class="iconfont icon-question"></button>
+                    </view>
+                    <button bindtap="goLookDetailed" class="mu-t-tail">
+                        <view>账户明细</view>
+                        <text class="iconfont icon-jiantou"></text>
+                    </button>
+                </view>
+                <view class="mu-info">
+                    <view class="mu-info-l">
+                        <view class="mu-info-q">
+                            <view class="mu-info-tit">入账中</view>
+                            <view class="mu-info-num">
+                                <text>{{uInfo?uInfo.bouns:0}}</text>元</view>
+                        </view>
+                        <view class="mu-l-coin">
+                            <view class="mu-l-tit">按各平台结算日为准</view>
+                            <view class="mu-l-bot">
+                                <view>今日<text>{{uInfo?uInfo.todayBouns:0}}</text>
+                                </view>
+                                <view>累计<text>{{uInfo?uInfo.totalBouns:0}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="mu-info-r {{withdraw_open==1?'':'mu-info-this'}}">
+                        <view class="mu-info-q">
+                            <view class="mu-info-tit">可提现</view>
+                            <view class="mu-info-num">
+                                <text>{{uInfo?uInfo.money:0}}</text>元</view>
+                        </view>
+                        <form bindsubmit="goCash" class="mu-r-cashfor" reportSubmit="true" wx:if="{{withdraw_open==1}}">
+                            <button class="mu-r-cash" formType="submit">去提现</button>
+                        </form>
+                    </view>
+                </view>
+            </view>
+            <view class="my-user-chart">
+                <form bindsubmit="goVip" class="m-u-f" reportSubmit="true">
+                    <button class="my-user-chbtn" formType="submit">
+                        <image mode="widthFix" src="{{imgPath}}myl.jpg" wx:if="{{!vip_skip_pic}}"></image>
+                        <image mode="widthFix" src="{{vip_skip_pic}}" wx:if="{{vip_skip_pic}}"></image>
+                    </button>
+                </form>
+                <form bindsubmit="goPartakeOf" class="m-u-f" reportSubmit="true">
+                    <button class="my-user-chbtn" formType="submit">
+                        <image mode="widthFix" src="{{imgPath}}myr.jpg" wx:if="{{!method_skip_pic}}"></image>
+                        <image mode="widthFix" src="{{method_skip_pic}}" wx:if="{{method_skip_pic}}"></image>
+                    </button>
+                </form>
+            </view>
+            <ad adTheme="white" adType="grid" gridCount="5" gridOpacity="0.8" unitId="adunit-{{grid_ad_code}}" wx:if="{{show_ad_switch==1&&grid_ad_code!=''}}"></ad>
+            <view class="my-user-coin">
+                <form bindsubmit="goLookOrders" reportSubmit="true">
+                    <button class="my-user-act" formType="submit">
+                        <text class="my-user-l iconfont icon-yduiwodedingdan"></text>
+                        <view class="my-user-r">
+                            <view>佣金订单</view>
+                            <text class="iconfont icon-jiantou"></text>
+                        </view>
+                    </button>
+                </form>
+                <form bindsubmit="goLookSubordinate" reportSubmit="true">
+                    <button class="my-user-act" formType="submit">
+                        <text class="my-user-l iconfont icon-wode1"></text>
+                        <view class="my-user-r">
+                            <view>{{substitute_word?substitute_word:'我的下级'}}</view>
+                            <text class="iconfont icon-jiantou"></text>
+                        </view>
+                    </button>
+                </form>
+                <button class="my-user-act" openType="openSetting">
+                    <text class="my-user-l iconfont icon-shezhi1"></text>
+                    <view class="my-user-r">
+                        <view>授权设置</view>
+                        <text class="iconfont icon-jiantou"></text>
+                    </view>
+                </button>
+                <button class="my-user-act" openType="contact" wx:if="{{my_serv_switch==1}}">
+                    <text class="my-user-l iconfont icon-xiaoxi"></text>
+                    <view class="my-user-r">
+                        <view>官方客服</view>
+                        <text class="iconfont icon-jiantou"></text>
+                    </view>
+                </button>
+                <form bindsubmit="goLookMethod" reportSubmit="true">
+                    <button class="my-user-act" formType="submit">
+                        <text class="my-user-l iconfont icon-qian"></text>
+                        <view class="my-user-r">
+                            <view>新手攻略</view>
+                            <text class="iconfont icon-jiantou"></text>
+                        </view>
+                    </button>
+                </form>
+            </view>
+            <ad unitId="adunit-{{adCode}}" wx:if="{{show_ad_switch&&adCode}}"></ad>
+            <view animation="{{animationDataT}}" class="money-larer" wx:if="{{showLayer}}">
+                <text>根据各平台实际佣金结算时间为您结算</text>
+            </view>
+            <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+            <template is="searchModal" data="{{smartSou:smartSou}}"></template>
+            <template is="infoModal" data="{{info:info}}"></template>
+        </view>
+    </view>
+</view>
+<import src="../templates/tab-bar.wxml"></import>
+<template is="footerWx" data="{{...tabBar}}"></template>

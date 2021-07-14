@@ -1,0 +1,108 @@
+.bg-gray {
+    background-color: #fff;
+}
+
+.ind-top {
+    width: 100%;
+    height: 330rpx;
+    background: linear-gradient(90deg,#8d68d9,#fc4849,#fb7840);
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding: 0 4vw;
+    font-size: 22rpx;
+    color: #fff;
+    width: inherit;
+}
+
+.upper,.upper-act {
+    display: flex;
+    align-items: center;
+}
+
+.upper-act {
+    flex: 1;
+    flex-flow: column;
+    justify-content: center;
+    height: 160rpx;
+    padding-bottom: 30rpx;
+}
+
+.upper-l {
+    border-right: 1px solid #ffa0a9;
+}
+
+.upper-census {
+    margin-top: 20rpx;
+}
+
+.upper-census text {
+    font-size: 44rpx;
+    font-weight: 600;
+}
+
+.lower::after {
+    border: 0;
+}
+
+.lower {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    line-height: 24rpx;
+    border-radius: 0;
+    background-color: inherit;
+    font-size: inherit;
+    text-align: inherit;
+    padding: 0;
+    margin: 0;
+    color: inherit;
+}
+
+.lower text,.mem-info {
+    font-size: 24rpx;
+}
+
+.mem-info {
+    padding: 50rpx 4vw;
+}
+
+.mem-top {
+    color: #a0a0a0;
+}
+
+.mem-act,.mem-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mem-act {
+    margin: 30rpx 0;
+}
+
+.mem-l {
+    color: #333037;
+    display: flex;
+    align-items: center;
+}
+
+.mem-img {
+    width: 70rpx;
+    height: 70rpx;
+    border-radius: 50%;
+    margin-right: 20rpx;
+}
+
+.mem-r {
+    color: #f24863;
+    font-weight: 700;
+}
+
+.no-more {
+    margin-top: 60rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a0a0a0;
+}

@@ -1,0 +1,366 @@
+page {
+    background: linear-gradient(to right bottom,#ff7126,#ee1712);
+}
+
+.nav {
+    background: transparent;
+}
+
+.back,.nav-title {
+    color: #fff;
+}
+
+.container-page {
+    display: flex;
+    flex-direction: column;
+    padding: 30rpx;
+}
+
+.page-message {
+    padding: 60rpx 0;
+    font-size: 30rpx;
+    color: #fff;
+    line-height: 34rpx;
+    flex-direction: row;
+}
+
+.page-message,.yes {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.yes {
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 100%;
+    margin-right: 20rpx;
+    background: #fff;
+}
+
+.icon-duihao {
+    font-size: 20rpx;
+    color: #ff7126;
+    line-height: 30rpx;
+}
+
+.order-card {
+    padding: 30rpx;
+    background: #fff;
+    flex-direction: column;
+    border-radius: 10px;
+    flex: 1;
+}
+
+.goods-card,.order-card {
+    display: flex;
+}
+
+.goods-card {
+    padding-bottom: 20rpx;
+    border-bottom: 1px solid #eee;
+    flex-direction: row;
+    align-items: center;
+}
+
+.goods-img {
+    width: 200rpx;
+    height: 200rpx;
+    border-radius: 5px;
+    margin-right: 10rpx;
+    background: #eee;
+}
+
+.goods-card-right {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 200rpx;
+    justify-content: space-between;
+}
+
+.goods-title {
+    font-size: 28rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.goods-price {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    line-height: 34rpx;
+}
+
+.now-price {
+    font-size: 34rpx;
+    color: #ee1712;
+    margin-right: 20rpx;
+}
+
+.old-price {
+    font-size: 26rpx;
+    color: #aaa;
+    text-decoration: line-through;
+}
+
+.order-card-time {
+    flex-direction: column;
+    margin-top: 30rpx;
+    margin-bottom: 20rpx;
+}
+
+.order-card-time,.time-top {
+    display: flex;
+    align-items: center;
+}
+
+.time-top {
+    line-height: 36rpx;
+    font-size: 32rpx;
+    color: #aaa;
+    flex-direction: row;
+}
+
+.time-top>text {
+    font-size: 40rpx;
+    margin-right: 10rpx;
+    line-height: 36rpx;
+}
+
+.limit-time {
+    flex-direction: row;
+    margin: 30rpx 0;
+}
+
+.limit-time,.limit-time>view {
+    display: flex;
+    align-items: center;
+}
+
+.limit-time>view {
+    width: 80rpx;
+    height: 80rpx;
+    justify-content: center;
+    align-content: center;
+    font-size: 46rpx;
+    color: #fff;
+    background: #3c3c3c;
+    border-radius: 7px;
+}
+
+.limit-time>text {
+    font-size: 46rpx;
+}
+
+.friend-btn {
+    margin: 0;
+    width: 100%;
+    padding: 20rpx 0;
+    line-height: 1;
+    font-size: 34rpx;
+    color: #fff;
+    background: linear-gradient(90deg,#ff7126,#ee1712);
+    border-radius: 50px;
+}
+
+.friend-btn::after {
+    border: 0;
+}
+
+.save-poster {
+    margin: 35rpx 0;
+    color: #ee1712;
+    font-size: 28rpx;
+}
+
+.address {
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 20rpx;
+}
+
+.address,.address-left {
+    flex-direction: row;
+}
+
+.address,.address-left,.icon {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    justify-content: center;
+    align-content: center;
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 100%;
+    background: linear-gradient(to right bottom,#ff7126,#ee1712);
+    margin-right: 10rpx;
+}
+
+.icon>text {
+    font-size: 24rpx;
+    color: #fff;
+}
+
+.address-left-message {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 24rpx;
+    line-height: 24rpx;
+}
+
+.address-left-message-l {
+    color: #aaa;
+    margin-right: 10rpx;
+}
+
+.address-detail-message {
+    font-size: 26rpx;
+    display: block;
+}
+
+.address-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #ee1712;
+    font-size: 24rpx;
+}
+
+.shade {
+    background: rgba(1,1,1,.6);
+}
+
+.shade,.share-shade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1e+24;
+}
+
+.share-shade {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.share-shade-img {
+    width: 550rpx;
+    background: #ddd;
+}
+
+.share-shade-msg {
+    margin-top: 3rem;
+    font-size: 22rpx;
+    color: #fff;
+}
+
+.share-shade-btn-box {
+    width: 90%;
+    margin: 30rpx 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.share-shade-btn {
+    padding: 10rpx 0;
+    width: 330rpx;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    font-size: 24rpx;
+    color: #fff;
+    margin: 0;
+    line-height: inherit;
+}
+
+.share-shade-btn>text {
+    font-size: 50rpx;
+    margin-right: 10rpx;
+}
+
+.shade-btn-l {
+    background: #f12d06;
+}
+
+.shade-btn-r {
+    background: #09ba07;
+}
+
+.order-success {
+    margin: 30rpx 0 20rpx;
+}
+
+.order-success,.order-success-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.order-success-top {
+    width: 100%;
+    border-radius: 7px;
+    background: #f9f9f9;
+    padding: 30rpx 0;
+    font-size: 26rpx;
+    color: #aaa;
+}
+
+.order-success-img {
+    width: 150rpx;
+    height: 150rpx;
+    border-radius: 100%;
+    background: #aaa;
+    margin-top: 20rpx;
+}
+
+.order-success-message {
+    padding: 40rpx 0;
+    font-size: 30rpx;
+    color: #3fc06d;
+    line-height: 34rpx;
+    flex-direction: row;
+}
+
+.order-success-message,.order-success-yes {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.order-success-yes {
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 100%;
+    margin-right: 20rpx;
+    background: #3fc06d;
+}
+
+.order-duihao {
+    color: #fff;
+}
+
+.more-rush-buy {
+    margin: 0;
+    width: 100%;
+    padding: 20rpx 0;
+    line-height: 1;
+    font-size: 34rpx;
+    color: #fff;
+    background: linear-gradient(90deg,#ff7126,#ee1712);
+    border-radius: 50px;
+}

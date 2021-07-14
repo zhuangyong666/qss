@@ -1,0 +1,59 @@
+<view class="">
+    <view class="nav bg-white" style="height:{{navH}}px">
+        <view class="nav-title">
+      {{app_name}}
+      <text bindtap="navBack" class="back iconfont icon-jiantou-copy"></text>
+        </view>
+    </view>
+    <view class="bg-gray overflow" style="margin-top:{{navH}}px;">
+        <view class="hidden">
+            <view class="reg-top">
+                <button bindtap="goChangeAct" class="reg-area {{type==5?'active':''}}" data-type="5">精品排行</button>
+                <button bindtap="goChangeAct" class="reg-area {{type==6?'active':''}}" data-type="6">品牌好货</button>
+                <button bindtap="goChangeAct" class="reg-area {{type==7?'active':''}}" data-type="7">1.9精选</button>
+                <button bindtap="goChangeAct" class="reg-area {{type==8?'active':''}}" data-type="8">高佣专区</button>
+                <view class="weui-navbar__slider" style="width:17.5vw;background:#ffffff;left: {{sliderLeft}}vw; transform: translateX({{sliderOffset}}vw); -webkit-transform: translateX({{sliderOffset}}vw);"></view>
+            </view>
+            <view class="reg-ite" style="margin-top:40px;">
+                <navigator url="../goods/goods?goods_id={{goods['goods_id']}}&goods_sign={{goods['goods_sign']}}" wx:for="{{goodsList}}" wx:for-item="goods" wx:key="gl">
+                    <button class="reg-act">
+                        <image class="reg-act-l" mode="aspectFill" src="{{goods['goods_thumbnail_url']}}"></image>
+                        <view class="reg-act-r">
+                            <view class="reg-act-name">{{goods['goods_name']}}</view>
+                            <view class="priceAndSale">
+                                <view class="old-price">
+                                    <view>原价</view>
+                                    <view class="old-price-mon">￥{{goods['min_group_price']/100}}</view>
+                                </view>
+                                <view class="sale-info-r">销量{{goods['sales_tip']}}</view>
+                            </view>
+                            <view class="sale-info">
+                                <view class="sale-info-l">
+                                    <view>券</view>
+                                    <view>￥{{goods['coupon_discount']/100}}</view>
+                                </view>
+                                <view class="sale-text">
+                                    <text wx:if="{{goods['bounss']!=''}}">升级<block wx:if="{{appletKeyword}}">{{appletKeyword}}</block>
+                                        <block wx:else>赚</block>￥{{goods['bounss']}}</text>
+                                </view>
+                            </view>
+                            <view class="sell-money">
+                                <view class="semo-l">
+                                    <view>券后</view>
+                                    <view class="semo-l-mon">￥<text>{{( goods['min_group_price']-goods['coupon_discount'] )/100}}</text>
+                                    </view>
+                                </view>
+                                <view class="semo-r"></view>
+                                <view class="semo-pos">
+                                    <view>{{appletKeyword}}</view>
+                                    <view class="semo-pos-mon">￥<text>{{goods['bouns']}}</text>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </button>
+                </navigator>
+            </view>
+        </view>
+    </view>
+</view>

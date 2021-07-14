@@ -1,0 +1,158 @@
+.nav {
+    background: transparent;
+    transition: 1s;
+}
+
+.bg-white {
+    background: linear-gradient(90deg,#ee5c4d,#f43f6c);
+}
+
+.nav-color {
+    background: #fff;
+    transition: 1s;
+}
+
+.nav-title {
+    color: #fff;
+}
+
+.nav-title>view {
+    font-weight: 700;
+}
+
+.cont-tag,.container-page,.top-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.cont-tag {
+    margin: 30rpx 0;
+    font-size: 24rpx;
+    color: #f24863;
+}
+
+.cont-tag,.tab-box {
+    align-items: center;
+}
+
+.tab-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-bottom: 30rpx;
+    border-bottom: 1px solid #f7f7f7;
+    font-size: 26rpx;
+    color: #7d7e80;
+}
+
+.tab-item {
+    position: relative;
+}
+
+.tab-item>view {
+    position: absolute;
+    left: -30rpx;
+    right: -30rpx;
+    bottom: -30rpx;
+    height: 6rpx;
+    background: #f24863;
+}
+
+.page-main {
+    display: flex;
+    flex: 1;
+}
+
+.page-swiper,.ranking-box {
+    width: 100%;
+    height: 100%;
+}
+
+.ranking-list {
+    flex-direction: column;
+    padding: 0 20rpx;
+}
+
+.ranking-list,.ranking-tag {
+    display: flex;
+}
+
+.ranking-tag {
+    margin-top: 20rpx;
+    margin-bottom: 30rpx;
+    justify-content: center;
+    font-size: 24rpx;
+    color: #ff5837;
+}
+
+.scroll-item {
+    padding: 30rpx 0;
+    border-bottom: 1px solid #eee;
+    justify-content: space-between;
+}
+
+.scroll-item,.scroll-item-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.scroll-item-right {
+    font-size: 30rpx;
+    width: 150rpx;
+    color: #ff5b4c;
+}
+
+.rank,.scroll-item-right {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.rank {
+    width: 100rpx;
+    font-size: 28rpx;
+    margin-right: 10rpx;
+}
+
+.user-name {
+    width: 200rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.no-name {
+    height: 38rpx;
+    width: 200rpx;
+}
+
+.rank>text {
+    font-size: 32rpx;
+    font-weight: 700;
+}
+
+.rank-img {
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.rank-avatar {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 100%;
+    background: #eee;
+    margin-right: 20rpx;
+}
+
+.rank-msg {
+    display: flex;
+    flex-direction: column;
+    font-size: 28rpx;
+}
+
+.rank-msg>text {
+    font-size: 24rpx;
+    color: #aaa;
+}

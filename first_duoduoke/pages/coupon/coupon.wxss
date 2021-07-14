@@ -1,0 +1,95 @@
+.bg-white {
+    background: #fff;
+    color: #000;
+}
+
+.cou-coin {
+    background-size: 100% 100%;
+    padding: 0rpx 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-flow: column;
+}
+
+.back {
+    border: 1px solid #000;
+}
+
+.back-line {
+    background: #000;
+}
+
+.back>text {
+    color: #000;
+}
+
+.cou-ti {
+    width: 70vw;
+    margin-bottom: 25px;
+    padding-top: 30rpx;
+    position: relative;
+}
+
+.cou-info {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 10px #ccc;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-bottom: -100rpx;
+}
+
+.cou-timg {
+    width: 70%;
+    margin-top: -170rpx;
+}
+
+.cou-rule {
+    position: relative;
+    font-size: 24rpx;
+    padding: 0 10vw 100rpx;
+    color: #626262;
+    width: 90%;
+}
+
+.rule-tit {
+    margin-bottom: 20rpx;
+}
+
+.rule-cont {
+    display: flex;
+    flex-flow: column;
+    line-height: 40rpx;
+    width: 100%;
+}
+
+.cou-draw {
+    position: absolute;
+    bottom: -55rpx;
+    left: 15vw;
+    width: 70vw;
+    padding: 10rpx;
+    border-radius: 100rpx;
+    overflow: hiddem;
+    background-color: #fff;
+}
+
+button::after {
+    border: 0;
+}
+
+.cou-draw button {
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    font-size: inherit;
+    height: 90rpx;
+    line-height: 90rpx;
+    background: linear-gradient(180deg,#fe9d01,#ffdf06);
+    border-radius: 90rpx;
+    color: #fff;
+    letter-spacing: 4rpx;
+}

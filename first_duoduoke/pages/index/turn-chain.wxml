@@ -1,0 +1,64 @@
+<view class="nav bg-white nav-color" style="height:{{navH}}px">
+    <view class="nav-title">
+    一键转链
+    <view class="back">
+            <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+            <view class="back-line"></view>
+            <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+        </view>
+    </view>
+</view>
+<import src="../templates/login.wxml"></import>
+<view class="container-page" style="margin-top:{{navH}}px;">
+    <image class="page-img" mode="aspectFill" src="../../public/images/zhuanlian.png">
+        <view class="page-tips">
+      {{mutil?'转链完成后将保留原商品文案并且':''}}自动转换为您的专属{{tb_open==1?'淘口令/':''}}链接，分享或自购都能正常跟单
+    </view>
+    </image>
+    <view class="content">
+        <view class="main-box">
+            <view class="main-box-top">
+                <view class="top-left">转链前</view>
+                <view catchtap="clearContent" class="top-right">
+          清空
+          <text class="iconfont icon-shanchu"></text>
+                </view>
+            </view>
+            <view bindtap="onShowTextarea" class="main-box-content" wx:if="{{!showTextarea}}">
+                <image class="main-box-img" mode="apsectFill" src="../../public/images/zhantie.png"></image>
+                <view class="main-tips">请粘贴您需要转换的 {{tb_open==1?'（文案+淘口令）/':''}}（文案+链接）/商品URL到这里，支持拼多多{{jd_open==1?'、京东':''}} {{tb_open==1?'、淘宝（口令）':''}} {{vip_open==1?'、唯品会':''}} {{sn_open==1?'、苏宁':''}} {{kl_open==1?'、考拉海购':''}} {{mg_open==1?'、蘑菇街（链接）':''}}{{mutil?'支持单平台多个口令/链接批量转换':''}}</view>
+            </view>
+            <textarea autoFocus="{{false}}" bindblur="setContent" bindconfirm="setContent" bindinput="setContent" class="textarea" maxlength="-1" value="{{content}}" wx:if="{{showTextarea}}"></textarea>
+            <view class="main-box-bottom">
+                <button catchtap="toChangeLink" class="main-btn {{content?'btn-color':'btnDis'}}">
+                    <text class="iconfont icon-zhuanhuan"></text>
+          转换成我的推广链接
+        </button>
+            </view>
+        </view>
+        <view class="main-box">
+            <view class="main-box-top">
+                <view class="top-left">转链后</view>
+            </view>
+            <view class="main-box-content" wx:if="{{!content_v}}">
+                <image class="main-box-img" mode="apsectFill" src="../../public/images/wenjianhe.png"></image>
+            </view>
+            <textarea class="textarea" disabled="true" maxlength="-1" placeholderStyle="color:#999999;" value="{{content_v}}" wx:if="{{content_v}}"></textarea>
+            <view class="main-box-bottom">
+                <button catchtap="copyZl" class="main-btn-left {{content_v?'btn-border':'btnDis'}}">
+                    <text class="iconfont icon-fuzhi1"></text>
+          一键复制
+        </button>
+                <button class="main-btn-right {{content_v?'btn-color':'btnDis'}}" openType="share">
+                    <text class="iconfont icon-shangchuan"></text>
+          分享给好友
+        </button>
+            </view>
+        </view>
+        <view class="tips">
+            <view>请勿修改链接，以免无法跟单，造成收入损失</view>
+            <view>仅提供技术支持，请确保分享内容真实合法</view>
+        </view>
+    </view>
+    <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+</view>

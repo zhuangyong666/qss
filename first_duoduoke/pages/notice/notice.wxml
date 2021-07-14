@@ -1,0 +1,25 @@
+<view class="nav bg-white" style="height:{{navH}}px">
+    <view class="nav-title">
+    官方公告
+    <text bindtap="navBack" class="back iconfont icon-jiantou-copy"></text>
+    </view>
+</view>
+<view class="container-page" style="margin-top:{{navH}}px;">
+    <view bindtap="toNoticedetails" class="card" data-id="{{item.id}}" wx:for="{{list}}" wx:key="index">
+        <view class="card-title">
+        {{item.create_time}}
+      </view>
+        <view class="shadow-box">
+            <image class="card-img" mode="aspectFill" src="{{item.cover}}">
+                <view class="play-btn-box" wx:if="{{item.type==2}}">
+                    <view class="play-btn">
+                        <text class="iconfont icon-jiantou_shang"></text>
+                    </view>
+                </view>
+            </image>
+            <view class="card-bottom">
+          {{item.title}}
+          </view>
+        </view>
+    </view>
+</view>

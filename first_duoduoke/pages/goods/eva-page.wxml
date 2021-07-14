@@ -1,0 +1,54 @@
+<view class="nav bg-white nav-color" style="height:{{navH}}px">
+    <view class="nav-title">
+    评论列表
+    <text bindtap="navBack" class="back iconfont icon-jiantou-copy"></text>
+    </view>
+</view>
+<view class="container" style="margin-top:{{navH}}px;">
+    <view class="eva-tag" wx:if="{{comments.tagList.length>0}}">
+        <view wx:for="{{comments.tagList}}" wx:key="ctag">{{item.tag}}({{item.count}})</view>
+    </view>
+    <view class="main">
+        <view class="show-card" wx:for="{{comments.commentList}}" wx:for-index="cdx" wx:key="clist">
+            <view class="card-title">
+                <image class="card-title-image" src="{{item.headPicUrl}}"></image>
+                <view class="card-title-nameAndTime1">
+                    <view class="user-name">{{item.userNick}}</view>
+                    <view class="time">{{item.commentDate}} <block wx:if="{{item.skuMap}}">{{m1.getStr(item.skuMap)}}</block>
+                    </view>
+                </view>
+                <view class="saveAndCopy"></view>
+            </view>
+            <view class="card-discuss">
+        {{item.commentContent}}
+      </view>
+            <view class="card-image clearfix">
+                <image lazyLoad catchtap="showCommPics" data-cdx="{{cdx}}" data-cidx="{{cimgdx}}" mode="aspectFill" src="{{item}}" wx:for="{{item.images}}" wx:for-index="cimgdx" wx:key="cimg"></image>
+                <image lazyLoad class="video-img" mode="aspectFill" src="{{item.video.coverUrl}}" wx:if="{{item.video}}">
+                    <view catchtap="wachVideo" class="video-img-shade" data-path="{{item.video.videoUrl}}"></view>
+                    <view catchtap="wachVideo" class="on-button" data-path="{{item.video.videoUrl}}">
+                        <view catchtap="wachVideo" class="on-bbutton-item" data-path="{{item.video.videoUrl}}"></view>
+                    </view>
+                </image>
+            </view>
+            <view class="append" wx:if="{{item.commentAppend.commentContent}}">
+                <view class="append-date">{{item.commentAppend.intervalDay>0?item.commentAppend.intervalDay+'天后':''}}追评</view>
+                <view class="card-discuss">{{item.commentAppend.commentContent}}</view>
+                <view class="card-image clearfix">
+                    <image lazyLoad catchtap="showACommPics" data-caidx="{{caimgdx}}" data-cdx="{{cdx}}" mode="aspectFill" src="{{item}}" wx:for="{{item.commentAppend.images}}" wx:for-index="caimgdx" wx:key="caimg"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="wachVideo" class="video-shade" wx:if="{{onVideo==true}}"></view>
+    <video controls autoplay="{{true}}" id="myVideo" src="{{videoPath}}" wx:if="{{onVideo==true}}"></video>
+</view>
+<wxs module="m1">
+var getStr = (function(obj) {
+    var str = undefined;
+    var reg = getRegExp("\x5c[|\x5c]|\x5c{|\x5c}|\\x22", "g");
+    str = JSON.stringify(obj).replace(reg, '');
+    return (str)
+});
+module.exports.getStr = getStr;
+</wxs>

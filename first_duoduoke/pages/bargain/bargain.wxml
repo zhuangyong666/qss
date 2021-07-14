@@ -1,0 +1,62 @@
+<view class="nav bg-white" style="height:{{navH}}px">
+    <view class="nav-title">
+        <view class="back">
+            <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+            <view class="back-line"></view>
+            <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+        </view>
+        <view>砍价免费拿</view>
+    </view>
+</view>
+<view class="top-tips" style="top:{{navH}}px;" wx:if="{{finish_info!=false}}">
+    <swiper autoplay="true" circular="true" duration="1000" interval="3000" vertical="true">
+        <swiper-item class="hk-swi" wx:for="{{finish_info}}" wx:key="msg">
+            <image class="tips-img" mode="aspectFill" src="{{item.avatar}}"></image>
+            <view class="user-name">{{item.nickname}} 刚刚砍价免费拿到了</view>
+            <view class="goods-message">{{item.title}}</view>
+        </swiper-item>
+    </swiper>
+</view>
+<import src="../templates/info.wxml"></import>
+<import src="../templates/login.wxml"></import>
+<view class="container-page" style="margin-top:{{navH}}px;">
+    <view bindtap="showInfo" class="rule">规则 <text class="iconfont icon-youyou- rule-icon"></text>
+    </view>
+    <view class="pure-bottom">
+        <view class="pure-b-top">活动商品数量有限，先到先得哦~</view>
+        <view class="page-flow-top">
+            <text class="iconfont icon-gouwudai icon"></text>
+            <text class="iconfont icon-youyou-"></text>
+            <text class="iconfont icon-wink icon"></text>
+            <text class="iconfont icon-youyou-"></text>
+            <text class="iconfont icon-fahuo icon"></text>
+        </view>
+        <view class="page-flow-bottom">
+            <view class="flow-item">
+                <text class="iconfont icon-11"></text> 发起砍价
+      </view>
+            <view class="flow-item d-item">
+                <text class="iconfont icon-icon-test"></text> 叫好友帮忙
+      </view>
+            <view class="flow-item">
+                <text class="iconfont icon-three"></text> 0元免费拿
+      </view>
+        </view>
+    </view>
+    <view class="card-main">
+        <view bindtap="toBargainmain" class="goods-card" data-id="{{item.id}}" wx:for="{{bargain_list}}" wx:key="msg">
+            <image class="goods-card-img" mode="aspectFill" src="{{item.img}}">
+                <text class="iconfont icon-hot card-img-icon"></text>
+            </image>
+            <view class="goods-card-right">
+                <view class="goods-title">{{item.title}}</view>
+                <view class="right-bottom">
+                    <view class="goods-price">价值 ¥{{item.price}}元</view>
+                    <view class="btn">0元免费拿</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <template is="infoModal" data="{{info:info}}"></template>
+    <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+</view>

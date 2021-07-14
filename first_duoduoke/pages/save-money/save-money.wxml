@@ -1,0 +1,93 @@
+<view class="nav bg-white" style="height:{{navH}}px">
+    <view class="nav-title">
+      省钱攻略
+      <view class="back">
+            <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+            <view class="back-line"></view>
+            <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+        </view>
+    </view>
+</view>
+<view class="container" style="margin-top:{{navH}}px;">
+    <view class="line-box">
+        <view class="aLine"></view>
+        <view class="square"></view>
+    省钱攻略 教程说明
+    <view class="square"></view>
+        <view class="aLine"></view>
+    </view>
+    <view class="top-title">
+    是如何帮你省钱的
+  </view>
+    <image class="big-top-img" mode="aspectFit" src="{{pics.db}}"></image>
+    <view class="line-box">
+        <view class="aLine"></view>
+        <view class="square"></view>
+    领券步骤
+    <view class="square"></view>
+        <view class="aLine"></view>
+    </view>
+    <view class="step-card">
+        <view class="step-title-box">
+            <view class="step-title">第一步：</view>
+        </view>
+        <view class="step-main">
+      打开拼多多/京东/蘑菇街/唯品会/苏宁易购，找到喜欢的商品<text>【长按商品名称】复制拷贝</text>或记住商品关键字
+    </view>
+        <image class="step-img" mode="aspectFit" src="{{pics.d1}}"></image>
+    </view>
+    <view class="step-card">
+        <view class="step-title-box">
+            <view class="step-title">第二步：</view>
+        </view>
+        <view class="step-main">
+      打开本小程序，商城将自动弹窗，在弹出的界面中点击<text>搜索</text>进入下一步
+    </view>
+        <image class="step-img" mode="aspectFit" src="{{pics.d2}}"></image>
+    </view>
+    <view class="step-card">
+        <view class="step-title-box">
+            <view class="step-title">第三步：</view>
+        </view>
+        <view class="step-main">
+      找到对应的商品，点击<text>【商品】</text>，进入详情页面
+    </view>
+        <image class="step-img" mode="aspectFit" src="{{pics.d3}}"></image>
+    </view>
+    <view class="step-card">
+        <view class="step-title-box">
+            <view class="step-title">第四步：</view>
+        </view>
+        <view class="step-main">
+      进入商品详情页面后，在最底下按钮点击<text>【领券购买】并且可以查看返利金额</text>进入下一步
+    </view>
+        <image class="step-img" mode="aspectFit" src="{{pics.d4}}"></image>
+    </view>
+    <view class="step-card">
+        <view class="step-title-box">
+            <view class="step-title">第五步：</view>
+        </view>
+        <view class="step-main">
+      商城会跳转小程序在打开的页面内，点击<text>【一键抢券】</text>
+        </view>
+        <image class="step-img" mode="aspectFit" src="{{pics.d5}}"></image>
+    </view>
+    <view class="step-card">
+        <view class="step-title-box">
+            <view class="step-title">第六步：</view>
+        </view>
+        <view class="step-main">
+      进入商品详情页面，在最底部找到<text>【用券抢购】按钮</text>后进行下单
+    </view>
+        <image class="step-img" mode="aspectFit" src="{{pics.d6}}"></image>
+    </view>
+    <view class="step-card">
+        <view class="step-title-box">
+            <view class="step-title">第七步：</view>
+        </view>
+        <view class="step-main">
+      进入订单页面后在<text>店铺优惠中选取优惠券</text>后下单省钱
+    </view>
+        <image class="step-img" mode="aspectFit" src="{{pics.d7}}"></image>
+    </view>
+</view>

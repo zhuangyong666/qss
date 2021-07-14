@@ -1,0 +1,27 @@
+<template name="footerWx">
+    <view style="width:100%;height:134rpx;" wx:if="{{list}}"></view>
+    <view class="we7-bottom" style="background-color:{{backgroundColor}};border-color:{{borderStyle==2?'rgb(221, 221, 221)':'#fff'}}" wx:if="{{list}}">
+        <block wx:for="{{list}}" wx:key="tabdx">
+            <view class="we7-bottom-item" hoverClass="tabactive" wx:if="{{item.type==2}}">
+                <navigator appId="{{item.appid}}" hoverClass="tabactiven" openType="navigate" path="{{item.value}}" target="miniProgram" version="release">
+                    <image class="item-img" src="{{item.pic}}"></image>
+                    <view class="item-text" style="color: {{color}}">{{item.title}}</view>
+                </navigator>
+            </view>
+            <block wx:else>
+                <view class="we7-bottom-item" hoverClass="tabactive" wx:if="{{item.value=='/'+thisurl}}">
+                    <navigator hoverClass="tabactiven" openType="switchTab" url="{{item.value}}">
+                        <image class="item-img" src="{{item.pic_is}}"></image>
+                        <view class="item-text" style="color: {{selectedColor}};">{{item.title}}</view>
+                    </navigator>
+                </view>
+                <view class="we7-bottom-item" hoverClass="tabactive" wx:else>
+                    <navigator hoverClass="tabactiven" openType="switchTab" url="{{item.value}}">
+                        <image class="item-img" src="{{item.pic}}"></image>
+                        <view class="item-text" style="color: {{color}}">{{item.title}}</view>
+                    </navigator>
+                </view>
+            </block>
+        </block>
+    </view>
+</template>

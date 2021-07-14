@@ -1,0 +1,266 @@
+page {
+    background: #c2222a;
+}
+
+.nav {
+    background: transparent;
+}
+
+.back,.nav-title {
+    color: #fff;
+}
+
+.container-page {
+    display: flex;
+    flex-direction: column;
+}
+
+.pure-bottom {
+    content: "";
+    width: 140%;
+    height: 550rpx;
+    margin-left: -164rpx;
+    z-index: -1;
+    top: 0;
+    border-radius: 0 0 50% 50%;
+    border: 20rpx solid #ffb77d;
+    border-top: 0rpx;
+    background: #c42029;
+    overflow: hidden;
+    justify-content: center;
+    align-content: center;
+    box-shadow: 0 -6px 23px #000;
+    position: relative;
+}
+
+.page-bottom-card,.pure-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-bottom-card {
+    width: 560rpx;
+    height: 280rpx;
+    z-index: 1;
+    background: #fff;
+    border-radius: 5px;
+    position: absolute;
+    bottom: -2rpx;
+}
+
+.main-title {
+    font-size: 34rpx;
+    margin-bottom: 30rpx;
+    margin-top: 20rpx;
+}
+
+.main-msg {
+    font-size: 80rpx;
+    margin-bottom: 6rpx;
+    color: #c42029;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.main-msg>text {
+    font-size: 34rpx;
+    line-height: 72rpx;
+}
+
+.main-progress {
+    width: 370rpx;
+    margin-top: 10rpx;
+    position: relative;
+}
+
+.main-progress text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 26rpx;
+    z-index: 1;
+    padding-left: 20rpx;
+    line-height: 20px;
+    color: #fff;
+}
+
+.save-money-img {
+    position: absolute;
+    width: 600rpx;
+    height: 54rpx;
+}
+
+.enve-list-box {
+    display: flex;
+    flex-direction: column;
+    padding: 0 30rpx;
+    margin-top: 30rpx;
+}
+
+.title {
+    justify-content: space-between;
+    font-size: 36rpx;
+    color: #fdda99;
+    margin-top: 30rpx;
+}
+
+.left-line-box,.title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.left-line-box,.right-line-box {
+    justify-content: flex-end;
+}
+
+.right-line-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.left-line {
+    width: 150rpx;
+    height: 4rpx;
+    background: linear-gradient(270deg,#fdda99,#c2222a);
+}
+
+.circular {
+    width: 20rpx;
+    height: 20rpx;
+    background: #fdda99;
+    border-radius: 100%;
+}
+
+.right-line {
+    width: 150rpx;
+    height: 4rpx;
+    background: linear-gradient(90deg,#fdda99,#c2222a);
+}
+
+.no-enve-list {
+    width: 100%;
+    margin: 30rpx 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 32rpx;
+    color: #d7d9d8;
+}
+
+.no-enve-list>text {
+    font-size: 220rpx;
+    margin-bottom: 30rpx;
+}
+
+.no-enve-list-btn {
+    margin-top: 30rpx;
+    padding: 20rpx 90rpx;
+    border-radius: 40px;
+    background: linear-gradient(180deg,#fd2632,#d5010f);
+    color: #fff;
+}
+
+.enve-list {
+    width: 100%;
+    margin-top: 30rpx;
+    flex-direction: column;
+    font-size: 32rpx;
+}
+
+.enve-list,.enve-list-top {
+    display: flex;
+}
+
+.enve-list-top {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 30rpx;
+    color: #fdda99;
+}
+
+.enve-list-item {
+    color: #dfcbbd;
+    margin-bottom: 10rpx;
+}
+
+.enve-item-l,.enve-list-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.enve-item-l {
+    font-size: 34rpx;
+    width: 280rpx;
+}
+
+.enve-item-l>view {
+    flex: 1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+}
+
+.enve-item-img {
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 100%;
+    margin-right: 10rpx;
+    background: #eee;
+}
+
+.list-top-r {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.enve-item-m,.enve-item-r {
+    font-size: 34rpx;
+    width: 50%;
+}
+
+.btn-box {
+    display: flex;
+    flex-direction: column;
+    margin: 20rpx 0;
+    align-items: center;
+}
+
+.btn-box-1 {
+    border-radius: 30px;
+    background: #fde24b;
+    box-shadow: 0 6px 0 rgba(171,37,2,.7);
+    color: #812504;
+    margin: 0 auto 30rpx;
+    line-height: inherit;
+}
+
+.btn-box-1,.btn-box-2 {
+    width: 560rpx;
+    padding: 20rpx 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    font-size: 40rpx;
+}
+
+.btn-box-2 {
+    border-radius: 30px;
+    border: 1px solid #fff;
+    color: #fff;
+    margin-bottom: 30rpx;
+}
+
+.btn-box-time {
+    font-size: 34rpx;
+    color: #fff;
+}

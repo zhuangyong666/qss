@@ -1,0 +1,321 @@
+.nav {
+    background: #f95120;
+}
+
+.nav-title {
+    color: #fff;
+}
+
+.container-page {
+    display: flex;
+    flex-direction: column;
+    background: #f2f2f2;
+}
+
+.page-tips {
+    padding: 30rpx;
+    background: #fff;
+    justify-content: space-between;
+    margin-bottom: 30rpx;
+}
+
+.page-tips,.page-tips-left {
+    display: flex;
+    align-items: center;
+}
+
+.page-tips-left {
+    flex-direction: row;
+    line-height: 34rpx;
+    font-size: 28rpx;
+    color: #f95120;
+}
+
+.page-tips-left>text {
+    font-size: 34rpx;
+    margin-right: 20rpx;
+    line-height: 20rpx;
+}
+
+.page-more {
+    display: flex;
+    color: #aaa;
+    font-size: 22rpx;
+}
+
+.new-remind {
+    padding: 20rpx 30rpx;
+    background: #fff;
+    justify-content: space-between;
+    margin-bottom: 30rpx;
+}
+
+.new-remind,.remind-left {
+    display: flex;
+    align-items: center;
+}
+
+.remind-left {
+    flex-direction: row;
+    line-height: 34rpx;
+    font-size: 28rpx;
+}
+
+.remind-icon {
+    font-size: 40rpx;
+    margin-right: 10rpx;
+    line-height: 20rpx;
+}
+
+.remind-text {
+    font-size: 24rpx;
+    color: #aaa;
+    margin-left: 10rpx;
+}
+
+switch {
+    zoom: .8;
+}
+
+.remind-goods {
+    padding: 0rpx 30rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: #fff;
+    position: relative;
+}
+
+.remind-goods-shade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: hsla(0,0%,100%,.6);
+}
+
+.remind-goods-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20rpx 0;
+    border-bottom: 1px solid #eee;
+    width: 100%;
+}
+
+.remind-goods-img {
+    width: 150rpx;
+    height: 150rpx;
+    border-radius: 5px;
+    background: #aaa;
+    margin-right: 20rpx;
+    position: relative;
+}
+
+.goods-img-icon {
+    position: absolute;
+    top: 10rpx;
+    left: 10rpx;
+    right: 10rpx;
+    bottom: 10rpx;
+    color: #fff;
+    font-size: 130rpx;
+}
+
+.coupon-tips {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 10rpx;
+    background: #f95120;
+    color: #fff;
+    font-size: 20rpx;
+}
+
+.coupon-tips-1 {
+    position: absolute;
+    border-color: #f95120 transparent #f95120 #f95120;
+    border-style: solid;
+    border-width: 14rpx 3px 14rpx 8rpx;
+    top: 0;
+    bottom: 0;
+    right: -10rpx;
+}
+
+.remind-goods-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 28rpx;
+    height: 150rpx;
+}
+
+.remind-goods-main-title {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+    width: 350rpx;
+}
+
+.remind-goods-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    font-size: 28rpx;
+    border-left: 1px solid #eee;
+    height: 100rpx;
+}
+
+.main-skip-box {
+    padding: 50rpx 0;
+    background: #fff;
+}
+
+.main-skip {
+    margin-right: 20rpx;
+    flex-direction: row;
+    padding: 30rpx 40rpx;
+    border: 2px solid #fff;
+    border-radius: 40px;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(90deg,#ff6d22,#ef170f);
+}
+
+.main-skip,.main-skip-l {
+    margin-left: 20rpx;
+    display: flex;
+}
+
+.main-skip-l {
+    flex-direction: column;
+    flex: 1;
+    color: #fff;
+    font-size: 36rpx;
+}
+
+.main-skip-l>text {
+    font-size: 22rpx;
+}
+
+.main-skip-r {
+    padding: 10rpx 20rpx;
+    color: #fa3638;
+    background: #fcd83a;
+    border-radius: 30px;
+    font-weight: 550;
+    font-size: 36rpx;
+}
+
+.main-line {
+    font-size: 36rpx;
+    color: #fff;
+    margin: 30rpx 20rpx;
+}
+
+.main-line,.main-line-bot {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-line-bot {
+    background: #fffaf0;
+    border-radius: 10px;
+    margin-top: 10rpx;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20rpx 0;
+    position: relative;
+}
+
+.share-btn-img {
+    width: 155rpx;
+    height: 155rpx;
+    position: fixed;
+    bottom: 100rpx;
+    right: 32rpx;
+}
+
+.share-btn {
+    padding: 10rpx 0;
+    border-radius: 5px;
+    background: linear-gradient(180deg,#fcfea5,#fdd744);
+    color: #b33910;
+    font-size: 20rpx;
+    position: absolute;
+    bottom: 0rpx;
+    left: 0rpx;
+    right: 0rpx;
+    display: flex;
+    justify-content: center;
+}
+
+.shade {
+    background: rgba(1,1,1,.6);
+}
+
+.shade,.share-shade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1e+24;
+}
+
+.share-shade {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.share-shade-img {
+    width: 550rpx;
+    height: 950rpx;
+    background: #ddd;
+}
+
+.share-shade-msg {
+    margin-top: 3rem;
+    font-size: 22rpx;
+    color: #fff;
+}
+
+.share-shade-btn-box {
+    width: 90%;
+    margin: 30rpx 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.share-shade-btn {
+    padding: 10rpx 0;
+    width: 330rpx;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    font-size: 24rpx;
+    color: #fff;
+    line-height: inherit;
+}
+
+.share-shade-btn>text {
+    font-size: 50rpx;
+    margin-right: 10rpx;
+}
+
+.shade-btn-l {
+    background: #f12d06;
+}
+
+.shade-btn-r {
+    background: #09ba07;
+}

@@ -1,0 +1,120 @@
+<view class="nav bg-white nav-color" style="height:{{navH}}px">
+    <view class="nav-title">
+    抖券
+    <view class="back">
+            <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+            <view class="back-line"></view>
+            <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+        </view>
+    </view>
+</view>
+<scroll-view class="topNav" scrollLeft="{{scrollLeft}}" scrollWithAnimation="true" scrollX="true" style="top: {{navH}}px;">
+    <view bindtap="onChangeItem" class="nav-item {{cid==index?'nav-item-act':''}}" data-item_id="{{index}}" data-page_id="{{item.id}}" wx:for="{{cList}}" wx:key="index">
+    {{item.name}}
+    <view wx:if="{{cid==index}}"></view>
+    </view>
+</scroll-view>
+<view class="transparent-box" wx:if="{{onOff}}"></view>
+<swiper bindanimationfinish="animationFinish" current="{{cid}}" duration="{{duration}}" style="height:100vh;">
+    <swiper-item wx:if="{{cid<=cList.length}}" wx:for="{{categoryData}}" wx:key="index">
+        <view class="container-s" style="margin-top: {{navH}}px;">
+            <view class="topTag-box">
+                <view class="state-1" wx:if="{{refresh==1}}">
+                    <text class="iconfont icon-xia iconSize"></text> 松开手指开始刷新</view>
+                <view class="state-2" wx:if="{{refresh==2}}">
+                    <view class="loading">
+                        <view class="loading__item"></view>
+                        <view class="loading__item"></view>
+                        <view class="loading__item"></view>
+                        <view class="loading__item"></view>
+                        <view class="loading__item"></view>
+                        <view class="loading__item"></view>
+                        <view class="loading__item"></view>
+                        <view class="loading__item"></view>
+                        <view class="loading__item"></view>
+                        <view class="loading__item"></view>
+                        <view class="loading__item"></view>
+                        <view class="loading__item"></view>
+                    </view>
+                    <view>数据刷新中</view>
+                </view>
+                <view class="state-3" wx:if="{{refresh==3}}">
+                    <text class="iconfont icon-duihao iconSize"></text> 数据已经刷新</view>
+                <view class="state-5" wx:if="{{refresh==5}}">
+                    <view class="f-loading"></view>
+                    <view>正在努力加载</view>
+                </view>
+                <view class="state-5" wx:if="{{refresh==6}}">
+                    <text class="iconfont icon-duihao iconSize"></text> 正在努力加载</view>
+                <view class="state-7" wx:if="{{refresh==7}}">
+                    <view class="f-loading"></view>
+                    <view>正在努力加载</view>
+                </view>
+            </view>
+            <scroll-view bindscroll="onScroll" bindscrolltolower="onBottomloading" bindtouchend="touchEnd" bindtouchmove="touchMove" bindtouchstart="touchStart" class="page-scroll" scrollY="true" style="height:calc({{scrollHeight}}px - {{navH}}px);">
+                <view class="card-list-box">
+                    <view class="card-list">
+                        <view bindtap="toShakevideo" class="card" data-id="{{cid}}&cid={{page_id}}&idx={{index}}" wx:if="{{index%2==0}}" wx:for="{{item.listData}}" wx:for-item="listData" wx:key="index">
+                            <image class="card-img" mode="aspectFill" src="{{listData.videoCoverImg}}">
+                                <view class="img-tag">
+                                    <view class="free-loading">
+                                        <view class="la-line-scale" style="color: #fff">
+                                            <view></view>
+                                            <view></view>
+                                            <view></view>
+                                        </view>
+                                    </view>
+                    {{listData.mothSales}}人已买
+                  </view>
+                            </image>
+                            <view class="card-bottom">
+                                <view class="card-title">
+                    {{listData.title}}
+                  </view>
+                                <view class="card-price">
+                                    <view class="now-price">￥<text>{{listData.actualPrice}}</text>
+                                    </view>
+                                    <view class="old-price">￥{{listData.originPrice}}</view>
+                                </view>
+                                <view class="card-coupon">
+                                    <view class="coupon"> 券 ￥{{listData.couponPrice}} </view>
+                                    <view class="share" wx:if="{{listData.bouns}}">买立{{appletKeyword?appletKeyword:'赚'}} ￥{{listData.bouns}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="card-list">
+                        <view bindtap="toShakevideo" class="card" data-id="{{cid}}&cid={{page_id}}&idx={{index}}" wx:if="{{index%2==1}}" wx:for="{{item.listData}}" wx:for-item="listData" wx:key="index">
+                            <image class="card-img" mode="aspectFill" src="{{listData.videoCoverImg}}">
+                                <view class="img-tag">
+                                    <view class="free-loading">
+                                        <view class="la-line-scale" style="color: #fff">
+                                            <view></view>
+                                            <view></view>
+                                            <view></view>
+                                        </view>
+                                    </view>
+                    {{listData.mothSales}}人已买
+                  </view>
+                            </image>
+                            <view class="card-bottom">
+                                <view class="card-title">
+                    {{listData.title}}
+                  </view>
+                                <view class="card-price">
+                                    <view class="now-price">￥<text>{{listData.actualPrice}}</text>
+                                    </view>
+                                    <view class="old-price">￥{{listData.originPrice}}</view>
+                                </view>
+                                <view class="card-coupon">
+                                    <view class="coupon"> 券 ￥{{listData.couponPrice}} </view>
+                                    <view class="share" wx:if="{{listData.bouns}}">买立{{appletKeyword?appletKeyword:'赚'}} ￥{{listData.bouns}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </swiper-item>
+</swiper>

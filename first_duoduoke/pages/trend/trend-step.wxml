@@ -1,0 +1,12 @@
+<view class="nav bg-white nav-color" style="height:{{navH}}px">
+    <view class="nav-title">
+    如何复制商品链接
+    <text bindtap="navBack" class="back iconfont icon-jiantou-copy"></text>
+    </view>
+</view>
+<view class="container-s" style="margin-top: {{navH}}px;">
+    <image class="img-1" mode="aspectFill" src="{{imgPath}}pstep-1.png"></image>
+    <image class="img-2" mode="aspectFill" src="{{imgPath}}pstep-2.png"></image>
+    <image class="img-2" mode="aspectFill" src="{{imgPath}}pstep-3.png"></image>
+    <image class="img-3" mode="aspectFill" src="{{imgPath}}pstep-4.png"></image>
+</view>

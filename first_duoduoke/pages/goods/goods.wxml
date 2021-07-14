@@ -1,0 +1,381 @@
+<block wx:if="{{goods}}">
+    <import src="../templates/login-cover.wxml"></import>
+    <view class="">
+        <view class="nav bg-white" style="height:{{navH}}px">
+            <view class="nav-title">
+                <view class="back">
+                    <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+                    <view class="back-line"></view>
+                    <text bindtap="goIndex" class="iconfont icon-shouye back-sy"></text>
+                </view>
+            </view>
+        </view>
+        <view class="bg-gray overflow">
+            <view class="hidden" id="cont">
+                <view class="swi-good-box">
+                    <swiper circular autoplay="" class="swi-good" indicatorDots="true" interval="3000">
+                        <swiper-item itemId="video-{{idx}}" wx:for="{{goods['video_urls']}}" wx:for-index="idx" wx:for-item="video" wx:key="ggv">
+                            <image lazyLoad class="gt-img" mode="aspectFill" src="{{goods['goods_gallery_urls'][0]}}" wx:if="{{!showMainV}}">
+                                <view catchtap="showMainVideo" class="on-button-main">
+                                    <view catchtap="showMainVideo" class="on-bbutton-item-main"></view>
+                                </view>
+                            </image>
+                            <video autoplay="{{true}}" id="pvd2" src="{{video}}" wx:if="{{showMainV}}"></video>
+                        </swiper-item>
+                        <swiper-item itemId="img-{{idx}}" wx:for="{{goods['goods_gallery_urls']}}" wx:for-index="idx" wx:for-item="img" wx:key="ggz">
+                            <image lazyLoad class="gt-img" mode="aspectFill" src="{{img}}"></image>
+                        </swiper-item>
+                    </swiper>
+                    <view bindtap="toShoppingRed" class="pdd-rec" wx:if="{{source==1&&shopred_switch==1}}">
+                        <image class="pdd-rec-bg" src="{{imgPath}}light.png"></image>
+                        <image class="pdd-rec-img {{beginAnimation?'ind-ani':''}}" src="../../public/images/big-hbao.png">
+                            <view class="pdd-rec-gold">{{goods_redpack}}元</view>
+                        </image>
+                        <view class="pdd-rec-tag" wx:if="{{shop_red_sum>0}}">{{shop_red_sum}}</view>
+                    </view>
+                </view>
+                <view class="goog-info">
+                    <view class="good-title">
+                        <text class="iconfont icon-pinduoduo red-color" wx:if="{{source==1}}"></text>
+                        <text class="iconfont icon-jingdong1 red-color" wx:if="{{source==2}}"></text>
+                        <text class="iconfont icon-mogujieicon MGJ-color" wx:if="{{source==3}}"></text>
+                        <text class="iconfont icon-weipinhui WPH-color" wx:if="{{source==4}}"></text>
+                        <text class="iconfont icon-suning SN-color" wx:if="{{source==5}}"></text>
+                        <text class="iconfont {{goods['shop_type']==1?'icon-tianmao':'icon-taobao TB-color'}}" wx:if="{{source==6}}"></text>
+                        <text class="iconfont icon-kaola KL-color" wx:if="{{source==7}}"></text> {{goods['goods_name']}}
+        </view>
+                    <view class="article-info">
+                        <view class="ai-l">
+                            <block wx:if="{{source==7}}">
+                                <view class="bcardl">黑卡价</view>
+                                <view class="bcardr">￥{{goods['bcard_price']}}</view>
+                            </block>
+                            <block wx:else>
+                                <view class="quanl">券</view>
+                                <view class="quanr">￥{{goods['coupon_discount']/100}}</view>
+                            </block>
+                        </view>
+                        <view class="ai-r">
+                            <view class="ai-earn">{{appletKeyword}} {{goods['bouns']}}</view>
+                            <view class="ai-upgrade" wx:if="{{goods['bounss']!=''}}">
+                                <view class="arrows-box">
+                                    <text class="arrows iconfont icon-jiantouarrow499"></text>
+                                </view>
+                                <view bindtap="toVip">升级
+                <block wx:if="{{appletKeyword}}">{{appletKeyword}}</block>
+                                    <block wx:else>赚</block> {{goods['bounss']}}</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="article-sell">
+                        <view class="as-l" wx:if="{{source==1||goods['sales_tip']>0}}">销量{{goods['sales_tip']}}</view>
+                        <view bindtap="toggleCollect" class="as-l">
+                            <text class="iconfont {{goods['isCollect']?'icon-shoucang show-color':'icon-shoucang1'}}"></text> {{goods['isCollect']?'已收藏':'收藏'}}</view>
+                        <view class="as-r">
+                            <view class="as-rl">
+                                <view>原价</view>
+                                <view class="as-r-sum">￥{{source==7?goods['yuan_price']:goods['min_group_price']/100}}</view>
+                            </view>
+                            <view class="as-rr">
+                                <text wx:if="{{source!=7}}">券后</text> ￥
+              <text>{{( goods['min_group_price']-goods['coupon_discount'] )/100}}</text>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="good-coin">
+                        <view class="gc-l">￥
+
+            <text>{{source==7?goods['bcard_price']:goods['coupon_discount']/100}}</text>{{source==7?'黑卡价':'立减券'}}</view>
+                        <view class="gc-r">￥
+            <text>{{goods['bouns']}}</text>返利</view>
+                        <view class="sc-l"></view>
+                        <view class="sc-r"></view>
+                    </view>
+                </view>
+                <official-account></official-account>
+                <view class="hisp" wx:if="{{showHisP}}">
+                    <view class="hisp-t">
+                        <view class="hisp-l">价格走势</view>
+                        <view class="hisp-r">历史最低价：
+            <text class="hisp-lowest">￥{{hisp_lowest}}</text>
+                        </view>
+                    </view>
+                    <view style="height:35vh;">
+                        <ec-canvas canvasId="mychart-line" ec="{{ecLine}}" id="mychart-dom-line" type="2d"></ec-canvas>
+                    </view>
+                </view>
+                <view class="share-box-d" wx:if="{{mobile_short_url}}">
+                    <view class="share-box">
+                        <view class="share-box-top">
+            分享心仪的商品给好友购买
+            <button bindtap="copyShare" class="share-box-top-btn">复制文案</button>
+                        </view>
+                        <view class="share-box-main">
+            {{goods['promotionWording']?goods['promotionWording']:goods['goods_name']}}
+            <view>入口👉︎{{mobile_short_url}}</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="blank"></view>
+                <view class="recommend">
+                    <view class="rec_begin">
+                        <text>{{source==1?'相似':'热销'}}推荐</text>
+                        <span catchtap="toCatePage" data-opt_id="{{opt_id}}" data-opt_name="{{source==1?'相似':'热销'}}推荐" wx:if="{{opt_id>0}}">更多 ></span>
+                    </view>
+                    <scroll-view bindscrolltolower="{{source==1?'getSimGoods':'getRecGoods'}}" scrollX="true">
+                        <view class="rec_allGoods">
+                            <view catchtap="toOtherGoods" class="rec_goods" data-goods_id="{{goods['goods_id']}}" data-goods_sign="{{goods['goods_sign']}}" wx:for="{{recGoodsList}}" wx:for-index="rgdx" wx:for-item="goods" wx:key="rgl">
+                                <image lazyLoad mode="aspectFit" src="{{goods['goods_thumbnail_url']}}"></image>
+                                <text class="goods_name">{{goods['goods_name']}}</text>
+                                <text class="goods_price">¥ {{( goods['min_group_price']-goods['coupon_discount'] )/100}}</text>
+                                <text class="goods_oldPrice">¥ {{goods['min_group_price']/100}}</text>
+                                <text class="goods_sales" wx:if="{{goods['sales_tip']>0}}">销量:{{goods['sales_tip']}}</text>
+                            </view>
+                        </view>
+                    </scroll-view>
+                    <view class="graySquare down"></view>
+                    <view class="content store-info" wx:if="{{goods['storeInfo']}}">
+                        <view class="mall-info">
+                            <view class="mall-infoa">
+                                <view class="mlogo">
+                                    <image binderror="clearMallLogo" src="{{goods['storeInfo'].mall_logo}}" wx:if="{{goods['storeInfo'].mall_logo}}"></image>
+                                    <text class="iconfont .icon-mall no-mall-logo" wx:if="{{!goods['storeInfo'].mall_logo}}"></text>
+                                </view>
+                                <view class="mcinfo">
+                                    <text class="mall-name">{{goods['storeInfo'].mall_name}}</text>
+                                    <view>
+                                        <text class="mall-type" wx:if="{{goods['storeInfo'].mall_type}}">{{goods['storeInfo'].mall_type}}</text>
+                                    </view>
+                                    <text class="mall-goods" wx:if="{{source==1&&goods['storeInfo'].sales_tip!='销量：'}}">{{goods['storeInfo'].sales_tip}}</text>
+                                </view>
+                            </view>
+                            <view catchtap="getTbStore" class="mall-infob" data-mall_id="{{goods.mall_id}}" wx:if="{{source==6}}">
+              进店逛逛
+            </view>
+                        </view>
+                        <view class="mall-log" wx:if="{{source==1||source==6&&goods['id']>0}}">
+                            <view class="mall-serv">
+                                <text class="mall-stxt">描述相符</text>
+                                <view class="mall-score">{{goods['storeInfo'].desc_txt}}</view>
+                            </view>
+                            <view class="mall-serv">
+                                <text class="mall-stxt">服务态度</text>
+                                <view class="mall-score">{{goods['storeInfo'].serv_txt}}</view>
+                            </view>
+                            <view class="mall-serv">
+                                <text class="mall-stxt">物流服务</text>
+                                <view class="mall-score">{{goods['storeInfo'].lgst_txt}}</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="graySquare down"></view>
+                </view>
+                <view class="evaluation" wx:if="{{(source==2||source==6)&&goods.comments}}">
+                    <view class="eva-main">
+                        <view class="eva-top">
+                            <view class="eva-top-left">
+              商品评价（{{goods.comments.total}}）
+            </view>
+                            <view bindtap="toEvapage" class="eva-top-right" wx:if="{{source==6}}">
+              查看全部
+            </view>
+                        </view>
+                        <view class="eva-tag" wx:if="{{source==6&&goods.comments.tagList.length>0}}">
+                            <view wx:for="{{goods.comments.tagList}}" wx:key="ctag">{{item.tag}}({{item.count}})</view>
+                        </view>
+                        <block wx:if="{{source==2}}">
+                            <view class="show-card" wx:for="{{goods.comments.list}}" wx:for-index="cdx" wx:key="jdComments">
+                                <view class="card-title">
+                                    <image class="card-title-image" src="https://misc.360buyimg.com/user/myjd-2015/css/i/peisong.jpg"></image>
+                                    <view class="card-title-nameAndTime">
+                                        <view class="user-name">京东用户***</view>
+                                    </view>
+                                </view>
+                                <view class="card-discuss">
+                {{item.content}}
+              </view>
+                                <view class="card-image clearfix">
+                                    <image lazyLoad catchtap="showCommPics" data-cdx="{{cdx}}" data-cidx="{{cimgdx}}" mode="aspectFill" src="{{item.url}}" wx:for="{{item.imageList}}" wx:for-index="cimgdx" wx:key="cimg"></image>
+                                </view>
+                            </view>
+                        </block>
+                        <view class="show-card" wx:if="{{source==6}}">
+                            <view class="card-title">
+                                <image class="card-title-image" src="{{goods.comments.comment.headPicUrl}}"></image>
+                                <view class="card-title-nameAndTime">
+                                    <view class="user-name">{{goods.comments.comment.userNick}}</view>
+                                </view>
+                            </view>
+                            <view class="card-discuss">
+                {{goods.comments.comment.commentContent}}
+              </view>
+                            <view class="card-image clearfix">
+                                <image lazyLoad catchtap="showCommPics" data-cidx="{{cimgdx}}" mode="aspectFill" src="{{item}}" wx:for="{{goods.comments.comment.images}}" wx:for-index="cimgdx" wx:key="cimg"></image>
+                                <image lazyLoad class="video-img" mode="aspectFill" src="{{goods.comments.comment.video.coverUrl}}" wx:if="{{goods.comments.comment.video}}">
+                                    <view catchtap="wachVideo" class="video-img-shade" data-path="{{goods.comments.comment.video.videoUrl}}"></view>
+                                    <view catchtap="wachVideo" class="on-button" data-path="{{goods.comments.comment.video.videoUrl}}">
+                                        <view catchtap="wachVideo" class="on-bbutton-item" data-path="{{goods.comments.comment.video.videoUrl}}"></view>
+                                    </view>
+                                </image>
+                            </view>
+                            <view class="append" wx:if="{{goods.comments.comment.commentAppend.commentContent}}">
+                                <view class="append-date">{{goods.comments.comment.commentAppend.intervalDay>0?goods.comments.comment.commentAppend.intervalDay+'天后':''}}追评</view>
+                                <view class="card-discuss">{{goods.comments.comment.commentAppend.commentContent}}</view>
+                                <view class="card-image clearfix">
+                                    <image lazyLoad catchtap="showACommPics" data-caidx="{{caimgdx}}" mode="aspectFill" src="{{item}}" wx:for="{{goods.comments.comment.commentAppend.images}}" wx:for-index="caimgdx" wx:key="caimg"></image>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="graySquare down"></view>
+                </view>
+                <view class="content">
+                    <view class="con-tit">商品详情</view>
+                    <text class="con-present" decode="true">{{goods['goods_desc']?goods['goods_desc']:''}}</text>
+                    <block wx:if="{{(source==6||source==7)&&goods['goods_detail_pics']}}">
+                        <image lazyLoad bindtap="showGoodsPic" class="con-img" data-index="{{pdx}}" mode="widthFix" src="{{source==7?img:img.img}}" style="margin-top:0;" wx:for="{{goods['goods_detail_pics']}}" wx:for-index="pdx" wx:for-item="img" wx:key="ggu"></image>
+                    </block>
+                    <block wx:else>
+                        <image lazyLoad bindtap="showGoodsPic" class="con-img" data-index="{{pdx}}" mode="widthFix" src="{{img}}" wx:for="{{goods['goods_gallery_urls']}}" wx:for-index="pdx" wx:for-item="img" wx:key="ggu"></image>
+                    </block>
+                </view>
+                <view class="recommend">
+                    <view class="rec_begin">
+                        <text>每日爆款</text>
+                        <span catchtap="toHotMore">更多 ></span>
+                    </view>
+                    <scroll-view bindscrolltolower="getHotGoods" class="hot-goods" scrollX="true">
+                        <view class="rec_allGoods">
+                            <view catchtap="toOtherGoods" class="rec_goods" data-goods_id="{{goods['goods_sign']}}" wx:for="{{hotGoodsList}}" wx:for-index="hgdx" wx:for-item="goods" wx:key="hgl">
+                                <image lazyLoad mode="aspectFit" src="{{goods['goods_thumbnail_url']}}"></image>
+                                <text class="goods_name">{{goods['goods_name']}}</text>
+                                <text class="goods_price">¥ {{( goods['min_group_price']-goods['coupon_discount'] )/100}}</text>
+                                <text class="goods_oldPrice">¥ {{goods['min_group_price']/100}}</text>
+                                <text class="goods_sales">销量:{{goods['sales_tip']}}</text>
+                            </view>
+                        </view>
+                    </scroll-view>
+                    <view class="graySquare down"></view>
+                </view>
+                <view class="blank2"></view>
+                <cover-view class="good-bot">
+                    <button bindtap="goIndex" class="gb-l">
+                        <cover-image bindload="calPageHeight" class="gb-l-img" mode="widthFix" src="/first_duoduoke/public/icon/index_selected.png"></cover-image>
+                        <cover-view>首页</cover-view>
+                    </button>
+                    <cover-view class="cr-box" wx:if="{{!from_uid||source==6}}">
+                        <cover-view catchtap="toDuoDuo" class="gb-c-box">
+                            <button class="gb-c">自己买
+                <cover-view>省{{goods['earn']}}元</cover-view>
+                            </button>
+                        </cover-view>
+                        <cover-view catchtap="showShare" class="gb-r-box">
+                            <button class="gb-r">分享
+                <cover-view>返{{goods['bouns']}}元</cover-view>
+                            </button>
+                        </cover-view>
+                    </cover-view>
+                    <cover-view bindtap="fromToDuoDuo" class="gb-lq" wx:if="{{from_uid&&source!=6}}">领券购买</cover-view>
+                </cover-view>
+                <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+                <cover-view bindtap="hideShare" class="share-bg" wx:if="{{showShareBg}}"></cover-view>
+                <cover-view class="{{showShareStatus?'share-coin':''}} " wx:if="{{showShareStatus}}">
+                    <cover-view class="share-tit">分享</cover-view>
+                    <cover-view class="share-main" wx:if="{{mobile_short_url}}">
+                        <cover-view class="share-box-main">
+            {{goods['promotionWording']?goods['promotionWording']:goods['goods_name']}}
+            <cover-view>入口👉︎{{mobile_short_url}}</cover-view>
+                        </cover-view>
+                    </cover-view>
+                    <cover-view class="share-flex">
+                        <cover-view bindtap="copyShare" class="share-lr" wx:if="{{mobile_short_url}}">
+                            <cover-image mode="aspectFill" src="/first_duoduoke/public/images/fz.png"></cover-image>
+                            <cover-view>复制营销文案</cover-view>
+                        </cover-view>
+                        <button class="share-lr" openType="share">
+                            <cover-image mode="aspectFill" src="/first_duoduoke/public/images/wx.png"></cover-image>
+                            <cover-view>分享给朋友群</cover-view>
+                        </button>
+                        <button bindtap="saveGoodsPoster" class="share-lr">
+                            <cover-image mode="aspectFill" src="/first_duoduoke/public/images/pyq.png"></cover-image>
+                            <cover-view>分享商品海报</cover-view>
+                        </button>
+                    </cover-view>
+                </cover-view>
+                <cover-view class="share-r" wx:if="{{showShareImg}}">
+                    <cover-image class="sr-img" mode="widthFix" src="{{poster}}"></cover-image>
+                    <cover-view class="sr-tit">海报已经保存了，快去分享吧</cover-view>
+                    <button bindtap="confirmSavePoster" class="sr-btn">确定</button>
+                </cover-view>
+                <view catchtap="toTaskPage" class="relief" wx:if="{{goods.task.status==1}}">
+                    <view class="red-bag-box">
+                        <view class="prigress-box">
+                            <view class="progress progress_left" wx:if="{{!goods.isRewards}}">
+                                <view class="circleProgress leftcircle" style="transform:rotate({{left_deg}}deg);"></view>
+                            </view>
+                            <view class="progress progress_right" wx:if="{{!goods.isRewards}}">
+                                <view class="circleProgress rightcircle" style="transform:rotate({{right_deg}}deg);"></view>
+                            </view>
+                            <view class="progress progress_left" wx:if="{{goods.isRewards}}">
+                                <view class="circleProgress leftcircle" style="transform:rotate(225deg);"></view>
+                            </view>
+                            <view class="progress progress_right" wx:if="{{goods.isRewards}}">
+                                <view class="circleProgress rightcircle" style="transform:rotate(225deg);"></view>
+                            </view>
+                        </view>
+                        <view class="red-bag-main" wx:if="{{goods.isRewards}}">
+                            <view class="bag-main-bottom">+
+              <text>{{goods.task.type?goods.task.coin:goods.task.money}}</text>{{goods.task.type?'金币':'元'}}</view>
+                            <view bindtap="goRedeem" class="gold-detail" wx:if="{{goods.isRewards}}">金币明细</view>
+                        </view>
+                        <view class="red-bag-main" wx:if="{{!goods.isRewards}}">
+                            <view class="bag-main-top">浏览必得</view>
+                            <view class="bag-main-bottom">{{goods.task.type?'金币':'现金'}}奖励</view>
+                        </view>
+                    </view>
+                </view>
+                <block wx:if="{{source==6&&tbCopy}}">
+                    <cover-view catchtap="hidetbCopy" class="share-bg"></cover-view>
+                    <cover-view class="tbcopy">
+                        <cover-view class="zt">
+                            <cover-image mode="widthFix" src="{{goods['goods_image_url']}}"></cover-image>
+                        </cover-view>
+                        <cover-view catchtap="hidetbCopy" class="tbcopyClose">关闭</cover-view>
+                        <cover-view class="list">
+                            <cover-view class="title">商品名称：</cover-view>
+                            <cover-view class="cnt">{{goods['goods_name']}}</cover-view>
+                        </cover-view>
+                        <cover-view class="list">
+                            <cover-view class="title">推荐理由：</cover-view>
+                            <cover-view class="cnt">{{goods['goods_desc']}}</cover-view>
+                        </cover-view>
+                        <cover-view class="list">
+                            <cover-view class="title">原价：</cover-view>
+                            <cover-view class="cnt">￥{{goods['min_group_price']/100}}</cover-view>
+                        </cover-view>
+                        <cover-view class="list">
+                            <cover-view class="title">券后价：</cover-view>
+                            <cover-view class="cnt">￥{{( goods['min_group_price']-goods['coupon_discount'] )/100}}</cover-view>
+                        </cover-view>
+                        <cover-view class="list">
+                            <cover-view class="title">券：</cover-view>
+                            <cover-view class="cnt">￥{{goods['coupon_discount']/100}}</cover-view>
+                        </cover-view>
+                        <cover-view class="list">
+                            <cover-view class="title">淘口令：</cover-view>
+                            <cover-view class="cnt">{{goods['tpwd']}}</cover-view>
+                        </cover-view>
+                        <cover-view class="listBtn">
+                            <cover-view class="tiptwd">*复制成功后，打开“手机淘宝”领券购买*</cover-view>
+                        </cover-view>
+                        <cover-view class="listBtn">
+                            <cover-view catchtap="copyTpwd" class="copyTbBtn">{{copyTbBtnText}}</cover-view>
+                        </cover-view>
+                    </cover-view>
+                </block>
+            </view>
+        </view>
+        <view bindtap="wachVideo" class="video-shade" wx:if="{{onVideo==true}}"></view>
+        <video controls autoplay="{{true}}" id="myVideo" src="{{videoPath}}" wx:if="{{onVideo==true}}"></video>
+    </view>
+</block>

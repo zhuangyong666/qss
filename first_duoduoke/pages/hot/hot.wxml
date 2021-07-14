@@ -1,0 +1,302 @@
+<import src="../templates/search.wxml"></import>
+<import src="../templates/login.wxml"></import>
+<view class="">
+    <view class="index-top" style="height:calc({{navH}}px + {{plusH}}px);">
+        <view class="nav" style="height:{{navH}}px">
+            <view class="nav-title">
+                <text>热门</text>
+            </view>
+        </view>
+        <view class="topNavBar" style="height: 42px; ">
+            <scroll-view class="topNavScroll" scrollLeft="{{scrollLeft}}" scrollWithAnimation="true" scrollX="true">
+                <view class="top_nav">
+                    <view catchtap="switchTab" class="nav_opt {{tab==titem.tab?'active':''}}" data-cdx="{{tdx}}" data-tab="{{titem.tab}}" data-type="{{titem.type}}" wx:for="{{tabs}}" wx:for-index="tdx" wx:for-item="titem" wx:key="tabs">{{titem.title}}</view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+    <view class="bg-gray overflow" style="margin-top:calc({{navH}}px + 42px);">
+        <view class="hidden {{tab==1?' ':'dontLook'}}">
+            <view class="container-plea">
+                <view catchtap="toMainPage" class="card" data-show="0">
+                    <view class="card-top">
+                        <view class="card-top-left">
+                            <image class="card-icon" mode="aspectFill" src="{{imgPath}}eleme.png"></image>
+                饿了么外卖优惠券
+                <view>返现</view>
+                        </view>
+                        <view class="card-top-right">
+                立即领券 
+                <text class="iconfont icon-jiantou"></text>
+                        </view>
+                    </view>
+                    <image class="card-main-img" mode="aspectFill" src="{{imgPath}}eleme-ht.jpg"></image>
+                </view>
+                <view catchtap="toMainPage2" class="card" data-show="0">
+                    <view class="card-top">
+                        <view class="card-top-left">
+                            <image class="card-icon" mode="aspectFill" src="{{imgPath}}meituan-waimai.png"></image>
+                美团外卖优惠券
+                <view>返现</view>
+                        </view>
+                        <view class="card-top-right">
+                立即领券 
+                <text class="iconfont icon-jiantou"></text>
+                        </view>
+                    </view>
+                    <image class="card-main-img" mode="aspectFill" src="{{imgPath}}mtwm-ht.jpg"></image>
+                </view>
+                <view catchtap="toMainPage" class="card" data-show="1">
+                    <view class="card-top">
+                        <view class="card-top-left">
+                            <image class="card-icon" mode="aspectFill" src="{{imgPath}}eleme.png"></image>
+                买菜到家优惠券
+                <view>返现</view>
+                        </view>
+                        <view class="card-top-right">
+                立即领券 
+                <text class="iconfont icon-jiantou"></text>
+                        </view>
+                    </view>
+                    <image class="card-main-img" mode="aspectFill" src="{{imgPath}}eleme-ht2.jpg"></image>
+                </view>
+                <view catchtap="toMainPage2" class="card" data-show="1">
+                    <view class="card-top">
+                        <view class="card-top-left">
+                            <image class="card-icon" mode="aspectFill" src="{{imgPath}}meituan.png"></image>
+                美团闪购优惠券
+                <view>返现</view>
+                        </view>
+                        <view class="card-top-right">
+                立即领券 
+                <text class="iconfont icon-jiantou"></text>
+                        </view>
+                    </view>
+                    <image class="card-main-img" mode="aspectFill" src="{{imgPath}}mtwm-ht2.jpg"></image>
+                </view>
+            </view>
+        </view>
+        <view class="hotText-container {{tab==5?' ':'dontLook'}}">
+            <scroll-view scrollY="true">
+                <view class="hotText-title">
+          热文导购
+          <text>共993篇文章</text>
+                </view>
+                <view class="hotText-card">
+                    <view class="hotText-card-title">冬季女装时尚羽绒服，美丽不冻人</view>
+                    <image mode="scaleToFill" src="https://cdn.rouding.com/imagesrc-s/jpg/201411-21-1047897B0A7E4E4E210E2D9AC89BD8C3-th.jpg"></image>
+                    <view class="hotText-card-bottom">
+            10-29
+            <view class="hotText-browseAndNice">
+                            <view class="hotText-browse">
+                                <text class="iconfont icon-liulan-copy"></text> 154人浏览</view>
+                            <view class="hotText-nice">
+                                <text class="iconfont icon-dianzan"></text> 赞</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="hotText-card">
+                    <view class="hotText-card-title">冬季女装时尚羽绒服，美丽不冻人</view>
+                    <image mode="scaleToFill" src="https://cdn.rouding.com/imagesrc-s/jpg/201411-21-1047897B0A7E4E4E210E2D9AC89BD8C3-th.jpg"></image>
+                    <view class="hotText-card-bottom">
+            10-29
+            <view class="hotText-browseAndNice">
+                            <view class="hotText-browse">
+                                <text class="iconfont icon-liulan-copy"></text> 154人浏览</view>
+                            <view class="hotText-nice">
+                                <text class="iconfont icon-dianzan"></text> 赞</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="hotText-card">
+                    <view class="hotText-card-title">冬季女装时尚羽绒服，美丽不冻人</view>
+                    <image mode="scaleToFill" src="https://cdn.rouding.com/imagesrc-s/jpg/201411-21-1047897B0A7E4E4E210E2D9AC89BD8C3-th.jpg"></image>
+                    <view class="hotText-card-bottom">
+            10-29
+            <view class="hotText-browseAndNice">
+                            <view class="hotText-browse">
+                                <text class="iconfont icon-liulan-copy"></text> 154人浏览</view>
+                            <view class="hotText-nice">
+                                <text class="iconfont icon-dianzan"></text> 赞</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="hotText-card">
+                    <view class="hotText-card-title">冬季女装时尚羽绒服，美丽不冻人</view>
+                    <image mode="scaleToFill" src="https://cdn.rouding.com/imagesrc-s/jpg/201411-21-1047897B0A7E4E4E210E2D9AC89BD8C3-th.jpg"></image>
+                    <view class="hotText-card-bottom">
+            10-29
+            <view class="hotText-browseAndNice">
+                            <view class="hotText-browse">
+                                <text class="iconfont icon-liulan-copy"></text> 154人浏览</view>
+                            <view class="hotText-nice">
+                                <text class="iconfont icon-dianzan"></text> 赞</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="hotText-card">
+                    <view class="hotText-card-title">冬季女装时尚羽绒服，美丽不冻人</view>
+                    <image mode="scaleToFill" src="https://cdn.rouding.com/imagesrc-s/jpg/201411-21-1047897B0A7E4E4E210E2D9AC89BD8C3-th.jpg"></image>
+                    <view class="hotText-card-bottom">
+            10-29
+            <view class="hotText-browseAndNice">
+                            <view class="hotText-browse">
+                                <text class="iconfont icon-liulan-copy"></text> 154人浏览</view>
+                            <view class="hotText-nice">
+                                <text class="iconfont icon-dianzan"></text> 赞</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="hotText-card">
+                    <view class="hotText-card-title">冬季女装时尚羽绒服，美丽不冻人</view>
+                    <image mode="scaleToFill" src="https://cdn.rouding.com/imagesrc-s/jpg/201411-21-1047897B0A7E4E4E210E2D9AC89BD8C3-th.jpg"></image>
+                    <view class="hotText-card-bottom">
+            10-29
+            <view class="hotText-browseAndNice">
+                            <view class="hotText-browse">
+                                <text class="iconfont icon-liulan-copy"></text> 154人浏览</view>
+                            <view class="hotText-nice">
+                                <text class="iconfont icon-dianzan"></text> 赞</view>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+        <view class="godCoupon-container {{tab==6?' ':'dontLook'}}">
+            <image class="banner_image" src="{{rank_banner}}" wx:if="{{rank_banner&&rankList}}"></image>
+            <form catchsubmit="toGoodsPage" data-goods_id="{{goods['goods_id']}}" data-goods_sign="{{goods['goods_sign']}}" reportSubmit="true" wx:for="{{rankList}}" wx:for-index="rldx" wx:for-item="goods" wx:key="rl">
+                <button class="reg-act" formType="submit">
+                    <image class="reg-act-l" mode="aspectFill" src="{{goods['goods_thumbnail_url']}}"></image>
+                    <view class="act-l-flag-gold"></view>
+                    <view class="act-l-flag"></view>
+                    <view class="flag-num">
+                  Top
+                <text>{{rldx+1}}</text>
+                    </view>
+                    <view class="reg-act-r">
+                        <view class="reg-act-name">{{goods['goods_name']}}</view>
+                        <view class="priceAndSale">
+                            <view class="old-price">
+                                <view>原价</view>
+                                <view class="old-price-mon">￥{{goods['min_group_price']/100}}</view>
+                            </view>
+                            <view class="sale-info-r">销量{{goods['sales_tip']}}</view>
+                        </view>
+                        <view class="sale-info">
+                            <view class="sale-info-l">
+                                <view>券</view>
+                                <view>￥{{goods['coupon_discount']/100}}</view>
+                            </view>
+                            <view class="sale-text" wx:if="{{goods['bounss']!=''}}">
+                                <text>升级<block wx:if="{{appletKeyword}}">{{appletKeyword}}</block>
+                                    <block wx:else>赚</block>￥{{goods['bounss']}}</text>
+                            </view>
+                        </view>
+                        <view class="sell-money">
+                            <view class="semo-l">
+                                <view>券后</view>
+                                <view class="semo-l-mon">￥
+                      <text>{{( goods['min_group_price']-goods['coupon_discount'] )/100}}</text>
+                                </view>
+                            </view>
+                            <view class="semo-r"></view>
+                            <view class="semo-pos">
+                                <view>{{appletKeyword}}</view>
+                                <view class="semo-pos-mon">￥
+                      <text>{{goods['bouns']}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </button>
+            </form>
+        </view>
+        <view class="godCoupon-container {{tab==7?' ':'dontLook'}}">
+            <view class="godCoupon-page-top">
+                <image class="banner_image" src="{{store_banner}}" wx:if="{{store_banner&&storeList}}"></image>
+                <scroll-view scrollX="true">
+                    <view class="godCoupon-page-nav">
+                        <view bindtap="switchCat" class="godCoupon-page-item{{cat_id==cate.id?' active':''}}" data-cat_id="{{cate.id}}" wx:for="{{cates}}" wx:for-index="cdx" wx:for-item="cate" wx:key="ck">{{cate.name}}</view>
+                    </view>
+                </scroll-view>
+            </view>
+            <view class="godCoupon-content">
+                <view catchtap="toHomepage" class="godCoupon-shop-card" data-mall_id="{{store.mall_id}}" wx:for="{{storeList}}" wx:for-item="store" wx:key="slt">
+                    <image src="{{store.img_url}}"></image>
+                    <view class="godCoupon-shop-main">
+                        <view class="godCoupon-nameAndCoupon">
+                            <view class="godCoupon-shop-name">
+                {{store.mall_name}}
+                <text>{{store.sales_tip}}</text>
+                            </view>
+                            <view class="godCoupon-Coupon">
+                                <view>
+                                    <text>全店{{store['mall_coupon_info_list'][0].discount/10}}折</text>
+                                </view>
+                                <view>
+                                    <text>{{appletKeyword}}{{store.mall_rate/10}}%</text>
+                                </view>
+                                <view class="coupon-cir-top"></view>
+                                <view class="coupon-cir-bto"></view>
+                            </view>
+                        </view>
+                        <scroll-view scrollX="true" style="width:600rpx;overflow:hidden;">
+                            <view class="godCoupon-shop-goods">
+                                <view class="godCoupon-goods" wx:for="{{store.goods_detail_vo_list}}" wx:for-item="goods" wx:key="rglx">
+                                    <image src="{{goods.goods_thumbnail_url}}"></image>
+                                    <view class="godCoupon-price">
+                                        <text>¥ </text> {{( goods['min_group_price']-goods['coupon_discount'] )/100}}
+                 </view>
+                                </view>
+                            </view>
+                        </scroll-view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="reg-ite {{tab==12||tab==10||tab==11||tab==9||tab==2||tab==3||tab==4||tab==8?'':'dontLook'}}">
+            <navigator url="../goods/goods?goods_id={{goods['goods_id']}}&goods_sign={{goods['goods_sign']}}" wx:for="{{goodsList}}" wx:for-item="goods" wx:key="gl">
+                <button class="reg-act">
+                    <image class="reg-act-l" mode="aspectFill" src="{{goods['goods_thumbnail_url']}}"></image>
+                    <view class="reg-act-r">
+                        <view class="reg-act-name">{{goods['goods_name']}}</view>
+                        <view class="priceAndSale">
+                            <view class="old-price">
+                                <view>原价</view>
+                                <view class="old-price-mon">￥{{goods['min_group_price']/100}}</view>
+                            </view>
+                            <view class="sale-info-r">销量{{goods['sales_tip']}}</view>
+                        </view>
+                        <view class="sale-info">
+                            <view class="sale-info-l">
+                                <view>券</view>
+                                <view>￥{{goods['coupon_discount']/100}}</view>
+                            </view>
+                            <view class="sale-text">
+                                <text wx:if="{{goods['bounss']!=''}}">升级<block wx:if="{{appletKeyword}}">{{appletKeyword}}</block>
+                                    <block wx:else>赚</block>￥{{goods['bounss']}}</text>
+                            </view>
+                        </view>
+                        <view class="sell-money">
+                            <view class="semo-l">
+                                <view>券后</view>
+                                <view class="semo-l-mon">￥<text>{{( goods['min_group_price']-goods['coupon_discount'] )/100}}</text>
+                                </view>
+                            </view>
+                            <view class="semo-r"></view>
+                            <view class="semo-pos">
+                                <view>{{appletKeyword}}</view>
+                                <view class="semo-pos-mon">￥<text>{{goods['bouns']}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </button>
+            </navigator>
+        </view>
+        <template is="searchModal" data="{{smartSou:smartSou}}"></template>
+        <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+    </view>
+</view>
+<import src="../templates/tab-bar.wxml"></import>
+<template is="footerWx" data="{{...tabBar}}"></template>

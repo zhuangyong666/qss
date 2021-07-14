@@ -1,0 +1,30 @@
+<view class="nav bg-white" style="height:{{navH}}px">
+    <view class="nav-title">
+        <text bindtap="navBack" class="back iconfont icon-jiantou-copy"></text>
+        <view>获奖记录</view>
+    </view>
+</view>
+<import src="../templates/login.wxml"></import>
+<view class="container-page" style="margin-top:{{navH}}px;">
+    <view class="card" wx:if="{{list!=''}}" wx:for="{{list}}" wx:key="id">
+        <view class="top">
+            <view class="time">{{item.create_time}}</view>
+            <view class="top-right">
+                <view class="status-yes" wx:if="{{item.logistics_no!=''&&item.logistics_name!=''}}">已发货</view>
+                <view class="status-no" wx:if="{{item.logistics_no==''||item.logistics_name==''}}">未发货</view>
+            </view>
+        </view>
+        <view class="main">
+            <image class="card-img" src="{{item.img}}"></image>
+            <view class="main-right">
+                <view class="card-title">{{item.title}}</view>
+                <view bindtap="lookLogisitics" class="card-btn" data-logistics_name="{{item.logistics_name}}" data-logistics_no="{{item.logistics_no}}" wx:if="{{item.logistics_no!=''&&item.logistics_name!=''}}">查看物流</view>
+                <text class="iconfont icon-zhongjiang card-icon"></text>
+            </view>
+        </view>
+    </view>
+    <view class="msg" wx:if="{{list==''}}">
+    还没有中奖哦，快去参加活动吧！
+  </view>
+    <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+</view>

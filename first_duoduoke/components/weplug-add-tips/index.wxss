@@ -1,0 +1,91 @@
+.box {
+    position: fixed;
+    top: 10vh;
+    right: 0;
+    z-index: 999;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+.arrow {
+    width: 0;
+    height: 0;
+    margin-right: 120rpx;
+    border: 20rpx solid transparent;
+    border-bottom-color: #fff;
+}
+
+.body {
+    background-color: #fff;
+    border-radius: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 52rpx;
+    padding: 0 20rpx;
+    margin-right: 40rpx;
+}
+
+.body .body-text {
+    color: #000;
+    font-size: 22rpx;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    background-color: hsla(0,0%,100%,.9);
+    padding: 20px;
+}
+
+.modal .modal-view {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal .modal-view .modal-text {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.modal .modal-view .modal-image {
+    border-radius: 10px;
+}
+
+.ok-btn {
+    width: 100%;
+    margin-top: 40px;
+}
+
+.ok-btn,.ok-btn .ok-view {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ok-btn .ok-view {
+    height: 40px;
+    width: 120px;
+    background-color: #34b5e2;
+    box-shadow: 0 5px 10px -px #34b5e2;
+    border-radius: 40px;
+}
+
+.ok-btn .ok-view .ok-text {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 400;
+}
+
+.btn-hover {
+    opacity: .6;
+}

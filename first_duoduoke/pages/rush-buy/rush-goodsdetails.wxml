@@ -1,0 +1,95 @@
+<view class="nav bg-white {{showNavcolor?'nav-color':''}}" style="height:{{navH}}px">
+    <view class="nav-title">
+        <view class="back">
+            <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+            <view class="back-line"></view>
+            <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+        </view>
+    </view>
+</view>
+<swiper autoplay="true" circular="true" indicatorDots="true" interval="3000" style="height:calc({{height}}px/2);">
+    <swiper-item wx:for="{{thisGoods.goods_gallery_urls}}" wx:for-item="img" wx:key="ggz">
+        <image class="swiper-img" mode="aspectFill" src="{{img}}"></image>
+    </swiper-item>
+</swiper>
+<view class="container">
+    <view class="page-box">
+        <view class="goods-title">{{thisGoods.goods_name}}</view>
+        <view class="coupon-card">
+            <view class="coupon-card-left">
+                <view class="now-price">¥ 1.00</view>
+                <view class="old-price">原价:{{(thisGoods.min_group_price-thisGoods.coupon_discount)/100}}</view>
+            </view>
+            <view class="coupon-card-right">
+                <view class="right-top">
+                    <view class="rtr">
+                        <text class="iconfont icon-huo"></text>
+                    </view>
+          热度
+        </view>
+                <view class="right-bottom">
+          {{thisGood.views}}人想要
+        </view>
+                <view class="tager"></view>
+            </view>
+        </view>
+    </view>
+    <view class="page-box">
+        <view class="goods-message">
+      {{thisGoods.goods_desc}}
+    </view>
+        <view class="goods-img-d">
+            <image class="goods-detailsImg" mode="aspectFill" src="{{item}}" wx:for="{{thisGoods.goods_gallery_urls}}" wx:for-index="adx" wx:key="index"></image>
+        </view>
+    </view>
+    <view class="recommend">
+        <view class="rec_begin">
+            <text>每日爆款</text>
+            <span catchtap="toHotMore">更多 ></span>
+        </view>
+        <scroll-view bindscrolltolower="getHotGoods" scrollX="true">
+            <view class="rec_allGoods">
+                <view catchtap="toOtherGoods" class="rec_goods" data-goods_id="{{goods['goods_id']}}" wx:for="{{hotGoodsList}}" wx:for-index="hgdx" wx:for-item="goods" wx:key="hgl">
+                    <image mode="aspectFit" src="{{goods['goods_thumbnail_url']}}"></image>
+                    <text class="goods_name">{{goods['goods_name']}}</text>
+                    <text class="goods_price">¥ {{( goods['min_group_price']-goods['coupon_discount'] )/100}}</text>
+                    <text class="goods_oldPrice">¥ {{goods['min_group_price']/100}}</text>
+                    <text class="goods_sales" wx:if="{{goods['sales_tip']>0}}">销量:{{goods['sales_tip']}}</text>
+                </view>
+            </view>
+        </scroll-view>
+        <view class="graySquare down"></view>
+    </view>
+</view>
+<view class="page-bottom">
+    <view bindtap="onGetaddress" class="page-bottom-left" wx:if="{{address==''}}">
+        <view class="b-l-t">1.00元抢购</view>
+        <view class="b-l-b">仅需支付1.00元，邀请新用户下单后发货</view>
+    </view>
+    <view bindtap="payRushBuy" class="page-bottom-left" wx:if="{{address!=''}}">
+        <view class="b-l-t">1.00元抢购</view>
+        <view class="b-l-b">仅需支付1.00元，邀请新用户下单后发货</view>
+    </view>
+    <view bindtap="goShareFriend" class="page-bottom-right" data-r_id="{{r_id}}">
+        <view>
+            <text class="iconfont icon-fenxiang1"></text>
+        </view>
+    告诉好友
+  </view>
+</view>
+<view class="address" wx:if="{{address!=''}}">
+    <view class="address-left">
+        <view class="icon">
+            <text class="iconfont icon-fahuo"></text>
+        </view>
+        <view class="address-left-message">
+            <view class="address-left-message-l">已选收货地址：</view>
+            <view class="address-left-message-r">{{address[0].userName}}{{address[0].tel}}{{address[0].provinceName}}{{address[0].cityName}}{{address[0].countyName}}{{address[0].detailInfo}}</view>
+        </view>
+    </view>
+    <view bindtap="onGetaddress" class="address-right">
+    修改 >
+  </view>
+</view>
+<import src="../templates/login.wxml"></import>
+<template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>

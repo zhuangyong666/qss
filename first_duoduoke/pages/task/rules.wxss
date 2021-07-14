@@ -1,0 +1,31 @@
+.bg-white {
+    background: #fff;
+    color: #000;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+
+.rules-all {
+    overflow: scroll;
+    background-color: #fff;
+    border-top: 1px solid #dbdbdb;
+    font-size: 32rpx;
+    padding: 26rpx;
+    letter-spacing: 2rpx;
+}
+
+.ra {
+    font-weight: bolder;
+}
+
+.ra,.rb {
+    margin-bottom: 30rpx;
+}
+
+.r-red {
+    color: #fd6361;
+}

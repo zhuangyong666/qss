@@ -1,0 +1,31 @@
+<view class="nav bg-white" style="height:{{navH}}px">
+    <view class="nav-title">
+        <text bindtap="navBack" class="back iconfont icon-jiantou-copy"></text>
+      奖品晒单
+    </view>
+</view>
+<view class="container-page" style="margin-top:{{navH}}px;">
+    <view class="opt_goods">
+        <text>1.分享中奖的喜悦</text>
+        <view class="textarea-wrp">
+            <textarea bindinput="limit" maxlength="{{noteMaxLen}}" placeholder="奖品是否给你带来了惊喜？讲讲你的获奖感言吧，把惊喜分享给更多的人" placeholderStyle="color:#D6D6D6;" value="{{text}}"></textarea>
+        </view>
+        <text class="aging">已输入：{{current}}/{{noteMaxLen}}</text>
+    </view>
+    <view class="photoAndVideos">
+        <text>1.上传奖品照片</text>
+        <view class="opt_img clearfix">
+            <view class="close-icon" wx:for="{{pics}}" wx:key="index">
+                <image mode="aspectFill" src="{{item}}"></image>
+                <icon bindtap="closeImg" class="iconfont icon-chahao" data-index="{{index}}"></icon>
+            </view>
+            <view bindtap="uploadPostPic" class="add-img" wx:if="{{pics.length<3}}">+</view>
+        </view>
+        <text bindtap="closePicsAndPath" class="aging" wx:if="{{path||pics.length>=3}}">重新选择</text>
+    </view>
+</view>
+<form bindsubmit="saveOrderShow" reportSubmit="true">
+    <button class="btn-commit" disabled="{{postBtnDisabled}}" formType="submit">
+    提交奖品晒单
+    </button>
+</form>

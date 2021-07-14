@@ -1,0 +1,60 @@
+<view class="nav bg-white" style="height:{{navH}}px">
+    <view class="nav-title">
+        <view class="back">
+            <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+            <view class="back-line"></view>
+            <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+        </view>
+      一元抢购
+    </view>
+</view>
+<view class="container-page" style="margin-top: {{navH}}px;">
+    <view class="noOrder-box" wx:if="{{list==''}}">
+        <view class="tips">
+            <text class="iconfont icon-logooo_huabanfuben"></text>
+      暂时还没有相关订单
+      <view bindtap="navBack" class="tips-btn">一元抢购</view>
+        </view>
+    </view>
+    <view class="order-card" wx:for="{{list}}" wx:key="index">
+        <view class="order-time">
+            <view>{{item.create_time}}</view>
+            <view class="b-left" wx:if="{{item.info['status']==4}}">
+                <text class="iconfont icon-logooo_huabanfuben ord_yellow"></text>
+                <text class="ord_yellow">已发货</text>
+            </view>
+            <block wx:else>
+                <view class="b-left" wx:if="{{item.status==0&&item.i_uid==0}}">
+                    <text class="iconfont icon-logooo_huabanfuben ord_green"></text>
+                    <text class="ord_green">订单进行中</text>
+                </view>
+                <view class="b-left" wx:if="{{item.status==1&&item.i_uid==0}}">
+                    <text class="iconfont icon-logooo_huabanfuben ord_gray"></text>
+                    <text class="ord_gray">订单已失效</text>
+                </view>
+                <view class="b-left" wx:if="{{item.status==2&&item.i_uid!=0}}">
+                    <text class="iconfont icon-logooo_huabanfuben ord_red"></text>
+                    <text class="ord_red">抢购成功</text>
+                </view>
+            </block>
+        </view>
+        <view class="order-card-main">
+            <image bindtap="goLookResult" class="order-card-img" data-log_id="{{item.id}}" mode="aspectFill" src="{{item.info['img']}}"></image>
+            <view class="order-card-right">
+                <view bindtap="goLookResult" class="order-title" data-log_id="{{item.id}}">
+                    <view>{{item.info['title']}}</view>
+                </view>
+                <view class="order-main-bottom">
+                    <view catchtap="copyExno" class="express_info" data-exno="{{item.info['logistics_no']}}" wx:if="{{item.info['status']==4}}">
+                        <text class="express_stat">物流信息：[{{item.info['logistics_name']}} ]</text>
+                        <text class="express_no">{{item.info['logistics_no']}}</text>
+                    </view>
+                    <block wx:else>
+                        <view bindtap="goLookResult" class="look-result" data-log_id="{{item.id}}" wx:if="{{item.status==0&&item.i_uid==0}}">查看订单</view>
+                        <view bindtap="goShareFriend" class="firend" data-log_id="{{item.id}}" wx:if="{{item.status==0&&item.i_uid==0}}">邀请好友</view>
+                    </block>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

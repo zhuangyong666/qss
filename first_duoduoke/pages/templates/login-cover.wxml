@@ -1,0 +1,10 @@
+<template name="loginModal">
+    <cover-view class="register-bg" wx:if="{{showLoginModal}}"></cover-view>
+    <cover-view class="register" wx:if="{{showLoginModal}}">
+        <cover-view class="register-tit">您还没有登录,请先授权登录！</cover-view>
+        <cover-view class="register-btn">
+            <cover-view bindtap="loginCancel" class="rb-l">取消</cover-view>
+            <button bindgetuserinfo="loginAfter" class="rb-r" openType="getUserInfo">确定</button>
+        </cover-view>
+    </cover-view>
+</template>

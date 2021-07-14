@@ -1,0 +1,66 @@
+.bg-gray {
+    height: 100vh;
+    background-color: #fff;
+    background-size: 100% 100%;
+}
+
+.invi-coin {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.invi-timg {
+    width: 100%;
+}
+
+.invi-content {
+    display: flex;
+    flex-flow: column;
+    font-size: 24rpx;
+    color: #4e4e4e;
+    padding: 0 10vw;
+    letter-spacing: 2rpx;
+    width: 80%;
+}
+
+.invi-tit {
+    margin: 40rpx 0;
+}
+
+.invi-info {
+    display: flex;
+    flex-flow: column;
+    line-height: 40rpx;
+}
+
+.blank {
+    height: 170rpx;
+    width: 100%;
+}
+
+.invi-btn {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 40rpx 15vw;
+    background-color: #fff;
+    box-shadow: 0 0 10px #ccc;
+}
+
+.invi-btn button::after {
+    border: 0;
+}
+
+.invi-btn button {
+    width: 70vw;
+    height: 90rpx;
+    line-height: 90rpx;
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(90deg,#ef5d4e,#f54069);
+    border-radius: 90rpx;
+    box-shadow: 0 0 15px #e8dcdc;
+    color: #fff;
+    font-size: 26rpx;
+}

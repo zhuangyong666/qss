@@ -1,0 +1,307 @@
+<view class="nav bg-white nav-color" style="height:{{navH}}px">
+    <view class="nav-title">
+    我的好友
+    <text bindtap="navBack" class="back iconfont icon-jiantou-copy"></text>
+    </view>
+</view>
+<view class="container-s" style="margin-top: {{navH}}px;">
+    <view class="top">
+        <view class="top-t">
+            <view class="search">
+                <icon size="20" type="search"></icon>
+                <input placeholder="请输入关键字"></input>
+            </view>
+            <view class="search-btn">搜索</view>
+        </view>
+        <view class="top-b">
+            <view bindtap="onChangeitemid" class="top-item {{item_id==1?'act':''}}" data-item_id="1">校长</view>
+            <view bindtap="onChangeitemid" class="top-item {{item_id==2?'act':''}}" data-item_id="2">老师</view>
+            <view bindtap="onChangeitemid" class="top-item {{item_id==3?'act':''}}" data-item_id="3">直推</view>
+            <view bindtap="onChangeitemid" class="top-item {{item_id==4?'act':''}}" data-item_id="4">组员</view>
+        </view>
+    </view>
+    <view class="main">
+        <scroll-view class="main-scroll" scrollY="true">
+            <block wx:if="{{item_id==0}}">
+                <view class="card">
+                    <image class="card-img" mode="aspectFill" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1587601794,489963968&fm=11&gp=0.jpg"></image>
+                    <view class="card-main">
+                        <view class="card-main-top">
+              弥猫
+              <view class="top-d">
+                (1PPT4Y)
+              </view>
+                        </view>
+                        <view class="card-main-bottom">
+              注册日期：2018-07-05
+            </view>
+                    </view>
+                    <view class="card-tag">
+            校长
+          </view>
+                </view>
+                <view class="card">
+                    <image class="card-img" mode="aspectFill" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1587601794,489963968&fm=11&gp=0.jpg"></image>
+                    <view class="card-main">
+                        <view class="card-main-top">
+              弥猫
+              <view class="top-d">
+                (1PPT4Y)
+              </view>
+                        </view>
+                        <view class="card-main-bottom">
+              注册日期：2018-07-05
+            </view>
+                    </view>
+                    <view class="card-tag">
+            校长
+          </view>
+                </view>
+                <view class="card">
+                    <image class="card-img" mode="aspectFill" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1587601794,489963968&fm=11&gp=0.jpg"></image>
+                    <view class="card-main">
+                        <view class="card-main-top">
+              弥猫
+              <view class="top-d">
+                (1PPT4Y)
+              </view>
+                        </view>
+                        <view class="card-main-bottom">
+              注册日期：2018-07-05
+            </view>
+                    </view>
+                    <view class="card-tag">
+            校长
+          </view>
+                </view>
+                <view class="card">
+                    <image class="card-img" mode="aspectFill" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1587601794,489963968&fm=11&gp=0.jpg"></image>
+                    <view class="card-main">
+                        <view class="card-main-top">
+              弥猫
+              <view class="top-d">
+                (1PPT4Y)
+              </view>
+                        </view>
+                        <view class="card-main-bottom">
+              注册日期：2018-07-05
+            </view>
+                    </view>
+                    <view class="card-tag">
+            校长
+          </view>
+                </view>
+                <view class="card">
+                    <image class="card-img" mode="aspectFill" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1587601794,489963968&fm=11&gp=0.jpg"></image>
+                    <view class="card-main">
+                        <view class="card-main-top">
+              弥猫
+              <view class="top-d">
+                (1PPT4Y)
+              </view>
+                        </view>
+                        <view class="card-main-bottom">
+              注册日期：2018-07-05
+            </view>
+                    </view>
+                    <view class="card-tag">
+            校长
+          </view>
+                </view>
+                <view class="card">
+                    <image class="card-img" mode="aspectFill" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1587601794,489963968&fm=11&gp=0.jpg"></image>
+                    <view class="card-main">
+                        <view class="card-main-top">
+              弥猫
+              <view class="top-d">
+                (1PPT4Y)
+              </view>
+                        </view>
+                        <view class="card-main-bottom">
+              注册日期：2018-07-05
+            </view>
+                    </view>
+                    <view class="card-tag">
+            校长
+          </view>
+                </view>
+                <view class="card">
+                    <image class="card-img" mode="aspectFill" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1587601794,489963968&fm=11&gp=0.jpg"></image>
+                    <view class="card-main">
+                        <view class="card-main-top">
+              弥猫
+              <view class="top-d">
+                (1PPT4Y)
+              </view>
+                        </view>
+                        <view class="card-main-bottom">
+              注册日期：2018-07-05
+            </view>
+                    </view>
+                    <view class="card-tag">
+            校长
+          </view>
+                </view>
+                <view class="card">
+                    <image class="card-img" mode="aspectFill" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1587601794,489963968&fm=11&gp=0.jpg"></image>
+                    <view class="card-main">
+                        <view class="card-main-top">
+              弥猫
+              <view class="top-d">
+                (1PPT4Y)
+              </view>
+                        </view>
+                        <view class="card-main-bottom">
+              注册日期：2018-07-05
+            </view>
+                    </view>
+                    <view class="card-tag">
+            校长
+          </view>
+                </view>
+                <view class="card">
+                    <image class="card-img" mode="aspectFill" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1587601794,489963968&fm=11&gp=0.jpg"></image>
+                    <view class="card-main">
+                        <view class="card-main-top">
+              弥猫
+              <view class="top-d">
+                (1PPT4Y)
+              </view>
+                        </view>
+                        <view class="card-main-bottom">
+              注册日期：2018-07-05
+            </view>
+                    </view>
+                    <view class="card-tag">
+            校长
+          </view>
+                </view>
+            </block>
+            <block wx:if="{{item_id==1}}">
+                <view class="card">
+                    <image class="card-img" mode="aspectFill" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1587601794,489963968&fm=11&gp=0.jpg"></image>
+                    <view class="card-main">
+                        <view class="card-main-top">
+              弥猫
+              <view class="top-d">
+                (1PPT4Y)
+              </view>
+                        </view>
+                        <view class="card-main-bottom">
+              注册日期：2018-07-05
+            </view>
+                    </view>
+                    <view class="card-tag">
+            校长
+          </view>
+                </view>
+                <view class="card">
+                    <image class="card-img" mode="aspectFill" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1587601794,489963968&fm=11&gp=0.jpg"></image>
+                    <view class="card-main">
+                        <view class="card-main-top">
+              弥猫
+              <view class="top-d">
+                (1PPT4Y)
+              </view>
+                        </view>
+                        <view class="card-main-bottom">
+              注册日期：2018-07-05
+            </view>
+                    </view>
+                    <view class="card-tag">
+            校长
+          </view>
+                </view>
+            </block>
+            <block wx:if="{{item_id==1}}">
+                <view class="card">
+                    <image class="card-img" mode="aspectFill" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1587601794,489963968&fm=11&gp=0.jpg"></image>
+                    <view class="card-main">
+                        <view class="card-main-top">
+              弥猫
+              <view class="top-d">
+                (1PPT4Y)
+              </view>
+                        </view>
+                        <view class="card-main-bottom">
+              注册日期：2018-07-05
+            </view>
+                    </view>
+                    <view class="card-tag">
+            校长
+          </view>
+                </view>
+                <view class="card">
+                    <image class="card-img" mode="aspectFill" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1587601794,489963968&fm=11&gp=0.jpg"></image>
+                    <view class="card-main">
+                        <view class="card-main-top">
+              弥猫
+              <view class="top-d">
+                (1PPT4Y)
+              </view>
+                        </view>
+                        <view class="card-main-bottom">
+              注册日期：2018-07-05
+            </view>
+                    </view>
+                    <view class="card-tag">
+            校长
+          </view>
+                </view>
+            </block>
+            <block wx:if="{{item_id==2}}">
+                <view class="card">
+                    <image class="card-img" mode="aspectFill" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1587601794,489963968&fm=11&gp=0.jpg"></image>
+                    <view class="card-main">
+                        <view class="card-main-top">
+              弥猫
+              <view class="top-d">
+                (1PPT4Y)
+              </view>
+                        </view>
+                        <view class="card-main-bottom">
+              注册日期：2018-07-05
+            </view>
+                    </view>
+                    <view class="card-tag">
+            校长
+          </view>
+                </view>
+                <view class="card">
+                    <image class="card-img" mode="aspectFill" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1587601794,489963968&fm=11&gp=0.jpg"></image>
+                    <view class="card-main">
+                        <view class="card-main-top">
+              弥猫
+              <view class="top-d">
+                (1PPT4Y)
+              </view>
+                        </view>
+                        <view class="card-main-bottom">
+              注册日期：2018-07-05
+            </view>
+                    </view>
+                    <view class="card-tag">
+            校长
+          </view>
+                </view>
+                <view class="card">
+                    <image class="card-img" mode="aspectFill" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1587601794,489963968&fm=11&gp=0.jpg"></image>
+                    <view class="card-main">
+                        <view class="card-main-top">
+              弥猫
+              <view class="top-d">
+                (1PPT4Y)
+              </view>
+                        </view>
+                        <view class="card-main-bottom">
+              注册日期：2018-07-05
+            </view>
+                    </view>
+                    <view class="card-tag">
+            校长
+          </view>
+                </view>
+            </block>
+        </scroll-view>
+    </view>
+</view>

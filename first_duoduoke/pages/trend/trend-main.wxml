@@ -1,0 +1,70 @@
+<view class="nav bg-white nav-color" style="height:{{navH}}px">
+    <view class="nav-title">
+    查询商品价格趋势
+    <text bindtap="navBack" class="back iconfont icon-jiantou-copy"></text>
+    </view>
+</view>
+<view class="container-s" style="margin-top: {{navH}}px;">
+    <view class="page-top" wx:if="{{goods}}">
+        <image class="card-img" mode="aspectFill" src="{{goods['goods_image_url']}}"></image>
+        <view class="card-main">
+            <view class="card-title">{{goods['goods_name']}}</view>
+            <view class="card-data">
+                <view class="card-d-t">
+                    <view class="sale-info-l" wx:if="{{goods['has_coupon']}}">
+                        <view class="quanl">券</view>
+                        <view class="quanr">{{goods['coupon_discount']/100}}元</view>
+                    </view>
+                    <view class="tag-d-one" wx:if="{{showBuy}}">
+            现金红包
+          </view>
+                </view>
+                <view class="card-d-m">
+                    <view class="now-price">
+            ￥
+            <text>{{( goods['min_group_price']-goods['coupon_discount'] )/100}}</text>
+                    </view>
+                    <view class="old-price" wx:if="{{showBuy}}">
+            原价
+            <text>￥{{goods.min_group_price/100}}</text>
+                    </view>
+                </view>
+                <view class="card-d-b">
+                    <block wx:if="{{showBuy}}">
+                        <text class="iconfont icon-pinduoduo red-color" wx:if="{{goods.source==1}}"></text>
+                        <text class="iconfont icon-jingdong1 red-color" wx:if="{{goods.source==2}}"></text>
+                        <text class="iconfont icon-mogujieicon MGJ-color" wx:if="{{goods.source==3}}"></text>
+                        <text class="iconfont icon-weipinhui WPH-color" wx:if="{{goods.source==4}}"></text>
+                        <text class="iconfont icon-suning SN-color" wx:if="{{goods.source==5}}"></text>
+                        <text class="iconfont {{goods['shop_type']==1?'icon-tianmao':'icon-taobao TB-color'}}" wx:if="{{goods.source==6}}"></text>
+                    </block>
+                    <text class="iconfont icon-kaola KL-color" wx:if="{{goods.source==7}}"></text>
+          {{goods.storeInfo.mall_name?goods.storeInfo.mall_name:''}}
+        </view>
+                <button catchtap="toGoodsPage" class="card-btn" data-goods_id="{{goods['goods_id']}}" data-goods_url="{{goods['goods_url']}}" data-source="{{goods['source']}}" wx:if="{{showBuy}}">去购买</button>
+            </view>
+        </view>
+    </view>
+    <view class="page-top" wx:if="{{nogoods}}">
+        <view class="no-goods">很抱歉，没有找到您要查找的商品~~~</view>
+    </view>
+    <view class="page-main">
+        <view class="page-main-top">
+            <view class="act">价格趋势</view>
+        </view>
+        <view class="page-main-m">
+            <view class="hisp" wx:if="{{showHisP}}">
+                <view class="hisp-t">
+                    <view class="hisp-l"></view>
+                    <view class="hisp-r">历史最低价：
+            <text class="hisp-lowest">￥{{hisp_lowest}}</text>
+                    </view>
+                </view>
+                <view style="height:35vh;">
+                    <ec-canvas canvasId="mychart-line" ec="{{ec}}" id="mychart-dom-line" type="2d"></ec-canvas>
+                </view>
+            </view>
+            <view wx:if="{{showHisPempty}}">感谢您为我们找到失联的商品，我们现在正在抓紧收录，下次见面就有啦~</view>
+        </view>
+    </view>
+</view>

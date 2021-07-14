@@ -1,0 +1,311 @@
+<view class="nav bg-white" style="height:{{navH}}px">
+    <view class="nav-title">
+        <view class="back">
+            <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+            <view class="back-line"></view>
+            <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+        </view>
+    </view>
+</view>
+<view class="container">
+    <view class="page-top">
+        <image class="page-top-img" src="{{imgPath}}hongbaoqiang.png"></image>
+        <image class="page-bottom-img" src="{{imgPath}}zhanshiban.png" wx:if="{{isLogin}}"></image>
+        <view class="schedule-msg" wx:if="{{isLogin}}">
+            <view class="msg-top">已发送给好友<text>{{num}}</text>个红包，合计<text>{{all_money}}</text>元</view>
+            <view class="msg-bottom">点击下方任意红包 即可给好友发红包</view>
+        </view>
+        <view bindtap="onShowRegulation" class="regulation" style="top:calc({{navH}}px + 4rpx);">规则</view>
+    </view>
+    <view class="page-main">
+        <view class="page-main-bg"></view>
+        <view class="red-envelope-box">
+            <image bindtap="{{item.status==1?'':'onShowEnvelopeShade'}}" class="main-img" data-redp_id="{{item.id}}" src="../../public/images/hb.png" wx:for="{{list}}" wx:key="id">
+                <view class="img-text" wx:if="{{item.status==0}}">发给好友</view>
+                <image class="text-get-img" src="{{item.avatar}}" wx:if="{{item.status==1}}"></image>
+                <view class="text-get-msg" wx:if="{{item.status==1}}">
+                    <view class="get-name">{{item.nickname}}</view>
+                    <view class="get-price">领取{{item.money}}元</view>
+                </view>
+            </image>
+        </view>
+    </view>
+</view>
+<view bindtap="onShowEnvelopeShade" class="share-btn" data-rig_share="share" wx:if="{{isLogin}}">
+    <text class="iconfont icon-fenxiang1"></text>
+  分享
+</view>
+<view class="shade" wx:if="{{showRule}}"></view>
+<view wx:if="{{showRule}}">
+    <image class="shade-rule-img" src="{{imgPath}}hbqiangguize.png">
+        <text class="share-rule-text">{{rules_redpacked_game}}</text>
+    </image>
+    <view class="shade-rule-title">红包墙游戏规则</view>
+    <view bindtap="chooseRuleShade" class="choose-rule-shade">
+        <text class="iconfont icon-chahao"></text>
+    </view>
+</view>
+<view class="shade" wx:if="{{showEnvelope}}"></view>
+<view wx:if="{{showEnvelope}}">
+    <view class="send-envelope">
+        <image class="send-envelope-img" src="../../public/images/hb.png">
+            <view class="send-envelope-img-view">红包已包好 赶紧分享好友领取吧！</view>
+        </image>
+        <button class="tofirend" openType="share">
+            <text class="iconfont icon-weixin"></text>给好友发红包</button>
+        <view bindtap="onShowShareShade" class="save-img">
+            <text class="iconfont icon-xiazai"></text>保存分享图</view>
+        <view bindtap="chooseEnvelopeShade" class="choose-envelope-shade">
+            <text class="iconfont icon-chahao"></text>
+        </view>
+    </view>
+</view>
+<view bindtap="chooseShareShade" class="shade" wx:if="{{showShareShade}}"></view>
+<view wx:if="{{showShareShade}}">
+    <image class="share-img" src="{{poster}}"></image>
+    <view bindtap="saveQrcodeToPhotosAlbum" class="save-img-btn">保存到手机相册</view>
+</view>
+<view class="bricks">
+    <view>
+        <view class="zhuan-row">
+            <view class="zhuan-1 jiao-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2 jiao-2"></view>
+        </view>
+        <view class="zhuan-row">
+            <view class="zhuan-3"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-4"></view>
+        </view>
+    </view>
+    <view>
+        <view class="zhuan-row">
+            <view class="zhuan-1 jiao-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2 jiao-2"></view>
+        </view>
+        <view class="zhuan-row">
+            <view class="zhuan-3"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-4"></view>
+        </view>
+    </view>
+    <view>
+        <view class="zhuan-row">
+            <view class="zhuan-1 jiao-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2 jiao-2"></view>
+        </view>
+        <view class="zhuan-row">
+            <view class="zhuan-3"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-4"></view>
+        </view>
+    </view>
+    <view>
+        <view class="zhuan-row">
+            <view class="zhuan-1 jiao-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2 jiao-2"></view>
+        </view>
+        <view class="zhuan-row">
+            <view class="zhuan-3"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-4"></view>
+        </view>
+    </view>
+    <view>
+        <view class="zhuan-row">
+            <view class="zhuan-1 jiao-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2 jiao-2"></view>
+        </view>
+        <view class="zhuan-row">
+            <view class="zhuan-3"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-4"></view>
+        </view>
+    </view>
+    <view>
+        <view class="zhuan-row">
+            <view class="zhuan-1 jiao-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2 jiao-2"></view>
+        </view>
+        <view class="zhuan-row">
+            <view class="zhuan-3"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-4"></view>
+        </view>
+    </view>
+    <view>
+        <view class="zhuan-row">
+            <view class="zhuan-1 jiao-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2 jiao-2"></view>
+        </view>
+        <view class="zhuan-row">
+            <view class="zhuan-3"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-4"></view>
+        </view>
+    </view>
+    <view>
+        <view class="zhuan-row">
+            <view class="zhuan-1 jiao-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2 jiao-2"></view>
+        </view>
+        <view class="zhuan-row">
+            <view class="zhuan-3"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-4"></view>
+        </view>
+    </view>
+    <view>
+        <view class="zhuan-row">
+            <view class="zhuan-1 jiao-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2 jiao-2"></view>
+        </view>
+        <view class="zhuan-row">
+            <view class="zhuan-3"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-4"></view>
+        </view>
+    </view>
+    <view>
+        <view class="zhuan-row">
+            <view class="zhuan-1 jiao-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2 jiao-2"></view>
+        </view>
+        <view class="zhuan-row">
+            <view class="zhuan-3"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-4"></view>
+        </view>
+    </view>
+    <view>
+        <view class="zhuan-row">
+            <view class="zhuan-1 jiao-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2 jiao-2"></view>
+        </view>
+        <view class="zhuan-row">
+            <view class="zhuan-3"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-4"></view>
+        </view>
+    </view>
+    <view>
+        <view class="zhuan-row">
+            <view class="zhuan-1 jiao-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2 jiao-2"></view>
+        </view>
+        <view class="zhuan-row">
+            <view class="zhuan-3"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-4"></view>
+        </view>
+    </view>
+    <view>
+        <view class="zhuan-row">
+            <view class="zhuan-1 jiao-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2 jiao-2"></view>
+        </view>
+        <view class="zhuan-row">
+            <view class="zhuan-3"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-4"></view>
+        </view>
+    </view>
+    <view>
+        <view class="zhuan-row">
+            <view class="zhuan-1 jiao-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2 jiao-2"></view>
+        </view>
+        <view class="zhuan-row">
+            <view class="zhuan-3"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-4"></view>
+        </view>
+    </view>
+    <view>
+        <view class="zhuan-row">
+            <view class="zhuan-1 jiao-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2 jiao-2"></view>
+        </view>
+        <view class="zhuan-row">
+            <view class="zhuan-3"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-4"></view>
+        </view>
+    </view>
+    <view>
+        <view class="zhuan-row">
+            <view class="zhuan-1 jiao-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2 jiao-2"></view>
+        </view>
+        <view class="zhuan-row">
+            <view class="zhuan-3"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-1"></view>
+            <view class="zhuan-2"></view>
+            <view class="zhuan-4"></view>
+        </view>
+    </view>
+</view>
+<import src="../templates/login.wxml"></import>
+<template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>

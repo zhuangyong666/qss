@@ -1,0 +1,57 @@
+<view class="">
+    <view class="nav bg-white" style="height:{{navH}}px">
+        <view class="nav-title">
+      {{theme_name?theme_name:'专题页'}}
+      <view class="back">
+                <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+                <view class="back-line"></view>
+                <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+            </view>
+        </view>
+    </view>
+    <view class="bg-gray overflow" style="margin-top:{{navH}}px;">
+        <view class="hidden">
+            <view class="top" wx:if="{{theme_img}}">
+                <image class="top-img" mode="widthFix" src="{{theme_img}}"></image>
+            </view>
+            <view class="article">
+                <view bindtap="toGoodsDetail" class="article-act" data-goods_id="{{goods['goods_id']}}" wx:for="{{goodsList}}" wx:for-item="goods" wx:key="gl">
+                    <image lazyLoad class="article-img" mode="aspectFill" src="{{goods['goods_thumbnail_url']}}"></image>
+                    <view class="article-name">{{goods['goods_name']}}</view>
+                    <view class="article-info">
+                        <view class="ai-l">
+                            <view>券</view>
+                            <view>￥{{goods['coupon_discount']/100}}</view>
+                        </view>
+                        <view class="ai-cr-box">
+                            <view class="ai-c">券后</view>
+                            <view class="ai-r">￥<text>{{( goods['min_group_price']-goods['coupon_discount'] )/100}}</text>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="article-sell">
+                        <view class="as-l">销量{{goods['sales_tip']}}</view>
+                        <view class="as-r">
+                            <view>原价</view>
+                            <view class="as-r-sum">￥{{goods['min_group_price']/100}}</view>
+                        </view>
+                    </view>
+                    <view class="article-make">
+                        <view class="am-l" wx:if="{{goods['bounss']!=''}}">
+                            <view class="arrows-box">
+                                <text class="arrows iconfont icon-jiantouarrow499"></text>
+                            </view>
+                            <view>升级<block wx:if="{{appletKeyword}}">{{appletKeyword}}</block>
+                                <block wx:else>赚</block>{{goods['bounss']}}</view>
+                        </view>
+                        <view class="am-r">
+                            <view class="am-kz">{{appletKeyword}}</view>
+                            <view class="am-sum">￥<text>{{goods['bouns']}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

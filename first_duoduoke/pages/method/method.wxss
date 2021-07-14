@@ -1,0 +1,48 @@
+.met-act {
+    display: flex;
+    flex-flow: column;
+    margin: 20rpx;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #d6d6d8;
+    overflow: hidden;
+}
+
+button.met-question::after {
+    border: 0;
+}
+
+.met-question {
+    padding: 18rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 28rpx;
+    margin: 0;
+    color: inherit;
+    background-color: inherit;
+    line-height: inherit;
+}
+
+.met-tit {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    word-break: break-all;
+    letter-spacing: 2rpx;
+    color: #151516;
+}
+
+.met-question text {
+    font-size: 22rpx;
+    line-height: 22rpx;
+}
+
+.met-answer {
+    font-size: 28rpx;
+    padding: 18rpx;
+    color: #666;
+    border-top: 1px solid #d6d6d8;
+    letter-spacing: 2rpx;
+}

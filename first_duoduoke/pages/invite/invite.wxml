@@ -1,0 +1,37 @@
+<view class="">
+    <view class="nav bg-white" style="height:{{navH}}px">
+        <view class="nav-title">
+      邀请新人，奖励红包
+      <view class="back">
+                <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+                <view class="back-line"></view>
+                <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+            </view>
+        </view>
+    </view>
+    <view class="bg-gray overflow" style="margin-top:{{navH}}px;background-image:url({{imgPath}}inv-bg.jpg);">
+        <view class="hidden">
+            <view class="invi-coin">
+                <image class="invi-timg" mode="widthFix" src="{{imgPath}}timg.png"></image>
+                <view class="invi-content">
+                    <view class="invi-tit">规则介绍:</view>
+                    <view class="invi-info">
+                        <text wx:if="{{task_text}}">
+                 {{task_text}}
+            </text>
+                        <text wx:if="{{task}}">
+            1.活动期间每成功邀请一位下级用户，并且下级用户成功推广/购买一笔订单，您将获得{{task.money}}元现金奖励
+            2.每个下级用户只能奖励一次
+            3.奖励现金将打入您的预估收入中，当该订单结算完成，奖励将转入可提现金额
+            4.在订单结算完成之前发生任何退货等行为导致订单审核失败，将会取消这笔奖励
+            5.奖励上限{{task.money_max}}元
+            </text>
+                    </view>
+                </view>
+            </view>
+            <view class="invi-btn">
+                <button bindtap="goPartakeOf">去邀请</button>
+            </view>
+        </view>
+    </view>
+</view>

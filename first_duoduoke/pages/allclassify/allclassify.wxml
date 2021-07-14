@@ -1,0 +1,43 @@
+<view class="container">
+    <view class="nav bg-white" style="height:{{navH}}px">
+        <view class="nav-title">
+      分类
+      <view class="back">
+                <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+                <view class="back-line"></view>
+                <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+            </view>
+        </view>
+    </view>
+    <view class="heard">
+        <view class="title">
+            <text wx:if="{{search_portal_switch==1}}">搜啥都有优惠券</text>
+        </view>
+        <view class="search clearfix" wx:if="{{search_portal_switch==1}}">
+            <icon color="#be94bc" size="20" type="search"></icon>
+            <input disabled bindconfirm="confirmSearchKey" bindinput="setSearchKey" bindtap="goSearch" class="input" placeholder="搜啥都有优惠券" placeholderClass="ind-input"></input>
+        </view>
+    </view>
+    <view class="goods-1">
+        <view class="broadside_nav">
+            <scroll-view scrollY="true">
+                <view catchtap="onClassification" class="sort {{opt_id==item.opt_id?'active':''}}" data-index="{{index}}" data-opt_id="{{item.opt_id}}" wx:for="{{oneList}}" wx:key="id">
+                    <text>{{item.show_name?item.show_name:item.opt_name}}</text>
+                </view>
+            </scroll-view>
+        </view>
+        <view class="main clearfix">
+            <view style="margin-right: auto; margin-left: auto;">
+                <scroll-view scrollY="true">
+                    <view wx:if="{{opt_id==item.opt_id}}" wx:for="{{oneList}}" wx:key="id">
+                        <view catchtap="toCatePage" class="details" data-opt_id="{{children.opt_id}}" data-opt_name="{{children.show_name?children.show_name:children.opt_name}}" wx:for="{{item.children}}" wx:for-item="children" wx:key="id">
+                            <image mode="aspectFill" src="{{children.icon}}" wx:if="{{children.icon}}"></image>
+                            <text class="iconfont icon-shangpinfenlei" wx:else></text>
+                            <text class="cate-name">{{children.show_name?children.show_name:children.opt_name}}</text>
+                        </view>
+                    </view>
+                </scroll-view>
+            </view>
+        </view>
+    </view>
+</view>

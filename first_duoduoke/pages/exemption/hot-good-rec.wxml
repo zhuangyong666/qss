@@ -1,0 +1,28 @@
+<view class="container-page">
+    <view catchtap="toOtherGoods" class="goods-card" data-goods_id="{{goods['goods_id']}}" data-goods_sign="{{goods['goods_sign']}}" wx:for="{{hotGoodsList}}" wx:for-index="hgdx" wx:for-item="goods" wx:key="hgl">
+        <image class="goods-card-img" mode="aspectFill" src="{{goods['goods_thumbnail_url']}}"></image>
+        <view class="goods-card-right">
+            <view class="goods-card-title">{{goods['goods_name']}}</view>
+            <view class="goods-card-up">
+                <text class="iconfont icon-huo"></text>
+        升级赚{{goods['bounss']}}元
+      </view>
+            <view class="goods-card-bottom">
+                <view class="priceAndSale">
+                    <view class="price">
+            券后
+            <view>¥ <text>{{( goods['min_group_price']-goods['coupon_discount'] )/100}}</text>
+                        </view>
+                    </view>
+                    <view class="sale">
+            销量 {{goods['sales_tip']}}
+          </view>
+                </view>
+                <view class="sale-info-l">
+                    <view>券</view>
+                    <view>￥{{goods['coupon_discount']/100}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,90 @@
+.container {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0 30rpx;
+}
+
+.container,.line-box {
+    display: flex;
+    align-items: center;
+}
+
+.line-box {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 30rpx 0;
+    width: 100%;
+    font-size: 28rpx;
+}
+
+.aLine {
+    border-top: 1px dashed #f10303;
+    width: 130rpx;
+}
+
+.square {
+    width: 20rpx;
+    height: 20rpx;
+    transform: rotate(45deg);
+    background: #f10303;
+}
+
+.top-title {
+    width: 100%;
+    border-radius: 30px;
+    text-align: center;
+    font-size: 38rpx;
+    padding: 15rpx 0;
+    color: #fff;
+    background: #f10303;
+}
+
+.big-top-img {
+    width: 100%;
+    height: 810rpx;
+    border-radius: 10px;
+    background: #eee;
+    margin-top: 40rpx;
+    margin-bottom: 20rpx;
+}
+
+.step-card {
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 30rpx;
+}
+
+.step-card,.step-title-box {
+    display: flex;
+    width: 100%;
+}
+
+.step-title-box {
+    text-align: left;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.step-title {
+    color: #fff;
+    padding: 10rpx 30rpx;
+    border-radius: 6px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    background: #f10303;
+}
+
+.step-main {
+    font-size: 26rpx;
+    width: 100%;
+    margin: 20rpx 0;
+}
+
+.step-main>text {
+    color: red;
+}
+
+.step-img {
+    width: 100%;
+    height: 480rpx;
+}

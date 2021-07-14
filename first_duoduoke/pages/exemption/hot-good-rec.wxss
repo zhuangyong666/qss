@@ -1,0 +1,117 @@
+.container-page {
+    flex-direction: column;
+    padding: 30rpx;
+}
+
+.container-page,.goods-card {
+    display: flex;
+}
+
+.goods-card {
+    flex-direction: row;
+    margin-bottom: 60rpx;
+}
+
+.goods-card-img {
+    width: 230rpx;
+    height: 230rpx;
+    border-radius: 5px;
+    margin-right: 10rpx;
+    background: #eee;
+}
+
+.goods-card-right {
+    flex: 1;
+    height: 230rpx;
+    display: flex;
+    flex-direction: column;
+}
+
+.goods-card-title {
+    font-size: 28rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.goods-card-up {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    line-height: 30rpx;
+    padding: 8rpx 0;
+    width: 200rpx;
+    justify-content: center;
+    background: linear-gradient(90deg,#ff7124,#ef0f09);
+    font-size: 22rpx;
+    color: #fff;
+    border-radius: 7px;
+    margin-top: 10rpx;
+}
+
+.goods-card-up>text {
+    margin-right: 10rpx;
+}
+
+.goods-card-bottom {
+    flex-direction: row;
+    flex: 1;
+}
+
+.goods-card-bottom,.priceAndSale {
+    display: flex;
+    justify-content: space-between;
+}
+
+.priceAndSale {
+    flex-direction: column;
+}
+
+.price {
+    font-size: 22rpx;
+    color: #ef0f09;
+    align-items: flex-end;
+    display: flex;
+    flex-direction: row;
+    margin-top: 20rpx;
+}
+
+.price>view {
+    font-size: 26rpx;
+    font-weight: 700;
+    margin-left: 10rpx;
+}
+
+.price>view>text {
+    font-size: 40rpx;
+    line-height: 40rpx;
+}
+
+.sale {
+    font-size: 22rpx;
+    color: #aaa;
+}
+
+.sale-info-l {
+    font-size: 22rpx;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    top: .5rem;
+    right: 20rpx;
+}
+
+.sale-info-l view:nth-child(1) {
+    padding: 6rpx 8rpx;
+    background: linear-gradient(90deg,#ff7124,#ef0f09);
+    border-radius: 0 3px 3px 0;
+    border-right: 1px dashed #fff;
+}
+
+.sale-info-l view:nth-child(2) {
+    padding: 6rpx 10rpx;
+    background: #ef0f09;
+    border-radius: 3px 0 0 3px;
+}

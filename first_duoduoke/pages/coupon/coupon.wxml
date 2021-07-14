@@ -1,0 +1,38 @@
+<view class="">
+    <view class="nav bg-white" style="height:{{navH}}px">
+        <view class="nav-title">
+      现金返现
+      <view class="back">
+                <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+                <view class="back-line"></view>
+                <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+            </view>
+        </view>
+    </view>
+    <view class="bg-gray overflow" style="margin-top:{{navH}}px;">
+        <view class="hidden">
+            <view class="cou-coin" style="height:calc(100vh - {{navH}}px);background-image:url({{imgPath}}20.png);">
+                <image class="cou-ti" mode="widthFix" src="{{imgPath}}xjfx.png"></image>
+                <view class="cou-info">
+                    <image class="cou-timg" mode="widthFix" src="{{imgPath}}money_pack.png"></image>
+                    <view class="cou-rule">
+                        <view class="rule-tit">规则介绍:</view>
+                        <view class="rule-cont">
+                            <text wx:if="{{task_text}}">
+                 {{task_text}}
+                </text>
+                            <text wx:if="{{task}}">
+                  1.活动期间每成功购买或者推广一笔订单，并且满足订单成交金额大于等于15元，则额外赠送{{task.money}}元返现红包奖励
+                  2.每天前两笔满足条件的订单均能获得返现奖励
+                  3.在订单结算之前发生退款、退货等行为导致订单审核失败，现金返现奖励将会取消
+                </text>
+                        </view>
+                        <view class="cou-draw">
+                            <button bindtap="navBack">去领取</button>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

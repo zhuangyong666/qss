@@ -1,0 +1,24 @@
+<view class="nav bg-white" style="height:{{navH}}px">
+    <view class="nav-title">
+    公告详情
+    <text bindtap="navBack" class="back iconfont icon-jiantou-copy"></text>
+    </view>
+</view>
+<view class="container-page" style="margin-top:{{navH}}px;">
+    <view class="card" wx:if="{{content.type==1}}">
+        <view class="card-title">{{content.title}}</view>
+        <view class="card-main">
+            <view>
+                <text decode="{{true}}">&ensp;&ensp;&ensp;&ensp;{{content.content}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="card" wx:if="{{content.type==2}}">
+        <view class="card-title">{{content.title}}</view>
+        <view class="card-main">
+            <view class="video-box">
+                <video enablePlayGesture="{{true}}" id="myVideo" showPlayBtn="{{false}}" src="{{content.path}}" style="height: 100%;width: 100%;"></video>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,193 @@
+<view class="nav bg-white" style="height:{{navH}}px">
+    <view class="nav-title">
+        <text bindtap="navBack" class="back iconfont icon-jiantou-copy"></text>
+        <view>砍价免费拿</view>
+    </view>
+</view>
+<view class="top-tips" style="top:{{navH}}px;" wx:if="{{finish_info!=false}}">
+    <swiper autoplay="true" circular="true" duration="1000" interval="3000" vertical="true">
+        <swiper-item class="hk-swi" wx:for="{{finish_info}}" wx:key="msg">
+            <image class="tips-img" mode="aspectFill" src="{{item.avatar}}"></image>
+            <view class="user-name">{{item.nickname}} 刚刚砍价免费拿到了</view>
+            <view class="goods-message">{{item.title}}</view>
+        </swiper-item>
+    </swiper>
+</view>
+<import src="../templates/login.wxml"></import>
+<view class="container-page" style="margin-top:{{navH}}px;">
+    <view class="top-goods-card">
+        <view class="card-top">
+            <image class="card-top-img" mode="aspectFill" src="{{this_goods.img}}"></image>
+            <view class="card-top-right">
+                <view class="goods-title">{{this_goods.title}}</view>
+                <view class="time">
+                    <view>{{qgdjs_jo.hour}}</view>
+                    <text class="iconfont icon-maohao"></text>
+                    <view>{{qgdjs_jo.min}}</view>
+                    <text class="iconfont icon-maohao"></text>
+                    <view>{{qgdjs_jo.sec}}</view>
+                    <text class="time-m">后将失效</text>
+                </view>
+                <view class="card-goods-price">
+          价值 ¥ {{this_goods.price}}元
+        </view>
+            </view>
+        </view>
+        <progress active backgroundColor="#F2F2F2" borderRadius="10" class="line" color="#F95120" percent="{{percent}}" strokeWidth="10" wx:if="{{is_win==0&&go_address==0}}"></progress>
+        <progress active backgroundColor="#F2F2F2" borderRadius="10" class="line" color="#fcda27" percent="{{percent}}" strokeWidth="10" wx:if="{{is_win==1||go_address==1}}"></progress>
+        <view class="bargain-box">
+            <view class="bargain-top" wx:if="{{go_address==0}}">
+                <view class="bargain-top-left">已砍
+          <text>{{bargain_sum}}</text> 元</view>
+                <view class="bargain-top-right">还剩
+          <text>{{bargain_surplus_sum}}</text> 元</view>
+            </view>
+            <view class="bargain-top" wx:if="{{go_address==1}}">
+                <view class="bargain-top-left">已砍
+          <text>{{this_goods.price}}</text> 元</view>
+                <view class="bargain-top-right">还剩
+          <text>0</text> 元</view>
+            </view>
+            <button class="bargain-btn" openType="share" wx:if="{{is_win==0&&go_address==0}}">
+        还剩{{bargain_surplus_sum}}元，叫好友帮砍
+      </button>
+            <button class="bargain-btn" wx:if="{{is_win==1}}">
+        恭喜,该商品已经砍到{{bargain_surplus_sum}}元
+      </button>
+            <button bindtap="fillAddress" class="bargain-btn" wx:if="{{go_address==1}}">
+        选择收货地址
+      </button>
+            <view bindtap="onShowShareShade" class="save-poster">保存发圈图，叫好友帮砍 ></view>
+        </view>
+    </view>
+    <view class="cut-price-list" wx:if="{{bargainList!=false}}">
+        <view class="cut-price-title-box">
+            <view class="cut-price-title">
+                <text class="iconfont icon"></text> 好友砍价榜
+      </view>
+        </view>
+        <view class="cut-price-item" wx:for="{{bargainList}}" wx:for-index="idx" wx:key="adx">
+            <view class="cut-item-left">
+                <image class="cut-item-avatar" src="{{item.avatar}}"></image>
+                <view class="cut-item-main">
+                    <view class="cut-item-name">{{item.nickname}}</view>
+                    <view class="cut-item-message" wx:if="{{idx%2==0}}">砍价起来，so easy</view>
+                    <view class="cut-item-message" wx:if="{{idx%2!=0}}">深情为你砍掉{{item.money}}元</view>
+                </view>
+            </view>
+            <view class="cut-item-right">
+          砍掉
+          <text>{{item.money}}</text>元
+        </view>
+        </view>
+    </view>
+    <image bindtap="toZeroBuy" class="zero-buy" mode="aspectFill" src="{{imgPath}}0yuangou.png" wx:if="{{zerobuy_switch}}"></image>
+    <view class="rec-box">
+        <view catchtap="toOtherGoods" class="rec-card" data-goods_id="{{goods['goods_id']}}" data-goods_sign="{{goods['goods_sign']}}" wx:for="{{hotGoodsList}}" wx:for-index="hgdx" wx:for-item="goods" wx:key="hgl">
+            <image class="rec-card-img" mode="aspectFill" src="{{goods['goods_thumbnail_url']}}"></image>
+            <view class="rec-card-main">
+                <view class="rec-card-title">{{goods['goods_name']}}</view>
+                <view class="priceAndcoupon">
+                    <view class="rec-price">¥<text>{{( goods['min_group_price']-goods['coupon_discount'] )/100}}</text>
+                    </view>
+                    <view class="rec-coupon">
+            {{goods['coupon_discount']/100}}元券
+          </view>
+                </view>
+                <view class="rec-card-sale">
+          销量:{{goods['sales_tip']}}
+        </view>
+            </view>
+        </view>
+    </view>
+    <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+</view>
+<view class="shade" wx:if="{{showCutpriceBTN&&overtime!=1}}"></view>
+<view class="cut-price-box" wx:if="{{showCutpriceBTN&&overtime!=1}}">
+    <view class="cut-price-top">
+        <view class="cut-price-top-title">
+            <view>就差你这一刀了</view>
+            <view>砍到底价好友就可以免费拿</view>
+        </view>
+        <view class="cut-price-top-numBox">
+            <view class="numBox">
+                <view class="numBox-left-item" wx:for="{{[1,2]}}" wx:key="index">
+                    <view class="numBox-item-main" style=" transform: rotateX({{index==0?animation0:animation1}}deg);  transition-duration:{{index==0?time0:time1}}s">
+                        <view class="red-envelope" style="transform:rotateX({{360/redEnvelopeList0.length*i}}deg)   translateZ({{200}}rpx);padding-top:6rpx;width:90rpx" wx:for="{{index==0?redEnvelopeList0:redEnvelopeList1}}" wx:for-index="i" wx:key="i">
+            {{item.text}} </view>
+                    </view>
+                </view>
+            </view>
+            <view class="numBox">
+                <view class="numBox-right-item" wx:for="{{[1,2]}}" wx:key="index">
+                    <view class="numBox-item-main" style=" transform: rotateX({{index==0?animation2:animation3}}deg);  transition-duration:{{index==0?time2:time3}}s">
+                        <view class="red-envelope" style="transform:rotateX({{360/redEnvelopeList0.length*i}}deg)   translateZ({{200}}rpx);padding-top:6rpx;width:90rpx" wx:for="{{index==0?redEnvelopeList2:redEnvelopeList3}}" wx:for-index="i" wx:key="i">
+            {{item.text}} </view>
+                    </view>
+                </view>
+            </view>
+            <view class="line-light-top">
+                <view class="line-light-item1"></view>
+                <view class="line-light-item2"></view>
+                <view class="line-light-item1"></view>
+                <view class="line-light-item2"></view>
+                <view class="line-light-item1"></view>
+                <view class="line-light-item2"></view>
+                <view class="line-light-item1"></view>
+                <view class="line-light-item2"></view>
+                <view class="line-light-item1"></view>
+                <view class="line-light-item2"></view>
+                <view class="line-light-item1"></view>
+                <view class="line-light-item2"></view>
+            </view>
+            <view class="line-light-bottom">
+                <view class="line-light-item2"></view>
+                <view class="line-light-item1"></view>
+                <view class="line-light-item2"></view>
+                <view class="line-light-item1"></view>
+                <view class="line-light-item2"></view>
+                <view class="line-light-item1"></view>
+                <view class="line-light-item2"></view>
+                <view class="line-light-item1"></view>
+                <view class="line-light-item2"></view>
+                <view class="line-light-item1"></view>
+                <view class="line-light-item2"></view>
+                <view class="line-light-item1"></view>
+            </view>
+            <view class="line-light-left">
+                <view class="line-light-item2"></view>
+                <view class="line-light-item1"></view>
+                <view class="line-light-item2"></view>
+                <view class="line-light-item1"></view>
+            </view>
+            <view class="line-light-right">
+                <view class="line-light-item1"></view>
+                <view class="line-light-item2"></view>
+                <view class="line-light-item1"></view>
+                <view class="line-light-item2"></view>
+            </view>
+            <view class="price-dot"></view>
+        </view>
+        <image class="cut-price-img-1" src="{{imgPath}}light.png" wx:if="{{showLight}}"></image>
+        <image class="cut-price-img" src="{{imgPath}}jbcd.png"></image>
+    </view>
+    <view class="cut-price-bottom">
+        <view class="b-top">
+            <image bindtap="start" class="cut-price-btn" mode="aspectFill" src="{{imgPath}}cut-price-btn.png"></image>
+        </view>
+        <view class="b-bottom"></view>
+    </view>
+</view>
+<view catchtouchmove="nomove" class="shade" wx:if="{{showShareShade}}"></view>
+<view bindtap="onShowShareShade" catchtouchmove="nomove" class="share-shade" wx:if="{{showShareShade}}">
+    <image class="share-shade-img" src="{{posterImg}}"></image>
+    <view class="share-shade-msg">赶快找好友帮忙0元拿商品</view>
+    <view class="share-shade-btn-box">
+        <view bindtap="saveQrcodeToPhotosAlbum" class="share-shade-btn shade-btn-l">
+            <text class="iconfont icon-zhaopian"></text> 保存分享图
+    </view>
+        <button class="share-shade-btn shade-btn-r" openType="share">
+            <text class="iconfont icon-weixin"></text> 分享给好友或群
+    </button>
+    </view>
+</view>

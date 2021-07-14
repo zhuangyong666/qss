@@ -1,0 +1,208 @@
+<import src="../templates/login.wxml"></import>
+<import src="../templates/search.wxml"></import>
+<import src="../templates/tab-bar.wxml"></import>
+<view class="container">
+    <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+    <view class="index-top" style="height:calc({{navH}}px + {{plusH}}px);">
+        <view class="nav" style="height:{{navH}}px">
+            <view class="nav-title">
+                <text>发现</text>
+            </view>
+        </view>
+        <view class="topNavBar" style="">
+            <view class="top_nav">
+                <view catchtap="onChangePage" class="nav_opt {{num==2?'active':''}}" data-num="2">小编推荐</view>
+                <view catchtap="onChangePage" class="nav_opt1 {{num==1?'active':''}}" data-num="1">晒单得奖<image mode="aspectFill" src="/first_duoduoke/public/images/jb.png"></image>
+                </view>
+                <view catchtap="onChangePage" class="nav_opt {{num==3?'active':''}}" data-num="3">营销素材</view>
+            </view>
+        </view>
+    </view>
+    <view class="bg-gray {{num==1?'':'dontlook'}}" style="margin-top:calc({{navH}}px + 43px);margin-bottom:104rpx;">
+        <scroll-view class="main" scrollY="true">
+            <view bindtap="goDryingList" class="btn-dryingList">
+                <icon class="iconfont icon-shaidan"></icon>
+                <text>有奖晒单</text>
+            </view>
+            <view class="show-card" wx:for="{{orderShowList}}" wx:for-index="idx" wx:key="index">
+                <view class="card-title">
+                    <image class="card-title-image" src="{{item.avatar}}"></image>
+                    <view class="card-title-nameAndTime">
+                        <view class="user-name">{{item.nickname}}</view>
+                        <view class="time">{{item.create_time}}</view>
+                    </view>
+                    <view class="card-title-award" wx:if="{{item.bouns>0}}">
+                        <text>晒单奖 +{{item.bouns/100}}元</text>
+                    </view>
+                </view>
+                <view class="card-discuss" wx:if="{{!item.showAllcontent&&item.short_content}}">
+          {{item.short_content}}
+          <text catchtap="showAllcontent_showorder" data-index="{{idx}}">显示全部</text>
+                </view>
+                <view class="card-discuss" wx:if="{{item.showAllcontent==true&&item.short_content}}">
+          {{item.share_content}}
+          <text catchtap="showAllcontent_showorder" data-index="{{idx}}">收起</text>
+                </view>
+                <view class="card-discuss" wx:if="{{!item.short_content}}">
+          {{item.share_content}}
+        </view>
+                <view class="card-image clearfix" wx:if="{{item.type==0}}">
+                    <image bindtap="showGoodsPicc" data-idx="{{idx}}" data-index="{{index}}" mode="aspectFill" src="{{pic}}" wx:if="{{index<=8}}" wx:for="{{item.pics}}" wx:for-item="pic" wx:key="index"></image>
+                </view>
+                <view class="card-image clearfix" wx:if="{{item.type==1}}">
+                    <image class="video-img" src="{{item.img}}">
+                        <view bindtap="wachVideo" class="video-img-shade" data-path="{{item.path}}"></view>
+                        <view bindtap="wachVideo" class="on-button" data-path="{{item.path}}">
+                            <view catchtap="wachVideo" class="on-bbutton-item" data-path="{{item.path}}"></view>
+                        </view>
+                    </image>
+                </view>
+                <view catchtap="toGoodsPage" class="card-goods" data-from_uid="{{item.uid}}" data-goods_id="{{item.goods_id}}" data-goods_sign="{{item.goods_sign}}" data-source="{{item.source}}">
+                    <image src="{{item.img}}"></image>
+                    <view class="goods-main">
+                        <view class="goods-title">
+                            <view>
+                                <text class="iconfont icon-pinduoduo red-color" wx:if="{{item.source==1}}"></text>
+                                <text class="iconfont icon-jingdong1 red-color" wx:if="{{item.source==2}}"></text>
+                                <text class="iconfont icon-mogujieicon MGJ-color" wx:if="{{item.source==3}}"></text>
+                                <text class="iconfont icon-weipinhui WPH-color" wx:if="{{item.source==4}}"></text>
+                                <text class="iconfont icon-suning SN-color" wx:if="{{item.source==5}}"></text>
+                                <text class="iconfont {{item['shop_type']==1?'icon-tianmao':'icon-taobao TB-color'}}" wx:if="{{item.source==6}}"></text>
+                                <text class="iconfont icon-kaola KL-color" wx:if="{{item.source==7}}"></text>
+                                <text class="iconfont icon-SP SP-color" wx:if="{{item.source==9}}"></text>
+                {{item.goods_name}}
+              </view>
+                        </view>
+                        <view class="goods-SV">{{item.sales}}人购买</view>
+                        <view class="goods-price">¥{{item.price}}</view>
+                    </view>
+                </view>
+                <view class="card-bottom">
+                    <view class="goodjob">
+                        <view class="goodjob-img">
+                            <image src="{{zanImg}}" wx:for="{{item.zan_data}}" wx:for-item="zanImg" wx:key="index"></image>
+                        </view>
+                        <text wx:if="{{item.zan_count}}">等{{item.zan_count}}人觉得很赞</text>
+                    </view>
+                    <view bindtap="zanOrderShow" class="nice" data-index="{{idx}}" data-s_id="{{item.id}}" wx:if="{{!item.is_zan}}">
+                        <icon class="iconfont icon-dianzan"></icon>赞
+          </view>
+                    <view bindtap="onNorepeat" class="nice-1" data-index="{{idx}}" wx:if="{{item.is_zan}}">
+                        <text class="iconfont .icon-dianzan1"></text> 赞
+          </view>
+                </view>
+            </view>
+        </scroll-view>
+        <view bindtap="wachVideo" class="video-shade" wx:if="{{onVideo==true}}"></view>
+        <video controls autoplay="{{true}}" id="myVideo" src="{{videoPath}}" wx:if="{{onVideo==true}}"></video>
+    </view>
+    <view class="bg-gray {{num==2?'':'dontlook'}}" style="margin-top:calc({{navH}}px + 43px);margin-bottom:104rpx;">
+        <scroll-view class="main" scrollY="true">
+            <view class="show-card" wx:for="{{ownerrecList}}" wx:for-index="idx" wx:key="index">
+                <view class="card-title">
+                    <image class="card-title-image" src="{{avatar}}"></image>
+                    <view class="card-title-nameAndTime">
+                        <view class="user-name">{{app_name}}</view>
+                        <view class="time">{{item.create_time}}</view>
+                    </view>
+                </view>
+                <view class="card-discuss" wx:if="{{!item.showAllcontent&&item.short_title}}">
+            {{item.short_title}}
+            <text catchtap="showAllcontent" data-index="{{idx}}">显示全部</text>
+                </view>
+                <view class="card-discuss" wx:if="{{item.showAllcontent==true&&item.short_title}}">
+            {{item.share_title}}
+            <text catchtap="showAllcontent" data-index="{{idx}}">收起</text>
+                </view>
+                <view class="card-discuss" wx:if="{{!item.short_title}}">
+            {{item.share_title}}
+          </view>
+                <view class="card-image clearfix" wx:if="{{item.type==0}}">
+                    <image bindtap="showGoodsPic" data-idx="{{idx}}" data-index="{{index}}" mode="aspectFill" src="{{pic}}" wx:if="{{index<=8}}" wx:for="{{item.pics}}" wx:for-item="pic" wx:key="index"></image>
+                </view>
+                <view class="card-image clearfix" wx:if="{{item.type==1}}">
+                    <image class="video-img" src="{{item.img}}">
+                        <view bindtap="wachVideo" class="video-img-shade" data-path="{{item.path}}"></view>
+                        <view bindtap="wachVideo" class="on-button" data-path="{{item.path}}">
+                            <view catchtap="wachVideo" class="on-bbutton-item" data-path="{{item.path}}"></view>
+                        </view>
+                    </image>
+                </view>
+                <view catchtap="toGoodsPage" class="card-goods" data-goods_id="{{item.goods_id}}" data-goods_sign="{{item.goods_sign}}" data-source="{{item.source}}">
+                    <image src="{{item.img}}"></image>
+                    <view class="goods-main">
+                        <view class="goods-title">
+                            <view>
+                                <text class="iconfont icon-pinduoduo red-color" wx:if="{{item.source==1}}"></text>
+                                <text class="iconfont icon-jingdong1 red-color" wx:if="{{item.source==2}}"></text>
+                                <text class="iconfont icon-mogujieicon MGJ-color" wx:if="{{item.source==3}}"></text>
+                                <text class="iconfont icon-weipinhui WPH-color" wx:if="{{item.source==4}}"></text>
+                                <text class="iconfont icon-suning SN-color" wx:if="{{item.source==5}}"></text>
+                                <text class="iconfont {{item['shop_type']==1?'icon-tianmao':'icon-taobao TB-color'}}" wx:if="{{item.source==6}}"></text>
+                                <text class="iconfont icon-kaola KL-color" wx:if="{{item.source==7}}"></text>
+                                <text class="iconfont icon-SP SP-color" wx:if="{{item.source==9}}"></text>
+                  {{item.title}}
+                </view>
+                        </view>
+                        <view class="goods-bottom">
+                            <view class="goods-price">¥ {{item.price}}</view>
+                            <view class="sale-info-l">
+                                <view>券</view>
+                                <view>¥{{item.coupon}}</view>
+                                <view class="info-l-l"></view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="card-bottom">
+                    <button class="card-bottom-btn" data-res="{{item}}" openType="share">
+                        <text class="iconfont icon-fenxiang"></text>
+              一键分享
+            </button>
+                </view>
+            </view>
+        </scroll-view>
+        <view bindtap="wachVideo" class="video-shade" wx:if="{{onVideo==true}}"></view>
+        <video controls autoplay="{{true}}" id="myVideo" src="{{videoPath}}" wx:if="{{onVideo==true}}"></video>
+    </view>
+    <view class="bg-gray {{num==3?'':'dontlook'}}" style="margin-top:calc({{navH}}px + 43px);margin-bottom:104rpx;">
+        <view class="main">
+            <view class="show-card" data-id="{{sale.id}}" data-index="{{idx}}" id="wp_{{idx}}" wx:for="{{saleWallpaper}}" wx:for-index="idx" wx:for-item="sale" wx:key="index">
+                <view class="card-title">
+                    <image class="card-title-image" src="{{avatar}}"></image>
+                    <view class="card-title-nameAndTime1">
+                        <view class="user-name">{{app_name}}</view>
+                        <view class="time">{{sale.create_time}}</view>
+                    </view>
+                    <view class="saveAndCopy">
+                        <view bindtap="getPosterPic" class="button" data-wp_id="{{sale.id}}" data-wp_idx="{{idx}}">
+                            <icon class="iconfont icon-xiazai"></icon>保存并复制</view>
+                        <view class="number">{{sale.down_num}}次下载</view>
+                    </view>
+                </view>
+                <view class="card-discuss">
+          {{sale.share_title}}
+        </view>
+                <view class="card-image clearfix">
+                    <image bindtap="showWppic" data-index="{{idx}}" mode="aspectFill" src="{{sale.path}}"></image>
+                </view>
+                <view class="card-bottom-r">
+                    <view class="goodjob">
+                        <view class="goodjob-img">
+                            <image src="{{img}}" wx:for="{{sale.zan_data}}" wx:for-item="img" wx:key="idx"></image>
+                        </view>
+                        <text wx:if="{{sale.zan_count}}">等{{sale.zan_count}}人觉得很赞</text>
+                    </view>
+                    <view bindtap="zanSaleWallpaper" class="nice" data-index="{{idx}}" data-wp_id="{{sale.id}}" wx:if="{{!sale.is_zan}}">
+                        <icon class="iconfont icon-dianzan"></icon>赞
+          </view>
+                    <view bindtap="onNorepeat" class="nice-1" data-index="{{idx}}" data-wp_id="{{luck.id}}" wx:if="{{sale.is_zan}}">
+                        <text class="iconfont .icon-dianzan1"></text> 赞
+          </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <template is="searchModal" data="{{smartSou:smartSou}}"></template>
+    <template is="footerWx" data="{{...tabBar}}"></template>
+</view>

@@ -1,0 +1,70 @@
+<view class="nav bg-white nav-color" style="height:{{navH}}px">
+    <view class="nav-title">
+    外卖每日福利
+    <view class="back">
+            <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+            <view class="back-line"></view>
+            <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+        </view>
+    </view>
+</view>
+<import src="../templates/login.wxml"></import>
+<view class="container-plea" style="margin-top:{{navH}}px;">
+    <view catchtap="toMainPage" class="card" data-show="0">
+        <view class="card-top">
+            <view class="card-top-left">
+                <image class="card-icon" mode="aspectFill" src="{{imgPath}}eleme.png"></image>
+        饿了么外卖优惠券
+        <view>返现</view>
+            </view>
+            <view class="card-top-right">
+        立即领券 
+        <text class="iconfont icon-jiantou"></text>
+            </view>
+        </view>
+        <image class="card-main-img" mode="aspectFill" src="{{imgPath}}eleme-ht.jpg"></image>
+    </view>
+    <view catchtap="toMainPage2" class="card" data-show="0">
+        <view class="card-top">
+            <view class="card-top-left">
+                <image class="card-icon" mode="aspectFill" src="{{imgPath}}meituan-waimai.png"></image>
+        美团外卖优惠券
+        <view>返现</view>
+            </view>
+            <view class="card-top-right">
+        立即领券 
+        <text class="iconfont icon-jiantou"></text>
+            </view>
+        </view>
+        <image class="card-main-img" mode="aspectFill" src="{{imgPath}}mtwm-ht.jpg"></image>
+    </view>
+    <view catchtap="toMainPage" class="card" data-show="1">
+        <view class="card-top">
+            <view class="card-top-left">
+                <image class="card-icon" mode="aspectFill" src="{{imgPath}}eleme.png"></image>
+        买菜到家优惠券
+        <view>返现</view>
+            </view>
+            <view class="card-top-right">
+        立即领券 
+        <text class="iconfont icon-jiantou"></text>
+            </view>
+        </view>
+        <image class="card-main-img" mode="aspectFill" src="{{imgPath}}eleme-ht2.jpg"></image>
+    </view>
+    <view catchtap="toMainPage2" class="card" data-show="1">
+        <view class="card-top">
+            <view class="card-top-left">
+                <image class="card-icon" mode="aspectFill" src="{{imgPath}}meituan.png"></image>
+        美团闪购优惠券
+        <view>返现</view>
+            </view>
+            <view class="card-top-right">
+        立即领券 
+        <text class="iconfont icon-jiantou"></text>
+            </view>
+        </view>
+        <image class="card-main-img" mode="aspectFill" src="{{imgPath}}mtwm-ht2.jpg"></image>
+    </view>
+    <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+</view>

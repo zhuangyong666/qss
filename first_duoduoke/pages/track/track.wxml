@@ -1,0 +1,43 @@
+<view class="">
+    <view class="nav bg-white" style="height:{{navH}}px">
+        <view class="nav-title">
+      我的足迹
+      <view class="back">
+                <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+                <view class="back-line"></view>
+                <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+            </view>
+        </view>
+    </view>
+    <view class="bg-gray overflow" style="margin-top:{{navH}}px;">
+        <view class="hidden">
+            <view class="tra-act" wx:for="{{list}}" wx:for-index="ldx" wx:key="list">
+                <image bindtap="toGoodsPage" class="tra-img" data-goods_id="{{item.goods_id}}" data-index="{{ldx}}" mode="aspectFill" src="{{item.img}}"></image>
+                <view class="tra-r">
+                    <view bindtap="toGoodsPage" class="trar-name" data-goods_id="{{item.goods_id}}" data-index="{{ldx}}">
+                        <text class="iconfont icon-pinduoduo red-color" wx:if="{{item.source==1}}"></text>
+                        <text class="iconfont icon-jingdong1 red-color" wx:if="{{item.source==2}}"></text>
+                        <text class="iconfont icon-mogujieicon MGJ-color" wx:if="{{item.source==3}}"></text>
+                        <text class="iconfont icon-SP SP-color" wx:if="{{item.source==9}}"></text>
+                        <text class="iconfont icon-weipinhui WPH-color" wx:if="{{item.source==4}}"></text>
+                        <text class="iconfont icon-suning SN-color" wx:if="{{item.source==5}}"></text>
+                        <text class="iconfont {{item['shop_type']==1?'icon-tianmao':'icon-taobao TB-color'}}" wx:if="{{item.source==6}}"></text>
+                        <text class="iconfont icon-kaola KL-color" wx:if="{{item.source==7}}"></text>
+              {{item.title}}
+            </view>
+                    <view class="trar-b">
+                        <view class="trar-bt">
+                            <view bindtap="toGoodsPage" class="trar-btl" data-goods_id="{{item.goods_id}}" data-index="{{ldx}}" wx:if="{{item.source==1||item.source==6||item.sales>0}}">销量：{{item.sales}}</view>
+                            <view bindtap="toGoodsPage" class="trar-btl" data-goods_id="{{item.goods_id}}" data-index="{{ldx}}" wx:else></view>
+                            <text catchtap="delTrack" class="trar-btr iconfont icon-shanchu" data-goods_id="{{item.goods_id}}" data-index="{{ldx}}" data-source="{{item.source}}"></text>
+                        </view>
+                        <view class="trar-bb">
+                ￥<text bindtap="toGoodsPage" data-goods_id="{{item.goods_id}}" data-index="{{ldx}}">{{item.price}}</text>
+                            <button class="share-btn" data-index="{{ldx}}" openType="share">分享</button>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

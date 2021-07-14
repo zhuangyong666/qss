@@ -1,0 +1,68 @@
+<view class="nav bg-white nav-color" style="height:{{navH}}px">
+    <view class="nav-title">
+    查询商品价格趋势
+    <view class="back">
+            <text bindtap="navBack" class="iconfont icon-jiantou-copy"></text>
+            <view class="back-line"></view>
+            <text bindtap="toIndex" class="iconfont icon-shouye back-sy"></text>
+        </view>
+    </view>
+</view>
+<import src="../templates/login.wxml"></import>
+<view class="container-s" style="margin-top: {{navH}}px;">
+    <view class="page-top">
+        <view class="tag-box">
+      复制商品链接查价
+      <view catchtap="toTrendStep">
+        如何复制链接
+        <view>?</view>
+            </view>
+        </view>
+        <view class="scroll-news">
+            <view class="scroll-news-left">
+                <text class="iconfont icon-jinlingyingcaiwangtubiao"></text>
+            </view>
+            <swiper autoplay="true" circular="true" class="scroll-news-swiper" interval="3000" vertical="true">
+                <swiper-item>
+                    <view class="scroll-news-main">支持{{tb_open==1?'淘宝，天猫，':''}}拼多多{{jd_open==1?'，京东':''}}等平台商品查价</view>
+                </swiper-item>
+                <swiper-item>
+                    <view class="scroll-news-main">*覆盖5000w+商品</view>
+                </swiper-item>
+            </swiper>
+        </view>
+        <view class="text-box">
+            <textarea autoFocus="{{false}}" bindblur="setContent" bindconfirm="setContent" bindinput="setContent" class="textarea" placeholder="复制粘贴商品链接，查询历史价格，如：https://item.m.jd.com/product/72057620449.html" value="{{content}}"></textarea>
+            <view catchtap="clearC" class="emptyc" wx:if="{{content}}">清空</view>
+        </view>
+        <button catchtap="toTrendMain" class="btn">查询历史价格</button>
+        <view class="steps-d">
+            <view class="steps-tag">三步查价</view>
+            <view class="steps-item-d">
+                <view class="steps-item-2-d">
+                    <text class="iconfont icon-lingquanzhongxin"></text>
+                </view>
+        复制商品链接
+      </view>
+            <view class="steps-line-d">
+                <view></view>
+            </view>
+            <view class="steps-item-d">
+                <view class="steps-item-2-d">
+                    <text class="iconfont icon-yduiwodedingdan"></text>
+                </view>
+        返回本页面
+      </view>
+            <view class="steps-line-d">
+                <view></view>
+            </view>
+            <view class="steps-item-d">
+                <view class="steps-item-2-d">
+                    <text class="iconfont icon-shouyi"></text>
+                </view>
+        自动识别查价
+      </view>
+        </view>
+    </view>
+    <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+</view>

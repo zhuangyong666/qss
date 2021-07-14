@@ -1,0 +1,71 @@
+<view class="nav bg-white" style="height:{{navH}}px">
+    <view class="nav-title">
+        <text bindtap="navBack" class="back iconfont icon-jiantou-copy"></text>
+        <view>商城0元购</view>
+    </view>
+</view>
+<import src="../templates/info.wxml"></import>
+<import src="../templates/login.wxml"></import>
+<view class="container-page" style="margin-top:{{navH}}px;">
+    <view class="page-tips">
+        <view class="page-tips-left">
+            <text class="iconfont icon-wenhao1"></text>
+      同一用户同一商品仅限购最低规格一次
+    </view>
+        <view bindtap="showInfo" class="page-more">
+      更多 >
+    </view>
+    </view>
+    <view class="remind-goods" wx:for="{{list}}" wx:key="id">
+        <view class="remind-goods-card">
+            <image class="remind-goods-img" mode="aspectFill" src="{{item.img}}">
+                <view class="coupon-tips">
+            {{item.info.coupon}}元券
+            <view class="coupon-tips-1"></view>
+                </view>
+                <text class="iconfont icon-yiqiangguang goods-img-icon" wx:if="{{item.number==0}}"></text>
+            </image>
+            <view class="remind-goods-main">
+                <view class="remind-goods-main-title">{{item.title}}</view>
+                <view class="goods-main-sale">
+            销量：{{item.info.sales}}
+          </view>
+            </view>
+            <view class="remind-goods-right" wx:if="{{item.number==0}}">
+          已抢光
+        </view>
+            <view bindtap="fillAddress" class="remind-goods-right" data-this_id="{{item.id}}" data-this_img="{{item.img}}" data-this_title="{{item.title}}" wx:if="{{item.number>0}}">
+          抢
+        </view>
+        </view>
+        <view class="remind-goods-shade" wx:if="{{item.number==0}}"></view>
+    </view>
+    <view class="main-skip-box">
+        <view bindtap="toIndex" class="main-skip">
+            <view class="main-skip-l">
+        立即进入商城
+        <text>不怕没好货，就怕你不来</text>
+            </view>
+            <view class="main-skip-r">
+          回商城首页
+      </view>
+        </view>
+    </view>
+    <template is="infoModal" data="{{info:info}}"></template>
+    <template is="loginModal" data="{{showLoginModal:showLoginModal}}"></template>
+</view>
+<image bindtap="getZeroBuyPoster" class="share-btn-img" src="{{imgPath}}xiaozhuanpan.png">
+    <view class="share-btn">喊好友一起抢</view>
+</image>
+<view catchtouchmove="nomove" class="shade" wx:if="{{showShareShade}}"></view>
+<view bindtap="onShowShareShade" catchtouchmove="nomove" class="share-shade" wx:if="{{showShareShade}}">
+    <image class="share-shade-img" src="{{share_img}}"></image>
+    <view class="share-shade-btn-box">
+        <view bindtap="saveQrcodeToPhotosAlbum" class="share-shade-btn shade-btn-l">
+            <text class="iconfont icon-zhaopian"></text> 保存分享图
+    </view>
+        <button class="share-shade-btn shade-btn-r" openType="share">
+            <text class="iconfont icon-weixin"></text> 分享给好友或群
+    </button>
+    </view>
+</view>
